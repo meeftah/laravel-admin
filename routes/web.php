@@ -28,10 +28,13 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route Pekerjaan
     Route::resource('pekerjaan', 'PekerjaanController')->except(['create', 'show']);
     Route::get('pekerjaan/api', 'PekerjaanController@datatablePekerjaanAPI')->name('pekerjaan.api');
+<<<<<<< HEAD
 
     // Route Pendidikan
     Route::resource('pendidikan', 'PendidikanController')->except(['create', 'show']);
     Route::get('pendidikan/api', 'PendidikanController@datatablePendidikanAPI')->name('pendidikan.api');
+=======
+>>>>>>> b0f7545... buat data master pekerjaan
 });
 
 

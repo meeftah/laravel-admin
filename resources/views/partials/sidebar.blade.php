@@ -40,8 +40,13 @@
             @endcan
         </ul>
         @endif
+<<<<<<< HEAD
         @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat'))
         <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'),Request::is('dashboard/pekerjaan*'),Request::is('dashboard/pendidikan*')], 'active show-sub') }}">
+=======
+        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat'))
+        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'),Request::is('dashboard/pekerjaan*')], 'active show-sub') }}">
+>>>>>>> b0f7545... buat data master pekerjaan
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
                 <span class="menu-item-label">Master Data</span>
@@ -59,11 +64,14 @@
                     class="nav-link {{ set_active(Request::is('dashboard/pekerjaan*')) }}">Data Pekerjaan</a>
             </li>
             @endcan
+<<<<<<< HEAD
             @can('pendidikan_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.pendidikan.index') }}"
                     class="nav-link {{ set_active(Request::is('dashboard/pendidikan*')) }}">Data Pendidikan</a>
             </li>
             @endcan
+=======
+>>>>>>> b0f7545... buat data master pekerjaan
         </ul>
         @endif
         <a href="javascript: void(0);" class="br-menu-link text-danger" data-toggle="modal" data-target="#logoutModal"">

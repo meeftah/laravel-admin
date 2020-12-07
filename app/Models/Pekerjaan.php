@@ -14,8 +14,12 @@ class Pekerjaan extends Model
      *
      * @var array
      */
+<<<<<<< HEAD
     protected $fillable = [
         'kode',
         'pekerjaan'
     ];
+=======
+    protected $fillable = ['kode','pekerjaan'];
+>>>>>>> b0f7545... buat data master pekerjaan
 }
