@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes(['register' => false]);
 
 Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
@@ -21,6 +24,10 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route Penghasilan
     Route::resource('penghasilan', 'PenghasilanController')->except(['create', 'show']);
     Route::get('penghasilan/api', 'PenghasilanController@datatablePenghasilanAPI')->name('penghasilan.api');
+
+    // Route Pekerjaan
+    Route::resource('pekerjaan', 'PekerjaanController')->except(['create', 'show']);
+    Route::get('pekerjaan/api', 'PekerjaanController@datatablePekerjaanAPI')->name('pekerjaan.api');
 });
 
 
