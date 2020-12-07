@@ -2,7 +2,7 @@
 web/
 
 # Dotenv
-.env
+# .env
 .env.*
 !.env.example
 

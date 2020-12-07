@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Lucky Starter',
+    'name' => 'PPDB Al-Fityan Kubu Raya',
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Pontianak',
 
     /*
      |--------------------------------------------------------------------------

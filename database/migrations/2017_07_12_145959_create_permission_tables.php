@@ -16,21 +16,21 @@ class CreatePermissionTables extends Migration
         $foreignKeys = config('permission.foreign_keys');
 
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->string('guard_name')->default(config('auth.defaults.guard'));
             $table->timestamps();
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->string('guard_name')->default(config('auth.defaults.guard'));
             $table->timestamps();
         });
 
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $foreignKeys) {
-            $table->integer('permission_id')->unsigned();
+            $table->uuid('permission_id');
             $table->morphs('model');
 
             $table->foreign('permission_id')
@@ -42,8 +42,10 @@ class CreatePermissionTables extends Migration
         });
 
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames, $foreignKeys) {
-            $table->integer('role_id')->unsigned();
-            $table->morphs('model');
+            $table->uuid('role_id');
+            $table->uuid('model_id');
+            $table->string('model_type');
+            $table->index(['model_id', 'model_type']);
 
             $table->foreign('role_id')
                 ->references('id')
@@ -54,8 +56,8 @@ class CreatePermissionTables extends Migration
         });
 
         Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames) {
-            $table->integer('permission_id')->unsigned();
-            $table->integer('role_id')->unsigned();
+            $table->uuid('permission_id');
+            $table->uuid('role_id');
 
             $table->foreign('permission_id')
                 ->references('id')

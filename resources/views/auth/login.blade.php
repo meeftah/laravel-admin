@@ -1,73 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('title', 'Login')
 
-    <title>{{ config('app.name', 'Lucky Starter') }}</title>
+@section('body')
+<div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
 
-    <!-- Styles -->
-    <link href="{{ asset('assets/admin/css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-<div class="page">
-    <div class="page-single">
-        <div class="container">
-            <div class="row">
-                <div class="col col-login mx-auto">
-                    <div class="text-center mb-6">
-                        <img src="{{ asset('assets/images/logo.svg') }}" class="header-brand-img" alt="logo">
-                    </div>
-                    <form class="card" action="{{ route('login') }}" method="post">
-                        {{ csrf_field() }}
-                        <div class="card-body p-6">
-                            <div class="card-title">Login to your account</div>
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email"
-                                       class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                       name="email" id="email"
-                                       value="{{ old('email', null) }}" required autofocus
-                                       placeholder="Enter email">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">
-                                    Password
-                                </label>
-                                <input type="password"
-                                       class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                       name="password" id="password"
-                                       placeholder="Password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="remember" class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="remember" class="custom-control-input"/>
-                                    <span class="custom-control-label">Remember me</span>
-                                </label>
-                            </div>
-                            <div class="form-footer">
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
+        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse">
+            <img src="{{ asset('assets/dashboard/img/common/logo.png') }}" height="120px">
         </div>
-    </div>
+        <div class="tx-center mg-b-40">Silakan masuk menggunakan email dan password Anda</div>
+
+        <form action="{{ route('login') }}" method="post">
+            @csrf
+            <div class="form-group">
+                <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                    id="email" value="{{ old('email', null) }}" required autofocus placeholder="Masukkan email Anda">
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div><!-- form-group -->
+            <div class="form-group">
+                <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
+                    name="password" id="password" placeholder="Masukkan password Anda">
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div><!-- form-group -->
+            <button type="submit" class="btn btn-primary btn-block">MASUK</button>
+        </form>
+    </div><!-- login-wrapper -->
 </div>
-</body>
-</html>
+<!-- d-flex 
+@endsection

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('content')
+@section('body')
     <div class="container">
         <div class="row">
-            <h1 class="text-xl font-bold text-blue-500">Hello World Tailwind</h1>
+            <h1 class="text-xl font-bold text-blue-500">FrontEnd</h1>
         </div>
     </div>
 @endsection

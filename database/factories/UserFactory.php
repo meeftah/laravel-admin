@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
