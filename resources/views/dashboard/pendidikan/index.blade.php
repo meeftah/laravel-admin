@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 
-@section('title', 'Daftar Data Penghasilan')
+@section('title', 'Daftar Data Pendidikan')
 
 @section('breadcrumb')
 <div class="br-pageheader pd-y-15 pd-l-20">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-        <a class="breadcrumb-item" href="{{ route('dashboard.penghasilan.index') }}">Data Penghasilan</a>
+        <a class="breadcrumb-item" href="{{ route('dashboard.pendidikan.index') }}">Data Pendidikan</a>
     </nav>
 </div>
 @endsection
 
 @section('content-header')
 <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-    <h4 class="tx-gray-800 mg-b-5">Data Penghasilan</h4>
-    <p class="mg-b-0">Master data penghasilan</p>
+    <h4 class="tx-gray-800 mg-b-5">Data Pendidikan</h4>
+    <p class="mg-b-0">Master data pendidikan</p>
 </div>
 @endsection
 
@@ -22,8 +22,7 @@
     <div class="col-sm-12 col-md-4 mb-5">
         <div class="card">
             <div class="card-body">
-
-                <form action="{{ route("dashboard.penghasilan.store") }}" method="POST">
+                <form action="{{ route("dashboard.pendidikan.store") }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label class="form-control-label">Kode: <span class="tx-danger">*</span></label>
@@ -36,11 +35,11 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label">Penghasilan: <span class="tx-danger">*</span></label>
-                        <input class="form-control {{ $errors->has('penghasilan') ? 'is-invalid' : '' }}" type="text"
-                            name="penghasilan" placeholder="Masukkan data penghasilan"
-                            value="{{ old('penghasilan', null) }}">
-                        @error('penghasilan')
+                        <label class="form-control-label">Pendidikan: <span class="tx-danger">*</span></label>
+                        <input class="form-control {{ $errors->has('pendidikan') ? 'is-invalid' : '' }}" type="text"
+                            name="pendidikan" placeholder="Masukkan data pendidikan"
+                            value="{{ old('pendidikan', null) }}">
+                        @error('pendidikan')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -58,16 +57,16 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered dt-responsive nowrap" data-form="deleteForm"
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-penghasilan">
+                        style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-pendidikan">
                         <thead>
                             <tr class="text-uppercase">
                                 <th></th>
                                 <th>No</th>
                                 <th>KODE</th>
-                                <th>PENGHASILAN</th>
-                                @if(auth()->user()->can('penghasilan_detail') || auth()->user()->can('penghasilan_ubah')
+                                <th>PENDIDIKAN</th>
+                                @if(auth()->user()->can('pendidikan_detail') || auth()->user()->can('pendidikan_ubah')
                                 ||
-                                auth()->user()->can('penghasilan_hapus'))
+                                auth()->user()->can('pendidikan_hapus'))
                                 <th width="150">AKSI</th>
                                 @endif
                             </tr>
@@ -93,27 +92,27 @@
 <script src="{{ asset('assets/dashboard/lib/select2/js/select2.min.js') }}"></script>
 <script>
     $(document).ready( function () {
-        $('#datatable-penghasilan').DataTable({
+        $('#datatable-pendidikan').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
             language: {
                 url: 'http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Indonesian.json',
             },
-            ajax: "{{ route('dashboard.penghasilan.api') }}",
+            ajax: "{{ route('dashboard.pendidikan.api') }}",
             columns: [
-                { data: 'id_penghasilan', name: 'id_penghasilan', visible: false },
+                { data: 'id_pendidikan', name: 'id_pendidikan', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'kode', name: 'kode' },
-                { data: 'penghasilan', name: 'penghasilan' },
-                @if(auth()->user()->can('penghasilan_detail') || auth()->user()->can('penghasilan_ubah') || auth()->user()->can('penghasilan_hapus'))
+                { data: 'pendidikan', name: 'pendidikan' },
+                @if(auth()->user()->can('pendidikan_detail') || auth()->user()->can('pendidikan_ubah') || auth()->user()->can('pendidikan_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
                 { className: 'text-center', width: 60, targets: [2] },
-                @if(auth()->user()->can('penghasilan_detail') || auth()->user()->can('penghasilan_ubah') || auth()->user()->can('penghasilan_hapus'))
+                @if(auth()->user()->can('pendidikan_detail') || auth()->user()->can('pendidikan_ubah') || auth()->user()->can('pendidikan_hapus'))
                 { className: 'text-center', targets: [4] },
                 @endif
             ],
@@ -130,7 +129,7 @@
 
     $('#delete-btn').click(function(){
         $.ajax({
-            url: 'penghasilan/' + id_delete,
+            url: 'pendidikan/' + id_delete,
             type: 'POST',
             data: {
                 _method:'DELETE'
@@ -140,7 +139,7 @@
             },
             success:function(data){
                 $('#confirm-delete').modal('hide');
-                $('#datatable-penghasilan').DataTable().ajax.reload();
+                $('#datatable-pendidikan').DataTable().ajax.reload();
                 if (data.status == 'success') {
                     toastr.success(data.message);
                 } else {

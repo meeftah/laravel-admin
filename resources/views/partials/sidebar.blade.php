@@ -40,8 +40,8 @@
             @endcan
         </ul>
         @endif
-        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat'))
-        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'),Request::is('dashboard/pekerjaan*')], 'active show-sub') }}">
+        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat'))
+        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'),Request::is('dashboard/pekerjaan*'),Request::is('dashboard/pendidikan*')], 'active show-sub') }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
                 <span class="menu-item-label">Master Data</span>
@@ -57,6 +57,11 @@
             @can('pekerjaan_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.pekerjaan.index') }}"
                     class="nav-link {{ set_active(Request::is('dashboard/pekerjaan*')) }}">Data Pekerjaan</a>
+            </li>
+            @endcan
+            @can('pendidikan_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.pendidikan.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/pendidikan*')) }}">Data Pendidikan</a>
             </li>
             @endcan
         </ul>

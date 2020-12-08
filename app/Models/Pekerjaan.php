@@ -14,5 +14,8 @@ class Pekerjaan extends Model
      *
      * @var array
      */
-    protected $fillable = ['kode','pekerjaan'];
+    protected $fillable = [
+        'kode',
+        'pekerjaan'
+    ];
 }
