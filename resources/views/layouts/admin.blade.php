@@ -15,6 +15,12 @@
 </div><!-- br-mainpanel -->
 @include('modals.logout')
 <!-- ########## END: MAIN PANEL ########## -->
+
+@push('styles')
+<link href="{{ asset('assets/dashboard/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/dashboard/lib/jquery-switchbutton/jquery.switchButton.css') }}" rel="stylesheet">
+@endpush
+
 @push('scripts')
 <script src="{{ asset('assets/dashboard/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
 <script src="{{ asset('assets/dashboard/lib/moment/moment.js') }}"></script>

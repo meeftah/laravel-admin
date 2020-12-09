@@ -18,26 +18,42 @@
 @endsection
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered dt-responsive" data-form="deleteForm"
-                style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-users">
-                <thead>
-                    <tr class="text-uppercase">
-                        <th></th>
-                        <th>No</th>
-                        <th>NAMA</th>
-                        <th>EMAIL</th>
-                        <th>PERAN</th>
-                        @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah')
-                        ||
-                        auth()->user()->can('users_hapus'))
-                        <th width="150">AKSI</th>
-                        @endif
-                    </tr>
-                </thead>
-            </table>
+<div class="row">
+    @can('users_tambah')
+    <div class="col-12 mb-3">
+        <div class="pull-right">
+            <a href="{{ route('dashboard.users.create') }}" class="btn btn-success btn-with-icon">
+                <div class="ht-40">
+                    <span class="icon wd-40"><i class="fa fa-plus"></i></span>
+                    <span class="pd-x-15">Tambah Pengguna</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    @endcan
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered dt-responsive" data-form="deleteForm"
+                        style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-users">
+                        <thead>
+                            <tr class="text-uppercase">
+                                <th></th>
+                                <th>No</th>
+                                <th>NAMA</th>
+                                <th>EMAIL</th>
+                                <th>PERAN</th>
+                                @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah')
+                                ||
+                                auth()->user()->can('users_hapus'))
+                                <th width="150">AKSI</th>
+                                @endif
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

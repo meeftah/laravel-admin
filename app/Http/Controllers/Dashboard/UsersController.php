@@ -59,7 +59,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('users_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::get()->pluck('name', 'name');
+        $roles = Role::get();
 
         return view('dashboard.users.create', compact('roles'));
     }

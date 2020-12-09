@@ -6,7 +6,7 @@
 <div class="br-pageheader pd-y-15 pd-l-20">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
         <a class="breadcrumb-item" href="{{ route('dashboard.penghasilan.index') }}">Penghasilan</a>
-        <a class="breadcrumb-item" href="#">Ubah</a>
+        <a class="breadcrumb-item" href="javascript: void(0);">Ubah</a>
     </nav>
 </div>
 @endsection
@@ -50,7 +50,9 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6">
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-2">
                     <div class="form-layout-footer">
                         <button class="btn btn-warning col-12">Ubah</button>
                     </div><!-- form-layout-footer -->
