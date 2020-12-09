@@ -16,7 +16,7 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route Peran
     Route::get('roles/api', 'RolesController@datatableRolesAPI')->name('roles.api');
     Route::resource('roles', 'RolesController');
-    
+
 
     // Route Users
     Route::get('users/api', 'UsersController@datatableUsersAPI')->name('users.api');
@@ -33,6 +33,10 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route Pendidikan
     Route::get('pendidikan/api', 'PendidikanController@datatablePendidikanAPI')->name('pendidikan.api');
     Route::resource('pendidikan', 'PendidikanController')->except(['create', 'show']);
+
+    // Route Agama
+    Route::get('agama/api', 'AgamaController@datatableAgamaAPI')->name('agama.api');
+    Route::resource('agama', 'agamaController')->except(['create', 'show']);
 });
 
 
