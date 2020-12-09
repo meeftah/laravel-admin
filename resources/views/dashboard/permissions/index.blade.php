@@ -35,31 +35,31 @@
                         @enderror
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <div class="custom-control custom-checkbox mb-2">
+                        <div class="custom-checkbox mb-3">
                             <label class="ckbox">
                                 <input type="checkbox" value="lihat" id="opsi-lihat" name="opsi[]" checked>
                                 <span>LIHAT</span>
                             </label>
                         </div>
-                        <div class="custom-control custom-checkbox mb-2">
+                        <div class="custom-checkbox mb-3">
                             <label class="ckbox">
                                 <input type="checkbox" value="tambah" id="opsi-tambah" name="opsi[]" checked>
                                 <span>TAMBAH</span>
                             </label>
                         </div>
-                        <div class="custom-control custom-checkbox mb-2">
+                        <div class="custom-checkbox mb-3">
                             <label class="ckbox">
                                 <input type="checkbox" value="detail" id="opsi-detail" name="opsi[]" checked>
                                 <span>DETAIL</span>
                             </label>
                         </div>
-                        <div class="custom-control custom-checkbox mb-2">
+                        <div class="custom-checkbox mb-3">
                             <label class="ckbox">
                                 <input type="checkbox" value="ubah" id="opsi-ubah" name="opsi[]" checked>
                                 <span>UBAH</span>
                             </label>
                         </div>
-                        <div class="custom-control custom-checkbox mb-2">
+                        <div class="custom-checkbox mb-3">
                             <label class="ckbox">
                                 <input type="checkbox" value="hapus" id="opsi-hapus" name="opsi[]" checked>
                                 <span>HAPUS</span>
@@ -155,6 +155,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success:function(data){
+                console.log('success');
                 $('#confirm-delete').modal('hide');
                 $('#datatable-permissions').DataTable().ajax.reload();
                 if (data.status == 'success') {
