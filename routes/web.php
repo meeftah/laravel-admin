@@ -10,28 +10,29 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::get('/home', 'DashboardController@index')->name('home');
 
     // Route Hak Akses
-    Route::resource('permissions', 'PermissionsController')->except(['create', 'show']);
     Route::get('permissions/api', 'PermissionsController@datatablePermissionsAPI')->name('permissions.api');
+    Route::resource('permissions', 'PermissionsController')->except(['create', 'show']);
 
-    // Route Pengguna
-    Route::resource('roles', 'RolesController');
+    // Route Peran
     Route::get('roles/api', 'RolesController@datatableRolesAPI')->name('roles.api');
+    Route::resource('roles', 'RolesController');
+    
 
     // Route Users
-    Route::resource('users', 'UsersController');
     Route::get('users/api', 'UsersController@datatableUsersAPI')->name('users.api');
+    Route::resource('users', 'UsersController');
 
     // Route Penghasilan
-    Route::resource('penghasilan', 'PenghasilanController')->except(['create', 'show']);
     Route::get('penghasilan/api', 'PenghasilanController@datatablePenghasilanAPI')->name('penghasilan.api');
+    Route::resource('penghasilan', 'PenghasilanController')->except(['create', 'show']);
 
     // Route Pekerjaan
-    Route::resource('pekerjaan', 'PekerjaanController')->except(['create', 'show']);
     Route::get('pekerjaan/api', 'PekerjaanController@datatablePekerjaanAPI')->name('pekerjaan.api');
+    Route::resource('pekerjaan', 'PekerjaanController')->except(['create', 'show']);
 
     // Route Pendidikan
-    Route::resource('pendidikan', 'PendidikanController')->except(['create', 'show']);
     Route::get('pendidikan/api', 'PendidikanController@datatablePendidikanAPI')->name('pendidikan.api');
+    Route::resource('pendidikan', 'PendidikanController')->except(['create', 'show']);
 });
 
 

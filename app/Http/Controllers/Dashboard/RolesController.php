@@ -19,6 +19,17 @@ class RolesController extends Controller
         return datatables()->of($roles)
             ->addIndexColumn()
             ->addColumn(
+                'permissions',
+                function ($row) {
+                    $permissions = '';
+                    foreach (Role::findByName($row['name'])->getAllPermissions() as $permission) {
+                        $permissions .= '<span class="badge badge-pill badge-primary p-2 m-1" style="font-size: 10pt; font-weight: 400">' . $permission->name . '</span>';
+                    }
+
+                    return $permissions;
+                }
+            )
+            ->addColumn(
                 'action',
                 function ($row) {
                     $btn = '';
@@ -35,7 +46,7 @@ class RolesController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'permissions'])
             ->make(true);
     }
 
@@ -65,7 +76,7 @@ class RolesController extends Controller
 
         $role = Role::create($request->except('permission'));
 
-        if($request->has('permission')) {
+        if ($request->has('permission')) {
             $role->givePermissionTo($request->input('permission'));
         }
 
@@ -91,7 +102,7 @@ class RolesController extends Controller
 
         $role->update($request->except('permission'));
 
-        if($request->has('permission')) {
+        if ($request->has('permission')) {
             $role->syncPermissions($request->input('permission'));
         }
 
@@ -117,5 +128,4 @@ class RolesController extends Controller
 
         return redirect()->route('dashboard.roles.index')->with(['error' => 'Peran berhasil dihapus']);
     }
-
 }

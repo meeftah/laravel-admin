@@ -21,7 +21,7 @@
 <div class="card">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered dt-responsive nowrap" data-form="deleteForm"
+            <table class="table table-bordered dt-responsive" data-form="deleteForm"
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-users">
                 <thead>
                     <tr class="text-uppercase">
@@ -29,6 +29,7 @@
                         <th>No</th>
                         <th>NAMA</th>
                         <th>EMAIL</th>
+                        <th>PERAN</th>
                         @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah')
                         ||
                         auth()->user()->can('users_hapus'))
@@ -68,13 +69,13 @@
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
+                { data: 'role', name: 'role' },
                 @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah') || auth()->user()->can('users_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', targets: [2] },
                 @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah') || auth()->user()->can('users_hapus'))
                 { className: 'text-center', targets: [4] },
                 @endif

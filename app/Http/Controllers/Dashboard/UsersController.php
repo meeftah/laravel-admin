@@ -21,6 +21,12 @@ class UsersController extends Controller
         return datatables()->of($users)
             ->addIndexColumn()
             ->addColumn(
+                'role',
+                function ($row) {
+                    return '<span class="badge badge-pill badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . Role::findByName($row['name'])->name ?? '' . '</span>';
+                }
+            )
+            ->addColumn(
                 'action',
                 function ($row) {
                     $btn = '';
@@ -37,7 +43,7 @@ class UsersController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'role'])
             ->make(true);
     }
 

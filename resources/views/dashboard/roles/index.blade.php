@@ -21,7 +21,7 @@
 <div class="card">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered dt-responsive nowrap" data-form="deleteForm"
+            <table class="table table-bordered dt-responsive" data-form="deleteForm"
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-roles">
                 <thead>
                     <tr class="text-uppercase">
@@ -67,14 +67,14 @@
                 { data: 'id', name: 'id', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'name', name: 'name' },
-                { data: 'guard_name', name: 'guard_name' },
+                { data: 'permissions', name: 'permissions' },
                 @if(auth()->user()->can('roles_detail') || auth()->user()->can('roles_ubah') || auth()->user()->can('roles_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', targets: [2] },
+                { width: 200, targets: [2] },
                 @if(auth()->user()->can('roles_detail') || auth()->user()->can('roles_ubah') || auth()->user()->can('roles_hapus'))
                 { className: 'text-center', targets: [4] },
                 @endif
