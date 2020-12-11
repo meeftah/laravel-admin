@@ -36,7 +36,19 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
 
     // Route Agama
     Route::get('agama/api', 'AgamaController@datatableAgamaAPI')->name('agama.api');
-    Route::resource('agama', 'agamaController')->except(['create', 'show']);
+    Route::resource('agama', 'AgamaController')->except(['create', 'show']);
+
+    // Route Alamat
+    Route::get('alamat/api', 'AlamatController@datatableAlamatAPI')->name('alamat.api');
+    Route::resource('alamat', 'AlamatController')->except(['create', 'show']);
+
+    // Route kondisibelajar
+    Route::get('kondisibelajar/api', 'KondisibelajarController@datatableKondisibelajarAPI')->name('kondisibelajar.api');
+    Route::resource('kondisibelajar', 'KondisibelajarController')->except(['create', 'show']);
+
+    // Route bcquran
+    Route::get('bcquran/api', 'BcquranController@datatableBcquranAPI')->name('bcquran.api');
+    Route::resource('bcquran', 'BcquranController')->except(['create', 'show']);
 });
 
 

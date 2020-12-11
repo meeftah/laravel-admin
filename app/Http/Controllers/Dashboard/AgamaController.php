@@ -79,7 +79,7 @@ class AgamaController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $agama = new agama();
+        $agama = new Agama();
         $agama->kode = $request->kode;
         $agama->agama = $request->agama;
 
