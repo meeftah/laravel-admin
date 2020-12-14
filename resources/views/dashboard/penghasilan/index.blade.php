@@ -47,7 +47,7 @@
                         @enderror
                     </div>
                     <div class="form-layout-footer">
-                        <button class="btn btn-primary col-sm-12 col-md-6">Simpan</button>
+                        <button class="btn btn-success col-sm-12 col-md-6">Simpan</button>
                     </div><!-- form-layout-footer -->
                 </form>
             </div>

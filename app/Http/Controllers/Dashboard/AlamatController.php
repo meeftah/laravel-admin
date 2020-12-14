@@ -21,9 +21,6 @@ class AlamatController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
-                    // if (auth()->user()->can('alamat_detail')) {
-                    //     $btn    .= '<a href="' . route('dashboard.alamat.show', $row['id_alamat']) . '" class="btn btn-primary btn-sm waves-effect waves-light" title="DETAIL"><i class="fa fa-eye"></i></a> ';
-                    // }
                     if (auth()->user()->can('alamat_ubah')) {
                         $btn   .= '<a href="' . route('dashboard.alamat.edit', $row['id_alamat']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }

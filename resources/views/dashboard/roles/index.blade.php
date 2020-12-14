@@ -18,27 +18,43 @@
 @endsection
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered dt-responsive" data-form="deleteForm"
-                style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-roles">
-                <thead>
-                    <tr class="text-uppercase">
-                        <th></th>
-                        <th>No</th>
-                        <th>PERAN</th>
-                        <th>HAK AKSES</th>
-                        @if(auth()->user()->can('roles_detail') || auth()->user()->can('roles_ubah')
-                        ||
-                        auth()->user()->can('roles_hapus'))
-                        <th width="150">AKSI</th>
-                        @endif
-                    </tr>
-                </thead>
-            </table>
+<div class="row">
+    @can('roles_tambah')
+    <div class="col-12 mb-3">
+        <div class="pull-right">
+            <a href="{{ route('dashboard.roles.create') }}" class="btn btn-success btn-with-icon">
+                <div class="ht-40">
+                    <span class="icon wd-40"><i class="fa fa-plus"></i></span>
+                    <span class="pd-x-15">Tambah Peran</span>
+                </div>
+            </a>
         </div>
     </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered dt-responsive" data-form="deleteForm"
+                        style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-roles">
+                        <thead>
+                            <tr class="text-uppercase">
+                                <th></th>
+                                <th>No</th>
+                                <th>PERAN</th>
+                                <th>HAK AKSES</th>
+                                @if(auth()->user()->can('roles_detail') || auth()->user()->can('roles_ubah')
+                                ||
+                                auth()->user()->can('roles_hapus'))
+                                <th width="150">AKSI</th>
+                                @endif
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endcan
 </div>
 @include('modals.delete')
 @endsection

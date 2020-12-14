@@ -72,12 +72,22 @@ class RolesController extends Controller
     {
         abort_if(Gate::denies('roles_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $request->validate(['name' => 'required']);
+        $rules = [
+            'name' => 'required',
+            'permissions' => 'required',
+        ];
+
+        $messages = [
+            'required.name' => 'Kolom peran wajib diisi!',
+            'required.permissions' => 'Kolom hak akses wajib diisi!'
+        ];
+
+        $this->validate($request, $rules, $messages);
 
         $role = Role::create($request->except('permission'));
 
-        if ($request->has('permission')) {
-            $role->givePermissionTo($request->input('permission'));
+        if ($request->has('permissions')) {
+            $role->givePermissionTo($request->input('permissions'));
         }
 
         return redirect()->route('dashboard.roles.index')->with(['success' => 'Peran berhasil ditambah']);
