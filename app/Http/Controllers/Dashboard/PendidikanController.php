@@ -14,7 +14,7 @@ class PendidikanController extends Controller
     public function datatablePendidikanAPI()
     {
         // ambil semua data
-        $pendidikan = Pendidikan::orderBy('created_at', 'ASC')->get();
+        $pendidikan = Pendidikan::orderBy('kode', 'ASC')->get();
 
         return datatables()->of($pendidikan)
             ->addIndexColumn()

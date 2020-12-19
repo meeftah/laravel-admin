@@ -13,7 +13,7 @@ class KondisibelajarController extends Controller
     public function datatableKondisibelajarAPI()
     {
         // ambil semua data
-        $kondisibelajar = Kondisibelajar::orderBy('created_at', 'ASC')->get();
+        $kondisibelajar = Kondisibelajar::orderBy('kode', 'ASC')->get();
 
         return datatables()->of($kondisibelajar)
             ->addIndexColumn()

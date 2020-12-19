@@ -13,7 +13,7 @@ class AgamaController extends Controller
     public function datatableAgamaAPI()
     {
         // ambil semua data
-        $agama = Agama::orderBy('created_at', 'ASC')->get();
+        $agama = Agama::orderBy('kode', 'ASC')->get();
 
         return datatables()->of($agama)
             ->addIndexColumn()

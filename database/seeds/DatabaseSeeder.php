@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(KondisibelajarTableSeed::class);
         $this->call(PendidikanTableSeed::class);
         $this->call(PenghasilanTableSeed::class);
+        $this->call(WaktutmphTableSeed::class);
     }
 }

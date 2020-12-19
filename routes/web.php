@@ -49,6 +49,10 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route bcquran
     Route::get('bcquran/api', 'BcquranController@datatableBcquranAPI')->name('bcquran.api');
     Route::resource('bcquran', 'BcquranController')->except(['create', 'show']);
+
+    // Route waktutmph
+    Route::get('waktutmph/api', 'WaktutmphController@datatableWaktutmphAPI')->name('waktutmph.api');
+    Route::resource('waktutmph', 'WaktutmphController')->except(['create', 'show']);
 });
 
 

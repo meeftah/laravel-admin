@@ -13,7 +13,7 @@ class BcquranController extends Controller
     public function datatableBcquranAPI()
     {
         // ambil semua data
-        $bcquran = Bcquran::orderBy('created_at', 'ASC')->get();
+        $bcquran = Bcquran::orderBy('kode', 'ASC')->get();
 
         return datatables()->of($bcquran)
             ->addIndexColumn()
