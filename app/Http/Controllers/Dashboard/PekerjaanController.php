@@ -13,7 +13,7 @@ class PekerjaanController extends Controller
     public function datatablePekerjaanAPI()
     {
         // ambil semua data
-        $pekerjaan = Pekerjaan::orderBy('created_at', 'ASC')->get();
+        $pekerjaan = Pekerjaan::orderBy('kode', 'ASC')->get();
 
         return datatables()->of($pekerjaan)
             ->addIndexColumn()

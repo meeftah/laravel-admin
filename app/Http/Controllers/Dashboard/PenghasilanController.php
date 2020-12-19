@@ -13,7 +13,7 @@ class PenghasilanController extends Controller
     public function datatablePenghasilanAPI()
     {
         // ambil semua data
-        $penghasilan = Penghasilan::orderBy('created_at', 'ASC')->get();
+        $penghasilan = Penghasilan::orderBy('kode', 'ASC')->get();
 
         return datatables()->of($penghasilan)
             ->addIndexColumn()

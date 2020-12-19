@@ -13,7 +13,7 @@ class AlamatController extends Controller
     public function datatableAlamatAPI()
     {
         // ambil semua data
-        $alamat = Alamat::orderBy('created_at', 'ASC')->get();
+        $alamat = Alamat::orderBy('kode', 'ASC')->get();
 
         return datatables()->of($alamat)
             ->addIndexColumn()
