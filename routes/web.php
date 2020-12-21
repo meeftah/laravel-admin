@@ -53,6 +53,22 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route waktutmph
     Route::get('waktutmph/api', 'WaktutmphController@datatableWaktutmphAPI')->name('waktutmph.api');
     Route::resource('waktutmph', 'WaktutmphController')->except(['create', 'show']);
+
+    // Route tkva
+    Route::get('tkva/api', 'TkvaController@datatableTkvaAPI')->name('tkva.api');
+    Route::resource('tkva', 'TkvaController')->except(['create', 'show']);
+
+    // Route sdva
+    Route::get('sdva/api', 'SdvaController@datatableSdvaAPI')->name('sdva.api');
+    Route::resource('sdva', 'SdvaController')->except(['create', 'show']);
+
+    // Route smpva
+    Route::get('smpva/api', 'SmpvaController@datatableSmpvaAPI')->name('smpva.api');
+    Route::resource('smpva', 'SmpvaController')->except(['create', 'show']);
+
+    // Route smava
+    Route::get('smava/api', 'SmavaController@datatableSmavaAPI')->name('smava.api');
+    Route::resource('smava', 'SmavaController')->except(['create', 'show']);
 });
 
 
