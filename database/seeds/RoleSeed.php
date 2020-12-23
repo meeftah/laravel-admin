@@ -19,11 +19,13 @@ class RoleSeed extends Seeder
             'users_ubah',
             'users_tambah',
             'users_hapus',
+
             'roles_lihat',
             'roles_detail',
             'roles_ubah',
             'roles_tambah',
             'roles_hapus',
+            
             'permissions_lihat',
             'permissions_detail',
             'permissions_ubah',

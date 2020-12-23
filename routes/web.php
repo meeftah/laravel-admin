@@ -49,6 +49,9 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route bcquran
     Route::get('bcquran/api', 'BcquranController@datatableBcquranAPI')->name('bcquran.api');
     Route::resource('bcquran', 'BcquranController')->except(['create', 'show']);
+
+    // ------------------------------------- PROFIl SISWA
+    Route::get('calon-siswa/profil/{id}', 'ProfilCalonSiswaController@profil')->name('calonsiswa.profil');
 });
 
 
