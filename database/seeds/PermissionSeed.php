@@ -36,6 +36,90 @@ class PermissionSeed extends Seeder
             ['id' => '78bb67ba-8cd5-40c6-b858-d323142671e6', 'name' => 'permissions_ubah'],
             ['id' => '5e7ea066-320c-48e7-99a9-3940d10f39d1', 'name' => 'permissions_tambah'],
             ['id' => '27b80a26-7696-48fe-93a3-1af8c3b48601', 'name' => 'permissions_hapus'],
+
+            // ------------ Hak Akses Master Data Penghasilan
+            ['id' => 'f850fb20-4c34-4518-988b-0ab7d1d99ded', 'name' => 'penghasilan_lihat'],
+            ['id' => 'd9e42693-a750-4853-9e51-d985600841ae', 'name' => 'penghasilan_detail'],
+            ['id' => '0392cd6d-e499-4946-b708-b9cb72363fe4', 'name' => 'penghasilan_ubah'],
+            ['id' => '35b6b46e-5e32-40d3-b709-fb136b337c45', 'name' => 'penghasilan_tambah'],
+            ['id' => '3965611b-8809-44e5-87b0-31059823e5fe', 'name' => 'penghasilan_hapus'],
+
+            // ------------ Hak Akses Master Data Pekerjaan
+            ['id' => '79ab6481-64e6-4e09-be6a-e26b30bcda58', 'name' => 'pekerjaan_lihat'],
+            ['id' => '4b540416-d2e2-456f-a7eb-3472e25ce6ee', 'name' => 'pekerjaan_detail'],
+            ['id' => 'f472d0cf-661d-4706-be4b-cd195f6e826e', 'name' => 'pekerjaan_ubah'],
+            ['id' => '66268f57-fdd3-445f-93ed-724fe16e6d7f', 'name' => 'pekerjaan_tambah'],
+            ['id' => '3bcd3efd-c9c6-4260-8e5d-ab464a6bdf33', 'name' => 'pekerjaan_hapus'],
+
+            // ------------ Hak Akses Master Data Pendidikan
+            ['id' => '7e233829-e7d3-4ed2-8f05-c8dd0083b23e', 'name' => 'pendidikan_lihat'],
+            ['id' => '480d1401-cc1c-4543-b1a8-5b9d2902f798', 'name' => 'pendidikan_detail'],
+            ['id' => '7f2f9c2b-8144-47af-b4cb-84cef6fcbae3', 'name' => 'pendidikan_ubah'],
+            ['id' => '00012d90-242d-4334-821c-8850cf13ddfb', 'name' => 'pendidikan_tambah'],
+            ['id' => '79cb7ea6-8929-4492-9db4-9fb99992757f', 'name' => 'pendidikan_hapus'],
+
+            // ------------ Hak Akses Master Data Agama
+            ['id' => 'b35d797a-7b56-49ef-be4c-37c2b66c1c48', 'name' => 'agama_lihat'],
+            ['id' => '1c2208f8-877a-410e-97e4-c992465a4939', 'name' => 'agama_detail'],
+            ['id' => '5f4631d4-f319-454d-9e63-836cc284ea4c', 'name' => 'agama_ubah'],
+            ['id' => '4a1514c1-fc90-44df-8127-9809ddf7eb01', 'name' => 'agama_tambah'],
+            ['id' => '49f10494-95f2-4c1b-a6a0-ed7c72a368bc', 'name' => 'agama_hapus'],
+
+            // ------------ Hak Akses Master Data Jarak Tempat Tinggal
+            ['id' => '9f315ca3-8a03-41f2-a7ad-207125d96a42', 'name' => 'jarak_lihat'],
+            ['id' => 'b183d072-27ee-4907-bc33-86c9fd40edee', 'name' => 'jarak_detail'],
+            ['id' => 'aa372dcf-4d4e-4704-8982-008262cf8744', 'name' => 'jarak_ubah'],
+            ['id' => '8f83d7ff-13e3-42f8-8dea-eebe7205856a', 'name' => 'jarak_tambah'],
+            ['id' => '946d77b2-14cf-4132-81a3-cde22d1dd3a3', 'name' => 'jarak_hapus'],
+
+            // ------------ Hak Akses Master Data Kondisi Belajar
+            ['id' => 'ef79683b-d6e1-43fb-aa0f-c5b2f79cc1b5', 'name' => 'kondisibelajar_lihat'],
+            ['id' => 'a57c8495-cc78-4934-8818-f7a05aefe56a', 'name' => 'kondisibelajar_detail'],
+            ['id' => '4602aca2-bfa0-4c96-9c6f-2aa53444b85b', 'name' => 'kondisibelajar_ubah'],
+            ['id' => 'ed19c23d-e387-46ca-a11b-543efccc615c', 'name' => 'kondisibelajar_tambah'],
+            ['id' => '4b872bbf-6996-40bb-8f1e-e25fb9a9e753', 'name' => 'kondisibelajar_hapus'],
+
+            // ------------ Hak Akses Master Data Baca Quran
+            ['id' => 'def751b8-48c8-4551-a46e-56ee42f6f616', 'name' => 'bcquran_lihat'],
+            ['id' => '3d6f41de-d4ae-4001-b08f-405937865122', 'name' => 'bcquran_detail'],
+            ['id' => '9e9d53c6-dff9-44e6-b0d3-3df8653d2565', 'name' => 'bcquran_ubah'],
+            ['id' => 'e95be206-a184-48cb-be5a-1e6e85a1f7a2', 'name' => 'bcquran_tambah'],
+            ['id' => '81cc3fe0-3e42-45a5-847b-09260be95251', 'name' => 'bcquran_hapus'],
+
+            // ------------ Hak Akses Master Data Waktu Tempuh
+            ['id' => '7cd416d9-bc99-426c-9bc3-9f905a211dc7', 'name' => 'waktutmph_lihat'],
+            ['id' => '7412017e-9f67-45bb-acc2-111d3db5f6e2', 'name' => 'waktutmph_detail'],
+            ['id' => '33782446-68b2-4c23-8dad-f23158aa2969', 'name' => 'waktutmph_ubah'],
+            ['id' => '05ff849d-bccf-4bc9-8b77-e6474550714b', 'name' => 'waktutmph_tambah'],
+            ['id' => 'cce3c3ba-fb19-412e-8335-cb4b4a9f7a15', 'name' => 'waktutmph_hapus'],
+
+            // ------------ Hak Akses Virtual Account TK
+            ['id' => '21874164-93a4-40a9-b13f-121d9d7b1ba7', 'name' => 'vatk_lihat'],
+            ['id' => '18dd4c82-ca9a-48a3-bdb0-2a9721c6568b', 'name' => 'vatk_detail'],
+            ['id' => '55e12ae0-cdab-400d-82c0-b88247dbf4bd', 'name' => 'vatk_ubah'],
+            ['id' => '7c6ee0c0-349a-4da0-9a14-b948911b0502', 'name' => 'vatk_tambah'],
+            ['id' => 'b92be286-9b05-4626-802e-aaec6fb12216', 'name' => 'vatk_hapus'],
+
+            // ------------ Hak Akses Virtual Account SD
+            ['id' => '61dd689b-c02c-4833-8efb-ea5c79dc708e', 'name' => 'vasd_lihat'],
+            ['id' => '500fea41-d81c-4a19-b138-0dc5487bdd43', 'name' => 'vasd_detail'],
+            ['id' => '0a31818c-f6b7-4f74-80d3-a2afab60d778', 'name' => 'vasd_ubah'],
+            ['id' => '8a503ea7-1443-465e-8e68-a0d90ab09999', 'name' => 'vasd_tambah'],
+            ['id' => '2dcd9b3c-c430-4b67-b218-fd0c6c339140', 'name' => 'vasd_hapus'],
+
+            // ------------ Hak Akses Virtual Account SMP
+            ['id' => '2d88a2fd-947a-4a57-abc4-3b93796d2c96', 'name' => 'vasmp_lihat'],
+            ['id' => '58439007-80c8-4e0d-a2c2-dc4f53d0badd', 'name' => 'vasmp_detail'],
+            ['id' => '1a36a069-3bff-4491-bfb6-6496e3f76ae8', 'name' => 'vasmp_ubah'],
+            ['id' => '4def8744-7ff8-4d7f-9b27-e53483d5de4b', 'name' => 'vasmp_tambah'],
+            ['id' => '04f9099d-61f7-4720-97ff-17eb1fc9d9ea', 'name' => 'vasmp_hapus'],
+
+            // ------------ Hak Akses Virtual Account SMA
+            ['id' => 'ba958ac8-b88c-4cde-a581-650b8927074a', 'name' => 'vasma_lihat'],
+            ['id' => '0368faa7-d151-4b4c-be58-0d4e4e2b20cf', 'name' => 'vasma_detail'],
+            ['id' => '6934acd9-bcbd-46f7-8bf1-1d4cd80b2062', 'name' => 'vasma_ubah'],
+            ['id' => '01001a8d-443b-44b6-be4f-000f4a953217', 'name' => 'vasma_tambah'],
+            ['id' => '9dce27a2-23f7-442d-845e-d451b0bde8d9', 'name' => 'vasma_hapus'],
         ];
 
         Permission::insert($items);

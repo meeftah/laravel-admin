@@ -3,29 +3,29 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Agama;
+use App\Models\Jarak;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
-class AgamaController extends Controller
+class JarakController extends Controller
 {
-    public function datatableAgamaAPI()
+    public function datatableJarakAPI()
     {
         // ambil semua data
-        $agama = Agama::orderBy('kode', 'ASC')->get();
+        $jarak = Jarak::orderBy('kode', 'ASC')->get();
 
-        return datatables()->of($agama)
+        return datatables()->of($jarak)
             ->addIndexColumn()
             ->addColumn(
                 'action',
                 function ($row) {
                     $btn = '';
-                    if (auth()->user()->can('agama_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.agama.edit', $row['id_agama']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                    if (auth()->user()->can('jarak_ubah')) {
+                        $btn   .= '<a href="' . route('dashboard.jarak.edit', $row['id_jarak']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
-                    if (auth()->user()->can('agama_hapus')) {
-                        $btn   .= '<button type="button" id="' . $row['id_agama'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                    if (auth()->user()->can('jarak_hapus')) {
+                        $btn   .= '<button type="button" id="' . $row['id_jarak'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
                     }
 
                     return $btn ?? '';
@@ -41,8 +41,8 @@ class AgamaController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('agama_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.agama.index');
+        abort_if(Gate::denies('jarak_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return view('dashboard.masterdata.jarak.index');
     }
 
     /**
@@ -63,11 +63,11 @@ class AgamaController extends Controller
      */
     public function store(Request $request)
     {
-        abort_if(Gate::denies('agama_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('jarak_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $rules = [
             'kode' => 'required',
-            'agama' => 'required',
+            'jarak' => 'required',
         ];
 
         $messages = [
@@ -76,14 +76,14 @@ class AgamaController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $agama = new Agama();
-        $agama->kode = $request->kode;
-        $agama->agama = $request->agama;
+        $jarak = new Jarak();
+        $jarak->kode = $request->kode;
+        $jarak->jarak = $request->jarak;
 
-        if ($agama->save()) {
-            return back()->with(['success' => 'Data agama berhasil ditambah']);
+        if ($jarak->save()) {
+            return back()->with(['success' => 'Data jarak berhasil ditambah']);
         } else {
-            return back()->with(['error' => 'Data agama gagal ditambah']);
+            return back()->with(['error' => 'Data jarak gagal ditambah']);
         }
     }
 
@@ -106,11 +106,11 @@ class AgamaController extends Controller
      */
     public function edit($id)
     {
-        abort_if(Gate::denies('agama_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('jarak_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $agama = Agama::where('id_agama', $id)->first();
+        $jarak = Jarak::where('id_jarak', $id)->first();
 
-        return view('dashboard.masterdata.agama.edit', compact('agama'));
+        return view('dashboard.masterdata.jarak.edit', compact('jarak'));
     }
 
     /**
@@ -122,11 +122,11 @@ class AgamaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        abort_if(Gate::denies('agama_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('jarak_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $rules = [
             'kode' => 'required',
-            'agama' => 'required',
+            'jarak' => 'required',
         ];
 
         $messages = [
@@ -135,14 +135,14 @@ class AgamaController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $agama = Agama::where('id_agama', $id)->first();
-        $agama->kode = $request->kode;
-        $agama->agama = $request->agama;
+        $jarak = Jarak::where('id_jarak', $id)->first();
+        $jarak->kode = $request->kode;
+        $jarak->jarak = $request->jarak;
 
-        if ($agama->save()) {
-            return redirect()->route('dashboard.agama.index')->with(['success' => 'Data agama berhasil diubah']);
+        if ($jarak->save()) {
+            return redirect()->route('dashboard.masterdata.jarak.index')->with(['success' => 'Data jarak berhasil diubah']);
         } else {
-            return back()->with(['error' => 'Data agama gagal diubah']);
+            return back()->with(['error' => 'Data jarak gagal diubah']);
         }
     }
 
@@ -154,14 +154,14 @@ class AgamaController extends Controller
      */
     public function destroy($id)
     {
-        abort_if(Gate::denies('agama_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('jarak_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $agama = Agama::where('id_agama', $id)->first();
+        $jarak = Jarak::where('id_jarak', $id)->first();
 
-        if ($agama->delete()) {
-            return response()->json(['status' => 'success', 'message' => 'Data agama berhasil dihapus']);
+        if ($jarak->delete()) {
+            return response()->json(['status' => 'success', 'message' => 'Data jarak berhasil dihapus']);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'Data agama gagal dihapus']);
+            return response()->json(['status' => 'error', 'message' => 'Data jarak gagal dihapus']);
         }
     }
 }

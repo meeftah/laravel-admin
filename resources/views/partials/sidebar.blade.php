@@ -50,7 +50,7 @@
 
 
         @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat') || auth()->user()->can('agama_lihat') || auth()->user()->can('alamat_lihat') || auth()->user()->can('kondisibelajar') || auth()->user()->can('bcquran') || auth()->user()->can('waktutmph'))
-        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/alamat*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*')], 'active show-sub') }}">
+        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/jarak*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*')], 'active show-sub') }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
                 <span class="menu-item-label">Master Data</span>
@@ -78,9 +78,9 @@
                     class="nav-link {{ set_active(Request::is('dashboard/agama*')) }}">Data Agama</a>
             </li>
             @endcan
-            @can('alamat_lihat')
-            <li class="nav-item"><a href="{{ route('dashboard.alamat.index') }}"
-                    class="nav-link {{ set_active(Request::is('dashboard/alamat*')) }}">Data Tempat Tinggal</a>
+            @can('jarak_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.jarak.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/jarak*')) }}">Data Jarak Tempat Tinggal</a>
             </li>
             @endcan
             @can('kondisibelajar_lihat')
@@ -102,36 +102,35 @@
         @endif
 
         {{-- manajement data VA --}}
-        @if(auth()->user()->can('tkva_lihat') || auth()->user()->can('sdva_lihat') || auth()->user()->can('smpva_lihat') || auth()->user()->can('smava_lihat'))
+        @if(auth()->user()->can('vatk_lihat') || auth()->user()->can('vasd_lihat') || auth()->user()->can('vasmp_lihat') || auth()->user()->can('vasma_lihat'))
         <a href="javascript: void(0);"
-            class="br-menu-link {{ set_active([Request::is('dashboard/tkva*'), Request::is('dashboard/sdva*'), Request::is('dashboard/smpva*'), Request::is('dashboard/smava*')], 'active show-sub') }}">
+            class="br-menu-link {{ set_active([Request::is('dashboard/va/tk*'), Request::is('dashboard/va/sd*'), Request::is('dashboard/va/smp*'), Request::is('dashboard/va/sma*')], 'active show-sub') }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-people tx-24"></i>
-                <span class="menu-item-label">Manajemen VA</span>
+                <span class="menu-item-label">Virtual Account</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
         <ul class="br-menu-sub nav flex-column">
-            @can('tkva_lihat')
-            <li class="nav-item"><a href="{{ route('dashboard.tkva.index') }}"
-                    class="nav-link {{ set_active(Request::is('dashboard/tkva*')) }}">VA TK</a></li>
+            @can('vatk_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.va.tk.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/va/tk*')) }}">VA TK</a></li>
             @endcan
-            @can('sdva_lihat')
-            <li class="nav-item"><a href="{{ route('dashboard.sdva.index') }}"
-                    class="nav-link {{ set_active(Request::is('dashboard/sdva*')) }}">VA SD</a></li>
+            @can('vasd_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.va.sd.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/va/sd*')) }}">VA SD</a></li>
             @endcan
-            @can('smpva_lihat')
-            <li class="nav-item"><a href="{{ route('dashboard.smpva.index') }}"
-                    class="nav-link {{ set_active(Request::is('dashboard/smpva*')) }}">VA SMP</a></li>
+            @can('vasmp_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.va.smp.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/va/smp*')) }}">VA SMP</a></li>
             @endcan
-            @can('smava_lihat')
-            <li class="nav-item"><a href="{{ route('dashboard.smava.index') }}"
-                    class="nav-link {{ set_active(Request::is('dashboard/smava*')) }}">VA SMA</a></li>
+            @can('vasma_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.va.sma.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/va/sma*')) }}">VA SMA</a></li>
             @endcan
         </ul>
         @endif
         {{-- close manajement data VA --}}
-
 
         <a href="javascript: void(0);" class="br-menu-link text-danger" data-toggle="modal" data-target="#logoutModal"">
             <div class=" br-menu-item">

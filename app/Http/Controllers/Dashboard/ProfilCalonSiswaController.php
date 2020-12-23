@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agama;
+use App\Models\Alamat;
+use App\Models\Bcquran;
+use App\Models\Jarak;
+use App\Models\Waktutmph;
 use Illuminate\Http\Request;
 
 class ProfilCalonSiswaController extends Controller
@@ -26,7 +30,10 @@ class ProfilCalonSiswaController extends Controller
     public function profil()
     {
         $agama = Agama::orderBy('kode', 'ASC')->get();
-        return view('dashboard.calonsiswa.profil', compact('agama'));
+        $jarak = Jarak::orderBy('kode', 'ASC')->get();
+        $waktutmph = Waktutmph::orderBy('kode', 'ASC')->get();
+        $bcquran = Bcquran::orderBy('kode', 'ASC')->get();
+        return view('dashboard.profilcalonsiswa.index', compact('agama', 'jarak', 'waktutmph', 'bcquran'));
     }
 
     /**

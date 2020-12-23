@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Jarak;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeed::class);
         $this->call(PekerjaanTableSeed::class);
         $this->call(AgamaTableSeed::class);
-        $this->call(AlamatTableSeed::class);
+        $this->call(JarakTableSeed::class);
         $this->call(BcquranTableSeed::class);
         $this->call(KondisibelajarTableSeed::class);
         $this->call(PendidikanTableSeed::class);

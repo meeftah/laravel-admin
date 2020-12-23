@@ -23,7 +23,7 @@ class UsersController extends Controller
             ->addColumn(
                 'role',
                 function ($row) {
-                    return '<span class="badge badge-pill badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . Role::findByName($row['superadmin'])->name ?? '' . '</span>';
+                    return '<span class="badge badge-pill badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . Role::findByName($row['name'])->name ?? '' . '</span>';
                 }
             )
             ->addColumn(
@@ -51,7 +51,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('users_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('dashboard.users.index');
+        return view('dashboard.manajemenuser.users.index');
     }
 
 
@@ -61,7 +61,7 @@ class UsersController extends Controller
 
         $roles = Role::get();
 
-        return view('dashboard.users.create', compact('roles'));
+        return view('dashboard.manajemenuser.users.create', compact('roles'));
     }
 
 
@@ -95,7 +95,7 @@ class UsersController extends Controller
             $user->assignRole($request->input('roles'));
         }
 
-        return redirect()->route('dashboard.users.index')->with(['success' => 'User created']);
+        return redirect()->route('dashboard.manajemenuser.users.index')->with(['success' => 'User created']);
     }
 
 
@@ -105,7 +105,7 @@ class UsersController extends Controller
 
         $roles = Role::get()->pluck('name', 'name');
 
-        return view('dashboard.users.edit', compact('user', 'roles'));
+        return view('dashboard.manajemenuser.users.edit', compact('user', 'roles'));
     }
 
 
@@ -128,7 +128,7 @@ class UsersController extends Controller
 
         $user->load('roles');
 
-        return view('dashboard.users.show', compact('user'));
+        return view('dashboard.manajemenuser.users.show', compact('user'));
     }
 
 

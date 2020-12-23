@@ -54,7 +54,7 @@ class RolesController extends Controller
     {
         abort_if(Gate::denies('roles_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('dashboard.roles.index');
+        return view('dashboard.manajemenuser.roles.index');
     }
 
 
@@ -64,7 +64,7 @@ class RolesController extends Controller
 
         $permissions = Permission::get()->pluck('name', 'name');
 
-        return view('dashboard.roles.create', compact('permissions'));
+        return view('dashboard.manajemenuser.roles.create', compact('permissions'));
     }
 
 
@@ -90,7 +90,7 @@ class RolesController extends Controller
             $role->givePermissionTo($request->input('permissions'));
         }
 
-        return redirect()->route('dashboard.roles.index')->with(['success' => 'Peran berhasil ditambah']);
+        return redirect()->route('dashboard.manajemenuser.roles.index')->with(['success' => 'Peran berhasil ditambah']);
     }
 
 
@@ -100,7 +100,7 @@ class RolesController extends Controller
 
         $permissions = Permission::get()->pluck('name', 'name');
 
-        return view('dashboard.roles.edit', compact('role', 'permissions'));
+        return view('dashboard.manajemenuser.roles.edit', compact('role', 'permissions'));
     }
 
 
@@ -126,7 +126,7 @@ class RolesController extends Controller
 
         $role->load('permissions');
 
-        return view('dashboard.roles.show', compact('role'));
+        return view('dashboard.manajemenuser.roles.show', compact('role'));
     }
 
 

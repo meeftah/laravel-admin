@@ -23,7 +23,7 @@ class PermissionsController extends Controller
                 function ($row) {
                     $btn = '';
                     // if (auth()->user()->can('penghasilan_detail')) {
-                    //     $btn    .= '<a href="' . route('dashboard.penghasilan.show', $row['id_penghasilan']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                    //     $btn    .= '<a href="' . route('dashboard.manajemenuser.penghasilan.show', $row['id_penghasilan']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
                     // }
                     if (auth()->user()->can('permissions_ubah')) {
                         $btn   .= '<a href="' . route('dashboard.permissions.edit', $row['id']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
@@ -43,7 +43,7 @@ class PermissionsController extends Controller
     {
         abort_if(Gate::denies('permissions_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('dashboard.permissions.index');
+        return view('dashboard.manajemenuser.permissions.index');
     }
 
 
@@ -81,7 +81,7 @@ class PermissionsController extends Controller
     {
         abort_if(Gate::denies('permissions_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('dashboard.permissions.edit', compact('permission'));
+        return view('dashboard.manajemenuser.permissions.edit', compact('permission'));
     }
 
 

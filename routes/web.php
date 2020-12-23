@@ -39,8 +39,8 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::resource('agama', 'AgamaController')->except(['create', 'show']);
 
     // Route Alamat
-    Route::get('alamat/api', 'AlamatController@datatableAlamatAPI')->name('alamat.api');
-    Route::resource('alamat', 'AlamatController')->except(['create', 'show']);
+    Route::get('jarak/api', 'JarakController@datatableJarakAPI')->name('jarak.api');
+    Route::resource('jarak', 'JarakController')->except(['create', 'show']);
 
     // Route kondisibelajar
     Route::get('kondisibelajar/api', 'KondisibelajarController@datatableKondisibelajarAPI')->name('kondisibelajar.api');
@@ -58,20 +58,20 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::resource('waktutmph', 'WaktutmphController')->except(['create', 'show']);
 
     // Route tkva
-    Route::get('tkva/api', 'TkvaController@datatableTkvaAPI')->name('tkva.api');
-    Route::resource('tkva', 'TkvaController')->except(['create', 'show']);
+    Route::get('va/tk/api', 'VaTkController@datatableVaTkAPI')->name('va.tk.api');
+    Route::resource('va/tk', 'VaTkController', ['names' => 'va.tk'])->except(['create', 'show']);
 
     // Route sdva
-    Route::get('sdva/api', 'SdvaController@datatableSdvaAPI')->name('sdva.api');
-    Route::resource('sdva', 'SdvaController')->except(['create', 'show']);
+    Route::get('va/sd/api', 'VaSdController@datatableVaSdAPI')->name('va.sd.api');
+    Route::resource('va/sd', 'VaSdController', ['names' => 'va.sd'])->except(['create', 'show']);
 
     // Route smpva
-    Route::get('smpva/api', 'SmpvaController@datatableSmpvaAPI')->name('smpva.api');
-    Route::resource('smpva', 'SmpvaController')->except(['create', 'show']);
+    Route::get('va/smp/api', 'VaSmpController@datatableVaSmpAPI')->name('va.smp.api');
+    Route::resource('va/smp', 'VaSmpController', ['names' => 'va.smp'])->except(['create', 'show']);
 
     // Route smava
-    Route::get('smava/api', 'SmavaController@datatableSmavaAPI')->name('smava.api');
-    Route::resource('smava', 'SmavaController')->except(['create', 'show']);
+    Route::get('va/sma/api', 'VaSmaController@datatableVaSmaAPI')->name('va.sma.api');
+    Route::resource('va/sma', 'VaSmaController', ['names' => 'va.sma'])->except(['create', 'show']);
 });
 
 
