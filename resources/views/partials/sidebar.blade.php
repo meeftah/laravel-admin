@@ -15,6 +15,13 @@
                 <span class="menu-item-label">Beranda</span>
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
+        <a href="{{ route('dashboard.calonsiswa.profil', Auth::user()->id) }}"
+            class="br-menu-link {{ set_active(Request::is('dashboard/calon-siswa/profil*')) }}">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+                <span class="menu-item-label">Profil Calon Siswa</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
         @if(auth()->user()->can('users_lihat') || auth()->user()->can('roles_lihat') ||
         auth()->user()->can('permissions_lihat'))
         <a href="javascript: void(0);"
