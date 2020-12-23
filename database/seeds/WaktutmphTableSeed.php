@@ -12,9 +12,6 @@ class WaktutmphTableSeed extends Seeder
      */
     public function run()
     {
-
-
-
         $data = [
             [
                 'id_waktutmph' => '10e262ad-e4c5-463b-baff-260774040b49',
