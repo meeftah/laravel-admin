@@ -49,8 +49,8 @@
         @endif
 
 
-        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat') || auth()->user()->can('agama_lihat') || auth()->user()->can('alamat_lihat') || auth()->user()->can('kondisibelajar') || auth()->user()->can('bcquran') || auth()->user()->can('waktutmph') || auth()->user()->can('jenisdokumen'))
-        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/jarak*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*'), Request::is('dashboard/jenisdokumen*')], 'active show-sub') }}">
+        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat') || auth()->user()->can('agama_lihat') || auth()->user()->can('alamat_lihat') || auth()->user()->can('kondisibelajar') || auth()->user()->can('bcquran') || auth()->user()->can('waktutmph') || auth()->user()->can('jenisdokumen') || auth()->user()->can('transportasi') || auth()->user()->can('tempattinggal'))
+        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/jarak*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*'), Request::is('dashboard/jenisdokumen*'), Request::is('dashboard/transportasi*'), Request::is('dashboard/tempattinggal*')], 'active show-sub') }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
                 <span class="menu-item-label">Master Data</span>
@@ -103,6 +103,16 @@
                     class="nav-link {{ set_active(Request::is('dashboard/jenisdokumen*')) }}">Data Jenis Dokumen</a>
             </li>
             @endcan
+            @can('transportasi_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.transportasi.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/transportasi*')) }}">Data Trasportasi</a>
+            </li>
+            @endcan
+            @can('tempattinggal_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.tempattinggal.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/tempattinggal*')) }}">Data Tempat Tinggal</a>
+            </li>
+            @endcan
         </ul>
         @endif
 
@@ -145,4 +155,3 @@
     <br>
 </div><!-- br-sideleft -->
 </div>
-<!-- ########## END: LEFT PANEL ########## -->

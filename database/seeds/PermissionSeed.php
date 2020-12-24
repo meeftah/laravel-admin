@@ -94,11 +94,25 @@ class PermissionSeed extends Seeder
             ['id' => 'cce3c3ba-fb19-412e-8335-cb4b4a9f7a15', 'name' => 'waktutmph_hapus'],
 
             // ------------ Hak Akses Master Data Jenis Dokumen
-            ['id' => '91958b2c-209e-434a-ad1e-d1b26fc45323', 'name' => 'jenisdokumen_lihat'],
-            ['id' => '0fbdeeb2-b448-4707-acd2-dd43e1ff99ed', 'name' => 'jenisdokumen_detail'],
-            ['id' => 'bb9914c4-1365-4433-9789-6a9bbdf61738', 'name' => 'jenisdokumen_ubah'],
-            ['id' => '6cb1f47a-f315-4926-a711-4018b6590577', 'name' => 'jenisdokumen_tambah'],
-            ['id' => '810a14e1-2c3c-4ae1-bd4f-b782f5003bec', 'name' => 'jenisdokumen_hapus'],
+            ['id' => '9b09f8f5-0a2f-4691-903a-6dd1ce0ee29b', 'name' => 'jenisdokumen_lihat'],
+            ['id' => '309cfd0c-77e4-4189-8d61-51c05d5f9d9c', 'name' => 'jenisdokumen_detail'],
+            ['id' => '1ee1d19b-3484-4f4a-92b7-d39681625dc2', 'name' => 'jenisdokumen_ubah'],
+            ['id' => 'a0d4b0da-a9c1-4908-be1c-fc45d308e913', 'name' => 'jenisdokumen_tambah'],
+            ['id' => '5b1cba8b-3129-4c31-b112-44751090e449', 'name' => 'jenisdokumen_hapus'],
+
+            // ------------ Hak Akses Master Data Transportasi
+            ['id' => '5ed4c472-3a8f-4b3a-8a0f-37b4289ff554', 'name' => 'transportasi_lihat'],
+            ['id' => '4832a512-f8ab-4744-b6d1-c35c5c4d51a1', 'name' => 'transportasi_detail'],
+            ['id' => 'a50953b1-c486-45ca-9d75-8485c8e9142e', 'name' => 'transportasi_ubah'],
+            ['id' => 'c0a1d434-49d1-4854-8845-9e83c9bca42c', 'name' => 'transportasi_tambah'],
+            ['id' => '8330b31f-5d29-4ed7-95bd-3fc96fc47b5c', 'name' => 'transportasi_hapus'],
+
+            // ------------ Hak Akses Master Data Tempat Tinggal
+            ['id' => 'a4b5dfd7-477b-45e4-801f-a7fc3b061e7d', 'name' => 'tempattinggal_lihat'],
+            ['id' => '4b3fa493-b853-4f20-b9a3-20506b74974a', 'name' => 'tempattinggal_detail'],
+            ['id' => '80c698d4-408a-4feb-9940-b2d32fa09f43', 'name' => 'tempattinggal_ubah'],
+            ['id' => 'd9677ac4-7038-47f5-b90d-ffcabb63e936', 'name' => 'tempattinggal_tambah'],
+            ['id' => '09c18ef5-ecf3-4cb6-bf2e-2ff96229f7db', 'name' => 'tempattinggal_hapus'],
 
             // ------------ Hak Akses Virtual Account TK
             ['id' => '21874164-93a4-40a9-b13f-121d9d7b1ba7', 'name' => 'vatk_lihat'],

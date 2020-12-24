@@ -156,7 +156,6 @@ class PekerjaanController extends Controller
      */
     public function destroy($id)
     {
-
         abort_if(Gate::denies('pekerjaan_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $pekerjaan = Pekerjaan::where('id_pekerjaan', $id)->first();

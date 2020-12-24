@@ -57,9 +57,17 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::get('waktutmph/api', 'WaktutmphController@datatableWaktutmphAPI')->name('waktutmph.api');
     Route::resource('waktutmph', 'WaktutmphController')->except(['create', 'show']);
 
-    // Route jenisdokumen
+    // Route jenis dokumen
     Route::get('jenisdokumen/api', 'JenisdokumenController@datatableJenisdokumenAPI')->name('jenisdokumen.api');
     Route::resource('jenisdokumen', 'JenisdokumenController')->except(['create', 'show']);
+
+    // Route transportasi
+    Route::get('transportasi/api', 'TransportasiController@datatableTransportasiAPI')->name('transportasi.api');
+    Route::resource('transportasi', 'TransportasiController')->except(['create', 'show']);
+
+    // Route tempattinggal
+    Route::get('tempattinggal/api', 'tempattinggalController@datatableTempattinggalAPI')->name('tempattinggal.api');
+    Route::resource('tempattinggal', 'TempattinggalController')->except(['create', 'show']);
 
     // Route tkva
     Route::get('va/tk/api', 'VaTkController@datatableVaTkAPI')->name('va.tk.api');
