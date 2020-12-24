@@ -91,6 +91,13 @@ class RoleSeed extends Seeder
             'waktutmph_tambah',
             'waktutmph_hapus',
 
+            // ------------ Hak Akses Master Data Jenis Dokumen
+            'jenisdokumen_lihat',
+            'jenisdokumen_detail',
+            'jenisdokumen_ubah',
+            'jenisdokumen_tambah',
+            'jenisdokumen_hapus',
+
             // ------------ Hak Akses Virtual Account TK
             'vatk_lihat',
             'vatk_detail',

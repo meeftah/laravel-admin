@@ -39,8 +39,8 @@
 
                     <div class="form-group">
                         <label class="form-control-label">Unit: <span class="tx-danger">*</span></label>
-                        <select name="unit" class="form-control select2-show-search"
-                            style="width: 100%" data-placeholder="Pilih Unit">
+                        <select name="unit" class="form-control select2-show-search" style="width: 100%"
+                            data-placeholder="Pilih Unit">
                             <option></option>
                             <option value="TK">TKIT</option>
                             <option value="SD">SDIT</option>

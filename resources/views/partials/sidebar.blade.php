@@ -1,7 +1,7 @@
 <!-- ########## START: LEFT PANEL ########## -->
 <div class="br-logo justify-content-center">
     <a href="{{ route('dashboard.home') }}">
-        <img src="{{ asset('assets/dashboard/img/common/logo-text.png') }}" height="50px">
+        <img src="{{ asset('assets/common/logo-text.png') }}" height="50px">
     </a>
 </div>
 

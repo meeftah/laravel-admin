@@ -93,6 +93,13 @@ class PermissionSeed extends Seeder
             ['id' => '05ff849d-bccf-4bc9-8b77-e6474550714b', 'name' => 'waktutmph_tambah'],
             ['id' => 'cce3c3ba-fb19-412e-8335-cb4b4a9f7a15', 'name' => 'waktutmph_hapus'],
 
+            // ------------ Hak Akses Master Data Jenis Dokumen
+            ['id' => '91958b2c-209e-434a-ad1e-d1b26fc45323', 'name' => 'jenisdokumen_lihat'],
+            ['id' => '0fbdeeb2-b448-4707-acd2-dd43e1ff99ed', 'name' => 'jenisdokumen_detail'],
+            ['id' => 'bb9914c4-1365-4433-9789-6a9bbdf61738', 'name' => 'jenisdokumen_ubah'],
+            ['id' => '6cb1f47a-f315-4926-a711-4018b6590577', 'name' => 'jenisdokumen_tambah'],
+            ['id' => '810a14e1-2c3c-4ae1-bd4f-b782f5003bec', 'name' => 'jenisdokumen_hapus'],
+
             // ------------ Hak Akses Virtual Account TK
             ['id' => '21874164-93a4-40a9-b13f-121d9d7b1ba7', 'name' => 'vatk_lihat'],
             ['id' => '18dd4c82-ca9a-48a3-bdb0-2a9721c6568b', 'name' => 'vatk_detail'],

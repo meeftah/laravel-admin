@@ -827,9 +827,9 @@
                                             <select name="id_jenisdokumen" class="form-control select2-show-search dokumen" style="width: 100%"
                                                 data-placeholder="PILIH JENIS DOKUMEN">
                                                 <option></option>
-                                                @foreach ($penghasilan as $item)
-                                                <option value="{{ $item->id_penghasilan }}">
-                                                    {{ strtoupper($item->penghasilan) }}
+                                                @foreach ($jenisdokumen as $item)
+                                                <option value="{{ $item->id_jenisdokumen }}">
+                                                    {{ strtoupper($item->jenisdokumen) }}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -841,7 +841,7 @@
                                             </label>
                                         </div>
                                         <div class="col-md-1 mg-t-1">
-                                            <button type="button" data-repeater-delete class="btn btn-danger btn-icon">
+                                            <button type="button" data-repeater-delete class="btn btn-danger btn-icon delete">
                                                 <div><i class="fa fa-trash"></i></div>
                                             </button>
                                         </div>
@@ -859,6 +859,7 @@
         </div>
     </div>
 </div>
+@include('modals.delete')
 @endsection
 
 @push('styles')
@@ -873,25 +874,25 @@
 <script src="{{ asset('assets/dashboard/lib/jquery.repeater/jquery.repeater.js') }}"></script>
 <script>
     $(document).ready(function () {
-      'use strict';
+        'use strict';
+        
+        $('#wizard4').steps({
+            headerTag: 'h3',
+            bodyTag: 'section',
+            autoFocus: true,
+            titleTemplate: '<span class="number">#index#</span> <span class="title">#title#</span>',
+            cssClass: 'wizard step-equal-width'
+        });
 
-      $('#wizard4').steps({
-        headerTag: 'h3',
-        bodyTag: 'section',
-        autoFocus: true,
-        titleTemplate: '<span class="number">#index#</span> <span class="title">#title#</span>',
-        cssClass: 'wizard step-equal-width'
-      });
-
-      // Datepicker
-      var year = new Date().getFullYear();
-      $('.fc-datepicker').datepicker({
-          dateFormat: 'dd/mm/yy',
-          changeYear: true,
-          yearRange: (year - 30) + ":" + year,
-          changeMonth: true,
-          showOtherMonths: true,
-          selectOtherMonths: true
+        // Datepicker
+        var year = new Date().getFullYear();
+        $('.fc-datepicker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeYear: true,
+            yearRange: (year - 30) + ":" + year,
+            changeMonth: true,
+            showOtherMonths: true,
+            selectOtherMonths: true
         });
 
         $('#telepon_rumah').mask('(9999) 99999999');
@@ -899,22 +900,32 @@
         $('.select2').select2();
 
         $('.repeater').repeater({
-        show: function () {
-            console.log('okeeee');
-            $(this).slideDown();
-            $('.select2-container').remove();
-            $('.dokumen').select2({
-                placeholder: "Placeholder text",
-                allowClear: true
-            });
-            $('.select2-container').css('width','100%');
-        },
-        hide: function (remove) {
-            if(confirm('Confirm Question')) {
-                $(this).slideUp(remove);
+            show: function () {
+                console.log('okeeee');
+                $(this).slideDown();
+                $('.select2-container').remove();
+                $('.dokumen').select2();
+                $('.select2-container').css('width','100%');
+            },
+            hide: function (remove) {
+                // $(document).on('click', '.delete', function(){
+                //     $('#confirm-delete').modal('show');
+                // });
+                // $('#delete-btn').click(function(){
+                //     remove.controlID.slideUp(remove);
+                //     $('#confirm-delete').modal('hide');
+                // });
+                if(confirm('Apakah Anda yakin ingin menghapus dokumen ini?')) {
+                    $(this).slideUp(remove);
+                }
             }
-        }
+        });
     });
+
+    function displayfilename() 
+        $('#dokumen').change(function(e) {
+        var fileName = e.target.files[0].name;
+        alert('The file "' + fileName +  '" has been selected.');
     });
 </script>
 @endpush

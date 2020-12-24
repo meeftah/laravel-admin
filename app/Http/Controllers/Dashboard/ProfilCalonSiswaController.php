@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Agama;
 use App\Models\Bcquran;
 use App\Models\Jarak;
+use App\Models\Jenisdokumen;
 use App\Models\Kondisibelajar;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
@@ -40,7 +41,8 @@ class ProfilCalonSiswaController extends Controller
         $pendidikan = Pendidikan::orderBy('kode', 'ASC')->get();
         $pekerjaan = Pekerjaan::orderBy('kode', 'ASC')->get();
         $penghasilan = Penghasilan::orderBy('kode', 'ASC')->get();
-        return view('dashboard.profilcalonsiswa.index', compact('agama', 'jarak', 'waktutmph', 'bcquran', 'kondisibelajar', 'pendidikan', 'pekerjaan', 'penghasilan'));
+        $jenisdokumen = Jenisdokumen::orderBy('jenisdokumen', 'ASC')->get();
+        return view('dashboard.profilcalonsiswa.index', compact('agama', 'jarak', 'waktutmph', 'bcquran', 'kondisibelajar', 'pendidikan', 'pekerjaan', 'penghasilan', 'jenisdokumen'));
     }
 
     /**
