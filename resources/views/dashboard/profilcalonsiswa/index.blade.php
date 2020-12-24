@@ -24,7 +24,7 @@
         <div class="card">
             <div class="card-body">
                 <div id="wizard4">
-                    {{-- <h3>BIODATA</h3>
+                    <h3>BIODATA</h3>
                     <section class="bg-light">
                         <div class="card-body">
                             <div class="form-group row align-items-center mb-0">
@@ -807,7 +807,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section> --}}
+                    </section>
                     <h3>DOKUMEN</h3>
                     <section class="bg-light">
                         <div class="form-group row align-items-center mb-0">
@@ -922,10 +922,10 @@
         });
     });
 
-    function displayfilename() 
-        $('#dokumen').change(function(e) {
-        var fileName = e.target.files[0].name;
-        alert('The file "' + fileName +  '" has been selected.');
-    });
+    // function displayfilename() 
+    //     $('#dokumen').change(function(e) {
+    //     var fileName = e.target.files[0].name;
+    //     alert('The file "' + fileName +  '" has been selected.');
+    // });
 </script>
 @endpush
