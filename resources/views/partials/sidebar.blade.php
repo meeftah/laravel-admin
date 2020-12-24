@@ -49,8 +49,8 @@
         @endif
 
 
-        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat') || auth()->user()->can('agama_lihat') || auth()->user()->can('alamat_lihat') || auth()->user()->can('kondisibelajar') || auth()->user()->can('bcquran') || auth()->user()->can('waktutmph'))
-        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/jarak*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*')], 'active show-sub') }}">
+        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat') || auth()->user()->can('agama_lihat') || auth()->user()->can('alamat_lihat') || auth()->user()->can('kondisibelajar') || auth()->user()->can('bcquran') || auth()->user()->can('waktutmph') || auth()->user()->can('jenisdokumen'))
+        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/jarak*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*'), Request::is('dashboard/jenisdokumen*')], 'active show-sub') }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
                 <span class="menu-item-label">Master Data</span>
@@ -96,6 +96,11 @@
             @can('waktutmph_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.waktutmph.index') }}"
                     class="nav-link {{ set_active(Request::is('dashboard/waktutmph*')) }}">Data Waktu Tempuh</a>
+            </li>
+            @endcan
+            @can('jenisdokumen_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.jenisdokumen.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/jenisdokumen*')) }}">Data Jenis Dokumen</a>
             </li>
             @endcan
         </ul>
