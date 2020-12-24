@@ -68,7 +68,6 @@ class JenisdokumenController extends Controller
 
         $rules = [
             'jenisdokumen' => 'required',
-            'unit' => 'required'
         ];
 
         $messages = [
@@ -127,8 +126,7 @@ class JenisdokumenController extends Controller
         abort_if(Gate::denies('jenisdokumen_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $rules = [
-            'jenisdokumen' => 'required',
-            'unit' => 'required'
+            'jenisdokumen' => 'required'
         ];
 
         $messages = [

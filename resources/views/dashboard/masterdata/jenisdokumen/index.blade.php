@@ -26,9 +26,9 @@
                     @csrf
 
                     <div class="form-group">
-                        <label class="form-control-label">jenisdokumen: <span class="tx-danger">*</span></label>
+                        <label class="form-control-label">Jenis Dokumen: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('jenisdokumen') ? 'is-invalid' : '' }}" type="text"
-                            name="jenisdokumen" placeholder="Masukkan data jenisdokumen"
+                            name="jenisdokumen" placeholder="Masukkan data jenis dokumen"
                             value="{{ old('jenisdokumen', null) }}">
                         @error('jenisdokumen')
                         <span class="invalid-feedback" role="alert">
@@ -39,13 +39,14 @@
 
                     <div class="form-group">
                         <label class="form-control-label">Unit: <span class="tx-danger">*</span></label>
-                        <input class="form-control {{ $errors->has('unit') ? 'is-invalid' : '' }}" type="text"
-                            name="unit" placeholder="Masukkan unit" value="{{ old('unit', null) }}">
-                        @error('unit')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        <select name="unit" class="form-control select2-show-search"
+                            style="width: 100%" data-placeholder="Pilih Unit">
+                            <option></option>
+                            <option value="TK">TKIT</option>
+                            <option value="SD">SDIT</option>
+                            <option value="SMP">SMPIT</option>
+                            <option value="SMA">SMAIT</option>
+                        </select>
                     </div>
 
                     <div class="form-layout-footer">
@@ -67,7 +68,8 @@
                                 <th>No</th>
                                 <th>JENIS DOKUMEN</th>
                                 <th>UNIT</th>
-                                @if(auth()->user()->can('jenisdokumen_detail') || auth()->user()->can('jenisdokumen_ubah')
+                                @if(auth()->user()->can('jenisdokumen_detail') ||
+                                auth()->user()->can('jenisdokumen_ubah')
                                 ||
                                 auth()->user()->can('jenisdokumen_hapus'))
                                 <th width="150">AKSI</th>
@@ -106,15 +108,16 @@
             columns: [
                 { data: 'id_jenisdokumen', name: 'id_jenisdokumen', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
-                { data: 'unit', name: 'unit' },
                 { data: 'jenisdokumen', name: 'jenisdokumen' },
+                { data: 'unit', name: 'unit' },
                 @if(auth()->user()->can('jenisdokumen_detail') || auth()->user()->can('jenisdokumen_ubah') || auth()->user()->can('jenisdokumen_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
-                { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', width: 60, targets: [2] },
+                { className: 'text-center', width: 20, targets: [1] },
+                { width: 400, targets: [2] },
+                { className: 'text-center', width: 50, targets: [3] },
                 @if(auth()->user()->can('jenisdokumen_detail') || auth()->user()->can('jenisdokumen_ubah') || auth()->user()->can('jenisdokumen_hapus'))
                 { className: 'text-center', targets: [4] },
                 @endif
