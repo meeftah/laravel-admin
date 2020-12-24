@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agama;
-use App\Models\Alamat;
 use App\Models\Bcquran;
 use App\Models\Jarak;
+use App\Models\Kondisibelajar;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
+use App\Models\Penghasilan;
 use App\Models\Waktutmph;
 use Illuminate\Http\Request;
 
@@ -33,7 +36,11 @@ class ProfilCalonSiswaController extends Controller
         $jarak = Jarak::orderBy('kode', 'ASC')->get();
         $waktutmph = Waktutmph::orderBy('kode', 'ASC')->get();
         $bcquran = Bcquran::orderBy('kode', 'ASC')->get();
-        return view('dashboard.profilcalonsiswa.index', compact('agama', 'jarak', 'waktutmph', 'bcquran'));
+        $kondisibelajar = Kondisibelajar::orderBy('kode', 'ASC')->get();
+        $pendidikan = Pendidikan::orderBy('kode', 'ASC')->get();
+        $pekerjaan = Pekerjaan::orderBy('kode', 'ASC')->get();
+        $penghasilan = Penghasilan::orderBy('kode', 'ASC')->get();
+        return view('dashboard.profilcalonsiswa.index', compact('agama', 'jarak', 'waktutmph', 'bcquran', 'kondisibelajar', 'pendidikan', 'pekerjaan', 'penghasilan'));
     }
 
     /**
