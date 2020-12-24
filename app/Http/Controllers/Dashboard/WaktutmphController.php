@@ -156,8 +156,6 @@ class WaktutmphController extends Controller
      */
     public function destroy($id)
     {
-
-
         abort_if(Gate::denies('waktutmph_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $waktutmph = Waktutmph::where('id_waktutmph', $id)->first();
