@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PendidikanTableSeed::class);
         $this->call(PenghasilanTableSeed::class);
         $this->call(WaktutmphTableSeed::class);
+        $this->call(transporttasiseed::class);
+        $this->call(tempattinggalseed::class);
     }
 }
