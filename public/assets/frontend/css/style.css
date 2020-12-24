@@ -2287,7 +2287,7 @@ textarea:focus {
     .section-title {
       margin-left: 0px; } }
   .section-title:before {
-    content: url(../img/icon-img/section-shape.png);
+    content: url(assets/frontend/img/icon-img/section-shape.png);
     position: absolute;
     left: -32px;
     top: 2px;
@@ -2346,7 +2346,7 @@ textarea:focus {
     .section-title-2 {
       margin-left: 0px; } }
   .section-title-2:before {
-    content: url(../img/icon-img/section-shape-2.png);
+    content: url(assets/frontend/img/icon-img/section-shape-2.png);
     position: absolute;
     left: -32px;
     top: 2px;
@@ -2413,10 +2413,10 @@ textarea:focus {
   color: #fff; }
 
 .section-shape-hm2-1:before {
-  content: url(../img/icon-img/section-shape-3.png); }
+  content: url(assets/frontend/img/icon-img/section-shape-3.png); }
 
 .section-shape-hm2-2:before {
-  content: url(../img/icon-img/section-shape-4.png); }
+  content: url(assets/frontend/img/icon-img/section-shape-4.png); }
 
 .single-choose-us2 h4 {
   font-size: 18px;
@@ -3011,7 +3011,7 @@ textarea:focus {
     width: 100%;
     height: 779px;
     content: "";
-    background-image: url(../img/bg/bg-5.jpg); }
+    background-image: url(assets/frontend/img/bg/bg-5.jpg); }
 
 .course-slider-active-2.nav-style-1.owl-carousel > .owl-nav div {
   top: 228px; }
@@ -3451,7 +3451,7 @@ textarea:focus {
   position: relative;
   overflow: hidden; }
   .register-area #register-1 {
-    background-image: url("../img/icon-img/register-shape-1.png");
+    background-image: url("assets/frontend/img/icon-img/register-shape-1.png");
     background-size: contain;
     height: 138px;
     -webkit-transform: translateX(0px) translateY(566px);
@@ -3460,7 +3460,7 @@ textarea:focus {
     width: 261;
     z-index: 1; }
   .register-area #register-2 {
-    background-image: url("../img/icon-img/register-shape-2.png");
+    background-image: url("assets/frontend/img/icon-img/register-shape-2.png");
     background-size: contain;
     height: 110px;
     -webkit-transform: translateX(0px) translateY(330px);
@@ -4665,7 +4665,7 @@ textarea:focus {
     position: relative;
     z-index: 99; }
     .discount-content h2 span:before {
-      content: url(../img/icon-img/discount.png);
+      content: url(assets/frontend/img/icon-img/discount.png);
       position: absolute;
       left: 6px;
       top: 16px;
@@ -5567,7 +5567,7 @@ textarea:focus {
     -webkit-appearance: none;
     min-width: 270px;
     padding: 2px 20px;
-    background: rgba(0, 0, 0, 0) url("../img/icon-img/angle-down.png") no-repeat scroll right 20px center;
+    background: rgba(0, 0, 0, 0) url("assets/frontend/img/icon-img/angle-down.png") no-repeat scroll right 20px center;
     cursor: pointer; }
 
 .shop-list-wrap {
@@ -6611,7 +6611,7 @@ textarea:focus {
   font-size: 13px;
   height: 45px;
   padding: 2px 20px;
-  background: rgba(0, 0, 0, 0) url("../img/icon-img/select-2.png") no-repeat scroll right 18px center;
+  background: rgba(0, 0, 0, 0) url("assets/frontend/img/icon-img/select-2.png") no-repeat scroll right 18px center;
   cursor: pointer; }
 
 .billing-info-wrap .checkout-account {
@@ -7030,7 +7030,7 @@ h3.cart-page-title {
         .discount-code-wrapper .tax-wrapper .tax-select-wrapper .tax-select select {
           -moz-appearance: none;
           -webkit-appearance: none;
-          background: #fff url("../img/icon-img/cart.png") no-repeat scroll right 18px center;
+          background: #fff url("assets/frontend/img/icon-img/cart.png") no-repeat scroll right 18px center;
           border: 1px solid #ebebeb;
           -webkit-box-shadow: none;
           box-shadow: none;

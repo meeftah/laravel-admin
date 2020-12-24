@@ -110,10 +110,10 @@
                     <div class="footer-menu-social">
                         <div class="footer-social">
                             <ul>
-                                <li><a class="facebook" href="https://www.facebook.com/mediacenter.afisku2018/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="youtube" href="https://www.youtube.com/channel/UChMh-fR6DHuBcE_K3DTrcTg"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="twitter" href="https://twitter.com/fityanpontianak"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="google-plus" href="https://www.instagram.com/afisku/?hl=id"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a class="facebook" target="_blank" href="https://www.facebook.com/mediacenter.afisku2018/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="youtube" target="_blank" href="https://www.youtube.com/channel/UChMh-fR6DHuBcE_K3DTrcTg"><i class="fa fa-youtube-play"></i></a></li>
+                                <li><a class="twitter" target="_blank" href="https://twitter.com/fityanpontianak"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="google-plus" target="_blank" href="https://www.instagram.com/afisku/?hl=id"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>

@@ -80,5 +80,6 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
 
 
 Route::group(['namespace' => 'Front'], function () {
-    Route::get('/', 'IndexController@index');
+    Route::get('/', 'FrontController@index')->name('frontend.beranda');
+    Route::get('/pendaftaran', 'FrontController@registerForm')->name('frontend.register');
 });

@@ -14,7 +14,7 @@
                     <div class="login-register">
                         <ul>
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="login-register.html">Register</a></li>
+                            <li><a href="{{ route('frontend.register') }}">Pendaftaran PPDB</a></li>
                         </ul>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-6 col-4">
                     <div class="logo mt-3">
-                        <a href="{{ url('/') }}">
+                        <a href="{{ route('frontend.beranda') }}">
                             <img alt="" src="{{ asset('assets/common/logo-text.png') }}" height="50px">
                         </a>
                     </div>
@@ -116,65 +116,6 @@
                                     <li><a href="contact.html"> CONTACT </a></li>
                                 </ul>
                             </nav>
-                        </div>
-                        <div class="cart-search-wrap">
-                            <div class="cart-wrap">
-                                <button class="icon-cart">
-                                    <i class="fa fa-cart-plus"></i>
-                                    <span class="count-style">02</span>
-                                </button>
-                                <div class="shopping-cart-content">
-                                    <ul>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="#"><img alt="" src="assets/img/cart/cart-1.png"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="#">Color Box </a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>$260.00</span>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fa fa-times-circle"></i></a>
-                                            </div>
-                                        </li>
-                                        <li class="single-shopping-cart">
-                                            <div class="shopping-cart-img">
-                                                <a href="#"><img alt="" src="assets/img/cart/cart-2.png"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="#">Color Box </a></h4>
-                                                <h6>Qty: 02</h6>
-                                                <span>$260.00</span>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fa fa-times-circle"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-total">
-                                        <h4>Shipping : <span>$20.00</span></h4>
-                                        <h4>Total : <span class="shop-total">$260.00</span></h4>
-                                    </div>
-                                    <div class="shopping-cart-btn">
-                                        <a class="default-btn btn-hover" href="cart.html">view cart</a>
-                                        <a class="default-btn btn-hover" href="checkout.html">checkout</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="header-search">
-                                <button class="search-toggle">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                <div class="search-content">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
-                                        <button>
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
