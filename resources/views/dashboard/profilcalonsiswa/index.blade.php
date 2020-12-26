@@ -28,7 +28,7 @@
                     <section class="bg-light">
                         <div class="card-body">
                             <div class="form-group row align-items-center mb-0">
-                                <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                <label class="col-12 control-label col-form-label">
                                     <h6 class="tx-uppercase tx-bold tx-black mg-b-10">DATA CALON SISWA</h6>
                                 </label>
                             </div>
@@ -162,7 +162,7 @@
                             </div>
                             <hr>
                             <div class="form-group row align-items-center mb-0">
-                                <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                <label class="col-12 control-label col-form-label">
                                     <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
                                         DATA ALAMAT SEKARANG
                                         <small>(Saat Sekolah)</small>
@@ -229,7 +229,7 @@
                             </div>
                             <hr>
                             <div class="form-group row align-items-center mb-0">
-                                <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                <label class="col-12 control-label col-form-label">
                                     <h6 class="tx-uppercase tx-bold tx-black mg-b-10">DATA PELENGKAP</h6>
                                 </label>
                             </div>
@@ -238,11 +238,12 @@
                                     Tempat Tinggal
                                 </label>
                                 <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                    <select name="id_jarak" class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH JARAK TEMPAT TINGGAL KE SEKOLAH">
+                                    <select name="id_tempattinggal" class="form-control select2-show-search"
+                                        style="width: 100%" data-placeholder="PILIH JARAK TEMPAT TINGGAL KE SEKOLAH">
                                         <option></option>
-                                        @foreach ($jarak as $item)
-                                        <option value="{{ $item->id_jarak }}">{{ strtoupper($item->jarak) }}
+                                        @foreach ($tempattinggal as $item)
+                                        <option value="{{ $item->id_tempattinggal }}">
+                                            {{ strtoupper($item->tempattinggal) }}
                                         </option>
                                         @endforeach
                                     </select>
@@ -253,8 +254,15 @@
                                     Jenis Transportasi ke Sekolah
                                 </label>
                                 <div class="col-sm-12 col-md-9 pb-2 pt-2">
-
-                                    <input type="text" class="form-control" value="">
+                                    <select name="id_transportasi" class="form-control select2-show-search"
+                                        style="width: 100%" data-placeholder="PILIH JENIS TRANSPORTASI">
+                                        <option></option>
+                                        @foreach ($transportasi as $item)
+                                        <option value="{{ $item->id_transportasi }}">
+                                            {{ strtoupper($item->transportasi) }}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center mb-0">
@@ -520,7 +528,7 @@
                     <section class="bg-light">
                         <div class="card-body">
                             <div class="form-group row align-items-center mb-0">
-                                <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                <label class="col-12 control-label col-form-label">
                                     <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
                                         DATA AYAH KANDUNG
                                         <small>(BUKAN AYAH TIRI)</small>
@@ -616,7 +624,7 @@
                             </div>
                             <hr>
                             <div class="form-group row align-items-center mb-0">
-                                <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                <label class="col-12 control-label col-form-label">
                                     <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
                                         DATA IBU KANDUNG
                                         <small>(BUKAN IBU TIRI)</small>
@@ -712,7 +720,7 @@
                             </div>
                             <hr>
                             <div class="form-group row align-items-center mb-0">
-                                <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                <label class="col-12 control-label col-form-label">
                                     <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
                                         DATA WALI
                                         <small>(TERMASUK AYAH/IBU TIRI)</small>
@@ -811,7 +819,7 @@
                     <h3>DOKUMEN</h3>
                     <section class="bg-light">
                         <div class="form-group row align-items-center mb-0">
-                            <label class="col-md-12 control-label col-form-label">
+                            <label class="col-12 control-label col-form-label">
                                 <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
                                     UNGGAH KELENGKAPAN DOKUMEN
                                 </h6>
@@ -824,7 +832,8 @@
                                     <input type="hidden" name="id_dokumen" id="id_dokumen" />
                                     <div class="form-group row align-items-center mb-0">
                                         <div class="col-md-8">
-                                            <select name="id_jenisdokumen" class="form-control select2-show-search dokumen" style="width: 100%"
+                                            <select name="id_jenisdokumen"
+                                                class="form-control select2-show-search dokumen" style="width: 100%"
                                                 data-placeholder="PILIH JENIS DOKUMEN">
                                                 <option></option>
                                                 @foreach ($jenisdokumen as $item)
@@ -841,7 +850,8 @@
                                             </label>
                                         </div>
                                         <div class="col-md-1 mg-t-1">
-                                            <button type="button" data-repeater-delete class="btn btn-danger btn-icon delete">
+                                            <button type="button" data-repeater-delete
+                                                class="btn btn-danger btn-icon delete">
                                                 <div><i class="fa fa-trash"></i></div>
                                             </button>
                                         </div>

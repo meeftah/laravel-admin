@@ -66,6 +66,7 @@
     <script src="{{ asset('assets/dashboard/lib/bootstrap/bootstrap.js') }}"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     @stack('scripts')
+    @include('partials.notifications')
 </body>
 
 </html>

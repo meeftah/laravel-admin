@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-2">
+                        <div class="col-sm-12 col-md-6">
                             <div class="form-layout-footer">
                                 <button class="btn btn-success col-12">Tambah</button>
                             </div><!-- form-layout-footer -->

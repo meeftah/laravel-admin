@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use Auth;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -40,5 +41,37 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    public function login(Request $request)
+    {
+        if ($request->email_username && $request->password) {
+            $rules = [
+                'email_username' => 'required',
+                'password'       => 'required|min:6',
+            ];
+    
+            $messages = [
+                'email_username.required' => 'Kolom Email/Username wajib diisi!',
+                'password.required' => 'Kolom Password wajib diisi!',
+                'password.min' => 'Kolom Password minimal 6 karakter!',
+            ];
+    
+            $this->validate($request, $rules, $messages);
+    
+            $loginType = filter_var($request->email_username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+    
+            $login = [
+                $loginType => $request->email_username,
+                'password' => $request->password
+            ];
+    
+            if (auth()->attempt($login, false)) { 
+                return redirect()->intended($this->redirectPath());
+            }
+
+            return redirect()->route('login')->with(['warning' => 'Username/Email atau Password Anda salah']);
+        } else {
+            return redirect()->route('login')->with(['error' => 'Lengkapi kolom Username/Email dan Password']);
+        }
+    }
     
 }

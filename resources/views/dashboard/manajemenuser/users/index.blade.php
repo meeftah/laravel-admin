@@ -41,7 +41,7 @@
                             <tr class="text-uppercase">
                                 <th></th>
                                 <th>No</th>
-                                <th>NAMA</th>
+                                <th>USERNAME</th>
                                 <th>EMAIL</th>
                                 <th>PERAN</th>
                                 @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah')
@@ -83,7 +83,7 @@
             columns: [
                 { data: 'id', name: 'id', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
-                { data: 'name', name: 'name' },
+                { data: 'username', name: 'username' },
                 { data: 'email', name: 'email' },
                 { data: 'role', name: 'role' },
                 @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah') || auth()->user()->can('users_hapus'))
