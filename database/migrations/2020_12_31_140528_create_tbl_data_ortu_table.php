@@ -79,19 +79,19 @@ class CreateTblDataOrtuTable extends Migration
 
             $table->foreign('pendidikan_wali')
                 ->references('id_pendidikan')
-                ->on('pendidikans')
+                ->on('tbl_pendidikan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
             $table->foreign('pekerjaan_wali')
                 ->references('id_pekerjaan')
-                ->on('pekerjaans')
+                ->on('tbl_pekerjaan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
             $table->foreign('penghasilan_wali')
                 ->references('id_penghasilan')
-                ->on('penghasilans')
+                ->on('tbl_penghasilan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

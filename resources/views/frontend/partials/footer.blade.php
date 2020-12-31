@@ -1,5 +1,5 @@
-<footer class="footer-area">
-    <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url(assets/frontend/img/bg/bg-4.jpg);">
+<footer class="footer-area pt-30">
+    <div class="footer-top bg-img pt-130 pb-80" style="background-image:url(assets/frontend/img/bg/footer9.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -82,10 +82,10 @@
                         </div>
                         <div class="subscribe-style">
                             <p>
-                                Untuk periode 2021 / 2022 ini, Al-Fityan Kubu Raya menyediakan sistem online penerimaan peserta didik baru untuk 
+                                Untuk periode 2021 / 2022 ini, Al-Fityan Kubu Raya menyediakan sistem online penerimaan peserta didik baru untuk
                                 memudahkan masyarakan mendaftar sebagai calon peserta didik TKIT/SDIT/SMPIT/SMAIT.
                             </p>
-                            
+
                         </div>
                     </div>
                 </div>

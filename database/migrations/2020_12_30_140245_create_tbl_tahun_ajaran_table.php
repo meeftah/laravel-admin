@@ -30,6 +30,6 @@ class CreateTblTahunAjaranTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tahun_ajaran');
+        Schema::dropIfExists('tbl_tahun_ajaran');
     }
 }

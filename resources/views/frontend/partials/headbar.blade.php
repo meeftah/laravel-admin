@@ -14,9 +14,9 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li><a href="{{ route('frontend.beranda') }}">Beranda</a></li>
-                                    <li><a href="{{ route('frontend.register.form') }}">Registrasi</a></li>
-                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="{{ route('frontend.beranda') }}">BERANDA</a></li>
+                                    <li><a href="{{ route('frontend.register.form') }}">REGISTRASI</a></li>
+                                    <li><a href="{{ route('login') }}">LOGIN</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -27,11 +27,9 @@
                 <div class="mobile-menu">
                     <nav id="mobile-menu-active">
                         <ul class="menu-overflow">
-                            <ul>
-                                <li><a href="{{ route('frontend.beranda') }}">Beranda</a></li>
-                                <li><a href="{{ route('frontend.register.form') }}">Registrasi</a></li>
-                                <li><a href="{{ route('login') }}">Login</a></li>
-                            </ul>
+                            <li><a href="{{ route('frontend.beranda') }}">BERANDA</a></li>
+                            <li><a href="{{ route('frontend.register.form') }}">REGISTRASI</a></li>
+                            <li><a href="{{ route('login') }}">LOGIN</a></li>
                         </ul>
                     </nav>
                 </div>

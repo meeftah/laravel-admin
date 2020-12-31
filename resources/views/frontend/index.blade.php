@@ -25,11 +25,10 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                         <div class="slider-content slider-content-2 slider-animated-2 text-center">
-                            <h1 class="animated">Welcome to Glaxdu</h1>
-                            <p class="animated">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+                            <h1 class="animated">Sistem Online PPDB</h1>
+                            <p class="animated">Selamat datang di Sistem Online PPDB Al-Fityan Kubu Raya</p>
                             <div class="slider-btn">
-                                <a class="animated default-btn btn-green-color" href="about-us.html">ABOUT US</a>
-                                <a class="animated default-btn btn-white-color" href="contact.html">CONTACT US</a>
+                                <a class="animated default-btn" href="{{ route('frontend.register') }}">Daftar Sekarang</a>
                             </div>
                         </div>
                     </div>
@@ -41,11 +40,11 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                         <div class="slider-content slider-content-2 slider-animated-2 text-center">
-                            <h1 class="animated">Welcome to Glaxdu</h1>
-                            <p class="animated">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                            <h1 class="animated">Sistem Online PPDB</h1>
+                            <p class="animated">Selamat datang di Sistem Online PPDB Al-Fityan Kubu Raya</p>
                             <div class="slider-btn">
-                                <a class="animated default-btn btn-green-color" href="about-us.html">ABOUT US</a>
-                                <a class="animated default-btn btn-white-color" href="contact.html">CONTACT US</a>
+                                <a class="animated default-btn" href="{{ route('frontend.register') }}">Daftar Sekarang</a>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -54,16 +53,16 @@
         </div>
     </div>
 </div>
-<div class="about-us pt-130 pb-130" style="background-image:url({{ asset('assets/frontend/img/bg/bg-1.jpg') }});">
+<div class="about-us pt-70 pb-100" style="background-image:url({{ asset('assets/frontend/img/bg/bg-8.jpg') }});">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="about-content">
-                    <div class="section-title section-title-green mb-30">
+                    <div class="section-title section-title-green">
                         <h2>Sistem PPDB Online</h2>
                         <p>Informasi terkait PPDB Online Al-Fityan Kubu Raya</p>
                     </div>
-                    <p>Website ini adalah sistem informasi PPDB Online Al-Fityan Kubu Raya yang dipersiapkan untuk menerima peserta didik baru 2022/2022</p>
+                    <p>Website ini adalah sistem informasi PPDB Online Al-Fityan Kubu Raya yang dipersiapkan untuk menerima peserta didik baru 2021/2022. <br>Untuk petunjuk lebih lanjut terkait Pendaftaran Online silahkan untuk mengikuti video tutorial disamping :) </p>
                     {{-- <div class="about-btn mt-45">
                         <a class="default-btn" href="about-us.html">ABOUT US</a>
                     </div> --}}
@@ -80,11 +79,11 @@
         </div>
     </div>
 </div>
-<div class="achievement-area pt-130 pb-115">
+<div class="achievement-area pt-20 pb-10">
     <div class="container">
-        <div class="section-title mb-75">
-            <h2>Kuota Siswa Baru <span>2021/2022</span></h2>
-            <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+        <div class="section-title mb-45">
+            <h2>Kuota Siswa Baru</h2>
+            <p>Total penerimaan siswa/i di masing-masing unit</p>
         </div>
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
@@ -134,7 +133,7 @@
         </div>
     </div>
 </div>
-<div class="teacher-area pt-130 pb-100" style="background-image:url({{ asset('assets/frontend/img/bg/bg-3.jpg') }});">
+{{-- <div class="teacher-area pt-130 pb-100" style="background-image:url({{ asset('assets/frontend/img/bg/bg-3.jpg') }});">
     <div class="container">
         <div class="section-title mb-75">
             <h2>Best <span>Teacher</span></h2>
@@ -273,8 +272,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="brand-logo-area pt-70 pb-70">
+</div> --}}
+{{-- <div class="brand-logo-area pt-70 pb-70">
     <div class="container">
         <div class="brand-logo-active owl-carousel">
             <div class="single-brand-logo">
@@ -300,5 +299,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

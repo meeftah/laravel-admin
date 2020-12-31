@@ -15,13 +15,13 @@
     style="background-image:url({{ asset('assets/frontend/img/bg/bg-8.jpg') }});">
     <div class="container">
         <div class="section-title-2 mb-75">
-            <h2>Daftar <span>Sekarang</span></h2>
-            <p>Tunggu apa lagi, ayo buruan daftar...</p>
+            <h2>Informasi <span>Penting !!!</span></h2>
+            <p>Pastikan nomor handphone dan email yang diinput merupakan nomor whatsApp dan email yang aktif,<br> untuk mendapatkan notifikasi pemberitahuan bahwa akun anda benar sudah terdaftar di sistem kami ^-^</p>
         </div>
         <div class="register-wrap">
             <div id="register-3" class="mouse-bg d-none d-md-block">
                 <div class="winter-banner">
-                    <img src="{{ asset('assets/frontend/img/banner/regi-1.png') }}" alt="">
+                    <img src="{{ asset('assets/frontend/img/banner/regi-6.png') }}" alt="">
                     <div class="winter-content">
                         <span>TAHUN AJARAN</span>
                         <h3 style="font-size: 30pt">2021/2022</h3>
@@ -72,7 +72,25 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label text-white">UNIT:
+                                <label class="form-control-label text-white">Pendaftaran:
+                                    <span class="text-warning">*</span>
+                                </label>
+                                <select name="id_status_pendaftaran" class="form-control {{ $errors->has('id_status_pendaftaran') ? 'is-invalid' : '' }}">
+                                    <option value="" disabled selected>Pilih Pendaftaran</option>
+                                    @foreach ($statusPendaftaran as $item)
+                                    <option value="{{ $item->id_status_pendaftaran }}">
+                                        {{ strtoupper($item->status) }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @error('id_status_pendaftaran')
+                                <span class="text-warning" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-white">Unit:
                                     <span class="text-warning">*</span>
                                 </label>
                                 <select name="id_unit" class="form-control {{ $errors->has('id_unit') ? 'is-invalid' : '' }}">
@@ -132,9 +150,8 @@
     .section-title-2 h2 {
         color: #000 !important;
     }
-
     .section-title-2 p {
-        color: #000 !important;
+        color: crimson !important;
     }
 </style>
 @endpush

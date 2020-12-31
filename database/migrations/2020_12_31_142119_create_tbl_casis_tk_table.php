@@ -16,7 +16,8 @@ class CreateTblCasisTkTable extends Migration
         Schema::create('tbl_casis_tk', function (Blueprint $table) {
             $table->uuid('id_casis_tk')->primary();
             $table->uuid('id_user');
-            $table->string('nm_siswa');
+            $table->uuid('id_va_tk');
+            $table->string('nm_siswa')->nullable();
             $table->string('jk')->nullable();
             $table->string('nik')->nullable();
             $table->string('tempat')->nullable();
@@ -54,12 +55,18 @@ class CreateTblCasisTkTable extends Migration
             $table->integer('dari_bersaudara')->nullable();
             $table->string('kelas');
             $table->uuid('id_data_ortu')->nullable();
-            $table->uuid('id_doc_tk')->nullable();
+            $table->uuid('id_dokumen_tk')->nullable();
             $table->string('foto')->nullable();
             $table->uuid('id_status_casis');
             $table->string('ket_status')->nullable();
             $table->string('catatan')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_va_tk')
+                ->references('id_va_tk')
+                ->on('tbl_va_tk')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('id_user')
                 ->references('id')
@@ -115,9 +122,9 @@ class CreateTblCasisTkTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('id_doc_tk')
-                ->references('id_doc_tk')
-                ->on('documenttks')
+            $table->foreign('id_dokumen_tk')
+                ->references('id_dokumen_tk')
+                ->on('tbl_dokumentk')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

@@ -27,5 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(tempattinggalseed::class);
         $this->call(UnitTableSeed::class);
         $this->call(TahunAjaranTableSeed::class);
+        $this->call(StatusCasisTableSeed::class);
+        $this->call(StatusPendaftaranTableSeed::class);
     }
 }
