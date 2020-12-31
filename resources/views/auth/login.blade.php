@@ -14,9 +14,9 @@
         <form action="{{ route('login') }}" method="post">
             @csrf
             <div class="form-group">
-                <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
-                    id="email" value="{{ old('email', null) }}" required autofocus placeholder="Masukkan email Anda">
-                @error('email')
+                <input type="text" class="form-control {{ $errors->has('email_username') ? ' is-invalid' : '' }}" name="email_username"
+                    id="email_username" value="{{ old('email_username', null) }}" autofocus placeholder="Masukkan Email/Username Anda">
+                @error('email_username')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -35,5 +35,4 @@
         </form>
     </div><!-- login-wrapper -->
 </div>
-<!-- d-flex 
 @endsection

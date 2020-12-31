@@ -35,6 +35,13 @@ class RoleSeed extends Seeder
             'permissions_tambah',
             'permissions_hapus',
 
+            // ------------ Hak Akses Profil Calon Siswa
+            'profilcalonsiswa_lihat',
+            'profilcalonsiswa_detail',
+            'profilcalonsiswa_ubah',
+            'profilcalonsiswa_tambah',
+            'profilcalonsiswa_hapus',
+
             // ------------ Hak Akses Master Data Penghasilan
             'penghasilan_lihat',
             'penghasilan_detail',

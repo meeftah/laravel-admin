@@ -16,14 +16,14 @@ class UsersController extends Controller
     public function datatableUsersAPI()
     {
         // ambil semua data
-        $users = User::orderBy('name', 'ASC')->get();
+        $users = User::orderBy('created_at', 'ASC')->get();
 
         return datatables()->of($users)
             ->addIndexColumn()
             ->addColumn(
                 'role',
                 function ($row) {
-                    return '<span class="badge badge-pill badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . Role::findByName($row['name'])->name ?? '' . '</span>';
+                    return '<span class="badge badge-pill badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . $row->getRoleNames()->implode('') ?? '' . '</span>';
                 }
             )
             ->addColumn(
@@ -59,7 +59,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('users_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::get();
+        $roles = Role::orderBy('name')->get();
 
         return view('dashboard.manajemenuser.users.create', compact('roles'));
     }
@@ -70,15 +70,15 @@ class UsersController extends Controller
         abort_if(Gate::denies('users_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $rules = [
-            'name' => 'required|min:3',
+            'username' => 'required|min:3',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:6',
             'role' => 'required',
         ];
 
         $messages = [
-            'name.required' => 'Kolom Nama wajib diisi!',
-            'name.min' => 'Kolom Nama minimal 3 karakter!',
+            'username.required' => 'Kolom Nama wajib diisi!',
+            'username.min' => 'Kolom Nama minimal 3 karakter!',
             'email.required' => 'Kolom Email wajib diisi!',
             'email.email' => 'Format Email tidak sesuai!',
             'password.required' => 'Kolom Password wajib diisi!',
@@ -91,11 +91,9 @@ class UsersController extends Controller
 
         $user = User::create($request->all());
 
-        if($request->has('roles')) {
-            $user->assignRole($request->input('roles'));
-        }
+        $user->assignRole($request->input('role'));
 
-        return redirect()->route('dashboard.manajemenuser.users.index')->with(['success' => 'User created']);
+        return redirect()->route('dashboard.users.index')->with(['success' => 'User berhasil ditambah']);
     }
 
 
@@ -103,7 +101,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('users_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::get()->pluck('name', 'name');
+        $roles = Role::orderBy('name')->get()->pluck('name', 'name');
 
         return view('dashboard.manajemenuser.users.edit', compact('user', 'roles'));
     }
@@ -119,7 +117,7 @@ class UsersController extends Controller
             $user->assignRole($request->input('roles'));
         }
 
-        return redirect()->route('dashboard.users.index')->with(['success' => 'User Updated']);
+        return redirect()->route('dashboard.users.index')->with(['success' => 'User berhasil diubah']);
     }
 
     public function show(User $user)
@@ -136,9 +134,11 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('users_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->delete();
-
-        return redirect()->route('dashboard.users.index')->with(['error' => 'User Deleted']);
+        if ($user->delete()) {
+            return response()->json(['status' => 'success', 'message' => 'User berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'User gagal dihapus']);
+        }
     }
 
 

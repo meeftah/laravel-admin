@@ -26,10 +26,10 @@
                 <form action="{{ route('dashboard.users.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label class="form-control-label">Nama: <span class="tx-danger">*</span></label>
-                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"
-                            name="name" placeholder="Masukkan nama pegguna" value="{{ old('name', null) }}">
-                        @error('name')
+                        <label class="form-control-label">Username: <span class="tx-danger">*</span></label>
+                        <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text"
+                            name="username" placeholder="Masukkan usernama pegguna" value="{{ old('username', null) }}">
+                        @error('username')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

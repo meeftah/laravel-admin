@@ -12,7 +12,7 @@
             </a>
         </div>
         <div class="mt-3 ml-3">
-            <h5>{{ get_greeting() }}, {{ Auth::user()->name }}</h5>
+            <h5>{{ get_greeting() }}, {{ Auth::user()->username }}</h5>
         </div>
         {{-- <div class="input-group hidden-xs-down wd-170 transition">
             <input id="searchbox" type="text" class="form-control" placeholder="Search">

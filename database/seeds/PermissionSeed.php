@@ -37,6 +37,13 @@ class PermissionSeed extends Seeder
             ['id' => '5e7ea066-320c-48e7-99a9-3940d10f39d1', 'name' => 'permissions_tambah'],
             ['id' => '27b80a26-7696-48fe-93a3-1af8c3b48601', 'name' => 'permissions_hapus'],
 
+            // ------------ Hak Akses Profil Calon Siswa
+            ['id' => '785f3c74-23f6-45f7-ad92-db38a57a0c21', 'name' => 'profilcalonsiswa_lihat'],
+            ['id' => '4182a037-7fae-41f4-b435-a52c5cff0eba', 'name' => 'profilcalonsiswa_detail'],
+            ['id' => 'fc2ee65a-871a-4e29-8e8a-8f792e114bbc', 'name' => 'profilcalonsiswa_ubah'],
+            ['id' => '21493810-881c-4c2d-810a-632ff14a328f', 'name' => 'profilcalonsiswa_tambah'],
+            ['id' => '1dd2793d-59ed-474d-be96-0acaf539b117', 'name' => 'profilcalonsiswa_hapus'],
+
             // ------------ Hak Akses Master Data Penghasilan
             ['id' => 'f850fb20-4c34-4518-988b-0ab7d1d99ded', 'name' => 'penghasilan_lihat'],
             ['id' => 'd9e42693-a750-4853-9e51-d985600841ae', 'name' => 'penghasilan_detail'],

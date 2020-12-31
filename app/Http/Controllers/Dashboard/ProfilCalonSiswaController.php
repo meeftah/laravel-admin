@@ -11,6 +11,8 @@ use App\Models\Kondisibelajar;
 use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Penghasilan;
+use App\Models\Tempattinggal;
+use App\Models\Transportasi;
 use App\Models\Waktutmph;
 use Illuminate\Http\Request;
 
@@ -35,6 +37,8 @@ class ProfilCalonSiswaController extends Controller
     {
         $agama = Agama::orderBy('kode', 'ASC')->get();
         $jarak = Jarak::orderBy('kode', 'ASC')->get();
+        $tempattinggal = Tempattinggal::orderBy('kode', 'ASC')->get();
+        $transportasi = Transportasi::orderBy('kode', 'ASC')->get();
         $waktutmph = Waktutmph::orderBy('kode', 'ASC')->get();
         $bcquran = Bcquran::orderBy('kode', 'ASC')->get();
         $kondisibelajar = Kondisibelajar::orderBy('kode', 'ASC')->get();
@@ -42,7 +46,7 @@ class ProfilCalonSiswaController extends Controller
         $pekerjaan = Pekerjaan::orderBy('kode', 'ASC')->get();
         $penghasilan = Penghasilan::orderBy('kode', 'ASC')->get();
         $jenisdokumen = Jenisdokumen::orderBy('jenisdokumen', 'ASC')->get();
-        return view('dashboard.profilcalonsiswa.index', compact('agama', 'jarak', 'waktutmph', 'bcquran', 'kondisibelajar', 'pendidikan', 'pekerjaan', 'penghasilan', 'jenisdokumen'));
+        return view('dashboard.profilcalonsiswa.index', compact('agama', 'jarak', 'tempattinggal', 'transportasi', 'waktutmph', 'bcquran', 'kondisibelajar', 'pendidikan', 'pekerjaan', 'penghasilan', 'jenisdokumen'));
     }
 
     /**
