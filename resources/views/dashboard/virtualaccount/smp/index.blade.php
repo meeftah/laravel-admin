@@ -113,7 +113,7 @@
             },
             ajax: "{{ route('dashboard.va.smp.api') }}",
             columns: [
-                { data: 'id_vasmp', name: 'id_vasmp', visible: false },
+                { data: 'id_va_smp', name: 'id_va_smp', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'va', name: 'va' },
                 { data: 'kode_nama', name: 'kode_nama' },

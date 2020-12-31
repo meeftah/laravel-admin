@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row bg-primary">
+            <div class="row bg-primary rounded">
                 <div class="col-lg-12 col-md-8 pt-5 pl-5 pr-5 pb-5">
                     <div class="register-form">
                         <h4>Formulir Pembuatan Akun</h4>

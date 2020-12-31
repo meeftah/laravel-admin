@@ -92,8 +92,9 @@
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah') || auth()->user()->can('users_hapus'))
                 { className: 'text-center', targets: [4] },
+                @if(auth()->user()->can('users_detail') || auth()->user()->can('users_ubah') || auth()->user()->can('users_hapus'))
+                { className: 'text-center', targets: [5] },
                 @endif
             ],
             order: [],

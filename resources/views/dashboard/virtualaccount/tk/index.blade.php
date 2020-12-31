@@ -113,7 +113,7 @@
             },
             ajax: "{{ route('dashboard.va.tk.api') }}",
             columns: [
-                { data: 'id_vatk', name: 'id_vatk', visible: false },
+                { data: 'id_va_tk', name: 'id_va_tk', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'va', name: 'va' },
                 { data: 'kode_nama', name: 'kode_nama' },

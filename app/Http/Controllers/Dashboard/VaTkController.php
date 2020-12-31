@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class VaTkController extends Controller
 {
-    public function datatableTkvaAPI()
+    public function datatableVaTkAPI()
     {
         // ambil semua data
         $vatk = VaTK::orderBy('kode_nama', 'ASC')->get();

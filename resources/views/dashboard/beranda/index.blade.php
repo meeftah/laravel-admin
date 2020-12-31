@@ -91,7 +91,7 @@
                         <tr>
                             <td class="fitwidth">Total Pembayaran</td>
                             <td width="10px">:</td>
-                            <td><b class="text-danger">Rp 300.000,-</b></td>
+                            <td><b class="text-danger">Rp {{ number_format($biaya_formulir, 0, '', '.') }}</b></td>
                         </tr>
                     </tbody>
                 </table>
@@ -108,7 +108,7 @@
                     dan pilih <strong>Benar</strong>
                 </li>
                 <li>Masukkan jumlah pembayaran sebesar
-                    <strong class="text-danger">Rp 300.000,-</strong>
+                    <strong class="text-danger">Rp {{ number_format($biaya_formulir, 0, '', '.') }}</strong>
                     dan pilih <strong>Benar</strong>
                 </li>
                 <li>Periksa data di layar. Pastikan <strong>Total Pembayaran</strong> benar.
@@ -125,7 +125,7 @@
                     dan pilih <strong>Benar</strong>
                 </li>
                 <li>Masukkan jumlah pembayaran sebesar
-                    <strong class="text-danger">Rp 300.000,-</strong>
+                    <strong class="text-danger">Rp {{ number_format($biaya_formulir, 0, '', '.') }}</strong>
                     dan pilih <strong>Benar</strong>
                 </li>
                 <li>Periksa data di layar. Pastikan <strong>Total Pembayaran</strong> benar.
@@ -141,7 +141,7 @@
                     dan klik <strong>Lanjut</strong>, kemudian klik <strong>Lanjut</strong> lagi.
                 </li>
                 <li>Masukkan jumlah pembayaran sebesar
-                    <strong class="text-danger">Rp 300.000,-</strong>
+                    <strong class="text-danger">Rp {{ number_format($biaya_formulir, 0, '', '.') }}</strong>
                     lalu klik <strong>Lanjutkan</strong>
                 </li>
                 <li>Periksa detail konfirmasi. Pastikan <strong>Total Pembayaran</strong> benar.

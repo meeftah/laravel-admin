@@ -58,15 +58,20 @@ class FrontController extends Controller
 
         $nm_unit = Unit::getDataById($request->id_unit)->nm_unit;
         if ($nm_unit == 'TKIT') {
+            // set peran calon siswa TK
             $user->assignRole('Calon Siswa TK');
+            
         } else
         if ($nm_unit == 'SDIT') {
+            // set peran calon siswa SD
             $user->assignRole('Calon Siswa SD');
         } else
         if ($nm_unit == 'SMPIT') {
+            // set peran calon siswa SMP
             $user->assignRole('Calon Siswa SMP');
         } else
         if ($nm_unit == 'SMAIT') {
+            // set peran calon siswa SMA
             $user->assignRole('Calon Siswa SMA');
         } else
 
