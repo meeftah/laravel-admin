@@ -4,21 +4,21 @@ namespace App\Models;
 
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
-class CasisTk extends Model
+class CasisSma extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tbl_casis_tk';
+    protected $table = 'tbl_casis_sma';
 
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'id_casis_tk';
+    protected $primaryKey = 'id_casis_sma';
 
     /**
      * The attributes that are mass assignable.
@@ -27,10 +27,14 @@ class CasisTk extends Model
      */
     protected $fillable = [
         'id_user',
-        'id_va_tk',
+        'id_va_sma',
         'nm_siswa',
         'jk',
+        'nisn',
         'nik',
+        'no_ijazah',
+        'no_skhun',
+        'no_un',
         'tempat',
         'tgl_lahir',
         'no_akte_lahir',
@@ -64,9 +68,8 @@ class CasisTk extends Model
         'jumlah_saudara',
         'anak_ke',
         'dari_bersaudara',
-        'kelas',
         'id_data_ortu',
-        'id_dokumen_tk',
+        'id_dokumen_sma',
         'foto',
         'id_status_casis',
         'ket_status',
@@ -76,7 +79,7 @@ class CasisTk extends Model
     // Mendapatkan data status berdasarkan id user
     public static function getStatusCasis($id_user)
     {
-        $result = StatusCasis::getDataById(CasisTk::where('id_user', $id_user)->first()->id_status_casis)->status;
+        $result = StatusCasis::getDataById(CasisSma::where('id_user', $id_user)->first()->id_status_casis)->status;
         return $result;
     }
 }

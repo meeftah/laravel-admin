@@ -92,11 +92,10 @@ class FrontController extends Controller
         if ($nm_unit == 'SMPIT') {
             // set peran calon siswa SMP
             $user->assignRole('Calon Siswa SMP');
-        } else
-        if ($nm_unit == 'SMAIT') {
+        } else {
             // set peran calon siswa SMA
             $user->assignRole('Calon Siswa SMA');
-        } else
+        }
 
         return redirect()->route('login')->with(['success' => 'Anda berhasil terdaftar']);
     }

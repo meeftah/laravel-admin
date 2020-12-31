@@ -13,16 +13,34 @@
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-home tx-22"></i>
                 <span class="menu-item-label">Beranda</span>
-            </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+            </div>
+        </a>
         @hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
+        @php
+            if (Auth::user()->hasRole('Calon Siswa TK')) {
+                $status_casis = App\Models\CasisTk::getStatusCasis(Auth::user()->id);
+            } else
+        //     if (Auth::user()->hasRole('Calon Siswa SD')) {
+        //         $biaya_formulir = Unit::where('nm_unit', 'SDIT')->first()->biaya_formulir;
+        //     } else
+        //     if (Auth::user()->hasRole('Calon Siswa SMP')) {
+        //         $biaya_formulir = Unit::where('nm_unit', 'SMPIT')->first()->biaya_formulir;
+        //     }if (Auth::user()->hasRole('Calon Siswa SMP')) {
+                
+        //     } else 
+            {
+                $status_casis = 'Non Aktif';
+            }
+        @endphp
+        @if ($status_casis != 'Terdaftar' && $status_casis != 'Non Aktif')
         <a href="{{ route('dashboard.calonsiswa.profil', Auth::user()->id) }}"
-            class="br-menu-link {{ set_active(Request::is('dashboard/calon-siswa/profil*')) }}">
-            <div class="br-menu-item">
-                <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
-                <span class="menu-item-label">Profil Calon Siswa</span>
-            </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+             class="br-menu-link {{ set_active(Request::is('dashboard/calon-siswa/profil*')) }}">
+             <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+                    <span class="menu-item-label">Profil Calon Siswa</span>
+             </div>
+        </a>
+        @endif
         @endhasanyrole
         @if(auth()->user()->can('users_lihat') || auth()->user()->can('roles_lihat') ||
         auth()->user()->can('permissions_lihat'))
@@ -32,8 +50,8 @@
                 <i class="menu-item-icon icon ion-ios-people tx-24"></i>
                 <span class="menu-item-label">Manajemen User</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
-            </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+            </div>
+        </a>
         <ul class="br-menu-sub nav flex-column">
             @can('users_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.users.index') }}"
@@ -57,8 +75,8 @@
                 <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
                 <span class="menu-item-label">Master Data</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
-            </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+            </div>
+        </a>
         <ul class="br-menu-sub nav flex-column">
             @can('penghasilan_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.penghasilan.index') }}"
@@ -126,8 +144,8 @@
                 <i class="menu-item-icon icon ion-ios-people tx-24"></i>
                 <span class="menu-item-label">Virtual Account</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
-            </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+            </div>
+        </a>
         <ul class="br-menu-sub nav flex-column">
             @can('vatk_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.va.tk.index') }}"
@@ -154,8 +172,8 @@
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-gear tx-22"></i>
                 <span class="menu-item-label">Pengaturan</span>
-            </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+            </div>
+        </a>
         @endrole
 
         <a href="javascript: void(0);" class="br-menu-link text-danger" data-toggle="modal" data-target="#logoutModal"">
