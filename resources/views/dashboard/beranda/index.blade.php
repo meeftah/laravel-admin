@@ -17,6 +17,7 @@
 </div>
 @endsection
 
+@hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
 @section('content')
 <div class="card">
     <div class="card-body">
@@ -166,3 +167,4 @@
     }
 </style>
 @endpush
+@endhasanyrole

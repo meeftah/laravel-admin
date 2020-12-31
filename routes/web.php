@@ -84,10 +84,14 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route smava
     Route::get('va/sma/api', 'VaSmaController@datatableVaSmaAPI')->name('va.sma.api');
     Route::resource('va/sma', 'VaSmaController', ['names' => 'va.sma'])->except(['create', 'show']);
+
+    // Pengaturan
+    Route::get('pengaturan', 'PengaturanController@index')->name('pengaturan.index');
 });
 
 
 Route::group(['namespace' => 'Front'], function () {
     Route::get('/', 'FrontController@index')->name('frontend.beranda');
-    Route::get('/pendaftaran', 'FrontController@registerForm')->name('frontend.register');
+    Route::get('/pendaftaran', 'FrontController@registerForm')->name('frontend.register.form');
+    Route::post('/pendaftaran', 'FrontController@register')->name('frontend.register');
 });

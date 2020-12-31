@@ -34,7 +34,7 @@ class Unit extends Model
     // Mendapatkan data unit berdasarkan id
     public static function getDataById($id)
     {
-        $result = Unit::where('id', $id)->first();
+        $result = Unit::where('id_unit', $id)->first();
         return $result;
     }
 }

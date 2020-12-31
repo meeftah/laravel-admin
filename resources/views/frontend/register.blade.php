@@ -5,14 +5,14 @@
 @section('content')
 <div class="breadcrumb-area">
     <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-3 pt-100 pb-95"
-        style="background-image:url({{ asset('assets/frontend/img/bg/breadcrumb-bg-3.jpg') }});">
+        style="background-image:url({{ asset('assets/frontend/img/bg/headerreg.jpg') }});">
         <div class="container">
             <h2>Pendaftaran PPDB Online Al-Fityan Kubu Raya</h2>
         </div>
     </div>
 </div>
 <div class="register-area bg-img pt-130 pb-130"
-    style="background-image:url({{ asset('assets/frontend/img/slider/slider-bg.jpg') }});">
+    style="background-image:url({{ asset('assets/frontend/img/bg/bg-8.jpg') }});">
     <div class="container">
         <div class="section-title-2 mb-75">
             <h2>Daftar <span>Sekarang</span></h2>
@@ -29,40 +29,93 @@
                 </div>
             </div>
             <div class="row bg-primary">
-                <div class="col-lg-10 col-md-8 pt-5 pl-5 pr-5 pb-5">
+                <div class="col-lg-12 col-md-8 pt-5 pl-5 pr-5 pb-5">
                     <div class="register-form">
                         <h4>Formulir Pembuatan Akun</h4>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="First Name" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="Last Name" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="Phone" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style mb-20">
-                                        <input name="name" placeholder="Email" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="contact-form-style">
-                                        <textarea name="message" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="contact-form-style">
-                                        <button type="submit" class="submit default-btn">D A F T A R</button>
-                                    </div>
+                        <form action="{{ route('frontend.register') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label class="form-control-label text-white">Username: <span
+                                        class="text-warning">*</span></label>
+                                <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}"
+                                    type="text" name="username" placeholder="Masukkan usernama pegguna"
+                                    value="{{ old('username', null) }}">
+                                @error('username')
+                                <span class="text-warning" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-white">Email: <span
+                                        class="text-warning">*</span></label>
+                                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"
+                                    name="email" placeholder="Masukkan email dengan format yang benar"
+                                    value="{{ old('email', null) }}">
+                                @error('email')
+                                <span class="text-warning" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-white">No WhatsApp: <span
+                                        class="text-warning">*</span></label>
+                                <input class="form-control {{ $errors->has('nohp') ? 'is-invalid' : '' }}" type="text"
+                                    name="nohp" placeholder="Masukkan no whatsapp Anda dengan benar"
+                                    value="{{ old('nohp', null) }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                @error('nohp')
+                                <span class="text-warning" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-white">UNIT:
+                                    <span class="text-warning">*</span>
+                                </label>
+                                <select name="id_unit" class="form-control {{ $errors->has('id_unit') ? 'is-invalid' : '' }}">
+                                    <option value="" disabled selected>Pilih Unit</option>
+                                    @foreach ($unit as $item)
+                                    <option value="{{ $item->id_unit }}">
+                                        {{ strtoupper($item->nm_unit) }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                @error('id_unit')
+                                <span class="text-warning" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-white">Password: <span
+                                        class="text-warning">*</span></label>
+                                <input type="password"
+                                    class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+                                    name="password" placeholder="Masukkan password minimal 6 karakter">
+                                @error('password')
+                                <span class="text-warning" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-white">Konfirmasi Password: <span
+                                        class="text-warning">*</span></label>
+                                <input type="password"
+                                    class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
+                                    name="password_confirmation" placeholder="Ulangi password">
+                                @error('password_confirmation')
+                                <span class="text-warning" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-layout-footer mt-4">
+                                <div class="contact-form-style">
+                                    <button class="submit default-btn" type="submit">D A F T A R</button>
                                 </div>
                             </div>
                         </form>
@@ -71,8 +124,6 @@
             </div>
         </div>
     </div>
-    <div id="register-1" class="mouse-bg"></div>
-    <div id="register-2" class="mouse-bg"></div>
 </div>
 @endsection
 
@@ -81,6 +132,7 @@
     .section-title-2 h2 {
         color: #000 !important;
     }
+
     .section-title-2 p {
         color: #000 !important;
     }

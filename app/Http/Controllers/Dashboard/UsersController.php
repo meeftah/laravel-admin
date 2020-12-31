@@ -70,17 +70,19 @@ class UsersController extends Controller
         abort_if(Gate::denies('users_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $rules = [
-            'username' => 'required|min:3',
-            'email' => 'required|email',
+            'username' => 'required|min:3|unique:users,username',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
             'role' => 'required',
         ];
 
         $messages = [
-            'username.required' => 'Kolom Nama wajib diisi!',
-            'username.min' => 'Kolom Nama minimal 3 karakter!',
+            'username.required' => 'Kolom Username wajib diisi!',
+            'username.min' => 'Kolom Username minimal 3 karakter!',
+            'username.unique' => 'Username sudah dipakai, silakan pilih username lain!',
             'email.required' => 'Kolom Email wajib diisi!',
             'email.email' => 'Format Email tidak sesuai!',
+            'email.unique' => 'Email sudah terdaftar, silakan pilih email yang lain!',
             'password.required' => 'Kolom Password wajib diisi!',
             'password.confirmed' => 'Kolom Password tidak sama dengan Konfirmasi Password!',
             'password.min' => 'Kolom Password minimal 6 karakter!',

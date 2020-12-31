@@ -11,11 +11,11 @@
         <a href="{{ route('dashboard.home') }}"
             class="br-menu-link {{ set_active([Request::is('dashboard/home'), Request::is('dashboard/home/')]) }}">
             <div class="br-menu-item">
-                <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+                <i class="menu-item-icon icon ion-ios-home tx-22"></i>
                 <span class="menu-item-label">Beranda</span>
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
-        @hasanyrole('calonsiswa_tk|calonsiswa_sd|calonsiswa_smp|calonsiswa_sma')
+        @hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
         <a href="{{ route('dashboard.calonsiswa.profil', Auth::user()->id) }}"
             class="br-menu-link {{ set_active(Request::is('dashboard/calon-siswa/profil*')) }}">
             <div class="br-menu-item">
@@ -148,6 +148,15 @@
         </ul>
         @endif
         {{-- close manajement data VA --}}
+        @role('superadmin')
+        <a href="{{ route('dashboard.pengaturan.index', Auth::user()->id) }}"
+            class="br-menu-link {{ set_active(Request::is('dashboard/pengaturan*')) }}">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-ios-gear tx-22"></i>
+                <span class="menu-item-label">Pengaturan</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+        @endrole
 
         <a href="javascript: void(0);" class="br-menu-link text-danger" data-toggle="modal" data-target="#logoutModal"">
             <div class=" br-menu-item">

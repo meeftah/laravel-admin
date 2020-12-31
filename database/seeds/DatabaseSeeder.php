@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WaktutmphTableSeed::class);
         $this->call(transporttasiseed::class);
         $this->call(tempattinggalseed::class);
+        $this->call(UnitTableSeed::class);
+        $this->call(TahunAjaranTableSeed::class);
     }
 }

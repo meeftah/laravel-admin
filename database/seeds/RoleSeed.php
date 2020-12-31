@@ -35,13 +35,6 @@ class RoleSeed extends Seeder
             'permissions_tambah',
             'permissions_hapus',
 
-            // ------------ Hak Akses Profil Calon Siswa
-            'profilcalonsiswa_lihat',
-            'profilcalonsiswa_detail',
-            'profilcalonsiswa_ubah',
-            'profilcalonsiswa_tambah',
-            'profilcalonsiswa_hapus',
-
             // ------------ Hak Akses Master Data Penghasilan
             'penghasilan_lihat',
             'penghasilan_detail',
@@ -146,6 +139,46 @@ class RoleSeed extends Seeder
             'vasma_ubah',
             'vasma_tambah',
             'vasma_hapus',
+        ]);
+
+        $calonSiswaTK = Role::create(['name' => 'Calon Siswa TK']);
+        $calonSiswaTK->givePermissionTo([
+            // ------------ Hak Akses Profil Calon Siswa
+            'profilcalonsiswa_lihat',
+            'profilcalonsiswa_detail',
+            'profilcalonsiswa_ubah',
+            'profilcalonsiswa_tambah',
+            'profilcalonsiswa_hapus',
+        ]);
+
+        $calonSiswaSD = Role::create(['name' => 'Calon Siswa SD']);
+        $calonSiswaSD->givePermissionTo([
+            // ------------ Hak Akses Profil Calon Siswa
+            'profilcalonsiswa_lihat',
+            'profilcalonsiswa_detail',
+            'profilcalonsiswa_ubah',
+            'profilcalonsiswa_tambah',
+            'profilcalonsiswa_hapus',
+        ]);
+
+        $calonSiswaSMP = Role::create(['name' => 'Calon Siswa SMP']);
+        $calonSiswaSMP->givePermissionTo([
+            // ------------ Hak Akses Profil Calon Siswa
+            'profilcalonsiswa_lihat',
+            'profilcalonsiswa_detail',
+            'profilcalonsiswa_ubah',
+            'profilcalonsiswa_tambah',
+            'profilcalonsiswa_hapus',
+        ]);
+
+        $calonSiswaSMA = Role::create(['name' => 'Calon Siswa SMA']);
+        $calonSiswaSMA->givePermissionTo([
+            // ------------ Hak Akses Profil Calon Siswa
+            'profilcalonsiswa_lihat',
+            'profilcalonsiswa_detail',
+            'profilcalonsiswa_ubah',
+            'profilcalonsiswa_tambah',
+            'profilcalonsiswa_hapus',
         ]);
     }
 }

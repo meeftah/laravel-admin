@@ -5,7 +5,7 @@
 @section('content')
 <div class="slider-area">
     <div class="slider-active owl-carousel">
-        <div class="single-slider slider-height-2 bg-img align-items-center d-flex slider-overlay2-1 default-overlay" style="background-image:url(assets/frontend/img/slider/slider-2.jpg);">
+        <div class="single-slider slider-height-2 bg-img align-items-center d-flex slider-overlay2-1 default-overlay" style="background-image:url(assets/frontend/img/slider/3.png);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="single-slider slider-height-2 align-items-center d-flex bg-img slider-overlay2-2 default-overlay" style="background-image:url(assets/img/slider/slider-3.jpg);">
+        <div class="single-slider slider-height-2 align-items-center d-flex bg-img slider-overlay2-2 default-overlay" style="background-image:url(assets/frontend/img/slider/1.png);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="single-slider slider-height-2 align-items-center d-flex bg-img slider-overlay2-3 default-overlay" style="background-image:url(assets/img/slider/slider-4.jpg);">
+        <div class="single-slider slider-height-2 align-items-center d-flex bg-img slider-overlay2-3 default-overlay" style="background-image:url(assets/frontend/img/slider/2.png);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
@@ -71,7 +71,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="about-img default-overlay">
-                    <img src="{{ asset('assets/frontend/img/banner/banner-1.jpg') }}" alt="">
+                    <img src="{{ asset('assets/frontend/img/banner/viedo.jpg') }}" alt="">
                     <a class="video-btn video-popup" href="https://www.youtube.com/watch?v=aAu3UKwMOi0">
                         <img class="animated" src="{{ asset('assets/frontend/img/icon-img/video.png') }}" alt="">
                     </a>
