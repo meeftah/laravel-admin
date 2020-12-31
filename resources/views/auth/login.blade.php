@@ -7,7 +7,7 @@
 
     <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
         <div class="signin-logo tx-center tx-28 tx-bold tx-inverse">
-            <img src="{{ asset('assets/dashboard/img/common/logo.png') }}" height="120px">
+            <img src="{{ asset('assets/common/logo.png') }}" height="120px">
         </div>
         <div class="tx-center mg-b-40">Silakan masuk menggunakan email dan password Anda</div>
 
