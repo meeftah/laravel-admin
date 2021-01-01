@@ -22,12 +22,12 @@
     <div class="col-sm-12 col-md-4 mb-5">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route("dashboard.va.sd.store") }}" method="POST">
+                {{-- <form action="{{ route("dashboard.va.sd.store") }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label class="form-control-label">Virtual Account: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('va') ? 'is-invalid' : '' }}" type="text"
-                            name="va" placeholder="Masukkan VA" value="{{ old('va', null) }}">
+                            name="va" placeholder="Masukkan Virtual Account" value="{{ old('va', null) }}">
                         @error('va')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -51,6 +51,36 @@
                             name="status" placeholder="Masukkan status VA"
                             value="{{ old('status', null) }}">
                         @error('status')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-layout-footer">
+                        <button class="btn btn-success col-sm-12 col-md-6">Simpan</button>
+                    </div><!-- form-layout-footer -->
+                </form> --}}
+                <form action="{{ route("dashboard.va.sd.store") }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label class="form-control-label">Nomor Awal: <span class="tx-danger">*</span></label>
+                        <input class="form-control {{ $errors->has('nomor_awal') ? 'is-invalid' : '' }}" type="text"
+                            name="nomor_awal" placeholder="Masukkan Nomor Awal" value="{{ old('nomor_awal', null) }}"
+                            minlength="1" maxlength="4"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        @error('nomor_awal')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Nomor Akhir: <span class="tx-danger">*</span></label>
+                        <input class="form-control {{ $errors->has('nomor_akhir') ? 'is-invalid' : '' }}" type="text"
+                            name="nomor_akhir" placeholder="Masukkan Nomor Akhir" value="{{ old('nomor_akhir', null) }}"
+                            minlength="1" maxlength="4"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        @error('nomor_akhir')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -124,9 +154,10 @@
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', width: 60, targets: [2] },
-                @if(auth()->user()->can('vasd_detail') || auth()->user()->can('vasd_ubah') || auth()->user()->can('vasd_hapus'))
+                { className: 'text-center', width: 70, targets: [2] },
                 { className: 'text-center', targets: [4] },
+                @if(auth()->user()->can('vasd_detail') || auth()->user()->can('vasd_ubah') || auth()->user()->can('vasd_hapus'))
+                { className: 'text-center', targets: [5] },
                 @endif
             ],
             order: [],
@@ -142,7 +173,7 @@
 
     $('#delete-btn').click(function(){
         $.ajax({
-            url: 'va/sd/' + id_delete,
+            url: 'sd/' + id_delete,
             type: 'POST',
             data: {
                 _method:'DELETE'

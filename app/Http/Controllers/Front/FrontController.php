@@ -32,7 +32,7 @@ class FrontController extends Controller
 
     public function registerForm()
     {
-        $unit = Unit::get();
+        $unit = Unit::orderBy('kode_unit')->get();
         $statusPendaftaran = StatusPendaftaran::get();
         return view('frontend.register', compact('unit', 'statusPendaftaran'));
     }
@@ -129,6 +129,9 @@ class FrontController extends Controller
                 $casis->id_status_casis     = StatusCasis::getDataByNama('Terdaftar')->id_status_casis;
                 if ($casis->save()) {
                     // update status va menjadi aktif
+                    $tanggalSekarang = Carbon::now();
+                    $slotVaSd->tanggal_aktif    = $tanggalSekarang->format('Y-m-d H:i:s');
+                    $slotVaSd->tanggal_berakhir = $tanggalSekarang->addDays(2)->format('Y-m-d H:i:s');
                     $slotVaSd->status = 1;
                     if ($slotVaSd->save()) {
                         // set peran calon siswa SD
@@ -164,6 +167,9 @@ class FrontController extends Controller
                 $casis->id_status_casis     = StatusCasis::getDataByNama('Terdaftar')->id_status_casis;
                 if ($casis->save()) {
                     // update status va menjadi aktif
+                    $tanggalSekarang = Carbon::now();
+                    $slotVaSmp->tanggal_aktif    = $tanggalSekarang->format('Y-m-d H:i:s');
+                    $slotVaSmp->tanggal_berakhir = $tanggalSekarang->addDays(2)->format('Y-m-d H:i:s');
                     $slotVaSmp->status = 1;
                     if ($slotVaSmp->save()) {
                         // set peran calon siswa SMP
@@ -198,6 +204,9 @@ class FrontController extends Controller
                 $casis->id_status_casis     = StatusCasis::getDataByNama('Terdaftar')->id_status_casis;
                 if ($casis->save()) {
                     // update status va menjadi aktif
+                    $tanggalSekarang = Carbon::now();
+                    $slotVaSma->tanggal_aktif    = $tanggalSekarang->format('Y-m-d H:i:s');
+                    $slotVaSma->tanggal_berakhir = $tanggalSekarang->addDays(2)->format('Y-m-d H:i:s');
                     $slotVaSma->status = 1;
                     if ($slotVaSma->save()) {
                         // set peran calon siswa SMA

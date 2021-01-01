@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Unit;
 use App\Models\VaSd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -13,10 +14,23 @@ class VaSdController extends Controller
     public function datatableVaSdAPI()
     {
         // ambil semua data
-        $vasd = VaSd::orderBy('kode_nama', 'ASC')->get();
+        $vasd = VaSd::orderBy('va', 'ASC')->get();
 
         return datatables()->of($vasd)
             ->addIndexColumn()
+            ->editColumn(
+                'status',
+                function ($row) {
+                    $status = '';
+                    if ($row['status'] == 0) {
+                        $status = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">aktif</span>';
+                    }
+                    if ($row['status'] == 1) {
+                        $status = '<span class="badge badge-warning p-2 text-white" style="font-size: 10pt; font-weight: 400">terpakai</span>';
+                    }
+                    return $status;
+                }
+            )
             ->addColumn(
                 'action',
                 function ($row) {
@@ -28,10 +42,10 @@ class VaSdController extends Controller
                         $btn   .= '<button type="button" id="' . $row['id_va_sd'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
                     }
 
-                    return $btn ?? '';
+                    return $btn;
                 }
             )
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'status'])
             ->make(true);
     }
     /**
@@ -65,27 +79,67 @@ class VaSdController extends Controller
     {
         abort_if(Gate::denies('vasd_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        // $rules = [
+        //     'va' => 'required',
+        //     'kode_nama' => 'required',
+        //     'status' => 'required'
+        // ];
+
+        // $messages = [
+        //     'required' => 'Kolom :attribute wajib diisi!'
+        // ];
+
+        // $this->validate($request, $rules, $messages);
+
+        // $vatk = new VaTK();
+        // $vatk->va        = $request->va;
+        // $vatk->kode_nama = $request->kode_nama;
+        // $vatk->status    = $request->status;
+
+        // if ($vatk->save()) {
+        //     return back()->with(['success' => 'Data VA TKIT berhasil ditambah']);
+        // } else {
+        //     return back()->with(['error' => 'Data VA TKIT gagal ditambah']);
+        // }
+
         $rules = [
-            'va'        => 'required',
-            'kode_nama' => 'required',
-            'status'    => 'required'
+            'nomor_awal'  => 'required|min:1|max:4|gt:0',
+            'nomor_akhir' => 'required|min:1|max:4|gte:nomor_awal',
         ];
 
         $messages = [
-            'required' => 'Kolom :attribute wajib diisi!'
+            'nomor_awal.required'   => 'Kolom Nomor Awal wajib diisi!',
+            'nomor_awal.min'        => 'Kolom Nomor Awal minimal 1 digit!',
+            'nomor_awal.max'        => 'Kolom Nomor Awal maksimal 4 digit!',
+            'nomor_awal.gt'         => 'Kolom Nomor Awal harus lebih besar dari 0!',
+            'nomor_akhir.required'  => 'Kolom Nomor Akhir wajib diisi!',
+            'nomor_akhir.min'       => 'Kolom Nomor Akhir minimal 1 digit!',
+            'nomor_akhir.max'       => 'Kolom Nomor Akhir maksimal 4 digit!',
+            'nomor_akhir.max'       => 'Kolom Nomor Akhir maksimal 4 digit!',
+            'nomor_akhir.gte'       => 'Kolom Nomor Akhir harus lebih besar dari atau sama dengan Kolom Nomor Awal!',
         ];
 
         $this->validate($request, $rules, $messages);
 
-        $vasd            = new VaSd();
-        $vasd->va        = $request->va;
-        $vasd->kode_nama = $request->kode_nama;
-        $vasd->status    = $request->status;
+        $kodeBank    = config('va_config.kode_bank');
+        $kodeSekolah = config('va_config.kode_sekolah');
+        $kodeTP      = config('va_config.kode_tp');
+        $kodeUnit    = Unit::where('nm_unit', 'SDIT')->first()->kode_unit;
+        $kodeNama    = 'PPDB SD-';
 
-        if ($vasd->save()) {
+        if ($kodeUnit) {
+            $nomorAwal   = $request->nomor_awal;
+            $nomorAkhir  = $request->nomor_akhir;
+            for ($i = $nomorAwal; $i <= $nomorAkhir; $i++) {
+                $vasd = new VaSD();
+                $vasd->va        = $kodeBank . $kodeSekolah . $kodeTP . $kodeUnit . str_pad($i, 4, '0', STR_PAD_LEFT);
+                $vasd->kode_nama = $kodeNama . $i;
+                $vasd->status    = 0;
+                $vasd->save();
+            }
             return back()->with(['success' => 'Data VA SDIT berhasil ditambah']);
         } else {
-            return back()->with(['error' => 'Data VA SDIT gagal ditambah']);
+            return back()->with(['error' => 'Kode Unit SDIT belum di set, silakan set di Pengaturan']);
         }
     }
 

@@ -21,7 +21,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('dashboard.smpva.update', $vasmp->id_va_smp) }}" method="POST">
+        <form action="{{ route('dashboard.va.smp.update', $vasmp->id_va_smp) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="row">

@@ -57,7 +57,6 @@ class CreateTblCasisSmpTable extends Migration
             $table->integer('jumlah_saudara')->nullable();
             $table->integer('anak_ke')->nullable();
             $table->integer('dari_bersaudara')->nullable();
-            $table->string('kelas');
             $table->uuid('id_data_ortu')->nullable();
             $table->uuid('id_dokumen_smp')->nullable();
             $table->string('foto')->nullable();

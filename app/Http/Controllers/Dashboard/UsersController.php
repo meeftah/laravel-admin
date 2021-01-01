@@ -16,14 +16,14 @@ class UsersController extends Controller
     public function datatableUsersAPI()
     {
         // ambil semua data
-        $users = User::orderBy('name', 'ASC')->get();
+        $users = User::orderBy('created_at', 'ASC')->get();
 
         return datatables()->of($users)
             ->addIndexColumn()
             ->addColumn(
                 'role',
                 function ($row) {
-                    return '<span class="badge badge-pill badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . Role::findByName($row['name'])->name ?? '' . '</span>';
+                    return '<span class="badge badge-pill badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . $row->getRoleNames()->implode('') ?? '' . '</span>';
                 }
             )
             ->addColumn(
@@ -91,7 +91,7 @@ class UsersController extends Controller
 
         $user = User::create($request->all());
 
-        if($request->has('roles')) {
+        if ($request->has('roles')) {
             $user->assignRole($request->input('roles'));
         }
 
@@ -115,7 +115,7 @@ class UsersController extends Controller
 
         $user->update($request->all());
 
-        if($request->has('roles')) {
+        if ($request->has('roles')) {
             $user->assignRole($request->input('roles'));
         }
 
@@ -140,6 +140,4 @@ class UsersController extends Controller
 
         return redirect()->route('dashboard.users.index')->with(['error' => 'User Deleted']);
     }
-
-
 }

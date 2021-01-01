@@ -14,7 +14,7 @@ class VaTkController extends Controller
     public function datatableVaTkAPI()
     {
         // ambil semua data
-        $vatk = VaTK::orderBy('kode_nama', 'ASC')->get();
+        $vatk = VaTK::orderBy('va', 'ASC')->get();
 
         return datatables()->of($vatk)
             ->addIndexColumn()
