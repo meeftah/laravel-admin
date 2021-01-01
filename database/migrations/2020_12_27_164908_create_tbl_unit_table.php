@@ -16,6 +16,7 @@ class CreateTblUnitTable extends Migration
         Schema::create('tbl_unit', function (Blueprint $table) {
             $table->uuid('id_unit')->primary();
             $table->string('nm_unit');
+            $table->string('kode_unit');
             $table->integer('kuota')->nullable();
             $table->integer('biaya_formulir')->nullable();
             $table->boolean('status')->default(1);

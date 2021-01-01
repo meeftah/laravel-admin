@@ -29,7 +29,14 @@ class StatusCasis extends Model
         'status'
     ];
 
-    // Mendapatkan data unit berdasarkan id
+    // Mendapatkan data status calon siswa berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = StatusCasis::where('id_status_casis', $id)->first();
+        return $result;
+    }
+
+    // Mendapatkan data status calon siswa berdasarkan nama
     public static function getDataByNama($status)
     {
         $result = StatusCasis::where('status', $status)->first();

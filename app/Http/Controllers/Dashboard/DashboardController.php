@@ -13,6 +13,7 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('Calon Siswa TK')) {
+            $idVa = 
             $biaya_formulir = Unit::where('nm_unit', 'TKIT')->first()->biaya_formulir;
         } else
         if (Auth::user()->hasRole('Calon Siswa SD')) {
