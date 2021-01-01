@@ -16,23 +16,7 @@
             </div>
         </a>
         @hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
-        @php
-            if (Auth::user()->hasRole('Calon Siswa TK')) {
-                $status_casis = App\Models\CasisTk::getStatusCasis(Auth::user()->id);
-            } else
-        //     if (Auth::user()->hasRole('Calon Siswa SD')) {
-        //         $biaya_formulir = Unit::where('nm_unit', 'SDIT')->first()->biaya_formulir;
-        //     } else
-        //     if (Auth::user()->hasRole('Calon Siswa SMP')) {
-        //         $biaya_formulir = Unit::where('nm_unit', 'SMPIT')->first()->biaya_formulir;
-        //     }if (Auth::user()->hasRole('Calon Siswa SMP')) {
-                
-        //     } else 
-            {
-                $status_casis = 'Non Aktif';
-            }
-        @endphp
-        @if ($status_casis != 'Terdaftar' && $status_casis != 'Non Aktif')
+        @if (auth()->user()->getStatusCasisKu() != 'Terdaftar' && $status_casis != 'Non Aktif')
         <a href="{{ route('dashboard.calonsiswa.profil', Auth::user()->id) }}"
              class="br-menu-link {{ set_active(Request::is('dashboard/calon-siswa/profil*')) }}">
              <div class="br-menu-item">

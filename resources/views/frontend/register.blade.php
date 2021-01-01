@@ -32,6 +32,7 @@
                 <div class="col-lg-12 col-md-8 pt-5 pl-5 pr-5 pb-5">
                     <div class="register-form">
                         <h4>Formulir Pembuatan Akun</h4>
+                        @include('frontend.partials.flash_message')
                         <form action="{{ route('frontend.register') }}" method="POST">
                             @csrf
                             <div class="form-group">
@@ -63,7 +64,7 @@
                                         class="text-warning">*</span></label>
                                 <input class="form-control {{ $errors->has('nohp') ? 'is-invalid' : '' }}" type="text"
                                     name="nohp" placeholder="Masukkan no whatsapp Anda dengan benar"
-                                    value="{{ old('nohp', null) }}"
+                                    value="{{ old('nohp', null) }}" maxlength="13" minlength="11"
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                 @error('nohp')
                                 <span class="text-warning" role="alert">

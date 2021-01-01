@@ -72,11 +72,4 @@ class CasisTk extends Model
         'ket_status',
         'catatan',
     ];
-
-    // Mendapatkan data status berdasarkan id user
-    public static function getStatusCasis($id_user)
-    {
-        $result = StatusCasis::getDataById(CasisTk::where('id_user', $id_user)->first()->id_status_casis)->status;
-        return $result;
-    }
 }

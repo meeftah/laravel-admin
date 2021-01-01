@@ -17,7 +17,9 @@ class CreateTblVaSdTable extends Migration
             $table->uuid('id_va_sd')->primary();
             $table->string('va');
             $table->string('kode_nama');
-            $table->string('status');
+            $table->dateTime('tanggal_aktif')->nullable();
+            $table->dateTime('tanggal_berakhir')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }

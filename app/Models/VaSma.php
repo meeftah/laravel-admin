@@ -11,6 +11,13 @@ class VaSma extends Model
     protected $primaryKey = 'id_va_sma';
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['tanggal_aktif', 'tanggal_berakhir', 'created_at', 'updated_at'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -18,6 +25,8 @@ class VaSma extends Model
     protected $fillable = [
         'va',
         'kode_nama',
+        'tanggal_aktif',
+        'tanggal_berakhir',
         'status'
     ];
 }
