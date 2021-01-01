@@ -71,7 +71,7 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
 
     // Route slidefrontend
     Route::get('slidefrontend/api', 'SlidefrontendController@datatableSlidefrontendAPI')->name('slidefrontend.api');
-    Route::resource('slidefrontend', 'SlidefrontendController')->except(['create', 'show']);
+    Route::resource('slidefrontend', 'SlidefrontendController');
 
     // Route tkva
     Route::get('va/tk/api', 'VaTkController@datatableVaTkAPI')->name('va.tk.api');

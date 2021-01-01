@@ -42,7 +42,7 @@ class BcquranController extends Controller
     public function index()
     {
         abort_if(Gate::denies('bcquran_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.bcquran.index');
+        return view('dashboard.datamaster.bcquran.index');
     }
 
     /**
@@ -110,7 +110,7 @@ class BcquranController extends Controller
 
         $bcquran = Bcquran::where('id_bcquran', $id)->first();
 
-        return view('dashboard.masterdata.bcquran.edit', compact('bcquran'));
+        return view('dashboard.datamaster.bcquran.edit', compact('bcquran'));
     }
 
     /**

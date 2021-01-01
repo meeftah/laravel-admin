@@ -43,7 +43,7 @@ class TransportasiController extends Controller
     public function index()
     {
         abort_if(Gate::denies('transportasi_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.transportasi.index');
+        return view('dashboard.datamaster.transportasi.index');
     }
 
     /**
@@ -113,7 +113,7 @@ class TransportasiController extends Controller
 
         $transportasi = Transportasi::where('id_transportasi', $id)->first();
 
-        return view('dashboard.masterdata.transportasi.edit', compact('transportasi'));
+        return view('dashboard.datamaster.transportasi.edit', compact('transportasi'));
     }
 
     /**

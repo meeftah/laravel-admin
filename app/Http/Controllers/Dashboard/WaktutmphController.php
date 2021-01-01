@@ -42,7 +42,7 @@ class WaktutmphController extends Controller
     public function index()
     {
         abort_if(Gate::denies('waktutmph_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.waktutmph.index');
+        return view('dashboard.datamaster.waktutmph.index');
     }
 
     /**
@@ -111,7 +111,7 @@ class WaktutmphController extends Controller
 
         $waktutmph = Waktutmph::where('id_waktutmph', $id)->first();
 
-        return view('dashboard.masterdata.waktutmph.edit', compact('waktutmph'));
+        return view('dashboard.datamaster.waktutmph.edit', compact('waktutmph'));
     }
 
     /**

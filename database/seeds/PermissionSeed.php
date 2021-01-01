@@ -148,6 +148,15 @@ class PermissionSeed extends Seeder
             ['id' => '6934acd9-bcbd-46f7-8bf1-1d4cd80b2062', 'name' => 'vasma_ubah'],
             ['id' => '01001a8d-443b-44b6-be4f-000f4a953217', 'name' => 'vasma_tambah'],
             ['id' => '9dce27a2-23f7-442d-845e-d451b0bde8d9', 'name' => 'vasma_hapus'],
+
+            // FRONTEND
+            // ------------ Slider
+            ['id' => '365b008a-8856-436f-93d2-9f5269d40c75', 'name' => 'slidefrontend_lihat'],
+            ['id' => '01fcd66a-e643-4337-ab3b-4fbec6069735', 'name' => 'slidefrontend_detail'],
+            ['id' => 'a29a60dc-be47-4ffe-ba6e-106f3c8e3ef0', 'name' => 'slidefrontend_ubah'],
+            ['id' => '96892368-f739-4519-adb5-4778ced2d3fa', 'name' => 'slidefrontend_tambah'],
+            ['id' => '9db4c917-8c32-4b8a-8af0-2d140701c155', 'name' => 'slidefrontend_hapus'],
+
         ];
 
         Permission::insert($items);

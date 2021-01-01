@@ -17,15 +17,17 @@ class SlidefrontendController extends Controller
 
         return datatables()->of($slidefrontend)
             ->addIndexColumn()
-            ->addColumn(
+            ->editColumn(
                 'status',
                 function ($row) {
-                    if($row['status']==0){
-                        return '<span class="badge badge-pill badge-danger p-2" style="font-size: 10pt; font-weight: 400">Tidak aktif</span>';
-                    }else{
-                        return '<span class="badge badge-pill badge-success p-2" style="font-size: 10pt; font-weight: 400">Aktif</span>';
+                    $status = '';
+                    if ($row['status'] == 0) {
+                        $status = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">tidak aktif</span>';
                     }
-
+                    if ($row['status'] == 1) {
+                        $status = '<span class="badge badge-warning p-2 text-white" style="font-size: 10pt; font-weight: 400">aktif</span>';
+                    }
+                    return $status;
                 }
             )
             ->addColumn(
@@ -45,14 +47,14 @@ class SlidefrontendController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['action', 'role'])
+            ->rawColumns(['action', 'status'])
             ->make(true);
     }
 
 
     public function index()
     {
-        abort_if(Gate::denies('slidefro ntend_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('slidefrontend_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('dashboard.slidefrontend.index');
     }

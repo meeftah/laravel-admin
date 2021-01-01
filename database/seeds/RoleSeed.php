@@ -139,6 +139,14 @@ class RoleSeed extends Seeder
             'vasma_ubah',
             'vasma_tambah',
             'vasma_hapus',
+
+            // FRONTEND
+            // ------------ Slider
+            'slidefrontend_lihat',
+            'slidefrontend_detail',
+            'slidefrontend_ubah',
+            'slidefrontend_tambah',
+            'slidefrontend_hapus',
         ]);
 
         $calonSiswaTK = Role::create(['name' => 'Calon Siswa TK']);

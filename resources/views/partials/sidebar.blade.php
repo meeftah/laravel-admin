@@ -52,12 +52,11 @@
         </ul>
         @endif
 
-
-        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat') || auth()->user()->can('agama_lihat') || auth()->user()->can('alamat_lihat') || auth()->user()->can('kondisibelajar') || auth()->user()->can('bcquran') || auth()->user()->can('waktutmph') || auth()->user()->can('jenisdokumen') || auth()->user()->can('transportasi') || auth()->user()->can('tempattinggal') || auth()->user()->can('slidefrontend'))
-        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/jarak*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*'), Request::is('dashboard/jenisdokumen*'), Request::is('dashboard/transportasi*'), Request::is('dashboard/tempattinggal*'), Request::is('dashboard/slidefrontend*')], 'active show-sub') }}">
+        @if(auth()->user()->can('penghasilan_lihat') || auth()->user()->can('pekerjaan_lihat') || auth()->user()->can('pendidikan_lihat') || auth()->user()->can('agama_lihat') || auth()->user()->can('alamat_lihat') || auth()->user()->can('kondisibelajar') || auth()->user()->can('bcquran') || auth()->user()->can('waktutmph') || auth()->user()->can('jenisdokumen') || auth()->user()->can('transportasi') || auth()->user()->can('tempattinggal'))
+        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/penghasilan*'), Request::is('dashboard/pekerjaan*'), Request::is('dashboard/pendidikan*'), Request::is('dashboard/agama*'), Request::is('dashboard/jarak*'), Request::is('dashboard/kondisibelajar*'), Request::is('dashboard/bcquran*'), Request::is('dashboard/waktutmph*'), Request::is('dashboard/jenisdokumen*'), Request::is('dashboard/transportasi*'), Request::is('dashboard/tempattinggal*')], 'active show-sub') }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
-                <span class="menu-item-label">Master Data</span>
+                <span class="menu-item-label">Data Master</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div>
         </a>
@@ -151,6 +150,22 @@
             @can('vasma_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.va.sma.index') }}"
                     class="nav-link {{ set_active(Request::is('dashboard/va/sma*')) }}">VA SMA</a></li>
+            @endcan
+        </ul>
+        @endif
+        @if(auth()->user()->can('slidefrontend_lihat'))
+        <a href="#" class="br-menu-link {{ set_active([Request::is('dashboard/slidefrontend*')], 'active show-sub') }}">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-ios-world tx-24"></i>
+                <span class="menu-item-label">Data Website</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div>
+        </a>
+        <ul class="br-menu-sub nav flex-column">
+            @can('slidefrontend_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.slidefrontend.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/slidefrontend*')) }}">Data Slide</a>
+            </li>
             @endcan
         </ul>
         @endif

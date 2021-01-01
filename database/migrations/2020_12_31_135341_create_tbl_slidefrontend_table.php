@@ -18,7 +18,7 @@ class CreateTblSlidefrontendTable extends Migration
             $table->string('gambar');
             $table->string('deskripsi');
             $table->string('url');
-            $table->tinyInteger('status');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

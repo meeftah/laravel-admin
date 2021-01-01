@@ -42,7 +42,7 @@ class PekerjaanController extends Controller
     public function index()
     {
         abort_if(Gate::denies('pekerjaan_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.pekerjaan.index');
+        return view('dashboard.datamaster.pekerjaan.index');
     }
 
     /**
@@ -111,7 +111,7 @@ class PekerjaanController extends Controller
 
         $pekerjaan = Pekerjaan::where('id_pekerjaan', $id)->first();
 
-        return view('dashboard.masterdata.pekerjaan.edit', compact('pekerjaan'));
+        return view('dashboard.datamaster.pekerjaan.edit', compact('pekerjaan'));
     }
 
     /**
