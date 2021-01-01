@@ -27,8 +27,10 @@ class Slidefrontend extends Model
      */
     protected $fillable = [
         'gambar',
+        'judul',
         'deskripsi',
         'url',
+        'url_teks',
         'status',
     ];
 }

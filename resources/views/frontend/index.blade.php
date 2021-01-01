@@ -5,52 +5,25 @@
 @section('content')
 <div class="slider-area">
     <div class="slider-active owl-carousel">
-        <div class="single-slider slider-height-2 bg-img align-items-center d-flex slider-overlay2-1 default-overlay" style="background-image:url(assets/frontend/img/slider/3.png);">
+        @foreach ($slide as $item)
+        <div class="single-slider slider-height-2 bg-img align-items-center d-flex slider-overlay2-1 default-overlay" style="background-image:url({{ $item->gambar }});">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                         <div class="slider-content slider-content-2 slider-animated-2 text-center">
-                            <h1 class="animated">Sistem Online PPDB</h1>
-                            <p class="animated">Selamat datang di Sistem Online PPDB Al-Fityan Kubu Raya</p>
+                            @if($item->judul)<h1 class="animated">{{ $item->judul }}</h1>@endif
+                            @if($item->deskripsi)<p class="animated">{{ $item->deskripsi }}</p>@endif
+                            @if($item->url)
                             <div class="slider-btn">
-                                <a class="animated default-btn" href="{{ route('frontend.register') }}">Daftar Sekarang</a>
+                                <a class="animated default-btn" href="{{ $item->url }}">{{ $item->url_teks ?? 'Selengkapnya' }}</a>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="single-slider slider-height-2 align-items-center d-flex bg-img slider-overlay2-2 default-overlay" style="background-image:url(assets/frontend/img/slider/1.png);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-                        <div class="slider-content slider-content-2 slider-animated-2 text-center">
-                            <h1 class="animated">Sistem Online PPDB</h1>
-                            <p class="animated">Selamat datang di Sistem Online PPDB Al-Fityan Kubu Raya</p>
-                            <div class="slider-btn">
-                                <a class="animated default-btn" href="{{ route('frontend.register') }}">Daftar Sekarang</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slider slider-height-2 align-items-center d-flex bg-img slider-overlay2-3 default-overlay" style="background-image:url(assets/frontend/img/slider/2.png);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-                        <div class="slider-content slider-content-2 slider-animated-2 text-center">
-                            <h1 class="animated">Sistem Online PPDB</h1>
-                            <p class="animated">Selamat datang di Sistem Online PPDB Al-Fityan Kubu Raya</p>
-                            <div class="slider-btn">
-                                <a class="animated default-btn" href="{{ route('frontend.register') }}">Daftar Sekarang</a>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <div class="about-us pt-70 pb-100" style="background-image:url({{ asset('assets/frontend/img/bg/bg-8.jpg') }});">

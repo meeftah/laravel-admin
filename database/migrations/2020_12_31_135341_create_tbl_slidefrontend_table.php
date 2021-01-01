@@ -16,8 +16,10 @@ class CreateTblSlidefrontendTable extends Migration
         Schema::create('tbl_slidefrontend', function (Blueprint $table) {
             $table->uuid('id_slidefrontend')->primary();
             $table->string('gambar');
-            $table->string('deskripsi');
-            $table->string('url');
+            $table->string('judul')->nullable();
+            $table->string('deskripsi')->nullable();
+            $table->string('url')->nullable();
+            $table->string('url_teks')->nullable();
             $table->boolean('status');
             $table->timestamps();
         });
