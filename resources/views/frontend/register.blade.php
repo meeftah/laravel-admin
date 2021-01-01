@@ -21,7 +21,7 @@
         <div class="register-wrap">
             <div id="register-3" class="mouse-bg d-none d-md-block">
                 <div class="winter-banner">
-                    <img src="{{ asset('assets/frontend/img/banner/regi-6.png') }}" alt="">
+                    <img src="{{ asset('assets/frontend/img/banner/regi-10.png') }}" alt="">
                     <div class="winter-content">
                         <span>TAHUN AJARAN</span>
                         <h3 style="font-size: 30pt">2021/2022</h3>

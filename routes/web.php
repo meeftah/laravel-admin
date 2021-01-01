@@ -69,6 +69,10 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::get('tempattinggal/api', 'tempattinggalController@datatableTempattinggalAPI')->name('tempattinggal.api');
     Route::resource('tempattinggal', 'TempattinggalController')->except(['create', 'show']);
 
+    // Route slidefrontend
+    Route::get('slidefrontend/api', 'SlidefrontendController@datatableSlidefrontendAPI')->name('slidefrontend.api');
+    Route::resource('slidefrontend', 'SlidefrontendController')->except(['create', 'show']);
+
     // Route tkva
     Route::get('va/tk/api', 'VaTkController@datatableVaTkAPI')->name('va.tk.api');
     Route::resource('va/tk', 'VaTkController', ['names' => 'va.tk'])->except(['create', 'show']);

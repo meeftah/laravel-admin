@@ -3,18 +3,58 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slidefrontend;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class SlidefrontendController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function datatableSlidefrontendAPI()
+    {
+        // ambil semua data
+        $slidefrontend = Slidefrontend::orderBy('created_at', 'ASC')->get();
+
+        return datatables()->of($slidefrontend)
+            ->addIndexColumn()
+            ->addColumn(
+                'status',
+                function ($row) {
+                    if($row['status']==0){
+                        return '<span class="badge badge-pill badge-danger p-2" style="font-size: 10pt; font-weight: 400">Tidak aktif</span>';
+                    }else{
+                        return '<span class="badge badge-pill badge-success p-2" style="font-size: 10pt; font-weight: 400">Aktif</span>';
+                    }
+
+                }
+            )
+            ->addColumn(
+                'action',
+                function ($row) {
+                    $btn = '';
+                    if (auth()->user()->can('slidefrontend_detail')) {
+                        $btn   .= '<a href="' . route('dashboard.slidefrontend.show', $row['id_slidefrontend']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                    }
+                    if (auth()->user()->can('slidefrontend_ubah')) {
+                        $btn   .= '<a href="' . route('dashboard.slidefrontend.edit', $row['id_slidefrontend']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                    }
+                    if (auth()->user()->can('slidefrontend_hapus')) {
+                        $btn   .= '<button type="button" id="' . $row['id_slidefrontend'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                    }
+
+                    return $btn ?? '';
+                }
+            )
+            ->rawColumns(['action', 'role'])
+            ->make(true);
+    }
+
+
     public function index()
     {
-        //
+        abort_if(Gate::denies('slidefro ntend_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('dashboard.slidefrontend.index');
     }
 
     /**
@@ -24,7 +64,8 @@ class SlidefrontendController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(Gate::denies('slidefrontend_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return view('dashboard.slidefrontend.create');
     }
 
     /**
@@ -35,7 +76,29 @@ class SlidefrontendController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        abort_if(Gate::denies('slidefrontend_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $rules = [
+            'gambar' => 'required',
+            'status' => 'required',
+        ];
+
+        $messages = [
+            'gambar.required' => 'Gambar wajib di isi!',
+            'status.required' => 'Status tidak boleh kosong!',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $slidefrontend = Slidefrontend::create($request->all());
+
+        if($request->has('roles')) {
+            $slidefrontend->assignRole($request->input('roles'));
+        }
+
+        return redirect()->route('dashboard.slidefrontend.index')->with(['success' => 'Slidefrontend created']);
+
     }
 
     /**
