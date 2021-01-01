@@ -42,7 +42,7 @@ class TempattinggalController extends Controller
     public function index()
     {
         abort_if(Gate::denies('tempattinggal_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.tempattinggal.index');
+        return view('dashboard.datamaster.tempattinggal.index');
     }
 
     /**
@@ -111,7 +111,7 @@ class TempattinggalController extends Controller
 
         $tempattinggal = Tempattinggal::where('id_tempattinggal', $id)->first();
 
-        return view('dashboard.masterdata.tempattinggal.edit', compact('tempattinggal'));
+        return view('dashboard.datamaster.tempattinggal.edit', compact('tempattinggal'));
     }
 
     /**

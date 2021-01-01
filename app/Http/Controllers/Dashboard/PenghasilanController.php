@@ -44,7 +44,7 @@ class PenghasilanController extends Controller
     {
         abort_if(Gate::denies('penghasilan_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('dashboard.masterdata.penghasilan.index');
+        return view('dashboard.datamaster.penghasilan.index');
     }
 
     /**
@@ -112,7 +112,7 @@ class PenghasilanController extends Controller
 
         $penghasilan = Penghasilan::where('id_penghasilan', $id)->first();
 
-        return view('dashboard.masterdata.penghasilan.edit', compact('penghasilan'));
+        return view('dashboard.datamaster.penghasilan.edit', compact('penghasilan'));
     }
 
     /**

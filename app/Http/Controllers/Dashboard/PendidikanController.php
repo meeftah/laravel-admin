@@ -43,7 +43,7 @@ class PendidikanController extends Controller
     public function index()
     {
         abort_if(Gate::denies('pendidikan_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.pendidikan.index');
+        return view('dashboard.datamaster.pendidikan.index');
     }
 
     /**
@@ -112,7 +112,7 @@ class PendidikanController extends Controller
 
         $pendidikan = Pendidikan::where('id_pendidikan', $id)->first();
 
-        return view('dashboard.masterdata.pendidikan.edit', compact('pendidikan'));
+        return view('dashboard.datamaster.pendidikan.edit', compact('pendidikan'));
     }
 
     /**

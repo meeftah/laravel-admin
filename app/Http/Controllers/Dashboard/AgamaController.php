@@ -42,7 +42,7 @@ class AgamaController extends Controller
     public function index()
     {
         abort_if(Gate::denies('agama_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.agama.index');
+        return view('dashboard.datamaster.agama.index');
     }
 
     /**
@@ -110,7 +110,7 @@ class AgamaController extends Controller
 
         $agama = Agama::where('id_agama', $id)->first();
 
-        return view('dashboard.masterdata.agama.edit', compact('agama'));
+        return view('dashboard.datamaster.agama.edit', compact('agama'));
     }
 
     /**

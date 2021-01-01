@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Slidefrontend;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use Image;
 
 class SlidefrontendController extends Controller
 {
@@ -17,15 +19,27 @@ class SlidefrontendController extends Controller
 
         return datatables()->of($slidefrontend)
             ->addIndexColumn()
-            ->addColumn(
+            ->editColumn(
+                'gambar',
+                function ($row) {
+                    $status = '';
+                    if ($row['gambar']) {
+                        $status = '<img src="' . $row['gambar'] . '" width="200px">';
+                    }
+                    return $status;
+                }
+            )
+            ->editColumn(
                 'status',
                 function ($row) {
-                    if($row['status']==0){
-                        return '<span class="badge badge-pill badge-danger p-2" style="font-size: 10pt; font-weight: 400">Tidak aktif</span>';
-                    }else{
-                        return '<span class="badge badge-pill badge-success p-2" style="font-size: 10pt; font-weight: 400">Aktif</span>';
+                    $status = '';
+                    if ($row['status'] == 0) {
+                        $status = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">tidak aktif</span>';
+                    } else
+                    if ($row['status'] == 1) {
+                        $status = '<span class="badge badge-success p-2 text-white" style="font-size: 10pt; font-weight: 400">aktif</span>';
                     }
-
+                    return $status;
                 }
             )
             ->addColumn(
@@ -45,16 +59,16 @@ class SlidefrontendController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['action', 'role'])
+            ->rawColumns(['gambar', 'status','action'])
             ->make(true);
     }
 
 
     public function index()
     {
-        abort_if(Gate::denies('slidefro ntend_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('slidefrontend_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('dashboard.slidefrontend.index');
+        return view('dashboard.datawebsite.slidefrontend.index');
     }
 
     /**
@@ -65,7 +79,7 @@ class SlidefrontendController extends Controller
     public function create()
     {
         abort_if(Gate::denies('slidefrontend_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.slidefrontend.create');
+        return view('dashboard.datawebsite.slidefrontend.create');
     }
 
     /**
@@ -80,25 +94,53 @@ class SlidefrontendController extends Controller
         abort_if(Gate::denies('slidefrontend_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $rules = [
-            'gambar' => 'required',
+            'slideImage' => 'required|mimes:jpg,jpeg,png|max:4096',
             'status' => 'required',
         ];
 
         $messages = [
-            'gambar.required' => 'Gambar wajib di isi!',
+            'slideImage.required' => 'Gambar wajib di isi!',
+            'slideImage.mimes' => 'Upload gambar hanya JPG atau PNG!',
+            'slideImage.max' => 'Gambar maksimal 4MB!',
             'status.required' => 'Status tidak boleh kosong!',
         ];
 
         $this->validate($request, $rules, $messages);
 
-        $slidefrontend = Slidefrontend::create($request->all());
+        // upload gambar
+        $extension = $request->file('slideImage')->getClientOriginalExtension();
+        $filenametostore = 'slider_' . time() . '.' . $extension;
+        // dd(public_path('assets/frontend/img/slider/') . $filenametostore);
+        $request->file('slideImage')->move(public_path('assets/frontend/img/slider'), $filenametostore);
 
-        if($request->has('roles')) {
-            $slidefrontend->assignRole($request->input('roles'));
+        if (!file_exists(public_path('assets/frontend/img/slider/crop'))) {
+            File::makeDirectory(public_path('assets/frontend/img/slider/crop/'), 0755, true);
+            // mkdir(public_path('assets/frontend/slider/crop'), 0755);
         }
 
-        return redirect()->route('dashboard.slidefrontend.index')->with(['success' => 'Slidefrontend created']);
+        // crop image
+        $img = Image::make(public_path('assets/frontend/img/slider/' . $filenametostore));
+        $croppath = public_path('assets/frontend/img/slider/crop/' . $filenametostore);
 
+        if ($request->input('w') && $request->input('h') && $request->input('x1') && $request->input('y1')) {
+            $img->crop($request->input('w'), $request->input('h'), $request->input('x1'), $request->input('y1'));
+            $img->save($croppath);
+
+            $path = asset('assets/frontend/img/slider/crop/' . $filenametostore);
+        } else {
+            $path = asset('assets/frontend/img/slider/' . $filenametostore);
+        }
+
+        $slidefrontend = new Slidefrontend();
+        $slidefrontend->gambar = $path;
+        $slidefrontend->judul  = $request->judul;
+        $slidefrontend->deskripsi = $request->deskripsi;
+        $slidefrontend->url = $request->url;
+        $slidefrontend->url_teks = $request->url_teks;
+        $slidefrontend->status = $request->status;
+        $slidefrontend->save();
+
+        return redirect()->route('dashboard.slidefrontend.index')->with(['success' => 'Berhasil menambahkan slide']);
     }
 
     /**

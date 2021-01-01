@@ -43,7 +43,7 @@ class JenisdokumenController extends Controller
     public function index()
     {
         abort_if(Gate::denies('jenisdokumen_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.jenisdokumen.index');
+        return view('dashboard.datamaster.jenisdokumen.index');
     }
 
     /**
@@ -110,7 +110,7 @@ class JenisdokumenController extends Controller
 
         $jenisdokumen = Jenisdokumen::where('id_jenisdokumen', $id)->first();
 
-        return view('dashboard.masterdata.jenisdokumen.edit', compact('jenisdokumen'));
+        return view('dashboard.datamaster.jenisdokumen.edit', compact('jenisdokumen'));
     }
 
     /**

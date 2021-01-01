@@ -7,6 +7,7 @@ use App\Models\CasisSd;
 use App\Models\CasisSma;
 use App\Models\CasisSmp;
 use App\Models\CasisTk;
+use App\Models\Slidefrontend;
 use App\Models\StatusCasis;
 use App\Models\StatusPendaftaran;
 use App\Models\Unit;
@@ -27,7 +28,9 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('frontend.index');
+        $slide = Slidefrontend::where('status', 1)->orderBy('created_at', 'ASC')->get();
+
+        return view('frontend.index', compact('slide'));
     }
 
     public function registerForm()

@@ -42,7 +42,7 @@ class KondisibelajarController extends Controller
     public function index()
     {
         abort_if(Gate::denies('kondisibelajar_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.kondisibelajar.index');
+        return view('dashboard.datamaster.kondisibelajar.index');
     }
 
     /**
@@ -110,7 +110,7 @@ class KondisibelajarController extends Controller
 
         $kondisibelajar = Kondisibelajar::where('id_kondisibelajar', $id)->first();
 
-        return view('dashboard.masterdata.kondisibelajar.edit', compact('kondisibelajar'));
+        return view('dashboard.datamaster.kondisibelajar.edit', compact('kondisibelajar'));
     }
 
     /**

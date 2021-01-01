@@ -42,7 +42,7 @@ class JarakController extends Controller
     public function index()
     {
         abort_if(Gate::denies('jarak_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.masterdata.jarak.index');
+        return view('dashboard.datamaster.jarak.index');
     }
 
     /**
@@ -110,7 +110,7 @@ class JarakController extends Controller
 
         $jarak = Jarak::where('id_jarak', $id)->first();
 
-        return view('dashboard.masterdata.jarak.edit', compact('jarak'));
+        return view('dashboard.datamaster.jarak.edit', compact('jarak'));
     }
 
     /**
@@ -140,7 +140,7 @@ class JarakController extends Controller
         $jarak->jarak = $request->jarak;
 
         if ($jarak->save()) {
-            return redirect()->route('dashboard.masterdata.jarak.index')->with(['success' => 'Data jarak berhasil diubah']);
+            return redirect()->route('dashboard.jarak.index')->with(['success' => 'Data jarak berhasil diubah']);
         } else {
             return back()->with(['error' => 'Data jarak gagal diubah']);
         }
