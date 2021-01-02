@@ -12,7 +12,9 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'PPDB Al-Fityan Kubu Raya',
+    'name' => 'PPDB Online Al-Fityan Kubu Raya',
+
+    'nama_sekolah' => 'Al-Fityan Kubu Raya',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +92,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id_ID',
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +105,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
