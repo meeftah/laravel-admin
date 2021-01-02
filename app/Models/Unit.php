@@ -37,4 +37,11 @@ class Unit extends Model
         $result = Unit::where('id_unit', $id)->first();
         return $result;
     }
+
+    // Mendapatkan data unit berdasarkan nama
+    public static function getDataByNama($nm_unit)
+    {
+        $result = Unit::where('nm_unit', $nm_unit)->first();
+        return $result;
+    }
 }
