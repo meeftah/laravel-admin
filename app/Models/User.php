@@ -54,23 +54,49 @@ class User extends Authenticatable
     // User Mendapatkan data status berdasarkan id nya
     public function getStatusCasisKu()
     {
+        $statusDefault = config('status_ppdb.calon_siswa.nonaktif');
+        $result = StatusCasis::getDataById(Auth::user()->getDataCasisKu()->id_status_casis)->status;
+
+        return $result ?? $statusDefault;
+    }
+
+    // User Mendapatkan data calon siswa berdasarkan id nya
+    public function getDataCasisKu()
+    {
         $idKu = Auth::user()->id;
-        $statusDefault = 'Non Aktif';
         if (Auth::user()->hasRole('Calon Siswa TK')) {
-            $dataKu = CasisTk::where('id_user', $idKu)->first();
+            $result = CasisTk::where('id_user', $idKu)->first();
         } else if (Auth::user()->hasRole('Calon Siswa SD')) {
-            $dataKu = CasisSd::where('id_user', $idKu)->first();
+            $result = CasisSd::where('id_user', $idKu)->first();
         } else if (Auth::user()->hasRole('Calon Siswa SMP')) {
-            $dataKu = CasisSmp::where('id_user', $idKu)->first();
+            $result = CasisSmp::where('id_user', $idKu)->first();
         } else {
-            $dataKu = CasisSma::where('id_user', $idKu)->first();
+            $result = CasisSma::where('id_user', $idKu)->first();
         }
 
-        if ($dataKu) {
-            $idStatusKu = $dataKu->id_status_casis;
-            $result = StatusCasis::getDataById($idStatusKu)->status ?? $statusDefault;
+        return $result;
+    }
+
+    // User Mendapatkan data va siswa berdasarkan id nya
+    public function getDataVaKu()
+    {
+        $idKu = Auth::user()->id;
+        if (Auth::user()->hasRole('Calon Siswa TK')) {
+            $dataKu = CasisTk::where('id_user', $idKu)->first();
+            $idVaKu = $dataKu->id_va_tk;
+            $result = VaTk::where('id_va_tk', $idVaKu)->first();
+        } else if (Auth::user()->hasRole('Calon Siswa SD')) {
+            $dataKu = CasisSd::where('id_user', $idKu)->first();
+            $idVaKu = $dataKu->id_va_sd;
+            $result = VaSd::where('id_va_sd', $idVaKu)->first();
+        } else if (Auth::user()->hasRole('Calon Siswa SMP')) {
+            $dataKu = CasisSmp::where('id_user', $idKu)->first();
+            $idVaKu = $dataKu->id_va_smp;
+            $result = VaSmp::where('id_va_smp', $idVaKu)->first();
         } else {
-            $result = $statusDefault;
+            $dataKu = CasisSma::where('id_user', $idKu)->first();
+            $idVaKu = $dataKu->id_va_sma;
+            $result = VaSma::where('id_va_sma', $idVaKu)->first();
         }
 
         return $result;
