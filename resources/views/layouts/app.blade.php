@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <!-- Required meta tags -->
@@ -10,14 +10,14 @@
     <meta name="twitter:site" content="@themepixels">
     <meta name="twitter:creator" content="@themepixels">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PPDB Al-Fityan Kubu Raya">
-    <meta name="twitter:description" content="Al-Fityan Kubu Raya">
+    <meta name="twitter:title" content="{{ config('app.nama_sekolah') }}">
+    <meta name="twitter:description" content="{{ config('app.name') }}">
     <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
 
     <!-- Facebook -->
     <meta property="og:url" content="http://themepixels.me/bracket">
     <meta property="og:title" content="Bracket">
-    <meta property="og:description" content="Al-Fityan Kubu Raya">
+    <meta property="og:description" content="{{ config('app.name') }}">
 
     <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
     <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
@@ -37,13 +37,13 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Meta -->
-    <meta name="description" content="Website PPDB Al-Fityan Kubu Raya">
+    <meta name="description" content="{{ config('app.name') }}">
     <meta name="author" content="Tj2OAOhE2wuAr8488hJaROOtpCt3Fr1AEaz+ZdO3Z8w=">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>PPDB Al-Fityan Kubu Raya | @yield('title')</title>
+    <title>{{ config('app.name') }} | @yield('title')</title>
 
     <!-- vendor css -->
     <link href="{{ asset('assets/dashboard/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
