@@ -16,7 +16,8 @@
     <div class="container">
         <div class="section-title-2 mb-75">
             <h2>Informasi <span>Penting !!!</span></h2>
-            <p>Pastikan nomor handphone dan email yang diinput merupakan nomor whatsApp dan email yang aktif,<br> untuk mendapatkan notifikasi pemberitahuan bahwa akun anda benar sudah terdaftar di sistem kami ^-^</p>
+            <p>Pastikan nomor handphone dan email yang diinput merupakan nomor whatsApp dan email yang aktif,<br> untuk
+                mendapatkan notifikasi pemberitahuan bahwa akun anda benar sudah terdaftar di sistem kami ^-^</p>
         </div>
         <div class="register-wrap">
             <div id="register-3" class="mouse-bg d-none d-md-block">
@@ -72,77 +73,100 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="form-control-label text-white">Pendaftaran:
                                     <span class="text-warning">*</span>
                                 </label>
-                                <select name="id_status_pendaftaran" class="form-control {{ $errors->has('id_status_pendaftaran') ? 'is-invalid' : '' }}">
-                                    <option value="" disabled selected>Pilih Pendaftaran</option>
-                                    @foreach ($statusPendaftaran as $item)
-                                    <option value="{{ $item->id_status_pendaftaran }}">
-                                        {{ strtoupper($item->status) }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @error('id_status_pendaftaran')
-                                <span class="text-warning" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label text-white">Unit:
-                                    <span class="text-warning">*</span>
-                                </label>
-                                <select name="id_unit" class="form-control {{ $errors->has('id_unit') ? 'is-invalid' : '' }}">
-                                    <option value="" disabled selected>Pilih Unit</option>
-                                    @foreach ($unit as $item)
-                                    <option value="{{ $item->id_unit }}">
-                                        {{ strtoupper($item->nm_unit) }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @error('id_unit')
-                                <span class="text-warning" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label text-white">Password: <span
-                                        class="text-warning">*</span></label>
-                                <input type="password"
-                                    class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                                    name="password" placeholder="Masukkan password minimal 6 karakter">
-                                @error('password')
-                                <span class="text-warning" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label text-white">Konfirmasi Password: <span
-                                        class="text-warning">*</span></label>
-                                <input type="password"
-                                    class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
-                                    name="password_confirmation" placeholder="Ulangi password">
-                                @error('password_confirmation')
-                                <span class="text-warning" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-layout-footer mt-4">
-                                <div class="contact-form-style">
-                                    <button class="submit default-btn" type="submit">D A F T A R</button>
-                                </div>
-                            </div>
-                        </form>
+                                <select name="id_status_pendaftaran"
+                                    class="form-control {{ $errors->has('id_status_pendaftaran') ? 'is-invalid' : '' }}">
+                            <option value="" disabled selected>Pilih Pendaftaran</option>
+                            @foreach ($statusPendaftaran as $item)
+                            <option value="{{ $item->id_status_pendaftaran }}">
+                                {{ strtoupper($item->status) }}
+                            </option>
+                            @endforeach
+                            </select>
+                            @error('id_status_pendaftaran')
+                            <span class="text-warning" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div> --}}
+                    <div class="form-group">
+                        <label class="form-control-label text-white">Unit:
+                            <span class="text-warning">*</span>
+                        </label>
+                        <select name="id_unit" id="id_unit"
+                            class="form-control {{ $errors->has('id_unit') ? 'is-invalid' : '' }}">
+                            <option value="" disabled selected>Pilih Unit</option>
+                            @foreach ($unit as $item)
+                            <option value="{{ $item->id_unit }}" {{ old('id_unit') == $item->id_unit ? 'selected' : '' }}>
+                                {{ strtoupper($item->nm_unit) }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('id_unit')
+                        <span class="text-warning" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
+                    <div id="pilihankelas" class="form-group">
+                        <label class="form-control-label text-white">Kelas:
+                            <span class="text-warning">*</span>
+                        </label>
+                        <select name="kelas" class="form-control {{ $errors->has('kelas') ? 'is-invalid' : '' }}">
+                            <option value="" disabled selected>Pilih Kelas</option>
+                            <option value="Play Group" {{ old('kelas') === 'Play Group' ? 'selected' : '' }}>
+                                Play Group (Usia 3-4 Tahun)
+                            </option>
+                            <option value="A" {{ old('kelas') === 'A' ? 'selected' : '' }}>
+                                Kelas A (Usia 4-5 Tahun)
+                            </option>
+                            <option value="B" {{ old('kelas') === 'B' ? 'selected' : '' }}>
+                                Kelas B (Usia 5-6 Tahun)
+                            </option>
+                        </select>
+                        @error('kelas')
+                        <span class="text-warning" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label text-white">Password: <span
+                                class="text-warning">*</span></label>
+                        <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+                            name="password" placeholder="Masukkan password minimal 6 karakter">
+                        @error('password')
+                        <span class="text-warning" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label text-white">Konfirmasi Password: <span
+                                class="text-warning">*</span></label>
+                        <input type="password"
+                            class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
+                            name="password_confirmation" placeholder="Ulangi password">
+                        @error('password_confirmation')
+                        <span class="text-warning" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-layout-footer mt-4">
+                        <div class="contact-form-style">
+                            <button class="submit default-btn" type="submit">D A F T A R</button>
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
 
@@ -151,8 +175,31 @@
     .section-title-2 h2 {
         color: #000 !important;
     }
+
     .section-title-2 p {
         color: crimson !important;
     }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        if($('#id_unit').val() === "{{ App\Models\Unit::getDataByNama('TKIT')->id_unit }}"){
+            $('#pilihankelas').show();
+        } else {
+            $('#pilihankelas').hide();
+        }
+
+        $('#id_unit').change(function(){
+            console.log($('#id_unit').val());
+            if($(this).val() === "{{ App\Models\Unit::getDataByNama('TKIT')->id_unit }}"){
+                $('#pilihankelas').show();
+            } else {
+                $('#pilihankelas').hide();
+                $("#kelas").val($("#target option:first").val());
+            }
+        });
+    });
+</script>
 @endpush
