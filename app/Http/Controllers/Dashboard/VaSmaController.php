@@ -121,9 +121,9 @@ class VaSmaController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $kodeBank    = config('va_config.kode_bank');
-        $kodeSekolah = config('va_config.kode_sekolah');
-        $kodeTP      = config('va_config.kode_tp');
+        $kodeBank    = config('va_config.bank.bni_syariah.kode_bank');
+        $kodeSekolah = config('va_config.bank.bni_syariah.kode_sekolah');
+        $kodeTP      = config('va_config.bank.bni_syariah.kode_tp');
         $kodeUnit    = Unit::where('nm_unit', 'SMAIT')->first()->kode_unit;
         $kodeNama    = 'PPDB SMA-';
 

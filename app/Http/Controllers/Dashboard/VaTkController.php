@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Unit;
-use App\Models\VaTK;
+use App\Models\VaTk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +14,7 @@ class VaTkController extends Controller
     public function datatableVaTkAPI()
     {
         // ambil semua data
-        $vatk = VaTK::orderBy('va', 'ASC')->get();
+        $vatk = VaTk::orderBy('va', 'ASC')->get();
 
         return datatables()->of($vatk)
             ->addIndexColumn()
@@ -121,9 +121,9 @@ class VaTkController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $kodeBank    = config('va_config.kode_bank');
-        $kodeSekolah = config('va_config.kode_sekolah');
-        $kodeTP      = config('va_config.kode_tp');
+        $kodeBank    = config('va_config.bank.bni_syariah.kode_bank');
+        $kodeSekolah = config('va_config.bank.bni_syariah.kode_sekolah');
+        $kodeTP      = config('va_config.bank.bni_syariah.kode_tp');
         $kodeUnit    = Unit::where('nm_unit', 'TKIT')->first()->kode_unit;
         $kodeNama    = 'PPDB TK-';
 
