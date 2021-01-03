@@ -29,9 +29,9 @@ class CasistkController extends Controller
                     $status = '';
                     if ($row['status'] == 0) {
                         $status = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">baru diferifikasi</span>';
-                    } if ($row['status'] == 1){
-
-                    }else
+                    }
+                    if ($row['status'] == 1) {
+                    } else
                     if ($row['status'] == 2) {
                         $status = '<span class="badge badge-success p-2 text-white" style="font-size: 10pt; font-weight: 400">data lengkap</span>';
                     }
@@ -43,19 +43,19 @@ class CasistkController extends Controller
                 function ($row) {
                     $btn = '';
                     if (auth()->user()->can('casistk_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.casistk.show', $row['id_casistk']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.casistk.show', $row['id_casis_tk']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
                     }
                     if (auth()->user()->can('casistk_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.casistk.edit', $row['id_casistk']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.casistk.edit', $row['id_casis_tk']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
                     if (auth()->user()->can('casistk_hapus')) {
-                        $btn   .= '<button type="button" id="' . $row['id_casistk'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                        $btn   .= '<button type="button" id="' . $row['id_casis_tk'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
                     }
 
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['created_at', 'status','action'])
+            ->rawColumns(['created_at', 'status', 'action'])
             ->make(true);
     }
     /**
@@ -67,7 +67,6 @@ class CasistkController extends Controller
     {
         abort_if(Gate::denies('casistk_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('dashboard.casis.tk.index');
-        //dashboard/calon-siswa/tk/create
     }
 
     /**
