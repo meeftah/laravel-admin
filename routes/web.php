@@ -22,6 +22,22 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::get('users/api', 'UsersController@datatableUsersAPI')->name('users.api');
     Route::resource('users', 'UsersController');
 
+    // Route Calon Siswa TK
+    Route::get('calon-siswa/tk/api', 'CasistkController@datatableCasistkAPI')->name('calon-siswa.tk.api');
+    Route::resource('calon-siswa/tk', 'CasistkController', ['names' => 'calon-siswa.tk']);
+
+    // Route Calon Siswa SD
+    Route::get('calon-siswa/sd/api', 'CasissdController@datatableCasissdAPI')->name('calon-siswa.sd.api');
+    Route::resource('calon-siswa/sd', 'CasissdController', ['names' => 'calon-siswa.sd']);
+
+    // Route Calon Siswa SMP
+    Route::get('calon-siswa/smp/api', 'CasissmpController@datatableCasissmpAPI')->name('calon-siswa.smp.api');
+    Route::resource('calon-siswa/smp', 'CasissmpController', ['names' => 'calon-siswa.smp']);
+
+    // Route Calon Siswa SMA
+    Route::get('calon-siswa/sma/api', 'CasissmaController@datatableCasissmaAPI')->name('calon-siswa.sma.api');
+    Route::resource('calon-siswa/sma', 'CasissmaController', ['names' => 'calon-siswa.sma']);
+
     // Route Penghasilan
     Route::get('penghasilan/api', 'PenghasilanController@datatablePenghasilanAPI')->name('penghasilan.api');
     Route::resource('penghasilan', 'PenghasilanController')->except(['create', 'show']);

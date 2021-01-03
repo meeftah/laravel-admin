@@ -62,11 +62,11 @@
         @endif
 
         {{-- Data Calon Siswa --}}
-        @if(auth()->user()->can('datacasistk_lihat') || auth()->user()->can('datacasissd_lihat') ||
-        auth()->user()->can('datacasissmp_lihat') || auth()->user()->can('datacasissma_lihat'))
+        @if(auth()->user()->can('casistk_lihat') || auth()->user()->can('casissd_lihat') ||
+        auth()->user()->can('casissmp_lihat') || auth()->user()->can('casissma_lihat'))
         <a href="javascript: void(0);"
-            class="br-menu-link {{ set_active([Request::is('dashboard/data/calon-siswa/tk*'), Request::is('dashboard/data/calon-siswa/sd*'), 
-            Request::is('dashboard/data/calon-siswa/smp*'), Request::is('dashboard/data/calon-siswa/sma*')], 'active show-sub') }}">
+            class="br-menu-link {{ set_active([Request::is('dashboard/calon-siswa/tk*'), Request::is('dashboard/calon-siswa/sd*'),
+            Request::is('dashboard/calon-siswa/smp*'), Request::is('dashboard/calon-siswa/sma*')], 'active show-sub') }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-people tx-24"></i>
                 <span class="menu-item-label">Data Calon Siswa</span>
@@ -74,11 +74,35 @@
             </div>
         </a>
         <ul class="br-menu-sub nav flex-column">
-            @can('datacasistk_lihat')
+            @can('casistk_lihat')
             <li class="nav-item">
-                <a href="{{ route('dashboard.data.casis.tk.index') }}"
-                    class="nav-link {{ set_active(Request::is('dashboard/data/calon-siswa/tk*')) }}">
-                    Pengguna
+                <a href="{{ route('dashboard.calon-siswa.tk.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/calon-siswa/tk*')) }}">
+                    TK
+                </a>
+            </li>
+            @endcan
+            @can('casissd_lihat')
+            <li class="nav-item">
+                <a href="{{ route('dashboard.calon-siswa.sd.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/calon-siswa/sd*')) }}">
+                    SD
+                </a>
+            </li>
+            @endcan
+            @can('casissmp_lihat')
+            <li class="nav-item">
+                <a href="{{ route('dashboard.calon-siswa.smp.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/calon-siswa/smp*')) }}">
+                    SMP
+                </a>
+            </li>
+            @endcan
+            @can('casissma_lihat')
+            <li class="nav-item">
+                <a href="{{ route('dashboard.calon-siswa.sma.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/calon-siswa/sma*')) }}">
+                    SMA
                 </a>
             </li>
             @endcan

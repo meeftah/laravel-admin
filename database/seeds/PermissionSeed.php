@@ -149,6 +149,34 @@ class PermissionSeed extends Seeder
             ['id' => '01001a8d-443b-44b6-be4f-000f4a953217', 'name' => 'vasma_tambah'],
             ['id' => '9dce27a2-23f7-442d-845e-d451b0bde8d9', 'name' => 'vasma_hapus'],
 
+            // ------------ Data Calon Siswa TKIT
+            ['id' => '708d122a-5d07-46ea-91ba-3c1da41dd9b3', 'name' => 'casistk_lihat'],
+            ['id' => '959030c8-4ed9-4e12-8fb2-bc4af21410fd', 'name' => 'casistk_detail'],
+            ['id' => '187f68e3-804d-48d4-ad52-2665cf469f1e', 'name' => 'casistk_ubah'],
+            ['id' => '8211a22e-95ed-44de-9328-8f138af51795', 'name' => 'casistk_tambah'],
+            ['id' => '7f4912be-433e-4572-aa72-6d2040b34da1', 'name' => 'casistk_hapus'],
+
+            // ------------  Calon Siswa SDIT
+            ['id' => '94405544-9f39-408d-b18d-782850f65c84', 'name' => 'casissd_lihat'],
+            ['id' => '087f9d1c-15ed-4f36-9fed-120087cc23f1', 'name' => 'casissd_detail'],
+            ['id' => '3bb84137-3d48-45b8-90c3-f04357504072', 'name' => 'casissd_ubah'],
+            ['id' => '0e39ed37-fcaf-4716-b7d2-f6f6c2b4f298', 'name' => 'casissd_tambah'],
+            ['id' => 'b3c3dffb-d0fe-4f4a-a355-880338c7612c', 'name' => 'casissd_hapus'],
+
+            // ------------  Calon Siswa SMPIT
+            ['id' => '30f095e3-a5ce-4dd6-a822-5772b8974347', 'name' => 'casissmp_lihat'],
+            ['id' => '4c8e111d-4fef-4dc7-b448-ae803b354cfe', 'name' => 'casissmp_detail'],
+            ['id' => '1d328f9b-f596-46b0-8923-f6ca7e2025fd', 'name' => 'casissmp_ubah'],
+            ['id' => '62976e5e-01f6-41e9-b462-f0fe5e845e53', 'name' => 'casissmp_tambah'],
+            ['id' => 'dea2982f-64ec-439c-83c6-d1979e42fb25', 'name' => 'casissmp_hapus'],
+
+            // ------------  Calon Siswa SAMIT
+            ['id' => '3e6ea741-f1f2-4926-a593-843a6053fe92', 'name' => 'casissma_lihat'],
+            ['id' => 'eada9683-aba9-4ab2-9f1c-9a3c9e8b91fd', 'name' => 'casissma_detail'],
+            ['id' => 'bc57510d-19b6-4074-9491-c2616394f07d', 'name' => 'casissma_ubah'],
+            ['id' => '0135d0fd-7396-4ab0-afc2-95600decc803', 'name' => 'casissma_tambah'],
+            ['id' => '111bf26d-b990-4281-bd4b-96370b729140', 'name' => 'casissma_hapus'],
+
             // FRONTEND
             // ------------ Slider
             ['id' => '365b008a-8856-436f-93d2-9f5269d40c75', 'name' => 'slidefrontend_lihat'],
