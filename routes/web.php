@@ -25,10 +25,12 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route Calon Siswa TK
     Route::get('calon-siswa/tk/api', 'CasisTkController@datatableCasistkAPI')->name('calon-siswa.tk.api');
     Route::resource('calon-siswa/tk', 'CasisTkController', ['names' => 'calon-siswa.tk']);
+    Route::post('calon-siswa/tk/update/status', 'CasisTkController@updateStatus')->name('calon-siswa.tk.update.status');
 
     // Route Calon Siswa SD
     Route::get('calon-siswa/sd/api', 'CasisSdController@datatableCasissdAPI')->name('calon-siswa.sd.api');
     Route::resource('calon-siswa/sd', 'CasisSdController', ['names' => 'calon-siswa.sd']);
+    Route::post('calon-siswa/sd/update/status', 'CasisSdController@updateStatus')->name('calon-siswa.sd.update.status');
 
     // Route Calon Siswa SMP
     Route::get('calon-siswa/smp/api', 'CasisSmpController@datatableCasissmpAPI')->name('calon-siswa.smp.api');
@@ -38,6 +40,7 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route Calon Siswa SMA
     Route::get('calon-siswa/sma/api', 'CasisSmaController@datatableCasissmaAPI')->name('calon-siswa.sma.api');
     Route::resource('calon-siswa/sma', 'CasisSmaController', ['names' => 'calon-siswa.sma']);
+    Route::post('calon-siswa/sma/update/status', 'CasisSmaController@updateStatus')->name('calon-siswa.sma.update.status');
 
     // Route Penghasilan
     Route::get('penghasilan/api', 'PenghasilanController@datatablePenghasilanAPI')->name('penghasilan.api');

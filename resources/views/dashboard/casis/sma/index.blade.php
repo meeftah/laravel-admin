@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Siswa SMA')
+@section('title', 'Data Siswa SMAIT')
 
 @section('breadcrumb')
 <div class="br-pageheader pd-y-15 pd-l-20">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-        <a class="breadcrumb-item" href="{{ route('dashboard.calon-siswa.sma.index') }}">Data Siswa SMA</a>
+        <a class="breadcrumb-item" href="{{ route('dashboard.calon-siswa.sma.index') }}">Data Siswa SMAIT</a>
     </nav>
 </div>
 @endsection
 
 @section('content-header')
 <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-    <h4 class="tx-gray-800 mg-b-5">Data Siswa SMA</h4>
-    <p class="mg-b-0">Daftar Data Siswa SMA</p>
+    <h4 class="tx-gray-800 mg-b-5">Data Siswa SMAIT</h4>
+    <p class="mg-b-0">Daftar Data Siswa SMAIT</p>
 </div>
 @endsection
 
@@ -43,12 +43,13 @@
                                 <th>No</th>
                                 <th>NAMA</th>
                                 <th>KODE VIRTUAL ACCOUNT</th>
-                                <th>TgK DAFTAR</th>
+                                <th>TGL DAFTAR</th>
                                 <th>STATUS</th>
-                                @if(auth()->user()->can('casissma_detail') || auth()->user()->can('casissma_ubah')
-                                ||
-                                auth()->user()->can('casissma_hapus'))
-                                <th width="150">AKSI</th>
+                                @if(auth()->user()->can('casissma_detail') ||
+                                auth()->user()->can('casissma_ubah') ||
+                                auth()->user()->can('casissma_hapus') ||
+                                auth()->user()->can('casissma_verifikasi'))
+                                <th width="200">AKSI</th>
                                 @endif
                             </tr>
                         </thead>
@@ -59,12 +60,18 @@
     </div>
 </div>
 @include('modals.delete')
+@include('modals.ubah-status')
 @endsection
 
 @push('styles')
 <link href="{{ asset('assets/dashboard/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/dashboard/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/dashboard/lib/select2/css/select2.min.css') }}" rel="stylesheet">
+<style>
+    .select2-container{
+        z-index:100000;
+    }
+</style>
 @endpush
 
 @push('scripts')
@@ -85,22 +92,59 @@
                 { data: 'id_casis_sma', name: 'id_casis_sma', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'nm_siswa', name: 'nm_siswa' },
-                { data: 'id_va_sma ', name: 'id_va_sma ' },
+                { data: 'va', name: 'va' },
                 { data: 'created_at', name: 'created_at' },
-                @if(auth()->user()->can('casissma_detail') || auth()->user()->can('casissma_ubah') || auth()->user()->can('casissma_hapus'))
+                { data: 'statuscasis', name: 'statuscasis' },
+                @if(auth()->user()->can('casissma_detail') || auth()->user()->can('casissma_ubah') || auth()->user()->can('casissma_hapus') || auth()->user()->can('casissma_verifikasi'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', width: 200, targets: [2] },
-                { className: 'text-center', width: 50, targets: [4] },
-                @if(auth()->user()->can('casissma_detail') || auth()->user()->can('casissma_ubah') || auth()->user()->can('casissma_hapus'))
-                { className: 'text-center', targets: [5] },
+                { className: 'text-center', width: 250, targets: [3] },
+                { className: 'text-center', width: 100, targets: [4] },
+                { className: 'text-center', width: 250, targets: [5] },
+                @if(auth()->user()->can('casissma_detail') || auth()->user()->can('casissma_ubah') || auth()->user()->can('casissma_hapus') || auth()->user()->can('casissma_verifikasi'))
+                { className: 'text-center', targets: [6] },
                 @endif
             ],
             order: [],
         });
+    });
+</script>
+<script>
+    var id_update;
+    $(document).on('click', '.btn-update-status', function(){
+        id_update = $(this).attr('id');
+        $('#update-status').modal('show');
+    });
+
+    $('#btn-update').click(function(){
+        if (!$.trim($('#id_status_casis').val())) {
+            console.log('kosong');
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('dashboard.calon-siswa.sma.update.status') }}",
+                headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
+                async: false,
+                cache: false,
+                dataType: 'json',
+                data: {
+                    id_casis_sma: id_update,
+                    id_status_casis: $('#id_status_casis').val(),
+                },
+                success:function(data){
+                    $('#update-status').modal('hide');
+                    $('#datatable-casissma').DataTable().ajax.reload();
+                    if (data.status == 'success') {
+                        toastr.success(data.message);
+                    } else {
+                        toastr.error(data.message);
+                    }
+                },
+            })
+        }
     });
 </script>
 <script>
@@ -112,7 +156,7 @@
 
     $('#delete-btn').click(function(){
         $.ajax({
-            url: 'casissma/' + id_delete,
+            url: 'sma/' + id_delete,
             type: 'POST',
             data: {
                 _method:'DELETE'

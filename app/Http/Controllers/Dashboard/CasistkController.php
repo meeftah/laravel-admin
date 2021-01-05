@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\CasisSd;
 use App\Models\CasisTk;
+use App\Models\StatusCasis;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 
 class CasisTkController extends Controller
@@ -13,7 +17,11 @@ class CasisTkController extends Controller
     public function datatableCasistkAPI()
     {
         // ambil semua data
-        $casistk = CasisTk::orderBy('created_at', 'ASC')->get();
+        $casistk = CasisTk::select('tbl_casis_tk.*', 'tbl_va_tk.va', 'tbl_status_casis.status AS statuscasis')
+            ->leftJoin('tbl_va_tk', 'tbl_va_tk.id_va_tk', '=', 'tbl_casis_tk.id_va_tk')
+            ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_tk.id_status_casis')
+            ->orderBy('tbl_casis_tk.created_at', 'ASC')
+            ->get();
 
         return datatables()->of($casistk)
             ->addIndexColumn()
@@ -24,16 +32,20 @@ class CasisTkController extends Controller
                 }
             )
             ->editColumn(
-                'status',
+                'statuscasis',
                 function ($row) {
                     $status = '';
-                    if ($row['status'] == 0) {
-                        $status = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">baru diferifikasi</span>';
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.terdaftar')) {
+                        $status = '<span class="badge badge-secondary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
-                    if ($row['status'] == 1) {
-                    } else
-                    if ($row['status'] == 2) {
-                        $status = '<span class="badge badge-success p-2 text-white" style="font-size: 10pt; font-weight: 400">data lengkap</span>';
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.terverifikasi')) {
+                        $status = '<span class="badge badge-info p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.datalengkap')) {
+                        $status = '<span class="badge badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.lulus')) {
+                        $status = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
                     return $status;
                 }
@@ -42,11 +54,14 @@ class CasisTkController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
+                    if (auth()->user()->can('casistk_verifikasi')) {
+                        $btn   .= '<button type="button" id="' . $row['id_casis_tk'] . '" class="btn-update-status btn btn-info btn-sm" title="UBAH STATUS"><i class="fa fa-check"></i></button> ';
+                    }
                     if (auth()->user()->can('casistk_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.casistk.show', $row['id_casis_tk']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.tk.show', $row['id_casis_tk']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
                     }
                     if (auth()->user()->can('casistk_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.casistk.edit', $row['id_casis_tk']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.tk.edit', $row['id_casis_tk']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
                     if (auth()->user()->can('casistk_hapus')) {
                         $btn   .= '<button type="button" id="' . $row['id_casis_tk'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
@@ -55,7 +70,7 @@ class CasisTkController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['created_at', 'status', 'action'])
+            ->rawColumns(['created_at', 'statuscasis', 'action'])
             ->make(true);
     }
     /**
@@ -66,7 +81,10 @@ class CasisTkController extends Controller
     public function index()
     {
         abort_if(Gate::denies('casistk_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.casis.tk.index');
+
+        $status_casis = StatusCasis::get();
+
+        return view('dashboard.casis.tk.index', compact('status_casis'));
     }
 
     /**
@@ -124,6 +142,32 @@ class CasisTkController extends Controller
         //
     }
 
+    public function updateStatus(Request $request)
+    {
+        abort_if(Gate::denies('casistk_verifikasi'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $casistk = CasisTk::where('id_casis_tk', $request->id_casis_tk)->first();
+        $casistk->id_status_casis = $request->id_status_casis;
+
+        if ($casistk->save()) {
+            // jika status di update ke terverifikasi
+            $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
+            if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
+                // kirim email verifikasi va
+                $to_name = User::getDataById($casistk->id_user)->username;
+                $to_email = User::getDataById($casistk->id_user)->email;
+                $data = array('username' => User::getDataById($casistk->id_user)->username);
+                Mail::send('dashboard.mail.verifikasiva', $data, function ($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)->subject('Verifikasi Akun Calon Siswa TK PPDB Online Al-Fityan Kubu Raya');
+                    $message->from('ppdbalfityankuburaya2021@gmail.com', 'PPDB Online Al-Fityan Kubu Raya');
+                });
+            }
+            return response()->json(['status' => 'success', 'message' => 'Status berhasil diubah']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Status gagal diubah']);
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -132,6 +176,18 @@ class CasisTkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('casissd_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $casissd = CasisSd::where('id_casis_sd', $id)->first();
+        $id_user = $casissd->id_user;
+
+        if ($casissd->delete()) {
+            $user = User::where('id', $id_user)->first();
+            $user->delete();
+
+            return response()->json(['status' => 'success', 'message' => 'Data calon siswa SD berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Data calon siswa SD gagal dihapus']);
+        }
     }
 }
