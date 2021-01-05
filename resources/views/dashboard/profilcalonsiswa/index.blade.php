@@ -480,7 +480,7 @@
                                     Olahraga (Minat / Bakat)
                                 </label>
                                 <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                    <input type="text" id="olahraga" name="olahraga" class="form-control"
+                                    <input type="text" id="olahraga" name="olahraga" class="form-control" style="text-transform:uppercase"
                                         value="{{ $casis->olahraga }}" placeholder="MINAT / BAKAT DI BIDANG OLAHRAGA">
                                 </div>
                             </div>
@@ -489,7 +489,7 @@
                                     Kesenian (Minat / Bakat)
                                 </label>
                                 <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                    <input type="text" id="kesenian" name="kesenian" class="form-control"
+                                    <input type="text" id="kesenian" name="kesenian" class="form-control" style="text-transform:uppercase"
                                         value="{{ $casis->kesenian }}" placeholder="MINAT / BAKAT DI BIDANG KESENIAN">
                                 </div>
                             </div>
@@ -499,7 +499,7 @@
                                 </label>
                                 <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                     <input type="text" id="hobby" name="hobby" class="form-control"
-                                        value="{{ $casis->hobby }}"
+                                        value="{{ $casis->hobby }}" style="text-transform:uppercase"
                                         placeholder="SEBUTKAN HOBBY DIPISAH DENGAN TANDA KOMA">
                                 </div>
                             </div>
@@ -508,7 +508,7 @@
                                     Penyakit Yang Pernah Diderita
                                 </label>
                                 <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                    <input type="text" id="penyakit" name="penyakit" class="form-control"
+                                    <input type="text" id="penyakit" name="penyakit" class="form-control" style="text-transform:uppercase"
                                         value="{{ $casis->penyakit }}" placeholder="PENYAKIT YANG PERNAH DIDERITA">
                                 </div>
                             </div>
@@ -1072,7 +1072,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <input type="file" id="kelas5semester1" name="kelas5semester1"
-                                        accept="image/jpeg, image/png">
+                                        accept="image/jpeg, image/png, application/pdf">
                                 </div>
                             </div>
                         </div>
@@ -1090,7 +1090,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <input type="file" id="kelas5semester2" name="kelas5semester2"
-                                        accept="image/jpeg, image/png">
+                                        accept="image/jpeg, image/png, application/pdf">
                                 </div>
                             </div>
                         </div>
@@ -1107,7 +1107,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <input type="file" id="kelas6semester1" name="kelas6semester1"
-                                        accept="image/jpeg, image/png">
+                                        accept="image/jpeg, image/png, application/pdf">
                                 </div>
                             </div>
                         </div>
@@ -1126,7 +1126,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <input type="file" id="kelas8semester1" name="kelas8semester1"
-                                        accept="image/jpeg, image/png">
+                                        accept="image/jpeg, image/png, application/pdf">
                                 </div>
                             </div>
                         </div>
@@ -1143,7 +1143,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <input type="file" id="kelas8semester2" name="kelas8semester2"
-                                        accept="image/jpeg, image/png">
+                                        accept="image/jpeg, image/png, application/pdf">
                                 </div>
                             </div>
                         </div>
@@ -1160,7 +1160,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <input type="file" id="kelas9semester1" name="kelas9semester1"
-                                        accept="image/jpeg, image/png">
+                                        accept="image/jpeg, image/png, application/pdf">
                                 </div>
                             </div>
                         </div>
