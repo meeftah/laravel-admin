@@ -43,12 +43,12 @@
                                 <th>No</th>
                                 <th>NAMA</th>
                                 <th>KODE VIRTUAL ACCOUNT</th>
-                                <th>TgK DAFTAR</th>
+                                <th>TGL DAFTAR</th>
                                 <th>STATUS</th>
-                                @if(auth()->user()->can('casissmp_detail') || auth()->user()->can('casissmp_ubah')
-                                ||
+                                @if(auth()->user()->can('casissmp_detail') ||
+                                auth()->user()->can('casissmp_ubah') ||
                                 auth()->user()->can('casissmp_hapus'))
-                                <th width="150">AKSI</th>
+                                <th width="200">AKSI</th>
                                 @endif
                             </tr>
                         </thead>
@@ -59,12 +59,18 @@
     </div>
 </div>
 @include('modals.delete')
+@include('modals.ubah-status')
 @endsection
 
 @push('styles')
 <link href="{{ asset('assets/dashboard/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/dashboard/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/dashboard/lib/select2/css/select2.min.css') }}" rel="stylesheet">
+<style>
+    .select2-container{
+        z-index:100000;
+    }
+</style>
 @endpush
 
 @push('scripts')
@@ -85,22 +91,59 @@
                 { data: 'id_casis_smp', name: 'id_casis_smp', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'nm_siswa', name: 'nm_siswa' },
-                { data: 'id_va_smp ', name: 'id_va_smp ' },
+                { data: 'va', name: 'va' },
                 { data: 'created_at', name: 'created_at' },
+                { data: 'statuscasis', name: 'statuscasis' },
                 @if(auth()->user()->can('casissmp_detail') || auth()->user()->can('casissmp_ubah') || auth()->user()->can('casissmp_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', width: 200, targets: [2] },
-                { className: 'text-center', width: 50, targets: [4] },
+                { className: 'text-center', width: 250, targets: [3] },
+                { className: 'text-center', width: 100, targets: [4] },
+                { className: 'text-center', width: 250, targets: [5] },
                 @if(auth()->user()->can('casissmp_detail') || auth()->user()->can('casissmp_ubah') || auth()->user()->can('casissmp_hapus'))
-                { className: 'text-center', targets: [5] },
+                { className: 'text-center', targets: [6] },
                 @endif
             ],
             order: [],
         });
+    });
+</script>
+<script>
+    var id_update;
+    $(document).on('click', '.btn-update-status', function(){
+        id_update = $(this).attr('id');
+        $('#update-status').modal('show');
+    });
+
+    $('#btn-update').click(function(){
+        if (!$.trim($('#id_status_casis').val())) {
+            console.log('kosong');
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('dashboard.calon-siswa.smp.update.status') }}",
+                headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
+                async: false,
+                cache: false,
+                dataType: 'json',
+                data: {
+                    id_casis_smp: id_update,
+                    id_status_casis: $('#id_status_casis').val(),
+                },
+                success:function(data){
+                    $('#update-status').modal('hide');
+                    $('#datatable-casissmp').DataTable().ajax.reload();
+                    if (data.status == 'success') {
+                        toastr.success(data.message);
+                    } else {
+                        toastr.error(data.message);
+                    }
+                },
+            })
+        }
     });
 </script>
 <script>
@@ -112,7 +155,7 @@
 
     $('#delete-btn').click(function(){
         $.ajax({
-            url: 'casissmp/' + id_delete,
+            url: 'smp/' + id_delete,
             type: 'POST',
             data: {
                 _method:'DELETE'
