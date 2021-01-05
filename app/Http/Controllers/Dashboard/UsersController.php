@@ -156,11 +156,11 @@ class UsersController extends Controller
 
         $user = User::create($request->all());
 
-        if ($request->has('roles')) {
-            $user->assignRole($request->input('roles'));
+        if ($request->has('role')) {
+            $user->assignRole($request->input('role'));
         }
 
-        return redirect()->route('dashboard.manajemenuser.users.index')->with(['success' => 'User created']);
+        return redirect()->route('dashboard.users.index')->with(['success' => 'User created']);
     }
 
 

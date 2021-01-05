@@ -47,6 +47,18 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label class="form-control-label">No HP/Whatsapp: <span class="tx-danger">*</span></label>
+                        <input class="form-control {{ $errors->has('nohp') ? 'is-invalid' : '' }}" type="text"
+                            name="nohp" placeholder="Masukkan Nomor HP/Whatsapp dengan benar"
+                            value="{{ old('nohp', null) }}" minlength="11" maxlength="13"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        @error('nohp')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label class="form-control-label">Password: <span class="tx-danger">*</span></label>
                         <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
                             name="password" placeholder="Masukkan password minimal 6 karakter">
