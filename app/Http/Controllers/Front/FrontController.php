@@ -44,7 +44,7 @@ class FrontController extends Controller
     public function register(Request $request)
     {
         $rules = [
-            'username' => 'required|min:3|unique:users,username',
+            'username' => 'required|min:3|alpha_dash|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'nohp' => 'required|min:11|max:13|unique:users,nohp',
             'password' => 'required|confirmed|min:6',
@@ -53,8 +53,9 @@ class FrontController extends Controller
         ];
 
         $messages = [
-            'username.required' => 'Kolom Nama wajib diisi!',
-            'username.min' => 'Kolom Nama minimal 3 karakter!',
+            'username.required' => 'Kolom Username wajib diisi!',
+            'username.min' => 'Kolom Username minimal 3 karakter!',
+            'username.alpha_dash' => 'Kolom Username harus huruf kecil dan tidak boleh ada spasi, garis bawah (_), tanda pisah (-)!',
             'username.unique' => 'Username sudah dipakai, silakan pilih username lain!',
             'email.required' => 'Kolom Email wajib diisi!',
             'email.email' => 'Format Email tidak sesuai!',
