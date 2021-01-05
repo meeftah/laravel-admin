@@ -17,6 +17,9 @@ use App\Models\VaSd;
 use App\Models\VaSma;
 use App\Models\VaSmp;
 use App\Models\VaTk;
+use App\Rules\MustLowercase;
+use App\Rules\NoDash;
+use App\Rules\WithoutSpaces;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -44,7 +47,7 @@ class FrontController extends Controller
     public function register(Request $request)
     {
         $rules = [
-            'username' => 'required|min:3|alpha_dash|unique:users,username',
+            'username'  => ['required', 'min:3', 'unique:users,username', new WithoutSpaces('Kolom Username tidak boleh ada spasi!'), new NoDash('Kolom Username tidak boleh menggunakan tanda pisah (-)!'), new MustLowercase('Kolom Username harus menggunakan huruf kecil!')],
             'email' => 'required|email|unique:users,email',
             'nohp' => 'required|min:11|max:13|unique:users,nohp',
             'password' => 'required|confirmed|min:6',
@@ -55,7 +58,6 @@ class FrontController extends Controller
         $messages = [
             'username.required' => 'Kolom Username wajib diisi!',
             'username.min' => 'Kolom Username minimal 3 karakter!',
-            'username.alpha_dash' => 'Kolom Username harus huruf kecil dan tidak boleh ada spasi, garis bawah (_), tanda pisah (-)!',
             'username.unique' => 'Username sudah dipakai, silakan pilih username lain!',
             'email.required' => 'Kolom Email wajib diisi!',
             'email.email' => 'Format Email tidak sesuai!',

@@ -9,6 +9,9 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use App\Rules\MustLowercase;
+use App\Rules\NoDash;
+use App\Rules\WithoutSpaces;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,7 +26,7 @@ class UsersController extends Controller
         if (Auth::user()->hasRole('superadmin')) {
             $users = User::orderBy('created_at', 'ASC')->get();
         } else {
-            $users = User::whereHas('roles', function($q){
+            $users = User::whereHas('roles', function ($q) {
                 $rolesNot = ['Calon Siswa TK', 'Calon Siswa SD', 'Calon Siswa SMP', 'Calon Siswa SMA'];
                 $q->whereNotIn('name', $rolesNot);
             })->orderBy('created_at', 'ASC')->get();
@@ -125,7 +128,7 @@ class UsersController extends Controller
         abort_if(Gate::denies('users_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $rules = [
-            'username'  => 'required|min:3|alpha_dash|unique:users,username',
+            'username'  => ['required', 'min:3', 'unique:users,username', new WithoutSpaces('Kolom Username tidak boleh ada spasi!'), new NoDash('Kolom Username tidak boleh menggunakan tanda pisah (-)!'), new MustLowercase('Kolom Username harus menggunakan huruf kecil!')],
             'email'     => 'required|email|unique:users,email',
             'nohp'      => 'required|min:11|max:13|unique:users,nohp',
             'password'  => 'required|confirmed|min:6',
@@ -134,21 +137,20 @@ class UsersController extends Controller
         ];
 
         $messages = [
-            'username.required'     => 'Kolom Username wajib diisi!',
-            'username.min'          => 'Kolom Username minimal 3 karakter!',
-            'username.alpha_dash'   => 'Kolom Username harus huruf kecil dan tidak boleh ada spasi, garis bawah (_), tanda pisah (-)!',
-            'username.unique'       => 'Username sudah dipakai, silakan pilih username lain!',
-            'email.required'        => 'Kolom Email wajib diisi!',
-            'email.email'           => 'Format Email tidak sesuai!',
-            'email.unique'          => 'Email sudah terdaftar, silakan pilih email yang lain!',
-            'nohp.required'         => 'No Whatsapp wajib diisi!',
-            'nohp.min'              => 'No Whatsapp minimal 11 digit!',
-            'nohp.max'              => 'No Whatsapp maksimal 13 digit!',
-            'nohp.unique'           => 'No Whatsapp sudah terdaftar, silakan pilih nomor yang lain!',
-            'password.required'     => 'Kolom Password wajib diisi!',
-            'password.confirmed'    => 'Kolom Password tidak sama dengan Konfirmasi Password!',
-            'password.min'          => 'Kolom Password minimal 6 karakter!',
-            'role.required'         => 'Wajib pilih peran!',
+            'username.required'         => 'Kolom Username wajib diisi!',
+            'username.min'              => 'Kolom Username minimal 3 karakter!',
+            'username.unique'           => 'Username sudah dipakai, silakan pilih username lain!',
+            'email.required'            => 'Kolom Email wajib diisi!',
+            'email.email'               => 'Format Email tidak sesuai!',
+            'email.unique'              => 'Email sudah terdaftar, silakan pilih email yang lain!',
+            'nohp.required'             => 'No Whatsapp wajib diisi!',
+            'nohp.min'                  => 'No Whatsapp minimal 11 digit!',
+            'nohp.max'                  => 'No Whatsapp maksimal 13 digit!',
+            'nohp.unique'               => 'No Whatsapp sudah terdaftar, silakan pilih nomor yang lain!',
+            'password.required'         => 'Kolom Password wajib diisi!',
+            'password.confirmed'        => 'Kolom Password tidak sama dengan Konfirmasi Password!',
+            'password.min'              => 'Kolom Password minimal 6 karakter!',
+            'role.required'             => 'Wajib pilih peran!',
             // 'id_status_pendaftaran.required' => 'Wajib pilih pendaftaran!',
         ];
 
