@@ -969,6 +969,23 @@
                             </button>
                         </div> --}}
                         <div>
+                            <h4 class="card-title">Foto <span class="text-danger">*</span></h4>
+                            <h6 class="card-subtitle text-dark mb-2">Scan Foto 4x6</h6>
+                            <div class="input-group">
+                                <div class="input-group-prepend mr-2">
+                                    <a href="{{ $casis->foto ? url('/' . $casis->foto) : '' }}" id="link_foto"
+                                        class="btn btn-primary @if(empty($casis->foto)) disabled @endif"
+                                        target="_blank">
+                                        LIHAT
+                                    </a>
+                                </div>
+                                <div class="mt-2">
+                                    <input type="file" id="foto" name="foto"
+                                        accept="image/jpeg, image/png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5">
                             <h4 class="card-title">KTP Ayah <span class="text-danger">*</span></h4>
                             <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan KTP / SIM /
                                 Paspor ayah calon siswa</h6>
@@ -1274,6 +1291,10 @@
             }
         });
 
+        $('#foto').change(function () {
+            var file_data = $(this)[0].files[0];
+            uploadFile('foto', file_data, 'Foto');
+        });
         $('#ktp_ayah').change(function () {
             var file_data = $(this)[0].files[0];
             uploadFile('ktp_ayah', file_data, 'KTP Ayah');
@@ -1364,15 +1385,18 @@
         var no_kps = $('#no_kps').val() == 'YA' ? $('#no_kps_ket').val() : $('#no_kps').val() == 'TIDAK' ? 'TIDAK' : '';
         var no_kip = $('#no_kip').val() == 'YA' ? $('#no_kip_ket').val() : $('#no_kip').val() == 'TIDAK' ? 'TIDAK' : '';
 
-        console.log($('#yatim_piatu').val());
-
         $.ajax({
             type: 'POST',
             url: "{{ route('dashboard.calonsiswa.profil.update.biodata') }}",
             headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
-            async: false,
             cache: false,
             dataType: 'json',
+            beforeSend: function(){
+                $("#overlay").fadeIn(300);
+            },
+            complete: function(){
+                $("#overlay").fadeOut(300);
+            },
             data: {
                 @hasanyrole('Calon Siswa SMP|Calon Siswa SMA')
                 nisn: $('#nisn').val(),
@@ -1435,9 +1459,14 @@
             type: 'POST',
             url: "{{ route('dashboard.calonsiswa.profil.update.dataortu') }}",
             headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
-            async: false,
             cache: false,
             dataType: 'json',
+            beforeSend: function(){
+                $("#overlay").fadeIn(300);
+            },
+            complete: function(){
+                $("#overlay").fadeOut(300);
+            },
             data: {
                 nm_ayah: $('#nm_ayah').val(),
                 nik_ayah: $('#nik_ayah').val(),
@@ -1484,13 +1513,23 @@
             headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
             processData: false,
             contentType: false,
-            async: false,
             cache: false,
             dataType: 'json',
             data: form_data,
+            beforeSend: function(){
+                $("#overlay").fadeIn(300);
+            },
+            complete: function(){
+                $("#overlay").fadeOut(300);
+            },
             success: function (result) {
                 if (result.status) {
                     // -------- perbaharui data preview file
+                    if (file_name === 'foto') {
+                        $('#link_foto')
+                            .attr('href', "{{ url('/') . '/' }}" + result.file)
+                            .removeClass('disabled');
+                    }
                     if (file_name === 'ktp_ayah') {
                         $('#link_ktp_ayah')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
