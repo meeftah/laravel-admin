@@ -18,4 +18,11 @@ class Kondisibelajar extends Model
         'kode',
         'kondisibelajar'
     ];
+
+    // Mendapatkan data kondisi belajar berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Kondisibelajar::where('id_kondisibelajar', $id)->first();
+        return $result;
+    }
 }

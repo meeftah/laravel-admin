@@ -18,4 +18,11 @@ class Transportasi extends Model
         'kode',
         'transportasi'
     ];
+
+    // Mendapatkan data transportasi berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Transportasi::where('id_transportasi', $id)->first();
+        return $result;
+    }
 }

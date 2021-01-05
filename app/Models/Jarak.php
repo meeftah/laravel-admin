@@ -18,4 +18,11 @@ class Jarak extends Model
         'kode',
         'jarak'
     ];
+
+    // Mendapatkan data jaral berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Jarak::where('id_jarak', $id)->first();
+        return $result;
+    }
 }

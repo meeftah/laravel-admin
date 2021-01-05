@@ -12,4 +12,11 @@ class Waktutmph extends Model
         'kode',
         'waktutmph'
     ];
+
+    // Mendapatkan data agama berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Waktutmph::where('id_waktutmph', $id)->first();
+        return $result;
+    }
 }

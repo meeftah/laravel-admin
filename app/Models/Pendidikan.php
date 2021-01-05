@@ -14,4 +14,12 @@ class Pendidikan extends Model
         'kode',
         'pendidikan'
     ];
+
+    // Mendapatkan data pendidikan berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Pendidikan::where('id_pendidikan', $id)->first();
+        return $result;
+    }
+       
 }

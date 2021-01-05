@@ -18,4 +18,11 @@ class Pekerjaan extends Model
         'kode',
         'pekerjaan'
     ];
+
+    // Mendapatkan data pekerjaan berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Pekerjaan::where('id_pekerjaan', $id)->first();
+        return $result;
+    }
 }

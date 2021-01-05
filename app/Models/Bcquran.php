@@ -18,4 +18,11 @@ class Bcquran extends Model
         'kode',
         'bcquran'
     ];
+
+    // Mendapatkan data kemampuan baca al-qur'an berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Bcquran::where('id_bcquran', $id)->first();
+        return $result;
+    }
 }
