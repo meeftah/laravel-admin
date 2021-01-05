@@ -140,6 +140,34 @@ class RoleSeed extends Seeder
             'vasma_tambah',
             'vasma_hapus',
 
+            // ------------ Calon Siswa TKIT
+            'casistk_lihat',
+            'casistk_detail',
+            'casistk_ubah',
+            'casistk_tambah',
+            'casistk_hapus',
+
+            // ------------ Calon Siswa SDIT
+            'casissd_lihat',
+            'casissd_detail',
+            'casissd_ubah',
+            'casissd_tambah',
+            'casissd_hapus',
+
+            // ------------ Calon Siswa SMPIT
+            'casissmp_lihat',
+            'casissmp_detail',
+            'casissmp_ubah',
+            'casissmp_tambah',
+            'casissmp_hapus',
+
+            // ------------ Calon Siswa SMAIT
+            'casissma_lihat',
+            'casissma_detail',
+            'casissma_ubah',
+            'casissma_tambah',
+            'casissma_hapus',
+
             // FRONTEND
             // ------------ Slider
             'slidefrontend_lihat',

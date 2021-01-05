@@ -38,9 +38,9 @@
                     </span>
                     @enderror
                     <div class="alert alert-warning alert-block mt-3">
-                        <strong>
-                            Upload File JPG / PNG, maksimal 4MB
-                        </strong>
+                        <p>
+                            jenis JPG / PNG, maksimal 4MB & dimentions 1920 X 857
+                        </p>
                     </div>
                     <input type="hidden" name="x1" value="" />
                     <input type="hidden" name="y1" value="" />
@@ -130,29 +130,29 @@
 <script>
     $(document).ready(function () {
         'use strict';
-        
+
         $('.select2').select2({
             minimumResultsForSearch: Infinity
         });
 
         var p = $("#previewimage");
- 
+
         $("body").on("change", "#slideImage", function(){
             var imageReader = new FileReader();
             imageReader.readAsDataURL(document.querySelector("#slideImage").files[0]);
- 
+
             imageReader.onload = function (oFREvent) {
                 p.attr('src', oFREvent.target.result).fadeIn();
             };
         });
- 
+
         $('#previewimage').imgAreaSelect({
             aspectRatio : '16:7',
             onSelectEnd: function (img, selection) {
                 $('input[name="x1"]').val(selection.x1);
                 $('input[name="y1"]').val(selection.y1);
                 $('input[name="w"]').val(selection.width);
-                $('input[name="h"]').val(selection.height);            
+                $('input[name="h"]').val(selection.height);
             }
         });
     });
