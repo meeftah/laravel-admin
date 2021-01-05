@@ -17,7 +17,17 @@ class UsersController extends Controller
     public function datatableUsersAPI()
     {
         // ambil semua data
-        $users = User::orderBy('created_at', 'ASC')->get();
+        // jika user mempunyai peran superadmin maka dapat melihat semua data pengguna
+        // namun jika bukan, namun mempunyai akses manajemen user maka tidak menampilkan
+        // pengguna yang mempunyai peran calon siswa
+        if (Auth::user()->hasRole('superadmin')) {
+            $users = User::orderBy('created_at', 'ASC')->get();
+        } else {
+            $users = User::whereHas('roles', function($q){
+                $rolesNot = ['Calon Siswa TK', 'Calon Siswa SD', 'Calon Siswa SMP', 'Calon Siswa SMA'];
+                $q->whereNotIn('name', $rolesNot);
+            })->orderBy('created_at', 'ASC')->get();
+        }
 
         return datatables()->of($users)
             ->addIndexColumn()
