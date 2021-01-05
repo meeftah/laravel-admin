@@ -101,9 +101,9 @@
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', width: 250, targets: [3] },
+                { className: 'text-center', width: 180, targets: [3] },
                 { className: 'text-center', width: 100, targets: [4] },
-                { className: 'text-center', width: 250, targets: [5] },
+                { className: 'text-center', width: 200, targets: [5] },
                 @if(auth()->user()->can('casistk_detail') || auth()->user()->can('casistk_ubah') || auth()->user()->can('casistk_hapus') || auth()->user()->can('casistk_verifikasi'))
                 { className: 'text-center', targets: [6] },
                 @endif
@@ -127,15 +127,21 @@
                 type: 'POST',
                 url: "{{ route('dashboard.calon-siswa.tk.update.status') }}",
                 headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
-                async: false,
                 cache: false,
                 dataType: 'json',
                 data: {
                     id_casis_tk: id_update,
                     id_status_casis: $('#id_status_casis').val(),
                 },
+                beforeSend: function(){
+                    $("#overlay").fadeIn(300);
+                },
+                complete: function(){
+                    $("#overlay").fadeOut(300);
+                },
                 success:function(data){
                     $('#update-status').modal('hide');
+                    $('#id_status_casis').val(1).trigger('change.select2');
                     $('#datatable-casistk').DataTable().ajax.reload();
                     if (data.status == 'success') {
                         toastr.success(data.message);
@@ -158,11 +164,13 @@
         $.ajax({
             url: 'tk/' + id_delete,
             type: 'POST',
-            data: {
-                _method:'DELETE'
+            headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
+            data: {_method:'DELETE'},
+            beforeSend: function(){
+                $("#overlay").fadeIn(300);
             },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            complete: function(){
+                $("#overlay").fadeOut(300);
             },
             success:function(data){
                 $('#confirm-delete').modal('hide');
