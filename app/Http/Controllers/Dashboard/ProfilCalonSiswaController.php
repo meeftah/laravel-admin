@@ -311,17 +311,46 @@ class ProfilCalonSiswaController extends Controller
         abort_if(Gate::denies('profilcalonsiswa_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if (Auth::user()->hasRole('Calon Siswa TK')) {
-            $idCasis = CasisTk::where('id_user', Auth::user()->id)->first()->id_casis_tk;
+            $calonSiswa = CasisTk::where('id_user', Auth::user()->id)->first();
+
+            // ---------- Foto Calon Siswa
+            if ($request->hasFile('foto')) {
+                // cek apakah ada upload foto sebelumnya? jika ada maka update, jika tidak maka input baru
+                if (Storage::disk('casis')->exists($calonSiswa->foto)) {
+                    Storage::disk('casis')->delete($calonSiswa->foto);
+                }
+
+                // upload file
+                $img = $request->file('foto');
+                $image = Image::make($img->getRealPath());
+                $fileName = Auth::user()->getDataVaKu()->va . '_foto' . '.' . $img->getClientOriginalExtension();
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                if ($upload) {
+                    $calonSiswa->foto = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                    $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                }
+
+                if ($calonSiswa->save()) {
+                    return json_encode(array(
+                        'status' => true,
+                        'file' => $file
+                    ));
+                } else {
+                    return json_encode(array(
+                        'status' => false,
+                    ));
+                };
+            }
 
             // ---------- KTP AYAH
             if ($request->hasFile('ktp_ayah')) {
                 // cek apakah ada upload file ktp ayah sebelumnya? jika ada maka update, jika tidak maka input baru
-                $updateKTPAyah = Dokumentk::where('id_casis_tk', $idCasis)
+                $updateKTPAyah = Dokumentk::where('id_casis_tk', $calonSiswa->id_casis_tk)
                     ->where('id_jenisdokumen_tk', '7dfc0b93-dfba-4988-a9c8-b4039210c045')
                     ->first();
                 if (!$updateKTPAyah) {
                     $updateKTPAyah = new Dokumentk();
-                    $updateKTPAyah->id_casis_tk = $idCasis;
+                    $updateKTPAyah->id_casis_tk = $calonSiswa->id_casis_tk;
                     $updateKTPAyah->id_jenisdokumen_tk = '7dfc0b93-dfba-4988-a9c8-b4039210c045';
                 }
 
@@ -354,12 +383,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- KTP IBU
             if ($request->hasFile('ktp_ibu')) {
-                $updateKTPIbu = Dokumentk::where('id_casis_tk', $idCasis)
+                $updateKTPIbu = Dokumentk::where('id_casis_tk', $calonSiswa->id_casis_tk)
                     ->where('id_jenisdokumen_tk', '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5')
                     ->first();
                 if (!$updateKTPIbu) {
                     $updateKTPIbu = new Dokumentk();
-                    $updateKTPIbu->id_casis_tk = $idCasis;
+                    $updateKTPIbu->id_casis_tk = $calonSiswa->id_casis_tk;
                     $updateKTPIbu->id_jenisdokumen_tk = '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5';
                 }
 
@@ -392,12 +421,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Kartu Keluarga
             if ($request->hasFile('kk')) {
-                $updateKK = Dokumentk::where('id_casis_tk', $idCasis)
+                $updateKK = Dokumentk::where('id_casis_tk', $calonSiswa->id_casis_tk)
                     ->where('id_jenisdokumen_tk', '0ca3c7f4-5262-40c1-b2b5-4a375553daa0')
                     ->first();
                 if (!$updateKK) {
                     $updateKK = new Dokumentk();
-                    $updateKK->id_casis_tk = $idCasis;
+                    $updateKK->id_casis_tk = $calonSiswa->id_casis_tk;
                     $updateKK->id_jenisdokumen_tk = '0ca3c7f4-5262-40c1-b2b5-4a375553daa0';
                 }
 
@@ -430,12 +459,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Akte Lahir
             if ($request->hasFile('akte')) {
-                $updateAkte = Dokumentk::where('id_casis_tk', $idCasis)
+                $updateAkte = Dokumentk::where('id_casis_tk', $calonSiswa->id_casis_tk)
                     ->where('id_jenisdokumen_tk', 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd')
                     ->first();
                 if (!$updateAkte) {
                     $updateAkte = new Dokumentk();
-                    $updateAkte->id_casis_tk = $idCasis;
+                    $updateAkte->id_casis_tk = $calonSiswa->id_casis_tk;
                     $updateAkte->id_jenisdokumen_tk = 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd';
                 }
 
@@ -468,12 +497,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Surat Keterangan Dokter
             if ($request->hasFile('skd')) {
-                $updateSkd = Dokumentk::where('id_casis_tk', $idCasis)
+                $updateSkd = Dokumentk::where('id_casis_tk', $calonSiswa->id_casis_tk)
                     ->where('id_jenisdokumen_tk', '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3')
                     ->first();
                 if (!$updateSkd) {
                     $updateSkd = new Dokumentk();
-                    $updateSkd->id_casis_tk = $idCasis;
+                    $updateSkd->id_casis_tk = $calonSiswa->id_casis_tk;
                     $updateSkd->id_jenisdokumen_tk = '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3';
                 }
 
@@ -504,16 +533,45 @@ class ProfilCalonSiswaController extends Controller
                 };
             }
         } else if (Auth::user()->hasRole('Calon Siswa SD')) {
-            $idCasis = CasisSd::where('id_user', Auth::user()->id)->first()->id_casis_sd;
+            $calonSiswa = CasisSd::where('id_user', Auth::user()->id)->first();
+
+            // ---------- Foto Calon Siswa
+            if ($request->hasFile('foto')) {
+                // cek apakah ada upload foto sebelumnya? jika ada maka update, jika tidak maka input baru
+                if (Storage::disk('casis')->exists($calonSiswa->foto)) {
+                    Storage::disk('casis')->delete($calonSiswa->foto);
+                }
+
+                // upload file
+                $img = $request->file('foto');
+                $image = Image::make($img->getRealPath());
+                $fileName = Auth::user()->getDataVaKu()->va . '_foto' . '.' . $img->getClientOriginalExtension();
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                if ($upload) {
+                    $calonSiswa->foto = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                    $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                }
+
+                if ($calonSiswa->save()) {
+                    return json_encode(array(
+                        'status' => true,
+                        'file' => $file
+                    ));
+                } else {
+                    return json_encode(array(
+                        'status' => false,
+                    ));
+                };
+            }
 
             // ---------- KTP AYAH
             if ($request->hasFile('ktp_ayah')) {
-                $updateKTPAyah = Dokumensd::where('id_casis_sd', $idCasis)
+                $updateKTPAyah = Dokumensd::where('id_casis_sd', $calonSiswa->id_casis_sd)
                     ->where('id_jenisdokumen_sd', '7dfc0b93-dfba-4988-a9c8-b4039210c045')
                     ->first();
                 if (!$updateKTPAyah) {
                     $updateKTPAyah = new Dokumensd();
-                    $updateKTPAyah->id_casis_sd = $idCasis;
+                    $updateKTPAyah->id_casis_sd = $calonSiswa->id_casis_sd;
                     $updateKTPAyah->id_jenisdokumen_sd = '7dfc0b93-dfba-4988-a9c8-b4039210c045';
                 }
 
@@ -546,12 +604,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- KTP IBU
             if ($request->hasFile('ktp_ibu')) {
-                $updateKTPIbu = Dokumensd::where('id_casis_sd', $idCasis)
+                $updateKTPIbu = Dokumensd::where('id_casis_sd', $calonSiswa->id_casis_sd)
                     ->where('id_jenisdokumen_sd', '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5')
                     ->first();
                 if (!$updateKTPIbu) {
                     $updateKTPIbu = new Dokumensd();
-                    $updateKTPIbu->id_casis_sd = $idCasis;
+                    $updateKTPIbu->id_casis_sd = $calonSiswa->id_casis_sd;
                     $updateKTPIbu->id_jenisdokumen_sd = '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5';
                 }
 
@@ -584,12 +642,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Kartu Keluarga
             if ($request->hasFile('kk')) {
-                $updateKK = Dokumensd::where('id_casis_sd', $idCasis)
+                $updateKK = Dokumensd::where('id_casis_sd', $calonSiswa->id_casis_sd)
                     ->where('id_jenisdokumen_sd', '0ca3c7f4-5262-40c1-b2b5-4a375553daa0')
                     ->first();
                 if (!$updateKK) {
                     $updateKK = new Dokumensd();
-                    $updateKK->id_casis_sd = $idCasis;
+                    $updateKK->id_casis_sd = $calonSiswa->id_casis_sd;
                     $updateKK->id_jenisdokumen_sd = '0ca3c7f4-5262-40c1-b2b5-4a375553daa0';
                 }
 
@@ -622,12 +680,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Akte Lahir
             if ($request->hasFile('akte')) {
-                $updateAkte = Dokumensd::where('id_casis_sd', $idCasis)
+                $updateAkte = Dokumensd::where('id_casis_sd', $calonSiswa->id_casis_sd)
                     ->where('id_jenisdokumen_sd', 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd')
                     ->first();
                 if (!$updateAkte) {
                     $updateAkte = new Dokumensd();
-                    $updateAkte->id_casis_sd = $idCasis;
+                    $updateAkte->id_casis_sd = $calonSiswa->id_casis_sd;
                     $updateAkte->id_jenisdokumen_sd = 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd';
                 }
 
@@ -660,12 +718,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Surat Keterangan Dokter
             if ($request->hasFile('skd')) {
-                $updateSkd = Dokumensd::where('id_casis_sd', $idCasis)
+                $updateSkd = Dokumensd::where('id_casis_sd', $calonSiswa->id_casis_sd)
                     ->where('id_jenisdokumen_sd', '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3')
                     ->first();
                 if (!$updateSkd) {
                     $updateSkd = new Dokumensd();
-                    $updateSkd->id_casis_sd = $idCasis;
+                    $updateSkd->id_casis_sd = $calonSiswa->id_casis_sd;
                     $updateSkd->id_jenisdokumen_sd = '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3';
                 }
 
@@ -696,16 +754,45 @@ class ProfilCalonSiswaController extends Controller
                 };
             }
         } else if (Auth::user()->hasRole('Calon Siswa SMP')) {
-            $idCasis = CasisSmp::where('id_user', Auth::user()->id)->first()->id_casis_smp;
+            $calonSiswa = CasisSmp::where('id_user', Auth::user()->id)->first();
+
+            // ---------- Foto Calon Siswa
+            if ($request->hasFile('foto')) {
+                // cek apakah ada upload foto sebelumnya? jika ada maka update, jika tidak maka input baru
+                if (Storage::disk('casis')->exists($calonSiswa->foto)) {
+                    Storage::disk('casis')->delete($calonSiswa->foto);
+                }
+
+                // upload file
+                $img = $request->file('foto');
+                $image = Image::make($img->getRealPath());
+                $fileName = Auth::user()->getDataVaKu()->va . '_foto' . '.' . $img->getClientOriginalExtension();
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                if ($upload) {
+                    $calonSiswa->foto = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                    $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                }
+
+                if ($calonSiswa->save()) {
+                    return json_encode(array(
+                        'status' => true,
+                        'file' => $file
+                    ));
+                } else {
+                    return json_encode(array(
+                        'status' => false,
+                    ));
+                };
+            }
 
             // ---------- KTP AYAH
             if ($request->hasFile('ktp_ayah')) {
-                $updateKTPAyah = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateKTPAyah = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '7dfc0b93-dfba-4988-a9c8-b4039210c045')
                     ->first();
                 if (!$updateKTPAyah) {
                     $updateKTPAyah = new Dokumensmp();
-                    $updateKTPAyah->id_casis_smp = $idCasis;
+                    $updateKTPAyah->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateKTPAyah->id_jenisdokumen_smp = '7dfc0b93-dfba-4988-a9c8-b4039210c045';
                 }
 
@@ -738,12 +825,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- KTP IBU
             if ($request->hasFile('ktp_ibu')) {
-                $updateKTPIbu = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateKTPIbu = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5')
                     ->first();
                 if (!$updateKTPIbu) {
                     $updateKTPIbu = new Dokumensmp();
-                    $updateKTPIbu->id_casis_smp = $idCasis;
+                    $updateKTPIbu->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateKTPIbu->id_jenisdokumen_smp = '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5';
                 }
 
@@ -776,12 +863,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Kartu Keluarga
             if ($request->hasFile('kk')) {
-                $updateKK = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateKK = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '0ca3c7f4-5262-40c1-b2b5-4a375553daa0')
                     ->first();
                 if (!$updateKK) {
                     $updateKK = new Dokumensmp();
-                    $updateKK->id_casis_smp = $idCasis;
+                    $updateKK->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateKK->id_jenisdokumen_smp = '0ca3c7f4-5262-40c1-b2b5-4a375553daa0';
                 }
 
@@ -814,12 +901,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Akte Lahir
             if ($request->hasFile('akte')) {
-                $updateAkte = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateAkte = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd')
                     ->first();
                 if (!$updateAkte) {
                     $updateAkte = new Dokumensmp();
-                    $updateAkte->id_casis_smp = $idCasis;
+                    $updateAkte->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateAkte->id_jenisdokumen_smp = 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd';
                 }
 
@@ -852,12 +939,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Surat Keterangan Dokter
             if ($request->hasFile('skd')) {
-                $updateSkd = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateSkd = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3')
                     ->first();
                 if (!$updateSkd) {
                     $updateSkd = new Dokumensmp();
-                    $updateSkd->id_casis_smp = $idCasis;
+                    $updateSkd->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateSkd->id_jenisdokumen_smp = '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3';
                 }
 
@@ -890,12 +977,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Raport Kelas 5 Semester 1
             if ($request->hasFile('kelas5semester1')) {
-                $updateKelas5Sem1 = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateKelas5Sem1 = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '7274cd7c-a6df-4bbd-82b3-ea4784a4318f')
                     ->first();
                 if (!$updateKelas5Sem1) {
                     $updateKelas5Sem1 = new Dokumensmp();
-                    $updateKelas5Sem1->id_casis_smp = $idCasis;
+                    $updateKelas5Sem1->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateKelas5Sem1->id_jenisdokumen_smp = '7274cd7c-a6df-4bbd-82b3-ea4784a4318f';
                 }
 
@@ -928,12 +1015,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Raport Kelas 5 Semester 1
             if ($request->hasFile('kelas5semeste2')) {
-                $updateKelas5Sem2 = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateKelas5Sem2 = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '90b72f46-27cf-4ebc-9ce8-df93816f10f7')
                     ->first();
                 if (!$updateKelas5Sem2) {
                     $updateKelas5Sem2 = new Dokumensmp();
-                    $updateKelas5Sem2->id_casis_smp = $idCasis;
+                    $updateKelas5Sem2->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateKelas5Sem2->id_jenisdokumen_smp = '90b72f46-27cf-4ebc-9ce8-df93816f10f7';
                 }
 
@@ -966,12 +1053,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Raport Kelas 6 Semester 1
             if ($request->hasFile('kelas6semester1')) {
-                $updateKelas6Sem1 = Dokumensmp::where('id_casis_smp', $idCasis)
+                $updateKelas6Sem1 = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '8d8a2ab1-eba0-4607-b021-3afd9453f536')
                     ->first();
                 if (!$updateKelas6Sem1) {
                     $updateKelas6Sem1 = new Dokumensmp();
-                    $updateKelas6Sem1->id_casis_smp = $idCasis;
+                    $updateKelas6Sem1->id_casis_smp = $calonSiswa->id_casis_smp;
                     $updateKelas6Sem1->id_jenisdokumen_smp = '8d8a2ab1-eba0-4607-b021-3afd9453f536';
                 }
 
@@ -1002,16 +1089,45 @@ class ProfilCalonSiswaController extends Controller
                 };
             }
         } else {
-            $idCasis = CasisSma::where('id_user', Auth::user()->id)->first()->id_casis_sma;
+            $calonSiswa = CasisSma::where('id_user', Auth::user()->id)->first();
+
+            // ---------- Foto Calon Siswa
+            if ($request->hasFile('foto')) {
+                // cek apakah ada upload foto sebelumnya? jika ada maka update, jika tidak maka input baru
+                if (Storage::disk('casis')->exists($calonSiswa->foto)) {
+                    Storage::disk('casis')->delete($calonSiswa->foto);
+                }
+
+                // upload file
+                $img = $request->file('foto');
+                $image = Image::make($img->getRealPath());
+                $fileName = Auth::user()->getDataVaKu()->va . '_foto' . '.' . $img->getClientOriginalExtension();
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                if ($upload) {
+                    $calonSiswa->foto = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                    $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
+                }
+
+                if ($calonSiswa->save()) {
+                    return json_encode(array(
+                        'status' => true,
+                        'file' => $file
+                    ));
+                } else {
+                    return json_encode(array(
+                        'status' => false,
+                    ));
+                };
+            }
 
             // ---------- KTP AYAH
             if ($request->hasFile('ktp_ayah')) {
-                $updateKTPAyah = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateKTPAyah = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', '7dfc0b93-dfba-4988-a9c8-b4039210c045')
                     ->first();
                 if (!$updateKTPAyah) {
                     $updateKTPAyah = new Dokumensma();
-                    $updateKTPAyah->id_casis_sma = $idCasis;
+                    $updateKTPAyah->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateKTPAyah->id_jenisdokumen_sma = '7dfc0b93-dfba-4988-a9c8-b4039210c045';
                 }
 
@@ -1044,12 +1160,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- KTP IBU
             if ($request->hasFile('ktp_ibu')) {
-                $updateKTPIbu = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateKTPIbu = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5')
                     ->first();
                 if (!$updateKTPIbu) {
                     $updateKTPIbu = new Dokumensma();
-                    $updateKTPIbu->id_casis_sma = $idCasis;
+                    $updateKTPIbu->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateKTPIbu->id_jenisdokumen_sma = '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5';
                 }
 
@@ -1082,12 +1198,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Kartu Keluarga
             if ($request->hasFile('kk')) {
-                $updateKK = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateKK = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', '0ca3c7f4-5262-40c1-b2b5-4a375553daa0')
                     ->first();
                 if (!$updateKK) {
                     $updateKK = new Dokumensma();
-                    $updateKK->id_casis_sma = $idCasis;
+                    $updateKK->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateKK->id_jenisdokumen_sma = '0ca3c7f4-5262-40c1-b2b5-4a375553daa0';
                 }
 
@@ -1120,12 +1236,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Akte Lahir
             if ($request->hasFile('akte')) {
-                $updateAkte = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateAkte = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd')
                     ->first();
                 if (!$updateAkte) {
                     $updateAkte = new Dokumensma();
-                    $updateAkte->id_casis_sma = $idCasis;
+                    $updateAkte->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateAkte->id_jenisdokumen_sma = 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd';
                 }
 
@@ -1158,12 +1274,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Surat Keterangan Dokter
             if ($request->hasFile('skd')) {
-                $updateSkd = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateSkd = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3')
                     ->first();
                 if (!$updateSkd) {
                     $updateSkd = new Dokumensma();
-                    $updateSkd->id_casis_sma = $idCasis;
+                    $updateSkd->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateSkd->id_jenisdokumen_sma = '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3';
                 }
 
@@ -1196,12 +1312,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Raport Kelas 8 Semester 1
             if ($request->hasFile('kelas8semester1')) {
-                $updateKelas8Sem1 = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateKelas8Sem1 = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', 'e939bcab-5053-4c0f-b5ce-9e22e19eeaac')
                     ->first();
                 if (!$updateKelas8Sem1) {
                     $updateKelas8Sem1 = new Dokumensma();
-                    $updateKelas8Sem1->id_casis_sma = $idCasis;
+                    $updateKelas8Sem1->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateKelas8Sem1->id_jenisdokumen_sma = 'e939bcab-5053-4c0f-b5ce-9e22e19eeaac';
                 }
 
@@ -1234,12 +1350,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Raport Kelas 8 Semester 2
             if ($request->hasFile('kelas8semester2')) {
-                $updateKelas8Sem2 = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateKelas8Sem2 = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', 'ff3b5ecc-c823-46df-9621-770134fd4e71')
                     ->first();
                 if (!$updateKelas8Sem2) {
                     $updateKelas8Sem2 = new Dokumensma();
-                    $updateKelas8Sem2->id_casis_sma = $idCasis;
+                    $updateKelas8Sem2->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateKelas8Sem2->id_jenisdokumen_sma = 'ff3b5ecc-c823-46df-9621-770134fd4e71';
                 }
 
@@ -1272,12 +1388,12 @@ class ProfilCalonSiswaController extends Controller
 
             // ---------- Raport Kelas 9 Semester 1
             if ($request->hasFile('kelas9semester1')) {
-                $updateKelas9Sem1 = Dokumensma::where('id_casis_sma', $idCasis)
+                $updateKelas9Sem1 = Dokumensma::where('id_casis_sma', $calonSiswa->id_casis_sma)
                     ->where('id_jenisdokumen_sma', 'bb6bab39-cfed-4016-98ab-f69b59a500f9')
                     ->first();
                 if (!$updateKelas9Sem1) {
                     $updateKelas9Sem1 = new Dokumensma();
-                    $updateKelas9Sem1->id_casis_sma = $idCasis;
+                    $updateKelas9Sem1->id_casis_sma = $calonSiswa->id_casis_sma;
                     $updateKelas9Sem1->id_jenisdokumen_sma = 'bb6bab39-cfed-4016-98ab-f69b59a500f9';
                 }
 
