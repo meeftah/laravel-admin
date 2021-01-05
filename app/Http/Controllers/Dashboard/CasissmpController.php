@@ -8,6 +8,7 @@ use App\Models\StatusCasis;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 
 class CasisSmpController extends Controller
@@ -154,6 +155,19 @@ class CasisSmpController extends Controller
         $casissmp->id_status_casis = $request->id_status_casis;
 
         if ($casissmp->save()) {
+            // jika status di update ke terverifikasi
+            $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
+            if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
+                // kirim email verifikasi va
+                $to_name = User::getDataById($casissmp->id_user)->username;
+                $to_email = User::getDataById($casissmp->id_user)->email;
+                $data = array('username' => User::getDataById($casissmp->id_user)->username);
+                Mail::send('dashboard.mail.verifikasiva', $data, function ($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)->subject('Verifikasi Akun Calon Siswa SMP PPDB Online Al-Fityan Kubu Raya');
+                    $message->from('ppdbalfityankuburaya2021@gmail.com', 'PPDB Online Al-Fityan Kubu Raya');
+                });
+            }
+
             return response()->json(['status' => 'success', 'message' => 'Status berhasil diubah']);
         } else {
             return response()->json(['status' => 'error', 'message' => 'Status gagal diubah']);
