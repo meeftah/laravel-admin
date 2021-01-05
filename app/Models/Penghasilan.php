@@ -17,7 +17,7 @@ class Penghasilan extends Model
     // Mendapatkan data penghasilan berdasarkan id
     public static function getDataById($id)
     {
-        $result = Pekerjaan::where('id_penghasilan', $id)->first();
+        $result = Penghasilan::where('id_penghasilan', $id)->first();
         return $result;
     }
 }
