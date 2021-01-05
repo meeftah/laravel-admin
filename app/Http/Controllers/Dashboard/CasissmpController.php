@@ -54,6 +54,9 @@ class CasisSmpController extends Controller
                     if ($row['statuscasis'] == config('status_ppdb.calon_siswa.lulus')) {
                         $status = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.nonaktif')) {
+                        $status = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
+                    }
                     return $status;
                 }
             )
