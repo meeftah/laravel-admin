@@ -54,7 +54,7 @@ class ProfilCalonSiswaController extends Controller
         abort_if(Gate::denies('profilcalonsiswa_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $statusSiswa = StatusCasis::getDataById(Auth::user()->getDataCasisKu()->id_status_casis)->status;
-        if ($statusSiswa == config('status_ppdb.calon_siswa.terdaftar')) {
+        if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
             if (Auth::user()->hasRole('Calon Siswa TK')) {
                 $casis = CasisTk::where('id_user', Auth::user()->id)
                     ->leftJoin('tbl_data_ortu', 'tbl_casis_tk.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
