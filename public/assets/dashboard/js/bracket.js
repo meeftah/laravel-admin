@@ -6,7 +6,7 @@
   // when top level menu have a class of .show-sub
   $('.show-sub + .br-menu-sub').slideDown();
 
-
+  $("#js-loader").fadeOut();
 
   // This will collapsed sidebar menu on left into a mini icon menu
   $('#btnLeftMenu').on('click', function(){

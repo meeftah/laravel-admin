@@ -59,6 +59,7 @@
 </head>
 
 <body>
+    <div id="js-loader" class="loader"></div>
     @yield('body')
 
     <script src="{{ asset('assets/dashboard/lib/jquery/jquery.js') }}"></script>

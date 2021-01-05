@@ -3,6 +3,7 @@
 @section('body')
 @include('partials.headbar')
 @include('partials.sidebar')
+
 <!-- ########## START: MAIN PANEL ########## -->
 <div class="br-mainpanel">
     @yield('breadcrumb')
@@ -19,6 +20,7 @@
 @push('styles')
 <link href="{{ asset('assets/dashboard/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/dashboard/lib/jquery-switchbutton/jquery.switchButton.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/dashboard/css/loader.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
