@@ -63,7 +63,7 @@ class DashboardController extends Controller
                     $casis->kelas5semester1 = Dokumensmp::where('id_casis_smp', $casis->id_casis_smp)->where('id_jenisdokumen_smp', '7274cd7c-a6df-4bbd-82b3-ea4784a4318f')->first()->dokumen ?? '';
                     $casis->kelas5semester2 = Dokumensmp::where('id_casis_smp', $casis->id_casis_smp)->where('id_jenisdokumen_smp', '90b72f46-27cf-4ebc-9ce8-df93816f10f7')->first()->dokumen ?? '';
                     $casis->kelas6semester1 = Dokumensmp::where('id_casis_smp', $casis->id_casis_smp)->where('id_jenisdokumen_smp', '8d8a2ab1-eba0-4607-b021-3afd9453f536')->first()->dokumen ?? '';
-                } else if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
+                } else {
                     $casis = CasisSma::where('id_user', Auth::user()->id)
                         ->leftJoin('tbl_data_ortu', 'tbl_casis_sma.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
                         ->first();
@@ -80,7 +80,7 @@ class DashboardController extends Controller
                 }
 
                 return view('dashboard.beranda.index', compact('casis'));
-            } else {
+            } else if ($statusSiswa == config('status_ppdb.calon_siswa.terdaftar'))  {
                 // biaya formulir
                 $biayaFormulir = Auth::user()->getDataUnitKu()->biaya_formulir;
 
