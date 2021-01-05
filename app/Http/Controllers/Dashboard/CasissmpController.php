@@ -17,14 +17,21 @@ class CasisSmpController extends Controller
     public function datatableCasissmpAPI()
     {
         // ambil semua data
-        $casissmp = CasisSmp::select('tbl_casis_smp.*', 'tbl_va_smp.va', 'tbl_status_casis.status AS statuscasis')
+        $casissmp = CasisSmp::select('tbl_casis_smp.*', 'tbl_va_smp.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
             ->leftJoin('tbl_va_smp', 'tbl_va_smp.id_va_smp', '=', 'tbl_casis_smp.id_va_smp')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_smp.id_status_casis')
+            ->leftJoin('users', 'users.id', '=', 'tbl_casis_smp.id_user')
             ->orderBy('tbl_casis_smp.created_at', 'ASC')
             ->get();
 
         return datatables()->of($casissmp)
             ->addIndexColumn()
+            ->editColumn(
+                'nm_siswa',
+                function ($row) {
+                    return $row['nm_siswa'] ? strtoupper($row['nm_siswa']) : strtoupper($row['username']);
+                }
+            )
             ->editColumn(
                 'created_at',
                 function ($row) {
@@ -173,7 +180,7 @@ class CasisSmpController extends Controller
                     )->subject('Verifikasi Akun Calon Siswa SMP ' . config('app.name'));
 
                     $message->from(
-                        env('MAIL_USERNAME'), 
+                        config('mail.from.address'), 
                         config('app.name'));
                 });
             }

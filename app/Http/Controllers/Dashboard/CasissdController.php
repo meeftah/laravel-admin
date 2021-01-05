@@ -16,14 +16,21 @@ class CasisSdController extends Controller
     public function datatableCasissdAPI()
     {
         // ambil semua data
-        $casissd = CasisSd::select('tbl_casis_sd.*', 'tbl_va_sd.va', 'tbl_status_casis.status AS statuscasis')
+        $casissd = CasisSd::select('tbl_casis_sd.*', 'tbl_va_sd.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
             ->leftJoin('tbl_va_sd', 'tbl_va_sd.id_va_sd', '=', 'tbl_casis_sd.id_va_sd')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_sd.id_status_casis')
+            ->leftJoin('users', 'users.id', '=', 'tbl_casis_sd.id_user')
             ->orderBy('tbl_casis_sd.created_at', 'ASC')
             ->get();
 
         return datatables()->of($casissd)
             ->addIndexColumn()
+            ->editColumn(
+                'nm_siswa',
+                function ($row) {
+                    return $row['nm_siswa'] ? strtoupper($row['nm_siswa']) : strtoupper($row['username']);
+                }
+            )
             ->editColumn(
                 'created_at',
                 function ($row) {
@@ -152,14 +159,27 @@ class CasisSdController extends Controller
             // jika status di update ke terverifikasi
             $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
             if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
-                // kirim email verifikasi va
-                $to_name = User::getDataById($casissd->id_user)->username;
-                $to_email = User::getDataById($casissd->id_user)->email;
-                $data = array('username' => User::getDataById($casissd->id_user)->username);
-                Mail::send('dashboard.mail.verifikasiva', $data, function ($message) use ($to_name, $to_email) {
-                    $message->to($to_email, $to_name)->subject('Verifikasi Akun Calon Siswa sd PPDB Online Al-Fityan Kubu Raya');
-                    $message->from('ppdbalfityankuburaya2021@gmail.com', 'PPDB Online Al-Fityan Kubu Raya');
-                });
+                // jika status di update ke terverifikasi
+                $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
+                if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
+                    // kirim email verifikasi va
+                    $kepada     = User::getDataById($casissd->id_user)->username;
+                    $keEmail    = User::getDataById($casissd->id_user)->email;
+                    $data       = array(
+                        'username' => User::getDataById($casissd->id_user)->username,
+                    );
+
+                    Mail::send('dashboard.mail.verifikasi-va', $data, function ($message) use ($kepada, $keEmail) {
+                        $message->to(
+                            $keEmail,
+                            $kepada
+                        )->subject('Verifikasi Akun Calon Siswa SD ' . config('app.name'));
+
+                        $message->from(
+                            config('mail.from.address'), 
+                            config('app.name'));
+                    });
+                }
             }
             return response()->json(['status' => 'success', 'message' => 'Status berhasil diubah']);
         } else {
@@ -189,6 +209,5 @@ class CasisSdController extends Controller
         } else {
             return response()->json(['status' => 'error', 'message' => 'Data calon siswa SD gagal dihapus']);
         }
-
     }
 }

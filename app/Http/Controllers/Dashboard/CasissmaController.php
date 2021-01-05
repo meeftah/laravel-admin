@@ -16,14 +16,21 @@ class CasisSmaController extends Controller
     public function datatableCasissmaAPI()
     {
         // ambil semua data
-        $casissma = CasisSma::select('tbl_casis_sma.*', 'tbl_va_sma.va', 'tbl_status_casis.status AS statuscasis')
+        $casissma = CasisSma::select('tbl_casis_sma.*', 'tbl_va_sma.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
             ->leftJoin('tbl_va_sma', 'tbl_va_sma.id_va_sma', '=', 'tbl_casis_sma.id_va_sma')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_sma.id_status_casis')
+            ->leftJoin('users', 'users.id', '=', 'tbl_casis_sma.id_user')
             ->orderBy('tbl_casis_sma.created_at', 'ASC')
             ->get();
 
         return datatables()->of($casissma)
             ->addIndexColumn()
+            ->editColumn(
+                'nm_siswa',
+                function ($row) {
+                    return $row['nm_siswa'] ? strtoupper($row['nm_siswa']) : strtoupper($row['username']);
+                }
+            )
             ->editColumn(
                 'created_at',
                 function ($row) {
@@ -153,14 +160,24 @@ class CasisSmaController extends Controller
             $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
             if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
                 // kirim email verifikasi va
-                $to_name = User::getDataById($casissma->id_user)->username;
-                $to_email = User::getDataById($casissma->id_user)->email;
-                $data = array('username' => User::getDataById($casissma->id_user)->username);
-                Mail::send('dashboard.mail.verifikasiva', $data, function ($message) use ($to_name, $to_email) {
-                    $message->to($to_email, $to_name)->subject('Verifikasi Akun Calon Siswa SMA PPDB Online Al-Fityan Kubu Raya');
-                    $message->from('ppdbalfityankuburaya2021@gmail.com', 'PPDB Online Al-Fityan Kubu Raya');
+                $kepada     = User::getDataById($casissma->id_user)->username;
+                $keEmail    = User::getDataById($casissma->id_user)->email;
+                $data       = array(
+                    'username' => User::getDataById($casissma->id_user)->username,
+                );
+                
+                Mail::send('dashboard.mail.verifikasi-va', $data, function ($message) use ($kepada, $keEmail) {
+                    $message->to(
+                        $keEmail, 
+                        $kepada
+                    )->subject('Verifikasi Akun Calon Siswa SMA ' . config('app.name'));
+
+                    $message->from(
+                        config('mail.from.address'), 
+                        config('app.name'));
                 });
             }
+
             return response()->json(['status' => 'success', 'message' => 'Status berhasil diubah']);
         } else {
             return response()->json(['status' => 'error', 'message' => 'Status gagal diubah']);

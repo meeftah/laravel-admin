@@ -17,14 +17,21 @@ class CasisTkController extends Controller
     public function datatableCasistkAPI()
     {
         // ambil semua data
-        $casistk = CasisTk::select('tbl_casis_tk.*', 'tbl_va_tk.va', 'tbl_status_casis.status AS statuscasis')
+        $casistk = CasisTk::select('tbl_casis_tk.*', 'tbl_va_tk.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
             ->leftJoin('tbl_va_tk', 'tbl_va_tk.id_va_tk', '=', 'tbl_casis_tk.id_va_tk')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_tk.id_status_casis')
+            ->leftJoin('users', 'users.id', '=', 'tbl_casis_tk.id_user')
             ->orderBy('tbl_casis_tk.created_at', 'ASC')
             ->get();
 
         return datatables()->of($casistk)
             ->addIndexColumn()
+            ->editColumn(
+                'nm_siswa',
+                function ($row) {
+                    return $row['nm_siswa'] ? strtoupper($row['nm_siswa']) : strtoupper($row['username']);
+                }
+            )
             ->editColumn(
                 'created_at',
                 function ($row) {
@@ -154,12 +161,21 @@ class CasisTkController extends Controller
             $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
             if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
                 // kirim email verifikasi va
-                $to_name = User::getDataById($casistk->id_user)->username;
-                $to_email = User::getDataById($casistk->id_user)->email;
-                $data = array('username' => User::getDataById($casistk->id_user)->username);
-                Mail::send('dashboard.mail.verifikasiva', $data, function ($message) use ($to_name, $to_email) {
-                    $message->to($to_email, $to_name)->subject('Verifikasi Akun Calon Siswa TK PPDB Online Al-Fityan Kubu Raya');
-                    $message->from('ppdbalfityankuburaya2021@gmail.com', 'PPDB Online Al-Fityan Kubu Raya');
+                $kepada     = User::getDataById($casistk->id_user)->username;
+                $keEmail    = User::getDataById($casistk->id_user)->email;
+                $data       = array(
+                    'username' => User::getDataById($casistk->id_user)->username,
+                );
+
+                Mail::send('dashboard.mail.verifikasi-va', $data, function ($message) use ($kepada, $keEmail) {
+                    $message->to(
+                        $keEmail,
+                        $kepada
+                    )->subject('Verifikasi Akun Calon Siswa TK ' . config('app.name'));
+
+                    $message->from(
+                        config('mail.from.address'), 
+                        config('app.name'));
                 });
             }
             return response()->json(['status' => 'success', 'message' => 'Status berhasil diubah']);
