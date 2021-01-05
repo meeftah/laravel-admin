@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
-class CasissmpController extends Controller
+class CasisSmpController extends Controller
 {
     public function datatableCasissmpAPI()
     {

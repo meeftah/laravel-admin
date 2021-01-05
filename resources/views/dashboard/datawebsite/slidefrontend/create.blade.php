@@ -31,7 +31,7 @@
                             class="custom-file-input {{ $errors->has('slideImage') ? 'is-invalid' : '' }}"
                             accept="image/png, image/jpeg">
                         <span class="custom-file-control custom-file-control-primary"></span>
-                    </label>
+                    </label>‘
                     @error('slideImage')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

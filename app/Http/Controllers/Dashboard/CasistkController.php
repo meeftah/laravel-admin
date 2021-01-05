@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
-class CasistkController extends Controller
+class CasisTkController extends Controller
 {
     public function datatableCasistkAPI()
     {
