@@ -146,6 +146,7 @@ class RoleSeed extends Seeder
             'casistk_ubah',
             'casistk_tambah',
             'casistk_hapus',
+            'casistk_verifikasi',
 
             // ------------ Calon Siswa SDIT
             'casissd_lihat',
@@ -153,6 +154,7 @@ class RoleSeed extends Seeder
             'casissd_ubah',
             'casissd_tambah',
             'casissd_hapus',
+            'casissd_verifikasi',
 
             // ------------ Calon Siswa SMPIT
             'casissmp_lihat',
@@ -160,6 +162,7 @@ class RoleSeed extends Seeder
             'casissmp_ubah',
             'casissmp_tambah',
             'casissmp_hapus',
+            'casissmp_verifikasi',
 
             // ------------ Calon Siswa SMAIT
             'casissma_lihat',
@@ -167,6 +170,7 @@ class RoleSeed extends Seeder
             'casissma_ubah',
             'casissma_tambah',
             'casissma_hapus',
+            'casissma_verifikasi',
 
             // FRONTEND
             // ------------ Slider

@@ -52,9 +52,9 @@ class CasisSmpController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
-                    // if (auth()->user()->can('casissmp_detail')) {
+                    if (auth()->user()->can('casissmp_verifikasi')) {
                         $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="btn-update-status btn btn-info btn-sm" title="UBAH STATUS"><i class="fa fa-check"></i></button> ';
-                    // }
+                    }
                     if (auth()->user()->can('casissmp_detail')) {
                         $btn   .= '<a href="' . route('dashboard.calon-siswa.smp.show', $row['id_casis_smp']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
                     }
@@ -148,7 +148,7 @@ class CasisSmpController extends Controller
      */
     public function updateStatus(Request $request)
     {
-        abort_if(Gate::denies('casissmp_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('casissmp_verifikasi'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $casissmp = CasisSmp::where('id_casis_smp', $request->id_casis_smp)->first();
         $casissmp->id_status_casis = $request->id_status_casis;

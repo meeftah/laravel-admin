@@ -155,6 +155,7 @@ class PermissionSeed extends Seeder
             ['id' => '187f68e3-804d-48d4-ad52-2665cf469f1e', 'name' => 'casistk_ubah'],
             ['id' => '8211a22e-95ed-44de-9328-8f138af51795', 'name' => 'casistk_tambah'],
             ['id' => '7f4912be-433e-4572-aa72-6d2040b34da1', 'name' => 'casistk_hapus'],
+            ['id' => 'd80a08b6-31d6-4982-b80e-c953a5a9de73', 'name' => 'casistk_verifikasi'],
 
             // ------------  Calon Siswa SDIT
             ['id' => '94405544-9f39-408d-b18d-782850f65c84', 'name' => 'casissd_lihat'],
@@ -162,6 +163,7 @@ class PermissionSeed extends Seeder
             ['id' => '3bb84137-3d48-45b8-90c3-f04357504072', 'name' => 'casissd_ubah'],
             ['id' => '0e39ed37-fcaf-4716-b7d2-f6f6c2b4f298', 'name' => 'casissd_tambah'],
             ['id' => 'b3c3dffb-d0fe-4f4a-a355-880338c7612c', 'name' => 'casissd_hapus'],
+            ['id' => '3716beb7-eb2c-4b5e-93fc-2619eb84d31d', 'name' => 'casissd_verifikasi'],
 
             // ------------  Calon Siswa SMPIT
             ['id' => '30f095e3-a5ce-4dd6-a822-5772b8974347', 'name' => 'casissmp_lihat'],
@@ -169,6 +171,7 @@ class PermissionSeed extends Seeder
             ['id' => '1d328f9b-f596-46b0-8923-f6ca7e2025fd', 'name' => 'casissmp_ubah'],
             ['id' => '62976e5e-01f6-41e9-b462-f0fe5e845e53', 'name' => 'casissmp_tambah'],
             ['id' => 'dea2982f-64ec-439c-83c6-d1979e42fb25', 'name' => 'casissmp_hapus'],
+            ['id' => 'cdc85278-d7a8-41ff-9360-18e3b4d2b7b3', 'name' => 'casissmp_verifikasi'],
 
             // ------------  Calon Siswa SAMIT
             ['id' => '3e6ea741-f1f2-4926-a593-843a6053fe92', 'name' => 'casissma_lihat'],
@@ -176,6 +179,7 @@ class PermissionSeed extends Seeder
             ['id' => 'bc57510d-19b6-4074-9491-c2616394f07d', 'name' => 'casissma_ubah'],
             ['id' => '0135d0fd-7396-4ab0-afc2-95600decc803', 'name' => 'casissma_tambah'],
             ['id' => '111bf26d-b990-4281-bd4b-96370b729140', 'name' => 'casissma_hapus'],
+            ['id' => 'f68a04da-b295-4960-8c16-db8f8f94c2f7', 'name' => 'casissma_verifikasi'],
 
             // FRONTEND
             // ------------ Slider

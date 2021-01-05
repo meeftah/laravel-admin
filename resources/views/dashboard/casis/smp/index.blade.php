@@ -47,7 +47,8 @@
                                 <th>STATUS</th>
                                 @if(auth()->user()->can('casissmp_detail') ||
                                 auth()->user()->can('casissmp_ubah') ||
-                                auth()->user()->can('casissmp_hapus'))
+                                auth()->user()->can('casissmp_hapus') || 
+                                auth()->user()->can('casissmp_verifikasi'))
                                 <th width="200">AKSI</th>
                                 @endif
                             </tr>
@@ -94,7 +95,7 @@
                 { data: 'va', name: 'va' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'statuscasis', name: 'statuscasis' },
-                @if(auth()->user()->can('casissmp_detail') || auth()->user()->can('casissmp_ubah') || auth()->user()->can('casissmp_hapus'))
+                @if(auth()->user()->can('casissmp_detail') || auth()->user()->can('casissmp_ubah') || auth()->user()->can('casissmp_hapus') || auth()->user()->can('casissmp_verifikasi'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
@@ -103,7 +104,7 @@
                 { className: 'text-center', width: 250, targets: [3] },
                 { className: 'text-center', width: 100, targets: [4] },
                 { className: 'text-center', width: 250, targets: [5] },
-                @if(auth()->user()->can('casissmp_detail') || auth()->user()->can('casissmp_ubah') || auth()->user()->can('casissmp_hapus'))
+                @if(auth()->user()->can('casissmp_detail') || auth()->user()->can('casissmp_ubah') || auth()->user()->can('casissmp_hapus') || auth()->user()->can('casissmp_verifikasi'))
                 { className: 'text-center', targets: [6] },
                 @endif
             ],
