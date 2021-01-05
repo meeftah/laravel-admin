@@ -16,8 +16,14 @@ class CreateTblJenisdokumenTable extends Migration
         Schema::create('tbl_jenisdokumen', function (Blueprint $table) {
             $table->uuid('id_jenisdokumen')->primary();
             $table->string('jenisdokumen');
-            $table->string('unit')->nullable();
+            $table->uuid('id_unit')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_unit')
+                ->references('id_unit')
+                ->on('tbl_unit')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

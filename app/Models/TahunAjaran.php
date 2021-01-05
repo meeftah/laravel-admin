@@ -38,4 +38,11 @@ class TahunAjaran extends Model
         'periode_akhir',
         'status',
     ];
+
+    // Mendapatkan id tahun ajaran aktif
+    public static function getActivatedTAID()
+    {
+        $result = TahunAjaran::where('status', 1)->first()->id_tahun_ajaran;
+        return $result;
+    }
 }

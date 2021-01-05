@@ -16,7 +16,7 @@ class CreateTblDokumensmaTable extends Migration
         Schema::create('tbl_dokumensma', function (Blueprint $table) {
             $table->uuid('id_dokumen_sma')->primary();
             $table->uuid('id_jenisdokumen_sma');
-            $table->uuid('id_calonsiswa_sma');
+            $table->uuid('id_casis_sma');
             $table->string('dokumen');
             $table->timestamps();
 
@@ -26,9 +26,9 @@ class CreateTblDokumensmaTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('id_calonsiswa_sma')
-                ->references('id')
-                ->on('users')
+            $table->foreign('id_casis_sma')
+                ->references('id_casis_sma')
+                ->on('tbl_casis_sma')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

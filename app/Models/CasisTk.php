@@ -21,6 +21,13 @@ class CasisTk extends Model
     protected $primaryKey = 'id_casis_tk';
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'tgl_lahir'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -31,7 +38,7 @@ class CasisTk extends Model
         'nm_siswa',
         'jk',
         'nik',
-        'tempat',
+        'tempat_lahir',
         'tgl_lahir',
         'no_akte_lahir',
         'id_agama',

@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $result ?? $statusDefault;
     }
 
-    // User Mendapatkan data calon siswa berdasarkan id nya
+    // User Mendapatkan data calon siswa
     public function getDataCasisKu()
     {
         $idKu = Auth::user()->id;
@@ -77,7 +77,7 @@ class User extends Authenticatable
         return $result;
     }
 
-    // User Mendapatkan data va siswa berdasarkan id nya
+    // User Mendapatkan data va siswa 
     public function getDataVaKu()
     {
         $idKu = Auth::user()->id;
@@ -97,6 +97,24 @@ class User extends Authenticatable
             $dataKu = CasisSma::where('id_user', $idKu)->first();
             $idVaKu = $dataKu->id_va_sma;
             $result = VaSma::where('id_va_sma', $idVaKu)->first();
+        }
+
+        return $result;
+    }
+
+    // User Mendapatkan data unit siswa
+    public function getDataUnitKu()
+    {
+        $idKu = Auth::user()->id;
+        // biaya formulir perunit
+        if (Auth::user()->hasRole('Calon Siswa TK')) {
+            $result = Unit::where('nm_unit', 'TKIT')->first();
+        } else if (Auth::user()->hasRole('Calon Siswa SD')) {
+            $result = Unit::where('nm_unit', 'SDIT')->first();
+        } else if (Auth::user()->hasRole('Calon Siswa SMP')) {
+            $result = Unit::where('nm_unit', 'SMPIT')->first();
+        } else {
+            $result = Unit::where('nm_unit', 'SMAIT')->first();
         }
 
         return $result;

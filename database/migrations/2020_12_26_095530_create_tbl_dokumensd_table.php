@@ -16,7 +16,7 @@ class CreateTblDokumensdTable extends Migration
         Schema::create('tbl_dokumensd', function (Blueprint $table) {
             $table->uuid('id_dokumen_sd')->primary();
             $table->uuid('id_jenisdokumen_sd');
-            $table->uuid('id_calonsiswa_sd');
+            $table->uuid('id_casis_sd');
             $table->string('dokumen');
             $table->timestamps();
 
@@ -26,9 +26,9 @@ class CreateTblDokumensdTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('id_calonsiswa_sd')
-                ->references('id')
-                ->on('users')
+            $table->foreign('id_casis_sd')
+                ->references('id_casis_sd')
+                ->on('tbl_casis_sd')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

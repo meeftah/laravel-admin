@@ -10,6 +10,7 @@ use App\Models\CasisTk;
 use App\Models\Slidefrontend;
 use App\Models\StatusCasis;
 use App\Models\StatusPendaftaran;
+use App\Models\TahunAjaran;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\VaSd;
@@ -92,6 +93,7 @@ class FrontController extends Controller
                 $casis->id_user             = $user->id;
                 $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
                 $casis->kelas               = $request->kelas;
+                $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();
@@ -144,6 +146,7 @@ class FrontController extends Controller
                 $casis->id_va_sd            = $slotVaSd->id_va_sd;
                 $casis->id_user             = $user->id;
                 $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
+                $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();
@@ -196,6 +199,7 @@ class FrontController extends Controller
                 $casis->id_va_smp            = $slotVaSmp->id_va_smp;
                 $casis->id_user             = $user->id;
                 $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
+                $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();
@@ -247,6 +251,7 @@ class FrontController extends Controller
                 $casis->id_va_sma            = $slotVaSma->id_va_sma;
                 $casis->id_user             = $user->id;
                 $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
+                $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();

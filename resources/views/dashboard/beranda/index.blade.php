@@ -26,6 +26,8 @@
 @include('dashboard.calonsiswa.status.nonaktif')
 @elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.terverifikasi'))
 @include('dashboard.calonsiswa.status.terverifikasi')
+@elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.datalengkap'))
+@include('dashboard.calonsiswa.status.datalengkap')
 @endif
 @endsection
 @endhasanyrole

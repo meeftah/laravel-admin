@@ -28,7 +28,6 @@
 <script src="{{ asset('assets/dashboard/lib/jquery-switchbutton/jquery.switchButton.js') }}"></script>
 <script src="{{ asset('assets/dashboard/lib/peity/jquery.peity.js') }}"></script>
 <script src="{{ asset('assets/dashboard/lib/highlightjs/highlight.pack.js') }}"></script>
-@include('partials.notifications')
 <script src="{{ asset('assets/dashboard/js/bracket.js') }}"></script>
 @endpush
 @endsection

@@ -18,4 +18,11 @@ class Tempattinggal extends Model
         'kode',
         'tempattinggal'
     ];
+
+    // Mendapatkan data tempat tinggal berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Tempattinggal::where('id_tempattinggal', $id)->first();
+        return $result;
+    }
 }

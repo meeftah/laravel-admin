@@ -18,4 +18,11 @@ class Agama extends Model
         'kode',
         'agama'
     ];
+
+    // Mendapatkan data agama berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = Agama::where('id_agama', $id)->first();
+        return $result;
+    }
 }

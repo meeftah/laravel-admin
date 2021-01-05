@@ -21,6 +21,13 @@ class CasisSma extends Model
     protected $primaryKey = 'id_casis_sma';
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'tgl_lahir'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -35,7 +42,7 @@ class CasisSma extends Model
         'no_ijazah',
         'no_skhun',
         'no_un',
-        'tempat',
+        'tempat_lahir',
         'tgl_lahir',
         'no_akte_lahir',
         'id_agama',

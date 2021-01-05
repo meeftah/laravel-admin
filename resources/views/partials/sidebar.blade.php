@@ -20,8 +20,9 @@
         {{-- Profil Calon Siswa --}}
         @hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
         @if (auth()->user()->getStatusCasisKu() != config('status_ppdb.calon_siswa.terdaftar') &&
-        auth()->user()->getStatusCasisKu() != config('status_ppdb.calon_siswa.nonaktif'))
-        <a href="{{ route('dashboard.calonsiswa.profil', Auth::user()->id) }}"
+        auth()->user()->getStatusCasisKu() != config('status_ppdb.calon_siswa.nonaktif') &&
+        auth()->user()->getStatusCasisKu() != config('status_ppdb.calon_siswa.datalengkap'))
+        <a href="{{ route('dashboard.calonsiswa.profil') }}"
             class="br-menu-link {{ set_active(Request::is('dashboard/calon-siswa/profil*')) }}">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-person tx-22"></i>

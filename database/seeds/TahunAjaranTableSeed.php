@@ -14,11 +14,12 @@ class TahunAjaranTableSeed extends Seeder
     {
         $data = [
             [
-                'id_tahun_ajaran'  => 'e9005311-e9de-47b7-9593-335b213693b8',
-                'tahun_ajaran'     => '2021/2022',
-                'periode_mulai'    => '04/01/2020',
-                'periode_akhir'    => '04/04/2020',
-                'status'           => 1
+                'id_tahun_ajaran'   => 'e9005311-e9de-47b7-9593-335b213693b8',
+                'tahun_ajaran'      => '2021/2022',
+                'slug_tahun_ajaran' => 'TA_2021_2022',
+                'periode_mulai'     => '04/01/2020',
+                'periode_akhir'     => '04/04/2020',
+                'status'            => 1
             ],
         ];
 
@@ -26,6 +27,7 @@ class TahunAjaranTableSeed extends Seeder
             TahunAjaran::create([
                 'id_tahun_ajaran'   => $item['id_tahun_ajaran'],
                 'tahun_ajaran'      => $item['tahun_ajaran'],
+                'slug_tahun_ajaran' => $item['slug_tahun_ajaran'],
                 'periode_mulai'     => $item['periode_mulai'],
                 'periode_akhir'     => $item['periode_akhir'],
                 'status'            => $item['status'],

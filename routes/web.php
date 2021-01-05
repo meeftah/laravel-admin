@@ -50,9 +50,6 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::get('bcquran/api', 'BcquranController@datatableBcquranAPI')->name('bcquran.api');
     Route::resource('bcquran', 'BcquranController')->except(['create', 'show']);
 
-    // ------------------------------------- PROFIl SISWA
-    Route::get('calon-siswa/profil/{id}', 'ProfilCalonSiswaController@profil')->name('calonsiswa.profil');
-
     // Route waktutmph
     Route::get('waktutmph/api', 'WaktutmphController@datatableWaktutmphAPI')->name('waktutmph.api');
     Route::resource('waktutmph', 'WaktutmphController')->except(['create', 'show']);
@@ -91,6 +88,13 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
 
     // Pengaturan
     Route::get('pengaturan', 'PengaturanController@index')->name('pengaturan.index');
+
+    // ------------------------------------- PROFIl SISWA
+    Route::get('calon-siswa/profil/', 'ProfilCalonSiswaController@profil')->name('calonsiswa.profil');
+    Route::post('calon-siswa/profil/update/biodata', 'ProfilCalonSiswaController@updateBiodata')->name('calonsiswa.profil.update.biodata');
+    Route::post('calon-siswa/profil/update/data-orang-tua', 'ProfilCalonSiswaController@updateDataOrtu')->name('calonsiswa.profil.update.dataortu');
+    Route::post('calon-siswa/profil/update/dokumen', 'ProfilCalonSiswaController@updateDokumen')->name('calonsiswa.profil.update.dokumen');
+    Route::get('calon-siswa/profil/update/lengkapi-data', 'ProfilCalonSiswaController@lengkapiDataCasis')->name('calonsiswa.profil.update.lengkapidata');
 });
 
 

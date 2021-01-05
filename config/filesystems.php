@@ -62,6 +62,11 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        'casis' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/casis'),
+            'visibility' => 'public',
+        ],    
 
     ],
 
