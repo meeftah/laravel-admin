@@ -152,25 +152,6 @@ class UsersController extends Controller
             // 'id_status_pendaftaran.required' => 'Wajib pilih pendaftaran!',
         ];
 
-        $rules = [
-            'username' => 'required|min:3|without_spaces',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:6',
-            'role' => 'required',
-        ];
-
-        $messages = [
-            'username.required' => 'Kolom Nama wajib diisi!',
-            'username.min' => 'Kolom Nama minimal 3 karakter!',
-            'username.without_spaces' => 'Kolom Nama minimal 3 karakter!',
-            'email.required' => 'Kolom Email wajib diisi!',
-            'email.email' => 'Format Email tidak sesuai!',
-            'password.required' => 'Kolom Password wajib diisi!',
-            'password.confirmed' => 'Kolom Password tidak sama dengan Konfirmasi Password!',
-            'password.min' => 'Kolom Password minimal 6 karakter!',
-            'role.required' => 'Kolom Peran wajib diisi!',
-        ];
-
         $this->validate($request, $rules, $messages);
 
         $user = User::create($request->all());
