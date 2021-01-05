@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\CasisSmp;
+use App\Models\Dokumensmp;
 use App\Models\StatusCasis;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -159,12 +160,21 @@ class CasisSmpController extends Controller
             $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
             if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
                 // kirim email verifikasi va
-                $to_name = User::getDataById($casissmp->id_user)->username;
-                $to_email = User::getDataById($casissmp->id_user)->email;
-                $data = array('username' => User::getDataById($casissmp->id_user)->username);
-                Mail::send('dashboard.mail.verifikasiva', $data, function ($message) use ($to_name, $to_email) {
-                    $message->to($to_email, $to_name)->subject('Verifikasi Akun Calon Siswa SMP PPDB Online Al-Fityan Kubu Raya');
-                    $message->from('ppdbalfityankuburaya2021@gmail.com', 'PPDB Online Al-Fityan Kubu Raya');
+                $kepada     = User::getDataById($casissmp->id_user)->username;
+                $keEmail    = User::getDataById($casissmp->id_user)->email;
+                $data       = array(
+                    'username' => User::getDataById($casissmp->id_user)->username,
+                );
+                
+                Mail::send('dashboard.mail.verifikasi-va', $data, function ($message) use ($kepada, $keEmail) {
+                    $message->to(
+                        $keEmail, 
+                        $kepada
+                    )->subject('Verifikasi Akun Calon Siswa SMP ' . config('app.name'));
+
+                    $message->from(
+                        env('MAIL_USERNAME'), 
+                        config('app.name'));
                 });
             }
 
@@ -184,12 +194,26 @@ class CasisSmpController extends Controller
     {
         abort_if(Gate::denies('casissmp_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        // hapus data calon siswa di tabel calon siswa
         $casissmp = CasisSmp::where('id_casis_smp', $id)->first();
+
+        // dapatkan id user
         $id_user = $casissmp->id_user;
 
         if ($casissmp->delete()) {
+            // hapus data calon siswa di tabel user
             $user = User::where('id', $id_user)->first();
             $user->delete();
+
+            // hapus semua file calon siswa
+            $dokumen = Dokumensmp::where('id_casis_smp', $id_user)->get();
+            if ($dokumen->count() > 0) {
+                foreach ($dokumen as $item) {
+                    if (Storage::disk('casis')->exists($item->dokumen)) {
+                        Storage::disk('casis')->delete($item->dokumen);
+                    }
+                }
+            }
 
             return response()->json(['status' => 'success', 'message' => 'Data calon siswa SMP berhasil dihapus']);
         } else {
