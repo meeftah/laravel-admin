@@ -51,6 +51,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'role_user');
     }
 
+    // Mendapatkan data user berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = User::where('id', $id)->first();
+        return $result;
+    }
+
     // User Mendapatkan data status berdasarkan id nya
     public function getStatusCasisKu()
     {
