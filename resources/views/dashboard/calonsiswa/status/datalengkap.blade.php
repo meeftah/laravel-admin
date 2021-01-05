@@ -435,11 +435,11 @@
 
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-md-3 control-label col-form-label mb-0">
-                                Pendidikan Terakhir Ayah {{ $casis->id_pendidikan_ayah }}
+                                Pendidikan Terakhir Ayah
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_pendidikan_ayah ? strtoupper(App\Models\Pendidikan::getDataById($casis->id_pendidikan_ayah)->pendidikan) : '-' }}"
+                                    value="{{ $casis->pendidikan_ayah ? strtoupper(App\Models\Pendidikan::getDataById($casis->pendidikan_ayah)->pendidikan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -450,7 +450,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_pekerjaan_ayah ? strtoupper(App\Models\Pekerjaan::getDataById($casis->id_pekerjaan_ayah)->pekerjaan) : '-' }}"
+                                    value="{{ $casis->pekerjaan_ayah ? strtoupper(App\Models\Pekerjaan::getDataById($casis->pekerjaan_ayah)->pekerjaan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -461,7 +461,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_penghasilan_ayah ? strtoupper(App\Models\Penghasilan::getDataById($casis->id_penghasilan_ayah)->penghasilan) : '-' }}"
+                                    value="{{ $casis->penghasilan_ayah ? strtoupper(App\Models\Penghasilan::getDataById($casis->penghasilan_ayah)->penghasilan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -508,7 +508,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_pendidikan_ibu ? strtoupper(App\Models\Pendidikan::getDataById($casis->id_pendidikan_ibu)->pendidikan) : '-' }}"
+                                    value="{{ $casis->pendidikan_ibu ? strtoupper(App\Models\Pendidikan::getDataById($casis->pendidikan_ibu)->pendidikan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -519,7 +519,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_pekerjaan_ibu ? strtoupper(App\Models\Pekerjaan::getDataById($casis->id_pekerjaan_ibu)->pekerjaan) : '-' }}"
+                                    value="{{ $casis->pekerjaan_ibu ? strtoupper(App\Models\Pekerjaan::getDataById($casis->pekerjaan_ibu)->pekerjaan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -530,7 +530,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_penghasilan_ibu ? strtoupper(App\Models\Penghasilan::getDataById($casis->id_penghasilan_ibu)->penghasilan) : '-' }}"
+                                    value="{{ $casis->penghasilan_ibu ? strtoupper(App\Models\Penghasilan::getDataById($casis->penghasilan_ibu)->penghasilan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -577,7 +577,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_pendidikan_wali ? strtoupper(App\Models\Pendidikan::getDataById($casis->id_pendidikan_wali)->pendidikan) : '-' }}"
+                                    value="{{ $casis->pendidikan_wali ? strtoupper(App\Models\Pendidikan::getDataById($casis->pendidikan_wali)->pendidikan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -588,7 +588,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_pekerjaan_wali ? strtoupper(App\Models\Pekerjaan::getDataById($casis->id_pekerjaan_wali)->pekerjaan) : '-' }}"
+                                    value="{{ $casis->pekerjaan_wali ? strtoupper(App\Models\Pekerjaan::getDataById($casis->pekerjaan_wali)->pekerjaan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
@@ -599,7 +599,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ $casis->id_penghasilan_wali ? strtoupper(App\Models\Penghasilan::getDataById($casis->id_penghasilan_wali)->penghasilan) : '-' }}"
+                                    value="{{ $casis->penghasilan_wali ? strtoupper(App\Models\Penghasilan::getDataById($casis->penghasilan_wali)->penghasilan) : '-' }}"
                                     disabled>
                             </div>
                         </div>
