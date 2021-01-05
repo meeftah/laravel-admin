@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\CasisSmp;
+use App\Models\StatusCasis;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +15,11 @@ class CasisSmpController extends Controller
     public function datatableCasissmpAPI()
     {
         // ambil semua data
-        $casissmp = CasisSmp::orderBy('created_at', 'ASC')->get();
+        $casissmp = CasisSmp::select('tbl_casis_smp.*', 'tbl_va_smp.va', 'tbl_status_casis.status AS statuscasis')
+            ->leftJoin('tbl_va_smp', 'tbl_va_smp.id_va_smp', '=', 'tbl_casis_smp.id_va_smp')
+            ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_smp.id_status_casis')
+            ->orderBy('tbl_casis_smp.created_at', 'ASC')
+            ->get();
 
         return datatables()->of($casissmp)
             ->addIndexColumn()
@@ -24,16 +30,20 @@ class CasisSmpController extends Controller
                 }
             )
             ->editColumn(
-                'status',
+                'statuscasis',
                 function ($row) {
                     $status = '';
-                    if ($row['status'] == 0) {
-                        $status = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">baru diferifikasi</span>';
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.terdaftar')) {
+                        $status = '<span class="badge badge-secondary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
-                    if ($row['status'] == 1) {
-                    } else
-                    if ($row['status'] == 2) {
-                        $status = '<span class="badge badge-success p-2 text-white" style="font-size: 10pt; font-weight: 400">data lengkap</span>';
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.terverifikasi')) {
+                        $status = '<span class="badge badge-info p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.datalengkap')) {
+                        $status = '<span class="badge badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.lulus')) {
+                        $status = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
                     return $status;
                 }
@@ -42,11 +52,14 @@ class CasisSmpController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
+                    // if (auth()->user()->can('casissmp_detail')) {
+                        $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="btn-update-status btn btn-info btn-sm" title="UBAH STATUS"><i class="fa fa-check"></i></button> ';
+                    // }
                     if (auth()->user()->can('casissmp_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.casissmp.show', $row['id_casis_smp']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.smp.show', $row['id_casis_smp']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
                     }
                     if (auth()->user()->can('casissmp_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.casissmp.edit', $row['id_casis_smp']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.smp.edit', $row['id_casis_smp']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
                     if (auth()->user()->can('casissmp_hapus')) {
                         $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
@@ -55,7 +68,7 @@ class CasisSmpController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['created_at', 'status', 'action'])
+            ->rawColumns(['created_at', 'statuscasis', 'action'])
             ->make(true);
     }
     /**
@@ -66,7 +79,10 @@ class CasisSmpController extends Controller
     public function index()
     {
         abort_if(Gate::denies('casissmp_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        return view('dashboard.casis.smp.index');
+
+        $status_casis = StatusCasis::get();
+
+        return view('dashboard.casis.smp.index', compact('status_casis'));
     }
 
     /**
@@ -130,8 +146,40 @@ class CasisSmpController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function updateStatus(Request $request)
+    {
+        abort_if(Gate::denies('casissmp_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $casissmp = CasisSmp::where('id_casis_smp', $request->id_casis_smp)->first();
+        $casissmp->id_status_casis = $request->id_status_casis;
+
+        if ($casissmp->save()) {
+            return response()->json(['status' => 'success', 'message' => 'Status berhasil diubah']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Status gagal diubah']);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('casissmp_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $casissmp = CasisSmp::where('id_casis_smp', $id)->first();
+        $id_user = $casissmp->id_user;
+
+        if ($casissmp->delete()) {
+            $user = User::where('id', $id_user)->first();
+            $user->delete();
+
+            return response()->json(['status' => 'success', 'message' => 'Data calon siswa SMP berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Data calon siswa SMP gagal dihapus']);
+        }
     }
 }
