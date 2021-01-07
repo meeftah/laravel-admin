@@ -159,7 +159,7 @@
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control"
-                                    value="{{ trim($casis->tempat_lahir ? $casis->tempat_lahir . ', ' : '') }} {{ $casis->tgl_lahir->format('d/m/Y') }}"
+                                    value="{{ trim($casis->tempat_lahir ? $casis->tempat_lahir . ', ' : '') }} {{ $casis->tgl_lahir ? $casis->tgl_lahir->format('d/m/Y') : '' }}"
                                     disabled>
                             </div>
                         </div>
@@ -411,7 +411,7 @@
                                 Nama Ayah
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nm_ayah }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nm_ayah ?? '-' }}" disabled>
                             </div>
                         </div>
 

@@ -17,17 +17,24 @@
 </div>
 @endsection
 
-{{-- Tampilan untuk Calon Siswa TK, SD, SMP, SMA --}}
+{{-- ##################### Tampilan untuk Calon Siswa TK, SD, SMP, SMA ##################### --}}
 @hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
 @section('content')
 @if (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.terdaftar'))
-@include('dashboard.calonsiswa.status.terdaftar')
+@include('dashboard.beranda.calonsiswa.status.terdaftar')
 @elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.nonaktif'))
-@include('dashboard.calonsiswa.status.nonaktif')
+@include('dashboard.beranda.calonsiswa.status.nonaktif')
 @elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.terverifikasi'))
-@include('dashboard.calonsiswa.status.terverifikasi')
+@include('dashboard.beranda.calonsiswa.status.terverifikasi')
 @elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.datalengkap'))
-@include('dashboard.calonsiswa.status.datalengkap')
+@include('dashboard.beranda.calonsiswa.status.datalengkap')
 @endif
+@endsection
+@endhasanyrole
+
+{{-- ##################### Tampilan untuk Superadmin dan Admin Unit ##################### --}}
+@hasanyrole('superadmin')
+@section('content')
+@include('dashboard.beranda.admin.grafik')
 @endsection
 @endhasanyrole

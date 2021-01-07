@@ -22,7 +22,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-
         // Jika yang login adalah Calon siswa
         if (Auth::user()->hasAnyRole(['Calon Siswa TK', 'Calon Siswa SD', 'Calon Siswa SMP', 'Calon Siswa SMA'])) {
             $statusSiswa = StatusCasis::getDataById(Auth::user()->getDataCasisKu()->id_status_casis)->status;
@@ -99,6 +98,25 @@ class DashboardController extends Controller
             }
         }
 
-        return view('dashboard.beranda.index');
+        // Jika yang login adalah Calon siswa
+        if (Auth::user()->hasAnyRole(['superadmin'])) {
+            $casisTk = CasisTk::get();
+            $casisSd = CasisSd::get();
+            $casisSmp = CasisSmp::get();
+            $casisSma = CasisSma::get();
+
+            foreach (CasisTk::getGrafikUmum() as $item) {
+                echo $item->created_at . ' | ' . $item->count() . '<br>';
+            }
+
+            // return view('dashboard.beranda.index', compact(
+            //     'casisTk',
+            //     'casisSd',
+            //     'casisSmp',
+            //     'casisSma'
+            // ));
+        }
+
+        // return view('dashboard.beranda.index');
     }
 }

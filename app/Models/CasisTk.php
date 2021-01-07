@@ -79,4 +79,12 @@ class CasisTk extends Model
         'ket_status',
         'catatan',
     ];
+
+    // Grafik umum
+    public static function getGrafikUmum()
+    {
+        $result = CasisTk::select('tbl_casis_tk.*')->groupBy('created_at')->get();
+
+        return $result;
+    }
 }
