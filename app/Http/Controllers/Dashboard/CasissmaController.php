@@ -179,6 +179,11 @@ class CasisSmaController extends Controller
                         config('mail.from.address'), 
                         config('app.name'));
                 });
+
+                // jika gagal kirim email
+                if (Mail::failures()) {
+                    return response()->json(['status' => 'warning', 'message' => 'Status berhasil diubah, namun gagal mengirimkan notifikasi ke email']);
+                }
             }
 
             return response()->json(['status' => 'success', 'message' => 'Status berhasil diubah']);
