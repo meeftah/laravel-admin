@@ -36,6 +36,7 @@ class CasisSmp extends Model
         'id_user',
         'id_va_smp',
         'nm_siswa',
+        'asal_sekolah',
         'jk',
         'nisn',
         'nik',
