@@ -105,18 +105,18 @@ class DashboardController extends Controller
             $casisSmp = CasisSmp::get();
             $casisSma = CasisSma::get();
 
-            foreach (CasisTk::getGrafikUmum() as $item) {
-                echo $item->created_at . ' | ' . $item->count() . '<br>';
-            }
+            // foreach (CasisTk::getGrafikUmum() as $item) {
+            //     echo $item->created_at . ' | ' . $item->count() . '<br>';
+            // }
 
-            // return view('dashboard.beranda.index', compact(
-            //     'casisTk',
-            //     'casisSd',
-            //     'casisSmp',
-            //     'casisSma'
-            // ));
+            return view('dashboard.beranda.index', compact(
+                'casisTk',
+                'casisSd',
+                'casisSmp',
+                'casisSma'
+            ));
         }
 
-        // return view('dashboard.beranda.index');
+        return view('dashboard.beranda.index');
     }
 }
