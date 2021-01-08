@@ -4,7 +4,7 @@ return [
     'calon_siswa'   => [
         'terdaftar'     => 'Terdaftar',
         'nonaktif'      => 'Non Aktif',
-        'datalengkap'   => 'Selesai Melengkapi Data',
+        'datalengkap'   => 'Data Lengkap',
         'terverifikasi' => 'Terverifikasi',
         'lulus'         => 'Lulus',
     ],
