@@ -33,6 +33,30 @@
                                     <h6 class="tx-uppercase tx-bold tx-black mg-b-10">DATA CALON SISWA</h6>
                                 </label>
                             </div>
+                            @role('Calon Siswa SMP')
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-md-3 control-label col-form-label">
+                                    Asal SD/MI
+                                </label>
+                                <div class="col-md-9 pb-2 pt-2">
+                                    <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
+                                        placeholder="ASAL SD/MI" value="{{ $casis->asal_sekolah }}"
+                                        style="text-transform:uppercase">
+                                </div>
+                            </div>
+                            @endrole
+                            @role('Calon Siswa SMA')
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-md-3 control-label col-form-label">
+                                    Asal SMP/MTS
+                                </label>
+                                <div class="col-md-9 pb-2 pt-2">
+                                    <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
+                                        placeholder="ASAL SMP/MTS" value="{{ $casis->asal_sekolah }}"
+                                        style="text-transform:uppercase">
+                                </div>
+                            </div>
+                            @endrole
                             <div class="form-group row align-items-center mb-0">
                                 <label class="col-md-3 control-label col-form-label">
                                     Nama Peserta Didik
@@ -1220,6 +1244,14 @@
                 loading: "Memuat ..."
             },
             onStepChanging: function(e, currentIndex, newIndex){
+                if (currentIndex > newIndex) {
+                    return true;
+                }
+
+                if (currentIndex < newIndex) {
+                    form.find(".body:eq(" + newIndex + ") label.error").remove();
+                    form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+                }
                 // Simpan data halaman pertama
                 if (currentIndex == 0) {
                     updateBiodata();
@@ -1399,6 +1431,7 @@
             },
             data: {
                 @hasanyrole('Calon Siswa SMP|Calon Siswa SMA')
+                asal_sekolah: $('#asal_sekolah').val(),
                 nisn: $('#nisn').val(),
                 no_ijazah: $('#no_ijazah').val(),
                 no_skhun: $('#no_skhun').val(),
