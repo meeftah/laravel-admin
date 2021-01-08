@@ -145,6 +145,8 @@
                     $('#datatable-casistk').DataTable().ajax.reload();
                     if (data.status == 'success') {
                         toastr.success(data.message);
+                    } else if (data.status == 'warning') {
+                        toastr.warning(data.message);
                     } else {
                         toastr.error(data.message);
                     }
@@ -177,6 +179,8 @@
                 $('#datatable-casistk').DataTable().ajax.reload();
                 if (data.status == 'success') {
                     toastr.success(data.message);
+                } else if (data.status == 'warning') {
+                    toastr.warning(data.message);
                 } else {
                     toastr.error(data.message);
                 }
