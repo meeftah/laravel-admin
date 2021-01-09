@@ -17,6 +17,7 @@ class CreateTblCasisSmpTable extends Migration
             $table->uuid('id_casis_smp')->primary();
             $table->uuid('id_user');
             $table->uuid('id_va_smp');
+            $table->string('asal_sekolah')->nullable();
             $table->string('nm_siswa')->nullable();
             $table->string('jk')->nullable();
             $table->string('nisn')->nullable();

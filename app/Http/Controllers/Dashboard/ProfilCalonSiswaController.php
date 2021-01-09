@@ -28,6 +28,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 use Image;
@@ -54,8 +55,8 @@ class ProfilCalonSiswaController extends Controller
         abort_if(Gate::denies('profilcalonsiswa_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $statusSiswa = StatusCasis::getDataById(Auth::user()->getDataCasisKu()->id_status_casis)->status;
-        if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
-            if (Auth::user()->hasRole('Calon Siswa TK')) {
+        if ($statusSiswa == config('ppdb.status.calon_siswa.terverifikasi')) {
+            if (Auth::user()->hasRole(config('ppdb.peran.casis.tk'))) {
                 $casis = CasisTk::where('id_user', Auth::user()->id)
                     ->leftJoin('tbl_data_ortu', 'tbl_casis_tk.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
                     ->first();
@@ -199,6 +200,7 @@ class ProfilCalonSiswaController extends Controller
         $updateBiodata = Auth::user()->getDataCasisKu();
 
         if (Auth::user()->hasAnyRole(['Calon Siswa SMP', 'Calon Siswa SMA'])) {
+            $updateBiodata->asal_sekolah = $request->asal_sekolah ?? null;
             $updateBiodata->nisn = $request->nisn ?? null;
             $updateBiodata->no_ijazah = $request->no_ijazah ?? null;
             $updateBiodata->no_skhun = $request->no_skhun ?? null;
@@ -310,7 +312,7 @@ class ProfilCalonSiswaController extends Controller
     {
         abort_if(Gate::denies('profilcalonsiswa_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if (Auth::user()->hasRole('Calon Siswa TK')) {
+        if (Auth::user()->hasRole(config('ppdb.peran.casis.tk'))) {
             $calonSiswa = CasisTk::where('id_user', Auth::user()->id)->first();
 
             // ---------- Foto Calon Siswa
@@ -992,10 +994,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kelas5semester1');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kelas5semester1' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kelas5semester1');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kelas5semester1' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKelas5Sem1->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1014,7 +1017,7 @@ class ProfilCalonSiswaController extends Controller
             }
 
             // ---------- Raport Kelas 5 Semester 1
-            if ($request->hasFile('kelas5semeste2')) {
+            if ($request->hasFile('kelas5semester2')) {
                 $updateKelas5Sem2 = Dokumensmp::where('id_casis_smp', $calonSiswa->id_casis_smp)
                     ->where('id_jenisdokumen_smp', '90b72f46-27cf-4ebc-9ce8-df93816f10f7')
                     ->first();
@@ -1030,10 +1033,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kelas5semester2');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kelas5semester2' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kelas5semester2');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kelas5semester2' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKelas5Sem2->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1068,10 +1072,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kelas6semester1');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kelas6semester1' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kelas6semester1');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kelas6semester1' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKelas6Sem1->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1327,10 +1332,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kelas8semester1');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kelas8semester1' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kelas8semester1');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kelas8semester1' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKelas8Sem1->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1365,10 +1371,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kelas8semester2');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kelas8semester2' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kelas8semester2');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kelas8semester2' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKelas8Sem2->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1403,10 +1410,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kelas9semester1');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kelas9semester1' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kelas9semester1');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kelas9semester1' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKelas9Sem1->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1431,7 +1439,7 @@ class ProfilCalonSiswaController extends Controller
         abort_if(Gate::denies('profilcalonsiswa_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $updateStatusCasis = Auth::user()->getDataCasisKu();
-        $updateStatusCasis->id_status_casis = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.datalengkap'))->id_status_casis;
+        $updateStatusCasis->id_status_casis = StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.datalengkap'))->id_status_casis;
 
         if ($updateStatusCasis->save()) {
             return json_encode(array(

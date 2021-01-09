@@ -23,10 +23,10 @@ class DashboardController extends Controller
     public function index()
     {
         // Jika yang login adalah Calon siswa
-        if (Auth::user()->hasAnyRole(['Calon Siswa TK', 'Calon Siswa SD', 'Calon Siswa SMP', 'Calon Siswa SMA'])) {
+        if (Auth::user()->hasAnyRole([config('ppdb.peran.casis.tk'), config('ppdb.peran.casis.sd'), config('ppdb.peran.casis.smp'), config('ppdb.peran.casis.sma')])) {
             $statusSiswa = StatusCasis::getDataById(Auth::user()->getDataCasisKu()->id_status_casis)->status;
-            if ($statusSiswa == config('status_ppdb.calon_siswa.datalengkap')) {
-                if (Auth::user()->hasRole('Calon Siswa TK')) {
+            if ($statusSiswa == config('ppdb.status.calon_siswa.datalengkap')) {
+                if (Auth::user()->hasRole(config('ppdb.peran.casis.tk'))) {
                     $casis = CasisTk::where('id_user', Auth::user()->id)
                         ->leftJoin('tbl_data_ortu', 'tbl_casis_tk.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
                         ->first();
@@ -79,20 +79,20 @@ class DashboardController extends Controller
                 }
 
                 return view('dashboard.beranda.index', compact('casis'));
-            } else if ($statusSiswa == config('status_ppdb.calon_siswa.terdaftar')) {
+            } else if ($statusSiswa == config('ppdb.status.calon_siswa.terdaftar')) {
                 // biaya formulir
                 $biayaFormulir = Auth::user()->getDataUnitKu()->biaya_formulir;
 
                 // masa aktif va
-                if (config('va_config.masa_aktif.format') == 'jam') {
+                if (config('ppdb.va.masa_aktif.format') == 'jam') {
                     // masa aktif bersarkan konfigurasi va
-                    $masaAktif = config('va_config.masa_aktif.satuan') . ' jam';
-                } else if (config('va_config.masa_aktif.format') == 'menit') {
+                    $masaAktif = config('ppdb.va.masa_aktif.satuan') . ' jam';
+                } else if (config('ppdb.va.masa_aktif.format') == 'menit') {
                     // jika format berupa menit
-                    $masaAktif = config('va_config.masa_aktif.satuan') . ' menit';
+                    $masaAktif = config('ppdb.va.masa_aktif.satuan') . ' menit';
                 } else {
                     // jika format berupa menit
-                    $masaAktif = config('va_config.masa_aktif.satuan') . 'x24 jam';
+                    $masaAktif = config('ppdb.va.masa_aktif.satuan') . 'x24 jam';
                 }
                 return view('dashboard.beranda.index', compact('biayaFormulir', 'masaAktif'));
             }

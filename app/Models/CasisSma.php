@@ -36,6 +36,7 @@ class CasisSma extends Model
         'id_user',
         'id_va_sma',
         'nm_siswa',
+        'asal_sekolah',
         'jk',
         'nisn',
         'nik',

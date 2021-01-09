@@ -11,13 +11,13 @@
 
 <div class="br-profile-page">
     <div class="card shadow-base bd-0 rounded-0 widget-4">
-        <div class="card-body text-white">
-            <div class="card-profile-img">
-                <img src="{{ url('/' . $casis->foto) }}" alt="">
+        <div class="card-body text-white" style="padding-top: 40px">
+            <div class="circular--portrait">
+                <img src="{{ url('/' . $casis->foto) }}" alt="" class="cropcircle">
             </div>
-            <h4 class="tx-normal tx-roboto tx-white" style="margin-top: 80px">{{ $casis->nm_siswa }}</h4>
+            <h4 class="tx-normal tx-roboto tx-white" style="margin-top: 30px">{{ $casis->nm_siswa }}</h4>
             <p class="mg-b-25">{{ strtoupper(auth()->user()->getRoleNames()->implode('')) }}</p>
-            @role('Calon Siswa TK')
+            @role(config('ppdb.peran.casis.tk'))
             <p>{{ $casis->kelas }}</p>
             @endrole
 
@@ -64,6 +64,30 @@
                                     value="{{ auth()->user()->getDataVaKu()->va ?? '-' }}" disabled>
                             </div>
                         </div>
+
+                        @hasanyrole('Calon Siswa SMP')
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-md-3 control-label col-form-label">
+                                Asal SD/MI
+                            </label>
+                            <div class="col-md-9 pb-2 pt-2">
+                                <input type="text" class="form-control" value="{{ $casis->asal_sekolah ?? '-' }}"
+                                    disabled>
+                            </div>
+                        </div>
+                        @endhasanyrole
+
+                        @hasanyrole('Calon Siswa SMA')
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-md-3 control-label col-form-label">
+                                Asal SMP/MTS
+                            </label>
+                            <div class="col-md-9 pb-2 pt-2">
+                                <input type="text" class="form-control" value="{{ $casis->asal_sekolah ?? '-' }}"
+                                    disabled>
+                            </div>
+                        </div>
+                        @endhasanyrole
 
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-md-3 control-label col-form-label mb-0">
@@ -421,7 +445,7 @@
                                 NIK Ayah
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nik_ayah }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nik_ayah ?? '-' }}" disabled>
                             </div>
                         </div>
 
@@ -430,7 +454,8 @@
                                 Tahun Lahir Ayah
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->tahun_lahir_ayah }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->tahun_lahir_ayah ?? '-' }}"
+                                    disabled>
                             </div>
                         </div>
 
@@ -472,7 +497,7 @@
                                 No. HP/Whatsapp Ayah
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nohp_ayah }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nohp_ayah ?? '-' }}" disabled>
                             </div>
                         </div>
 
@@ -481,7 +506,7 @@
                                 Nama Ibu
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nm_ibu }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nm_ibu ?? '-' }}" disabled>
                             </div>
                         </div>
 
@@ -490,7 +515,7 @@
                                 NIK Ibu
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nik_ibu }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nik_ibu ?? '-' }}" disabled>
                             </div>
                         </div>
 
@@ -499,7 +524,8 @@
                                 Tahun Lahir Ibu
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->tahun_lahir_ibu }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->tahun_lahir_ibu ?? '-' }}"
+                                    disabled>
                             </div>
                         </div>
 
@@ -541,7 +567,7 @@
                                 No. HP/Whatsapp Ibu
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nohp_ibu }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nohp_ibu ?? '-' }}" disabled>
                             </div>
                         </div>
 
@@ -550,7 +576,7 @@
                                 Nama Wali
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nm_wali }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nm_wali ?? '-' }}" disabled>
                             </div>
                         </div>
 
@@ -559,7 +585,7 @@
                                 NIK Wali
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nik_wali }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nik_wali ?? '-' }}" disabled>
                             </div>
                         </div>
 
@@ -568,7 +594,8 @@
                                 Tahun Lahir Wali
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->tahun_lahir_wali }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->tahun_lahir_wali ?? '-' }}"
+                                    disabled>
                             </div>
                         </div>
 
@@ -610,7 +637,7 @@
                                 No. HP/Whatsapp Wali
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
-                                <input type="text" class="form-control" value="{{ $casis->nohp_wali }}" disabled>
+                                <input type="text" class="form-control" value="{{ $casis->nohp_wali ?? '-' }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -782,3 +809,24 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+    .circular--portrait {
+        /* position: relative; */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+
+    .circular--portrait img {
+        width: 100%;
+        height: auto;
+        margin-top: -0px;
+    }
+</style>
+@endpush

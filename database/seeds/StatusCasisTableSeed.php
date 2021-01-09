@@ -23,7 +23,7 @@ class StatusCasisTableSeed extends Seeder
             ],
             [
                 'id_status_casis'  => '13446f17-37b0-445f-8cf4-4dee171c5001',
-                'status'           => 'Selesai Melengkapi Data',
+                'status'           => 'Data Lengkap',
             ],
             [
                 'id_status_casis'  => '12f81040-708c-4d83-9b64-4a347a2ed1e7',
