@@ -1,10 +1,17 @@
-<div class="card mb-4">
+<div class="card mb-4 hidden-md-up">
     <div class="card-body">
         <div class="text-justify">
-            Anda telah <strong class="text-success">Melengkapi Data Profil Calon Siswa</strong>.
-            Silakan pantau berita terbaru dari {{ config('app.name') }} di halaman ini.
-            Untuk data yang sudah di isi dan berkas yang sudah di Upload akan kembali <strong class="text-danger">DIVALIDASI</strong> oleh panitia
-            jika biodata dan berkas yang diupload sesuai dengan ketentuan panitia, maka status siswa akan berganti menjadi <strong class="text-success">SIAP TEST</strong>
+            <p>
+                Anda telah <strong class="text-success">Melengkapi Data Profil Calon Siswa</strong>.
+                Silakan pantau berita terbaru dari {{ config('app.name') }} di halaman ini.
+                Untuk data yang sudah di isi dan berkas yang sudah di Upload akan kembali
+                <strong class="text-danger">DIVALIDASI</strong> oleh panitia
+            </p>
+            <p>
+                Jika biodata dan berkas yang diupload sesuai dengan ketentuan panitia, maka status siswa akan berganti
+                menjadi <strong class="text-warning">SIAP TEST.</strong> Jika terdapat kekeliruan atau kesalahan data
+                yang diimput, panitia akan menghubungi no whatssApp aktif pada saat registrasi.
+            </p>
         </div>
     </div>
 </div>
@@ -642,22 +649,191 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="dokumen">
-                        dokumen
+                        <div>
+                            <h4 class="card-title">KTP Ayah</h4>
+                            <h6 class="card-subtitle text-dark">Scan atau scan KTP / SIM /
+                                Paspor ayah calon siswa</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">KTP Ibu</h4>
+                            <h6 class="card-subtitle text-dark">Scan atau scan KTP / SIM /
+                                Paspor Ibu calon siswa</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->ktp_ibu ? url('/' . $casis->ktp_ibu) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Kartu Keluarga</h4>
+                            <h6 class="card-subtitle text-dark">Scan Kartu Keluarga Siswa</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->kk ? url('/' . $casis->kk) : '' }}" class="btn btn-primary col-md-3"
+                                    target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Akte Lahir</h4>
+                            <h6 class="card-subtitle text-dark">Scan Akte Kelahiran</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->akte ? url('/' . $casis->akte) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Surat Keterangan Dokter</h4>
+                            <h6 class="card-subtitle text-dark">Scan Surat Keterangan
+                                dokter calon siswa</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->skd ? url('/' . $casis->skd) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        @role('Calon Siswa SMP')
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Raport Kelas 5 Semester 1</h4>
+                            <h6 class="card-subtitle text-dark">Dokument pdf data raport kelas 5 smester 1</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->kelas5semester1 ? url('/' . $casis->kelas5semester1) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Raport Kelas 5 Semester 2</h4>
+                            <h6 class="card-subtitle text-dark">Dokument pdf data raport kelas 5 smester 2</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->kelas5semester2 ? url('/' . $casis->kelas5semester2) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Raport Kelas 6 Semester 1</h4>
+                            <h6 class="card-subtitle text-dark">Dokument pdf data raport kelas 6 smester 1</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->kelas6semester1 ? url('/' . $casis->kelas6semester1) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+                        @endrole
+                        @role('Calon Siswa SMA')
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Raport Kelas 8 Semester 1</h4>
+                            <h6 class="card-subtitle text-dark">Dokument pdf data raport kelas 8 smester 1</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->kelas8semester1 ? url('/' . $casis->kelas8semester1) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Raport Kelas 8 Semester 1</h4>
+                            <h6 class="card-subtitle text-dark">Dokument pdf data raport kelas 8 smester 1</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->kelas8semester2 ? url('/' . $casis->kelas8semester2) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="mt-4">
+                            <h4 class="card-title">Raport Kelas 9 Semester 1</h4>
+                            <h6 class="card-subtitle text-dark">Dokument pdf data raport kelas 9 smester 1</h6>
+                            <div style="margin-top: 10px">
+                                <a href="{{ $casis->kelas9semester1 ? url('/' . $casis->kelas9semester1) : '' }}"
+                                    class="btn btn-primary col-md-3" target="_blank">
+                                    LIHAT
+                                </a>
+                            </div>
+                        </div>
+                        @endrole
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
+            <div class="card pd-20 pd-xs-30 shadow-base bd-0 text-justify mb-4 hidden-sm-down">
+                <p>
+                    Anda telah <strong class="text-success">Melengkapi Data Profil Calon Siswa</strong>.
+                    Silakan pantau berita terbaru dari {{ config('app.name') }} di halaman ini.
+                    Untuk data yang sudah di isi dan berkas yang sudah di Upload akan kembali
+                    <strong class="text-danger">DIVALIDASI</strong> oleh panitia
+                </p>
+                <p>
+                    Jika biodata dan berkas yang diupload sesuai dengan ketentuan panitia, maka status siswa akan berganti
+                    menjadi <strong class="text-warning">SIAP TEST.</strong> Jika terdapat kekeliruan atau kesalahan data
+                    yang diimput, panitia akan menghubungi no whatssApp aktif pada saat registrasi.
+                </p>
+            </div>
+
             <div class="card pd-20 pd-xs-30 shadow-base bd-0">
                 <h6 class="tx-gray-800 tx-uppercase tx-semibold tx-13 mg-b-25">Berita Terbaru</h6>
-
                 belum ada berita terbaru
             </div>
 
-            {{-- <div class="card mt-4 pd-20 pd-xs-30 shadow-base bd-0">
-                <h6 class="tx-gray-800 tx-uppercase tx-semibold tx-13 mg-b-25">Berita Terbaru</h6>
-            </div> --}}
+            <div class="card mt-4 pd-20 pd-xs-30 shadow-base bd-0">
+                <h6 class="tx-gray-800 tx-uppercase tx-semibold tx-135">Informasi Lainnya</h6>
+                <p class="tx-danger mg-b-25">Wajib didownload dan diisi untuk diserahkan kepada panitia pada saat tes</p>
+
+                <label class="tx-12 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2">Surat Pernyataan Orang Tua</label>
+                <a href="{{ url('/storage/casis/dokumen/2021/lainnya/Surat_Pernyataan_Orangtua.pdf') }}" target="_blank"
+                    class="btn btn-primary btn-with-icon mg-t-5">
+                    <div class="ht-40 justify-content-between">
+                        <span class="pd-x-15">Download</span>
+                        <span class="icon wd-40"><i class="fa fa-download"></i></span>
+                    </div>
+                </a>
+
+                <label class="tx-12 tx-uppercase tx-mont tx-medium tx-spacing-1 mg-b-2 mg-t-40">Surat Permohonan Diskon</label>
+                <p class="text-secondary">(Bagi yang memenuhi kriteria)</p>
+                <a href="{{ url('/storage/casis/dokumen/2021/lainnya/Surat_Permohonan_Diskon.pdf') }}" target="_blank"
+                    class="btn btn-primary btn-with-icon">
+                    <div class="ht-40 justify-content-between">
+                        <span class="pd-x-15">Download</span>
+                        <span class="icon wd-40"><i class="fa fa-download"></i></span>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div>
