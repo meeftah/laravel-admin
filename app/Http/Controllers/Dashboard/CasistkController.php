@@ -42,19 +42,19 @@ class CasisTkController extends Controller
                 'statuscasis',
                 function ($row) {
                     $status = '';
-                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.terdaftar')) {
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.terdaftar')) {
                         $status = '<span class="badge badge-secondary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
-                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.terverifikasi')) {
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.terverifikasi')) {
                         $status = '<span class="badge badge-info p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
-                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.datalengkap')) {
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.datalengkap')) {
                         $status = '<span class="badge badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
-                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.lulus')) {
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.lulus')) {
                         $status = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
-                    if ($row['statuscasis'] == config('status_ppdb.calon_siswa.nonaktif')) {
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.nonaktif')) {
                         $status = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
                     }
                     return $status;
@@ -162,7 +162,7 @@ class CasisTkController extends Controller
         if ($casistk->save()) {
             // jika status di update ke terverifikasi
             $statusSiswa = StatusCasis::getDataById($request->id_status_casis)->status;
-            if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
+            if ($statusSiswa == config('ppdb.status.calon_siswa.terverifikasi')) {
                 // kirim email verifikasi va
                 $kepada     = User::getDataById($casistk->id_user)->username;
                 $keEmail    = User::getDataById($casistk->id_user)->email;

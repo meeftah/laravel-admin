@@ -17,7 +17,7 @@
             </div>
             <h4 class="tx-normal tx-roboto tx-white" style="margin-top: 30px">{{ $casis->nm_siswa }}</h4>
             <p class="mg-b-25">{{ strtoupper(auth()->user()->getRoleNames()->implode('')) }}</p>
-            @role('Calon Siswa TK')
+            @role(config('ppdb.peran.casis.tk'))
             <p>{{ $casis->kelas }}</p>
             @endrole
 

@@ -1378,38 +1378,7 @@
         });
         @endrole
 
-        {{--
-        // $('.repeater').repeater({
-        //     show: function () {
-        //         console.log('okeeee');
-        //         $(this).slideDown();
-        //         $('.select2-container').remove();
-        //         $('.dokumen').select2();
-        //         $('.select2-container').css('width','100%');
-        //     },
-        //     hide: function (remove) {
-                // $(document).on('click', '.delete', function(){
-                //     $('#confirm-delete').modal('show');
-                // });
-                // $('#delete-btn').click(function(){
-                //     remove.controlID.slideUp(remove);
-                //     $('#confirm-delete').modal('hide');
-                // });
-        //         if(confirm('Apakah Anda yakin ingin menghapus dokumen ini?')) {
-        //             $(this).slideUp(remove);
-        //         }
-        //     }
-        // });
-        --}}
     });
-
-    {{--
-    // function displayfilename() 
-    //     $('#dokumen').change(function(e) {
-    //     var fileName = e.target.files[0].name;
-    //     alert('The file "' + fileName +  '" has been selected.');
-    // });
-    --}}
 
     function updateBiodata() {
         var kebutuhan_khusus_siswa = $('#kebutuhan_khusus_siswa').val() == 'YA' ? $('#kebutuhan_khusus_siswa_ket').val() : $('#kebutuhan_khusus_siswa').val() == 'TIDAK' ? 'TIDAK' : '';

@@ -72,7 +72,7 @@
                         <tr>
                             <td class="fitwidth">Bank Pembayaran</td>
                             <td width="10px">:</td>
-                            <td>{{ config('va_config.bank.bni_syariah.nama_bank') }}</td>
+                            <td>{{ config('ppdb.va.bank.bni_syariah.nama_bank') }}</td>
                         </tr>
                         <tr>
                             <td class="fitwidth">Tanggal Terakhir Pembayaran</td>

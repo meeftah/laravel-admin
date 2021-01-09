@@ -55,8 +55,8 @@ class ProfilCalonSiswaController extends Controller
         abort_if(Gate::denies('profilcalonsiswa_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $statusSiswa = StatusCasis::getDataById(Auth::user()->getDataCasisKu()->id_status_casis)->status;
-        if ($statusSiswa == config('status_ppdb.calon_siswa.terverifikasi')) {
-            if (Auth::user()->hasRole('Calon Siswa TK')) {
+        if ($statusSiswa == config('ppdb.status.calon_siswa.terverifikasi')) {
+            if (Auth::user()->hasRole(config('ppdb.peran.casis.tk'))) {
                 $casis = CasisTk::where('id_user', Auth::user()->id)
                     ->leftJoin('tbl_data_ortu', 'tbl_casis_tk.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
                     ->first();
@@ -312,7 +312,7 @@ class ProfilCalonSiswaController extends Controller
     {
         abort_if(Gate::denies('profilcalonsiswa_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if (Auth::user()->hasRole('Calon Siswa TK')) {
+        if (Auth::user()->hasRole(config('ppdb.peran.casis.tk'))) {
             $calonSiswa = CasisTk::where('id_user', Auth::user()->id)->first();
 
             // ---------- Foto Calon Siswa
@@ -1439,7 +1439,7 @@ class ProfilCalonSiswaController extends Controller
         abort_if(Gate::denies('profilcalonsiswa_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $updateStatusCasis = Auth::user()->getDataCasisKu();
-        $updateStatusCasis->id_status_casis = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.datalengkap'))->id_status_casis;
+        $updateStatusCasis->id_status_casis = StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.datalengkap'))->id_status_casis;
 
         if ($updateStatusCasis->save()) {
             return json_encode(array(

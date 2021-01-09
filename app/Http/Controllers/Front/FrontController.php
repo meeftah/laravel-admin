@@ -94,24 +94,24 @@ class FrontController extends Controller
                 $casis = new CasisTk();
                 $casis->id_va_tk            = $slotVaTk->id_va_tk;
                 $casis->id_user             = $user->id;
-                $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
+                $casis->id_status_casis     = StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terdaftar'))->id_status_casis;
                 $casis->kelas               = $request->kelas;
                 $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();
-                    // masa aktif menyesuaikan dengan konfigurasi va di config/va_config
+                    // masa aktif menyesuaikan dengan konfigurasi va di config/ppdb.va
                     // jika format berupa jam
-                    if (config('va_config.masa_aktif.format') == 'jam') {
-                        $tanggalBerakhir = $tanggalSekarang->addHours(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'jam') {
+                        $tanggalBerakhir = $tanggalSekarang->addHours(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } else
                     // jika format berupa menit
-                    if (config('va_config.masa_aktif.format') == 'menit') {
-                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'menit') {
+                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } 
                     // jika format berupa menit
                     else {
-                        $tanggalBerakhir = $tanggalSekarang->addDays(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                        $tanggalBerakhir = $tanggalSekarang->addDays(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     }
 
                     $slotVaTk->tanggal_aktif    = $tanggalSekarang->format('Y-m-d H:i:s');
@@ -119,7 +119,7 @@ class FrontController extends Controller
                     $slotVaTk->status = 1;
                     if ($slotVaTk->save()) {
                         // set peran calon siswa TK
-                        $user->assignRole('Calon Siswa TK');
+                        $user->assignRole(config('ppdb.peran.casis.tk'));
                         $statusRegister = true;
                         $message = 'Anda berhasil mendaftar sebagai Calon Siswa TKIT Al-Fityan Kubu Raya, silakan login menggunakan Username/Email dan Password Anda';
                     } else {
@@ -148,23 +148,23 @@ class FrontController extends Controller
                 $casis = new CasisSd();
                 $casis->id_va_sd            = $slotVaSd->id_va_sd;
                 $casis->id_user             = $user->id;
-                $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
+                $casis->id_status_casis     = StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terdaftar'))->id_status_casis;
                 $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();
-                    // masa aktif menyesuaikan dengan konfigurasi va di config/va_config
+                    // masa aktif menyesuaikan dengan konfigurasi va di config/ppdb.va
                     // jika format berupa jam
-                    if (config('va_config.masa_aktif.format') == 'jam') {
-                        $tanggalBerakhir = $tanggalSekarang->addHours(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'jam') {
+                        $tanggalBerakhir = $tanggalSekarang->addHours(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } else
                     // jika format berupa menit
-                    if (config('va_config.masa_aktif.format') == 'menit') {
-                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'menit') {
+                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } 
                     // jika format berupa menit
                     else {
-                        $tanggalBerakhir = $tanggalSekarang->addDays(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                        $tanggalBerakhir = $tanggalSekarang->addDays(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     }
 
                     $slotVaSd->tanggal_aktif    = $tanggalSekarang->format('Y-m-d H:i:s');
@@ -201,23 +201,23 @@ class FrontController extends Controller
                 $casis = new CasisSmp();
                 $casis->id_va_smp            = $slotVaSmp->id_va_smp;
                 $casis->id_user             = $user->id;
-                $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
+                $casis->id_status_casis     = StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terdaftar'))->id_status_casis;
                 $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();
-                    // masa aktif menyesuaikan dengan konfigurasi va di config/va_config
+                    // masa aktif menyesuaikan dengan konfigurasi va di config/ppdb.va
                     // jika format berupa jam
-                    if (config('va_config.masa_aktif.format') == 'jam') {
-                        $tanggalBerakhir = $tanggalSekarang->addHours(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'jam') {
+                        $tanggalBerakhir = $tanggalSekarang->addHours(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } else
                     // jika format berupa menit
-                    if (config('va_config.masa_aktif.format') == 'menit') {
-                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'menit') {
+                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } 
                     // jika format berupa menit
                     else {
-                        $tanggalBerakhir = $tanggalSekarang->addDays(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                        $tanggalBerakhir = $tanggalSekarang->addDays(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     }
 
                     $slotVaSmp->tanggal_aktif    = $tanggalSekarang->format('Y-m-d H:i:s');
@@ -253,23 +253,23 @@ class FrontController extends Controller
                 $casis = new CasisSma();
                 $casis->id_va_sma            = $slotVaSma->id_va_sma;
                 $casis->id_user             = $user->id;
-                $casis->id_status_casis     = StatusCasis::getDataByNama(config('status_ppdb.calon_siswa.terdaftar'))->id_status_casis;
+                $casis->id_status_casis     = StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terdaftar'))->id_status_casis;
                 $casis->id_tahun_ajaran     = TahunAjaran::getActivatedTAID();
                 if ($casis->save()) {
                     // update status va menjadi aktif
                     $tanggalSekarang = Carbon::now();
-                    // masa aktif menyesuaikan dengan konfigurasi va di config/va_config
+                    // masa aktif menyesuaikan dengan konfigurasi va di config/ppdb.va
                     // jika format berupa jam
-                    if (config('va_config.masa_aktif.format') == 'jam') {
-                        $tanggalBerakhir = $tanggalSekarang->addHours(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'jam') {
+                        $tanggalBerakhir = $tanggalSekarang->addHours(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } else
                     // jika format berupa menit
-                    if (config('va_config.masa_aktif.format') == 'menit') {
-                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                    if (config('ppdb.va.masa_aktif.format') == 'menit') {
+                        $tanggalBerakhir = $tanggalSekarang->addMinutes(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     } 
                     // jika format berupa menit
                     else {
-                        $tanggalBerakhir = $tanggalSekarang->addDays(config('va_config.masa_aktif.satuan'))->format('Y-m-d H:i:s');
+                        $tanggalBerakhir = $tanggalSekarang->addDays(config('ppdb.va.masa_aktif.satuan'))->format('Y-m-d H:i:s');
                     }
 
                     $slotVaSma->tanggal_aktif    = $tanggalSekarang->format('Y-m-d H:i:s');

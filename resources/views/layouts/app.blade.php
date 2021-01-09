@@ -48,7 +48,7 @@
     <link href="{{ asset('assets/dashboard/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
 
     <!-- Toastr -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
     @stack('styles')
 
@@ -67,7 +67,7 @@
     <script src="{{ asset('assets/dashboard/lib/jquery/jquery.js') }}"></script>
     <script src="{{ asset('assets/dashboard/lib/popper.js/popper.js') }}"></script>
     <script src="{{ asset('assets/dashboard/lib/bootstrap/bootstrap.js') }}"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     @stack('scripts')
     @include('partials.notifications')
 </body>

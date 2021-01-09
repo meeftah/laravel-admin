@@ -27,7 +27,7 @@ class UsersController extends Controller
             $users = User::orderBy('created_at', 'ASC')->get();
         } else {
             $users = User::whereHas('roles', function ($q) {
-                $rolesNot = ['Calon Siswa TK', 'Calon Siswa SD', 'Calon Siswa SMP', 'Calon Siswa SMA'];
+                $rolesNot = [config('ppdb.peran.casis.tk'), config('ppdb.peran.casis.sd'), config('ppdb.peran.casis.smp'), config('ppdb.peran.casis.sma')];
                 $q->whereNotIn('name', $rolesNot);
             })->orderBy('created_at', 'ASC')->get();
         }
@@ -73,7 +73,7 @@ class UsersController extends Controller
         // $ids = ['cba2cfce-f2bc-437c-acab-0d75b5a55460', '7ef0f85f-fb40-4cac-83e7-a77c7610a877'];
         // $users = User::whereIn('id', $ids)->get();
         // foreach ($users as $user) {
-        //     $user->assignRole('Calon Siswa TK');
+        //     $user->assignRole(config('ppdb.peran.casis.tk'));
         // }
 
         // // set SD

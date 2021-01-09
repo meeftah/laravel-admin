@@ -1,4 +1,10 @@
 <div class="row no-gutters widget-1 shadow-base">
+    <div class="col-md-12 bg-gray-100 text-black-50">
+        <p class="mg-b-0 p-3">
+            <span class="square-10 bg-secondary mg-r-10"></span> Terdaftar
+            <span class="square-10 bg-info mg-r-10 mg-l-30"></span> Terverifikasi
+        </p>
+      </div>
     <div class="col-sm-6 col-lg-3">
         <div class="card">
             <div class="card-header">

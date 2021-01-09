@@ -20,13 +20,13 @@
 {{-- ##################### Tampilan untuk Calon Siswa TK, SD, SMP, SMA ##################### --}}
 @hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
 @section('content')
-@if (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.terdaftar'))
+@if (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.terdaftar'))
 @include('dashboard.beranda.calonsiswa.status.terdaftar')
-@elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.nonaktif'))
+@elseif (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.nonaktif'))
 @include('dashboard.beranda.calonsiswa.status.nonaktif')
-@elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.terverifikasi'))
+@elseif (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.terverifikasi'))
 @include('dashboard.beranda.calonsiswa.status.terverifikasi')
-@elseif (auth()->user()->getStatusCasisKu() == config('status_ppdb.calon_siswa.datalengkap'))
+@elseif (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.datalengkap'))
 @include('dashboard.beranda.calonsiswa.status.datalengkap')
 @endif
 @endsection
