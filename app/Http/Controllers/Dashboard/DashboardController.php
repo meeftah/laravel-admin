@@ -79,7 +79,7 @@ class DashboardController extends Controller
                 }
 
                 return view('dashboard.beranda.index', compact('casis'));
-            } else if ($statusSiswa == config('status_ppdb.calon_siswa.terdaftar'))  {
+            } else if ($statusSiswa == config('status_ppdb.calon_siswa.terdaftar')) {
                 // biaya formulir
                 $biayaFormulir = Auth::user()->getDataUnitKu()->biaya_formulir;
 
@@ -105,18 +105,18 @@ class DashboardController extends Controller
             $casisSmp = CasisSmp::get();
             $casisSma = CasisSma::get();
 
-            foreach (CasisTk::getGrafikUmum() as $item) {
-                echo $item->created_at . ' | ' . $item->count() . '<br>';
-            }
+            // foreach (CasisTk::getGrafikUmum() as $item) {
+            //     echo $item->created_at . ' | ' . $item->count() . '<br>';
+            // }
 
-            // return view('dashboard.beranda.index', compact(
-            //     'casisTk',
-            //     'casisSd',
-            //     'casisSmp',
-            //     'casisSma'
-            // ));
+            return view('dashboard.beranda.index', compact(
+                'casisTk',
+                'casisSd',
+                'casisSmp',
+                'casisSma'
+            ));
         }
 
-        // return view('dashboard.beranda.index');
+        return view('dashboard.beranda.index');
     }
 }

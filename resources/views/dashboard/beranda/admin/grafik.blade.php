@@ -5,7 +5,7 @@
                 <h4 class="card-title tx-18-force">UNIT TKIT</h4>
             </div>
             <div class="card-body">
-                <span id="sparkTk">10,12,5,2,40,3,38,78</span>
+                <span id="sparkTk">2,1,0,0,0,2,0,1</span>
                 <span>{{ $casisTk->count() }}</span>
             </div>
             <div class="card-footer">
@@ -106,7 +106,7 @@
 <script>
     $(document).ready( function () {
         'use strict';
-         
+
         $('#sparkTk').sparkline('html', {
             type: 'bar',
             barWidth: 15,
