@@ -3,6 +3,7 @@
         <p class="mg-b-0 p-3">
             <span class="square-10 bg-secondary mg-r-10"></span> Terdaftar
             <span class="square-10 bg-info mg-r-10 mg-l-30"></span> Terverifikasi
+            <span class="square-10 bg-primary mg-r-10 mg-l-30"></span> Data Lengkap
         </p>
       </div>
     <div class="col-sm-6 col-lg-3">
@@ -12,20 +13,17 @@
             </div>
             <div class="card-body">
                 <span id="sparkTk">10,12,5,2,40,3,38,78</span>
-                <span>{{ $casisTk->count() }}</span>
+                <span class="mg-r-10" style="font-size: 30pt">{{ $casisTk->count() }}</span>
             </div>
             <div class="card-footer">
-                <div class="text-left">
-                    <span class="tx-11">Terdaftar</span>
-                    <h6 class="tx-inverse">2</h6>
+                <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisTk::getTerdaftar()->count() }}</h6>
                 </div>
-                <div class="text-center">
-                    <span class="tx-11">Terverifikasi</span>
-                    <h6 class="tx-inverse">0</h6>
+                <div class="text-center {{ config('ppdb.status.calon_siswa.terverifikasi_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisTk::getTerverifikasi()->count() }}</h6>
                 </div>
-                <div class="text-right">
-                    <span class="tx-11">Data Lengkap</span>
-                    <h6 class="tx-primary">0</h6>
+                <div class="text-right {{ config('ppdb.status.calon_siswa.datalengkap_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisTk::getDataLengkap()->count() }}</h6>
                 </div>
             </div>
         </div>
@@ -37,20 +35,17 @@
             </div>
             <div class="card-body">
                 <span id="sparkSd">5,3,9,6,5,9,7,3,5,2</span>
-                <span>{{ $casisSd->count() }}</span>
+                <span class="mg-r-10" style="font-size: 30pt">{{ $casisSd->count() }}</span>
             </div>
             <div class="card-footer">
-                <div class="text-left">
-                    <span class="text-secondary tx-11">Terdaftar</span>
-                    <h6 class="text-secondary">2</h6>
+                <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSd::getTerdaftar()->count() }}</h6>
                 </div>
-                <div class="text-center">
-                    <span class="text-info tx-11">Terverifikasi</span>
-                    <h6 class="text-info">0</h6>
+                <div class="text-center {{ config('ppdb.status.calon_siswa.terverifikasi_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSd::getTerverifikasi()->count() }}</h6>
                 </div>
-                <div class="text-right">
-                    <span class="text-primary tx-11">Data Lengkap</span>
-                    <h6 class="text-primary">0</h6>
+                <div class="text-right {{ config('ppdb.status.calon_siswa.datalengkap_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSd::getDataLengkap()->count() }}</h6>
                 </div>
             </div>
         </div>
@@ -62,20 +57,17 @@
             </div>
             <div class="card-body">
                 <span id="sparkSmp">5,3,9,6,5,9,7,3,5,2</span>
-                <span>{{ $casisSmp->count() }}</span>
+                <span class="mg-r-10" style="font-size: 30pt">{{ $casisSmp->count() }}</span>
             </div>
             <div class="card-footer">
-                <div class="text-left">
-                    <span class="text-secondary tx-11">Terdaftar</span>
-                    <h6 class="text-secondary">2</h6>
+                <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSmp::getTerdaftar()->count() }}</h6>
                 </div>
-                <div class="text-center">
-                    <span class="text-info tx-11">Terverifikasi</span>
-                    <h6 class="text-info">0</h6>
+                <div class="text-center {{ config('ppdb.status.calon_siswa.terverifikasi_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSmp::getTerverifikasi()->count() }}</h6>
                 </div>
-                <div class="text-right">
-                    <span class="text-primary tx-11">Data Lengkap</span>
-                    <h6 class="text-primary">0</h6>
+                <div class="text-right {{ config('ppdb.status.calon_siswa.datalengkap_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSmp::getDataLengkap()->count() }}</h6>
                 </div>
             </div>
         </div>
@@ -87,20 +79,17 @@
             </div>
             <div class="card-body">
                 <span id="sparkSma">5,3,9,6,5,9,7,3,5,2</span>
-                <span>{{ $casisSma->count() }}</span>
+                <span class="mg-r-10" style="font-size: 30pt">{{ $casisSma->count() }}</span>
             </div>
             <div class="card-footer">
-                <div class="text-left">
-                    <span class="text-secondary tx-11">Terdaftar</span>
-                    <h6 class="text-secondary">2</h6>
+                <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSma::getTerdaftar()->count() }}</h6>
                 </div>
-                <div class="text-center">
-                    <span class="text-info tx-11">Terverifikasi</span>
-                    <h6 class="text-info">0</h6>
+                <div class="text-center {{ config('ppdb.status.calon_siswa.terverifikasi_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSma::getTerverifikasi()->count() }}</h6>
                 </div>
-                <div class="text-right">
-                    <span class="text-primary tx-11">Data Lengkap</span>
-                    <h6 class="text-primary">0</h6>
+                <div class="text-right {{ config('ppdb.status.calon_siswa.datalengkap_bct') }}">
+                    <h6 class="tx-30">{{ App\Models\CasisSma::getDataLengkap()->count() }}</h6>
                 </div>
             </div>
         </div>
@@ -116,31 +105,31 @@
         $('#sparkTk').sparkline('html', {
             type: 'bar',
             barWidth: 15,
-            height: 30,
+            height: 50,
             barColor: '#29B0D0',
             chartRangeMax: 12
         });
 
         $('#sparkSd').sparkline('html', {
             type: 'bar',
-            barWidth: 8,
-            height: 30,
+            barWidth: 15,
+            height: 50,
             barColor: '#6F42C1',
             chartRangeMax: 12
         });
 
         $('#sparkSmp').sparkline('html', {
             type: 'bar',
-            barWidth: 8,
-            height: 30,
+            barWidth: 15,
+            height: 50,
             barColor: '#20C997',
             chartRangeMax: 12
         });
 
         $('#sparkSma').sparkline('html', {
             type: 'bar',
-            barWidth: 8,
-            height: 30,
+            barWidth: 15,
+            height: 50,
             barColor: '#0866C6',
             chartRangeMax: 12
         });

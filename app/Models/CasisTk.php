@@ -87,4 +87,25 @@ class CasisTk extends Model
 
         return $result;
     }
+
+    // Data calon siswa dengan status terdaftar
+    public static function getTerdaftar()
+    {
+        $result = CasisTk::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terdaftar'))->id_status_casis)->get();
+        return $result;
+    }
+
+    // Data calon siswa dengan status terverifikasi
+    public static function getTerverifikasi()
+    {
+        $result = CasisTk::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terverifikasi'))->id_status_casis)->get();
+        return $result;
+    }
+
+    // Data calon siswa dengan status data sudah legkap
+    public static function getDataLengkap()
+    {
+        $result = CasisTk::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.datalengkap'))->id_status_casis)->get();
+        return $result;
+    }
 }
