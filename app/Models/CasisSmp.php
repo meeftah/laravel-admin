@@ -90,4 +90,25 @@ class CasisSmp extends Model
         $result = StatusCasis::getDataById(CasisSmp::where('id_user', $id_user)->first()->id_status_casis)->status;
         return $result;
     }
+
+    // Data calon siswa dengan status terdaftar
+    public static function getTerdaftar()
+    {
+        $result = CasisSmp::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terdaftar'))->id_status_casis)->get();
+        return $result;
+    }
+
+    // Data calon siswa dengan status terverifikasi
+    public static function getTerverifikasi()
+    {
+        $result = CasisSmp::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terverifikasi'))->id_status_casis)->get();
+        return $result;
+    }
+
+    // Data calon siswa dengan status data sudah legkap
+    public static function getDataLengkap()
+    {
+        $result = CasisSmp::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.datalengkap'))->id_status_casis)->get();
+        return $result;
+    }
 }

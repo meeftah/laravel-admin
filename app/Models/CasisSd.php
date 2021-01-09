@@ -85,4 +85,25 @@ class CasisSd extends Model
         $result = StatusCasis::getDataById(CasisSd::where('id_user', $id_user)->first()->id_status_casis)->status;
         return $result;
     }
+
+    // Data calon siswa dengan status terdaftar
+    public static function getTerdaftar()
+    {
+        $result = CasisSd::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terdaftar'))->id_status_casis)->get();
+        return $result;
+    }
+
+    // Data calon siswa dengan status terverifikasi
+    public static function getTerverifikasi()
+    {
+        $result = CasisSd::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.terverifikasi'))->id_status_casis)->get();
+        return $result;
+    }
+
+    // Data calon siswa dengan status data sudah legkap
+    public static function getDataLengkap()
+    {
+        $result = CasisSd::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.datalengkap'))->id_status_casis)->get();
+        return $result;
+    }
 }
