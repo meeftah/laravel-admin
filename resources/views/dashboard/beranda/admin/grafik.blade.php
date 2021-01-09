@@ -13,7 +13,8 @@
             </div>
             <div class="card-body">
                 <span id="sparkTk">10,12,5,2,40,3,38,78</span>
-                <span class="mg-r-10" style="font-size: 30pt">{{ $casisTk->count() }}</span>
+                <span class="mg-r-10 tx-black" style="font-size: 30pt">{{ $casisTk->count() }}</span>
+                <p style="position: absolute; right: 30px; top: 95px;">Jumlah Siswa</p>
             </div>
             <div class="card-footer">
                 <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
@@ -35,7 +36,8 @@
             </div>
             <div class="card-body">
                 <span id="sparkSd">5,3,9,6,5,9,7,3,5,2</span>
-                <span class="mg-r-10" style="font-size: 30pt">{{ $casisSd->count() }}</span>
+                <span class="mg-r-10 tx-black" style="font-size: 30pt">{{ $casisSd->count() }}</span>
+                <p style="position: absolute; right: 30px; top: 95px;">Jumlah Siswa</p>
             </div>
             <div class="card-footer">
                 <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
@@ -57,7 +59,8 @@
             </div>
             <div class="card-body">
                 <span id="sparkSmp">5,3,9,6,5,9,7,3,5,2</span>
-                <span class="mg-r-10" style="font-size: 30pt">{{ $casisSmp->count() }}</span>
+                <span class="mg-r-10 tx-black" style="font-size: 30pt">{{ $casisSmp->count() }}</span>
+                <p style="position: absolute; right: 30px; top: 95px;">Jumlah Siswa</p>
             </div>
             <div class="card-footer">
                 <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
@@ -79,7 +82,8 @@
             </div>
             <div class="card-body">
                 <span id="sparkSma">5,3,9,6,5,9,7,3,5,2</span>
-                <span class="mg-r-10" style="font-size: 30pt">{{ $casisSma->count() }}</span>
+                <span class="mg-r-10 tx-black" style="font-size: 30pt">{{ $casisSma->count() }}</span>
+                <p style="position: absolute; right: 30px; top: 95px;">Jumlah Siswa</p>
             </div>
             <div class="card-footer">
                 <div class="text-left {{ config('ppdb.status.calon_siswa.terdaftar_bct') }}">
@@ -104,32 +108,32 @@
          
         $('#sparkTk').sparkline('html', {
             type: 'bar',
-            barWidth: 15,
-            height: 50,
+            barWidth: 12,
+            height: 30,
             barColor: '#29B0D0',
             chartRangeMax: 12
         });
 
         $('#sparkSd').sparkline('html', {
             type: 'bar',
-            barWidth: 15,
-            height: 50,
+            barWidth: 12,
+            height: 30,
             barColor: '#6F42C1',
             chartRangeMax: 12
         });
 
         $('#sparkSmp').sparkline('html', {
             type: 'bar',
-            barWidth: 15,
-            height: 50,
+            barWidth: 12,
+            height: 30,
             barColor: '#20C997',
             chartRangeMax: 12
         });
 
         $('#sparkSma').sparkline('html', {
             type: 'bar',
-            barWidth: 15,
-            height: 50,
+            barWidth: 12,
+            height: 30,
             barColor: '#0866C6',
             chartRangeMax: 12
         });
