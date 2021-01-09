@@ -4,7 +4,7 @@
             Anda telah <strong class="text-success">Melengkapi Data Profil Calon Siswa</strong>.
             Silakan pantau berita terbaru dari {{ config('app.name') }} di halaman ini.
             Untuk data yang sudah di isi dan berkas yang sudah di Upload akan kembali <strong class="text-danger">DIVALIDASI</strong> oleh panitia
-            jika biodata dan berkas yang diupload sesuai dengan ketentuan panitia, maka status siswa akan berganti menjadi <strong class="text-success">SIAP TEST</strong>
+            jika biodata dan berkas yang diupload sesuai dengan ketentuan panitia, maka status siswa akan berganti menjadi <strong class="text-success">SIAP TEST.</strong> Jika terdapat kekeliruan atau kesalahan data yang diimput, panitia akan menghubungi no whatssApp aktif pada saat registrasi.
         </div>
     </div>
 </div>
