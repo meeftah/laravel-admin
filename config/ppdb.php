@@ -3,11 +3,18 @@
 return [
     'status'    => [
         'calon_siswa'   => [
-            'terdaftar'     => 'Terdaftar',
-            'nonaktif'      => 'Non Aktif',
-            'datalengkap'   => 'Data Lengkap',
-            'terverifikasi' => 'Terverifikasi',
-            'lulus'         => 'Lulus',
+            'terdaftar'         => 'Terdaftar',
+            'terdaftar_bct'     => 'text-secondary',
+            'nonaktif'          => 'Non Aktif',
+            'nonaktif_bct'      => 'text-danger',
+            'datalengkap'       => 'Data Lengkap',
+            'datalengkap_bct'   => 'text-primary',
+            'terverifikasi'     => 'Terverifikasi',
+            'terverifikasi_bct' => 'text-info',
+            'lulus'             => 'Lulus',
+            'lulus_bct'         => 'text-success',
+            'siaptes'           => 'Siap Tes',
+            'siaptes_bct'       => 'text-warning',
         ],
         'pendaftaran'   => [
             'baru'      => 'Siswa Baru',

@@ -16,6 +16,7 @@ class CreateTblStatusCasisTable extends Migration
         Schema::create('tbl_status_casis', function (Blueprint $table) {
             $table->uuid('id_status_casis')->primary();
             $table->string('status');
+            $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
     }
