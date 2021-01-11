@@ -130,7 +130,7 @@
 
 @push('scripts')
 <script src="{{ asset('assets/dashboard/lib/jquery.sparkline.bower/jquery.sparkline.min.js') }}"></script>
-<script src="{{ asset('assets/dashboard/lib/morris.js/morris.js') }}"></script>
+{{-- <script src="{{ asset('assets/dashboard/lib/morris.js/morris.js') }}"></script> --}}
 <script>
     $(document).ready( function () {
         'use strict';
@@ -167,17 +167,17 @@
             chartRangeMax: 12
         });
 
-        new Morris.Donut({
-            element: 'morrisDonut2',
-            data: [
-            {label: "Men", value: 12},
-            {label: "Women", value: 30},
-            {label: "Kids", value: 20},
-            {label: "Infant", value: 25}
-            ],
-            colors: ['#3D449C','#268FB2','#2DC486','#74DE00'],
-            resize: true
-        });
+        // new Morris.Donut({
+        //     element: 'morrisDonut2',
+        //     data: [
+        //     {label: "Men", value: 12},
+        //     {label: "Women", value: 30},
+        //     {label: "Kids", value: 20},
+        //     {label: "Infant", value: 25}
+        //     ],
+        //     colors: ['#3D449C','#268FB2','#2DC486','#74DE00'],
+        //     resize: true
+        // });
     });
 </script>
 @endpush
