@@ -374,7 +374,7 @@
 
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-md-3 control-label col-form-label mb-0">
-                                Kesenian (Minat / Bakat)
+                                Jumlah Bersaudara
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control" value="{{ $casis->jumlah_saudara ?? '-' }}"
@@ -384,7 +384,7 @@
 
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-md-3 control-label col-form-label mb-0">
-                                Hobby
+                                Anak Ke
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control" value="{{ $casis->anak_ke ?? '-' }}" disabled>
@@ -393,7 +393,7 @@
 
                         <div class="form-group row align-items-center mb-0">
                             <label class="col-md-3 control-label col-form-label mb-0">
-                                Penyakit Yang Pernah Diderita
+                                Dari Berapa Bersaudara
                             </label>
                             <div class="col-md-9 pb-2 pt-2">
                                 <input type="text" class="form-control" value="{{ $casis->dari_bersaudara ?? '-' }}"
