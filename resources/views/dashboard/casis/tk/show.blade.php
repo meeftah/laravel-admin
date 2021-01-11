@@ -25,7 +25,7 @@
                 <img src="{{ $casis->foto ? url('/' . $casis->foto) : url('/assets/dashboard/img/user.png') }}" alt="" class="cropcircle">
             </div>
             <h4 class="tx-normal tx-roboto tx-white" style="margin-top: 30px">{{ $casis->nm_siswa }}</h4>
-            <p class="mg-b-25">{{ strtoupper(auth()->user()->getRoleNames()->implode('')) }}</p>
+            <p class="mg-b-25">{{ $casis->nm_siswa ? strtoupper($casis->nm_siswa) : App\Models\User::getDataById($casis->id_user)->username }}</p>
             <p>{{ $casis->kelas ? 'KELAS ' . strtoupper($casis->kelas) : '-' }}</p>
 
             <p class="wd-md-500 mg-md-l-auto mg-md-r-auto mg-b-25">

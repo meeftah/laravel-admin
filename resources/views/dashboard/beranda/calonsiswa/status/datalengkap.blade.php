@@ -20,7 +20,7 @@
     <div class="card shadow-base bd-0 rounded-0 widget-4">
         <div class="card-body text-white" style="padding-top: 40px">
             <div class="circular--portrait">
-                <img src="{{ url('/' . $casis->foto) }}" alt="" class="cropcircle">
+                <img src="{{ $casis->foto ? url('/' . $casis->foto) : url('/assets/dashboard/img/user.png') }}" alt="" class="cropcircle">
             </div>
             <h4 class="tx-normal tx-roboto tx-white" style="margin-top: 30px">{{ $casis->nm_siswa }}</h4>
             <p class="mg-b-25">{{ strtoupper(auth()->user()->getRoleNames()->implode('')) }}</p>
