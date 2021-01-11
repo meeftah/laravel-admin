@@ -1248,10 +1248,6 @@
                     return true;
                 }
 
-                if (currentIndex < newIndex) {
-                    form.find(".body:eq(" + newIndex + ") label.error").remove();
-                    form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
-                }
                 // Simpan data halaman pertama
                 if (currentIndex == 0) {
                     updateBiodata();

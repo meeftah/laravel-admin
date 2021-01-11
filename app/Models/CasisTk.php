@@ -108,4 +108,11 @@ class CasisTk extends Model
         $result = CasisTk::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.datalengkap'))->id_status_casis)->get();
         return $result;
     }
+
+    // Data calon siswa dengan status siap mengikuti tes
+    public static function getSiapTes()
+    {
+        $result = CasisTk::where('id_status_casis', StatusCasis::getDataByNama(config('ppdb.status.calon_siswa.siaptes'))->id_status_casis)->get();
+        return $result;
+    }
 }

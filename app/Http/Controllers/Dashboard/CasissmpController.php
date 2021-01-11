@@ -35,7 +35,7 @@ class CasisSmpController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y, H:i');
+                    return $row['created_at']->format('d/m/Y H:i');
                 }
             )
             ->editColumn(
