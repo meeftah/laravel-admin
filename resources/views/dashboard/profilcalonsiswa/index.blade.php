@@ -1228,7 +1228,7 @@
 <script>
     $(document).ready(function () {
         'use strict';
-        
+
         $('#wizard4').steps({
             headerTag: 'h3',
             bodyTag: 'section',
@@ -1255,7 +1255,7 @@
                 // Simpan data halaman pertama
                 if (currentIndex == 0) {
                     updateBiodata();
-                } else 
+                } else
                 // Simpan data halaman kedua
                 if (currentIndex == 1) {
                     updateDataOrtu();

@@ -20,7 +20,7 @@ class CasisSdController extends Controller
             ->leftJoin('tbl_va_sd', 'tbl_va_sd.id_va_sd', '=', 'tbl_casis_sd.id_va_sd')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_sd.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_sd.id_user')
-            ->orderBy('tbl_casis_sd.created_at', 'ASC')
+            ->orderBy('tbl_casis_sd.created_at', 'DESC')
             ->get();
 
         return datatables()->of($casissd)
@@ -34,7 +34,7 @@ class CasisSdController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y');
+                    return $row['created_at']->format('d/m/Y, H:i');
                 }
             )
             ->editColumn(

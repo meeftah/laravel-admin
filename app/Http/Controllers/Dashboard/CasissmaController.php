@@ -20,7 +20,7 @@ class CasisSmaController extends Controller
             ->leftJoin('tbl_va_sma', 'tbl_va_sma.id_va_sma', '=', 'tbl_casis_sma.id_va_sma')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_sma.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_sma.id_user')
-            ->orderBy('tbl_casis_sma.created_at', 'ASC')
+            ->orderBy('tbl_casis_sma.created_at', 'DESC')
             ->get();
 
         return datatables()->of($casissma)
@@ -34,7 +34,7 @@ class CasisSmaController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y');
+                    return $row['created_at']->format('d/m/Y, H:i');
                 }
             )
             ->editColumn(
@@ -168,16 +168,17 @@ class CasisSmaController extends Controller
                 $data       = array(
                     'username' => User::getDataById($casissma->id_user)->username,
                 );
-                
+
                 Mail::send('dashboard.mail.verifikasi-va', $data, function ($message) use ($kepada, $keEmail) {
                     $message->to(
-                        $keEmail, 
+                        $keEmail,
                         $kepada
                     )->subject('Verifikasi Akun Calon Siswa SMA ' . config('app.name'));
 
                     $message->from(
-                        config('mail.from.address'), 
-                        config('app.name'));
+                        config('mail.from.address'),
+                        config('app.name')
+                    );
                 });
 
                 // jika gagal kirim email

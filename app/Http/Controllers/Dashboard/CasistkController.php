@@ -21,7 +21,7 @@ class CasisTkController extends Controller
             ->leftJoin('tbl_va_tk', 'tbl_va_tk.id_va_tk', '=', 'tbl_casis_tk.id_va_tk')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_tk.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_tk.id_user')
-            ->orderBy('tbl_casis_tk.created_at', 'ASC')
+            ->orderBy('tbl_casis_tk.created_at', 'DESC')
             ->get();
 
         return datatables()->of($casistk)
@@ -35,7 +35,7 @@ class CasisTkController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y');
+                    return $row['created_at']->format('d/m/Y, H:i');
                 }
             )
             ->editColumn(
@@ -177,8 +177,9 @@ class CasisTkController extends Controller
                     )->subject('Verifikasi Akun Calon Siswa TK ' . config('app.name'));
 
                     $message->from(
-                        config('mail.from.address'), 
-                        config('app.name'));
+                        config('mail.from.address'),
+                        config('app.name')
+                    );
                 });
 
                 // jika gagal kirim email
