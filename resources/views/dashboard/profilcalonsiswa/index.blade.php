@@ -27,7 +27,7 @@
                 <div id="wizard4">
                     <h3>BIODATA</h3>
                     <section class="bg-light">
-                        <div id="form-biodata" role="form" data-toggle="validator">
+                        <form id="form-biodata">
                             <div class="card-body">
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-12 control-label col-form-label">
@@ -40,9 +40,12 @@
                                         Asal SD/MI
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
-                                            placeholder="ASAL SD/MI" value="{{ $casis->asal_sekolah }}"
-                                            style="text-transform:uppercase">
+                                        <div id="asalsekolah-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="asal_sekolah" name="asal_sekolah"
+                                                class="form-control" placeholder="ASAL SD/MI"
+                                                value="{{ $casis->asal_sekolah }}" style="text-transform:uppercase"
+                                                data-parsley-class-handler="#asalsekolah-slWrapper" required>
+                                        </div>
                                     </div>
                                 </div>
                                 @endrole
@@ -52,9 +55,12 @@
                                         Asal SMP/MTS
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="asal_sekolah" name="asal_sekolah" class="form-control"
-                                            placeholder="ASAL SMP/MTS" value="{{ $casis->asal_sekolah }}"
-                                            style="text-transform:uppercase">
+                                        <div id="asalsekolah-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="asal_sekolah" name="asal_sekolah"
+                                                class="form-control" placeholder="ASAL SMP/MTS"
+                                                value="{{ $casis->asal_sekolah }}" style="text-transform:uppercase"
+                                                data-parsley-class-handler="#asalsekolah-slWrapper" required>
+                                        </div>
                                     </div>
                                 </div>
                                 @endrole
@@ -64,9 +70,12 @@
                                         <small>(Sesuai Akta Lahir)</small>
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="nm_siswa" name="nm_siswa" class="form-control"
-                                            placeholder="NAMA LENGKAP" value="{{ $casis->nm_siswa }}"
-                                            style="text-transform:uppercase" data-required-error="Wajib diisi!" required>
+                                        <div id="nmasiswa-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nm_siswa" name="nm_siswa" class="form-control"
+                                                placeholder="NAMA LENGKAP" value="{{ $casis->nm_siswa }}" required
+                                                style="text-transform:uppercase"
+                                                data-parsley-class-handler="#nmasiswa-slWrapper">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -74,12 +83,19 @@
                                         Jenis Kelamin
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <select id="jk" name="jk" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH JENIS KELAMIN">
-                                            <option></option>
-                                            <option value="L" {{ $casis->jk == 'L' ? 'selected' : '' }}>LAKI-LAKI</option>
-                                            <option value="P" {{ $casis->jk == 'P' ? 'selected' : '' }}>PEREMPUAN</option>
-                                        </select>
+                                        <div id="jk-slWrapper" class="parsley-style-1">
+                                            <select id="jk" name="jk" class="form-control select2-show-search"
+                                                data-parsley-errors-container="#jk-parsley-error"
+                                                data-parsley-class-handler="#jk-slWrapper" style="width: 100%"
+                                                data-placeholder="PILIH JENIS KELAMIN" required>
+                                                <option></option>
+                                                <option value="L" {{ $casis->jk == 'L' ? 'selected' : '' }}>LAKI-LAKI
+                                                </option>
+                                                <option value="P" {{ $casis->jk == 'P' ? 'selected' : '' }}>PEREMPUAN
+                                                </option>
+                                            </select>
+                                            <span id="jk-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 @hasanyrole('Calon Siswa SMP|Calon Siswa SMA')
@@ -89,9 +105,12 @@
                                         <small>(Nomor Induk Siswa Nasional)</small>
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="nisn" name="nisn" class="form-control" maxlength="10"
-                                            value="{{ $casis->nisn }}" placeholder="NOMOR INDUK SISWA NASIONAL"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="nisn-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nisn" name="nisn" class="form-control" maxlength="10"
+                                                value="{{ $casis->nisn }}" placeholder="NOMOR INDUK SISWA NASIONAL"
+                                                required data-parsley-class-handler="#nisn-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                 </div>
                                 @endhasanyrole
@@ -101,10 +120,13 @@
                                         <small>(Nomor Induk Kependudukan)</small>
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="nik" name="nik" class="form-control" maxlength="16"
-                                            value="{{ $casis->nik }}"
-                                            placeholder="BISA DILIHAT DI KARTU KELUARGA, BERUPA ANGKA 16 DIGIT"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="nik-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nik" name="nik" class="form-control" maxlength="16"
+                                                value="{{ $casis->nik }}" data-parsley-class-handler="#nik-slWrapper"
+                                                placeholder="BISA DILIHAT DI KARTU KELUARGA, BERUPA ANGKA 16 DIGIT"
+                                                required
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                 </div>
                                 @role('Calon Siswa SMP')
@@ -172,14 +194,20 @@
                                         Tempat / Tgl Lahir
                                     </label>
                                     <div class="col-md-5 pb-2 pt-2">
-                                        <input id="tempat_lahir" name="tempat_lahir" type="text" class="form-control"
-                                            value="{{ $casis->tempat_lahir }}" placeholder="TEMPAT LAHIR"
-                                            style="text-transform:uppercase">
+                                        <div id="tempatlahir-slWrapper" class="parsley-style-1">
+                                            <input id="tempat_lahir" name="tempat_lahir" type="text"
+                                                class="form-control" value="{{ $casis->tempat_lahir }}"
+                                                data-parsley-class-handler="#tempatlahir-slWrapper"
+                                                placeholder="TEMPAT LAHIR" style="text-transform:uppercase" required>
+                                        </div>
                                     </div>
                                     <div class="col-md-4 pb-2 pt-2">
-                                        <input id="tgl_lahir" name="tgl_lahir" type="text" autocomplete="off"
-                                            value="{{ $casis->tgl_lahir ? $casis->tgl_lahir->format('d/m/Y') : '' }}"
-                                            class="form-control fc-datepicker" placeholder="TANGGAL/BULAN/TAHUN">
+                                        <div id="tgllahir-slWrapper" class="parsley-style-1">
+                                            <input id="tgl_lahir" name="tgl_lahir" type="text" autocomplete="off"
+                                                data-parsley-class-handler="#tgllahir-slWrapper" required
+                                                value="{{ $casis->tgl_lahir ? $casis->tgl_lahir->format('d/m/Y') : '' }}"
+                                                class="form-control fc-datepicker" placeholder="TANGGAL/BULAN/TAHUN">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -187,8 +215,12 @@
                                         Nomor Registrasi Akta Lahir
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input id="no_akte_lahir" name="no_akte_lahir" type="text" class="form-control"
-                                            value="{{ $casis->no_akte_lahir }}" placeholder="NO AKTA LAHIR">
+                                        <div id="akte-slWrapper" class="parsley-style-1">
+                                            <input id="no_akte_lahir" name="no_akte_lahir" type="text"
+                                                class="form-control" value="{{ $casis->no_akte_lahir }}"
+                                                data-parsley-class-handler="#akte-slWrapper"
+                                                placeholder="NO AKTA LAHIR" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -196,16 +228,22 @@
                                         Agama
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_agama" name="id_agama" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH AGAMA">
-                                            <option selected></option>
-                                            @foreach ($agama as $item)
-                                            <option value="{{ $item->id_agama }}"
-                                                {{ $casis->id_agama == $item->id_agama ? 'selected' : '' }}>
-                                                {{ strtoupper($item->agama) }}
-                                            </option>
-                                            @endforeach
-                                        </select>
+                                        <div id="agama-slWrapper" class="parsley-select full-width">
+                                            <select id="id_agama" name="id_agama"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH AGAMA"
+                                                data-parsley-class-handler="#agama-slWrapper"
+                                                data-parsley-errors-container="#agama-parsley-error" required>
+                                                <option selected></option>
+                                                @foreach ($agama as $item)
+                                                <option value="{{ $item->id_agama }}"
+                                                    {{ $casis->id_agama == $item->id_agama ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->agama) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="agama-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -214,8 +252,9 @@
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
                                         <select id="kebutuhan_khusus_siswa" name="kebutuhan_khusus_siswa"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH">
+                                            class="form-control select2-show-search" style="width: 100%" required
+                                            data-placeholder="PILIH"
+                                            data-parsley-errors-container="#kebutuhankhusus-parsley-error">
                                             <option selected></option>
                                             <option value="YA"
                                                 {{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? 'selected' : '' }}>
@@ -225,10 +264,11 @@
                                                 {{ $casis->kebutuhan_khusus == 'TIDAK' ? 'selected' : '' }}>TIDAK
                                             </option>
                                         </select>
+                                        <span id="kebutuhankhusus-parsley-error"></span>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
-                                        <input id="kebutuhan_khusus_siswa_ket" name="kebutuhan_khusus_siswa_ket" type="text"
-                                            class="form-control"
+                                        <input id="kebutuhan_khusus_siswa_ket" name="kebutuhan_khusus_siswa_ket"
+                                            type="text" class="form-control"
                                             value="{{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? $casis->kebutuhan_khusus : '' }}"
                                             style="text-transform:uppercase"
                                             {{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? '' : 'disabled' }}
@@ -251,7 +291,7 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <input id="jalan" name="jalan" type="text" class="form-control"
                                             value="{{ $casis->jalan }}" placeholder="ALAMAT LENGKAP"
-                                            style="text-transform:uppercase">
+                                            style="text-transform:uppercase" required>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -259,13 +299,13 @@
                                         RT / RW
                                     </label>
                                     <div class="col-md-4 pb-2 pt-2">
-                                        <input type="text" id="rt" name="rt" class="form-control" value="{{ $casis->rt }}"
-                                            placeholder="RT 3 DIGIT, CONTOH: 003"
+                                        <input type="text" id="rt" name="rt" class="form-control"
+                                            value="{{ $casis->rt }}" placeholder="RT 3 DIGIT, CONTOH: 003" required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                     <div class="col-md-5 pb-2 pt-2">
-                                        <input type="text" id="rw" name="rw" class="form-control" value="{{ $casis->rw }}"
-                                            placeholder="RW 3 DIGIT, CONTOH: 016"
+                                        <input type="text" id="rw" name="rw" class="form-control"
+                                            value="{{ $casis->rw }}" placeholder="RW 3 DIGIT, CONTOH: 016" required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                 </div>
@@ -275,7 +315,7 @@
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <input type="text" id="desalurah" name="desalurah" class="form-control"
-                                            value="{{ $casis->desalurah }}" placeholder="DESA"
+                                            value="{{ $casis->desalurah }}" placeholder="DESA" required
                                             style="text-transform:uppercase">
                                     </div>
                                 </div>
@@ -285,7 +325,7 @@
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <input type="text" id="kecamatan" name="kecamatan" class="form-control"
-                                            value="{{ $casis->kecamatan }}" placeholder="KECAMATAN"
+                                            value="{{ $casis->kecamatan }}" placeholder="KECAMATAN" required
                                             style="text-transform:uppercase">
                                     </div>
                                 </div>
@@ -296,7 +336,7 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <input type="text" id="kabkota" name="kabkota" class="form-control"
                                             value="{{ $casis->kabkota }}" placeholder="KABUPATEN / KOTA"
-                                            style="text-transform:uppercase">
+                                            style="text-transform:uppercase" required>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -305,7 +345,7 @@
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <input type="text" id="kodepos" name="kodepos" class="form-control"
-                                            value="{{ $casis->kodepos }}" maxlength="5" placeholder="KODE POS"
+                                            value="{{ $casis->kodepos }}" maxlength="5" placeholder="KODE POS" required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                 </div>
@@ -322,7 +362,8 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <select id="id_tempattinggal" name="id_tempattinggal"
                                             class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH STATUS TEMPAT TINGGAL">
+                                            data-placeholder="PILIH STATUS TEMPAT TINGGAL" required
+                                            data-parsley-errors-container="#tempattinggal-parsley-error">
                                             <option></option>
                                             @foreach ($tempattinggal as $item)
                                             <option value="{{ $item->id_tempattinggal }}"
@@ -331,6 +372,7 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        <span id="tempattinggal-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -340,7 +382,8 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <select id="id_transportasi" name="id_transportasi"
                                             class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH JENIS TRANSPORTASI">
+                                            data-placeholder="PILIH JENIS TRANSPORTASI" required
+                                            data-parsley-errors-container="#transportasi-parsley-error">
                                             <option></option>
                                             @foreach ($transportasi as $item)
                                             <option value="{{ $item->id_transportasi }}"
@@ -349,6 +392,7 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        <span id="transportasi-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -358,15 +402,18 @@
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
                                         <select id="no_kks" name="no_kks" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH">
+                                            style="width: 100%" data-placeholder="PILIH" required
+                                            data-parsley-errors-container="#kks-parsley-error">
                                             <option></option>
                                             <option value="ADA"
                                                 {{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? 'selected' : '' }}>
                                                 ADA</option>
-                                            <option value="TIDAK ADA" {{ $casis->no_kks == 'TIDAK ADA' ? 'selected' : '' }}>
+                                            <option value="TIDAK ADA"
+                                                {{ $casis->no_kks == 'TIDAK ADA' ? 'selected' : '' }}>
                                                 TIDAK ADA
                                             </option>
                                         </select>
+                                        <span id="kks-parsley-error"></span>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
                                         <input id="no_kks_ket" name="no_kks_ket" type="text" class="form-control"
@@ -383,14 +430,17 @@
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
                                         <select id="no_kps" name="no_kps" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH">
+                                            style="width: 100%" data-placeholder="PILIH" required
+                                            data-parsley-errors-container="#kps-parsley-error">
                                             <option></option>
                                             <option value="YA"
                                                 {{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? 'selected' : '' }}>
                                                 YA</option>
-                                            <option value="TIDAK" {{ $casis->no_kps == 'TIDAK' ? 'selected' : '' }}>TIDAK
+                                            <option value="TIDAK" {{ $casis->no_kps == 'TIDAK' ? 'selected' : '' }}>
+                                                TIDAK
                                             </option>
                                         </select>
+                                        <span id="kps-parsley-error"></span>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
                                         <input id="no_kps_ket" name="no_kps_ket" type="text" class="form-control"
@@ -407,14 +457,17 @@
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
                                         <select id="no_kip" name="no_kip" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH">
+                                            style="width: 100%" data-placeholder="PILIH" required
+                                            data-parsley-errors-container="#kip-parsley-error">
                                             <option></option>
                                             <option value="YA"
                                                 {{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? 'selected' : '' }}>
                                                 YA</option>
-                                            <option value="TIDAK" {{ $casis->no_kip == 'TIDAK' ? 'selected' : '' }}>TIDAK
+                                            <option value="TIDAK" {{ $casis->no_kip == 'TIDAK' ? 'selected' : '' }}>
+                                                TIDAK
                                             </option>
                                         </select>
+                                        <span id="kip-parsley-error"></span>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
                                         <input id="no_kip_ket" name="no_kip_ket" type="text" class="form-control"
@@ -431,7 +484,7 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <input id="nm_kip" name="nm_kip" type="text" class="form-control"
                                             value="{{ $casis->nm_kip }}" placeholder="NAMA YANG TERTERA DI KIP"
-                                            style="text-transform:uppercase">
+                                            style="text-transform:uppercase" required>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -441,13 +494,16 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <select id="suket_miskin" name="suket_miskin"
                                             class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH">
+                                            data-placeholder="PILIH" required
+                                            data-parsley-errors-container="#suketmiskin-parsley-error">
                                             <option></option>
-                                            <option value="YA" {{ $casis->suket_miskin == 1 ? 'selected' : '' }}>YA</option>
+                                            <option value="YA" {{ $casis->suket_miskin == 1 ? 'selected' : '' }}>YA
+                                            </option>
                                             <option value="TIDAK" {{ $casis->suket_miskin == 0 ? 'selected' : '' }}>
                                                 TIDAK
                                             </option>
                                         </select>
+                                        <span id="suketmiskin-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -455,14 +511,18 @@
                                         Yatim / Yatim Piatu
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="yatim_piatu" name="yatim_piatu" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH">
+                                        <select id="yatim_piatu" name="yatim_piatu"
+                                            class="form-control select2-show-search" style="width: 100%"
+                                            data-placeholder="PILIH" required
+                                            data-parsley-errors-container="#yatimpiatu-parsley-error">
                                             <option></option>
-                                            <option value="YA" {{ $casis->yatim_piatu == 1 ? 'selected' : '' }}>YA</option>
+                                            <option value="YA" {{ $casis->yatim_piatu == 1 ? 'selected' : '' }}>YA
+                                            </option>
                                             <option value="TIDAK" {{ $casis->yatim_piatu == 0 ? 'selected' : '' }}>
                                                 TIDAK
                                             </option>
                                         </select>
+                                        <span id="yatimpiatu-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -472,7 +532,8 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <select id="id_kondisibelajar" name="id_kondisibelajar"
                                             class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH KONDISI BELAJAR">
+                                            data-placeholder="PILIH KONDISI BELAJAR" required
+                                            data-parsley-errors-container="#kondisibelajar-parsley-error">
                                             <option></option>
                                             @foreach ($kondisibelajar as $item)
                                             <option value="{{ $item->id_kondisibelajar }}"
@@ -481,6 +542,7 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        <span id="kondisibelajar-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -488,8 +550,10 @@
                                         Kemampuan Baca Al-Qur'an
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_bcquran" name="id_bcquran" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH KEMAMPUAN MEMBACA QURAN">
+                                        <select id="id_bcquran" name="id_bcquran"
+                                            class="form-control select2-show-search" style="width: 100%"
+                                            data-placeholder="PILIH KEMAMPUAN MEMBACA QURAN" required
+                                            data-parsley-errors-container="#bcquran-parsley-error">
                                             <option></option>
                                             @foreach ($bcquran as $item)
                                             <option value="{{ $item->id_bcquran }}"
@@ -498,6 +562,7 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        <span id="bcquran-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -505,8 +570,9 @@
                                         Olahraga (Minat / Bakat)
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="olahraga" name="olahraga" class="form-control" style="text-transform:uppercase"
-                                            value="{{ $casis->olahraga }}" placeholder="MINAT / BAKAT DI BIDANG OLAHRAGA">
+                                        <input type="text" id="olahraga" name="olahraga" class="form-control"
+                                            style="text-transform:uppercase" value="{{ $casis->olahraga }}"
+                                            placeholder="MINAT / BAKAT DI BIDANG OLAHRAGA" required>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -514,8 +580,9 @@
                                         Kesenian (Minat / Bakat)
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="kesenian" name="kesenian" class="form-control" style="text-transform:uppercase"
-                                            value="{{ $casis->kesenian }}" placeholder="MINAT / BAKAT DI BIDANG KESENIAN">
+                                        <input type="text" id="kesenian" name="kesenian" class="form-control"
+                                            style="text-transform:uppercase" value="{{ $casis->kesenian }}"
+                                            placeholder="MINAT / BAKAT DI BIDANG KESENIAN" required>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -525,7 +592,7 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <input type="text" id="hobby" name="hobby" class="form-control"
                                             value="{{ $casis->hobby }}" style="text-transform:uppercase"
-                                            placeholder="SEBUTKAN HOBBY DIPISAH DENGAN TANDA KOMA">
+                                            placeholder="SEBUTKAN HOBBY DIPISAH DENGAN TANDA KOMA" required>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -533,8 +600,9 @@
                                         Penyakit Yang Pernah Diderita
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="penyakit" name="penyakit" class="form-control" style="text-transform:uppercase"
-                                            value="{{ $casis->penyakit }}" placeholder="PENYAKIT YANG PERNAH DIDERITA">
+                                        <input type="text" id="penyakit" name="penyakit" class="form-control"
+                                            style="text-transform:uppercase" value="{{ $casis->penyakit }}"
+                                            placeholder="PENYAKIT YANG PERNAH DIDERITA" required>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -544,6 +612,7 @@
                                     <div class="col-6 pb-2 pt-2">
                                         <input type="text" id="tinggi_badan" name="tinggi_badan" class="form-control"
                                             value="{{ $casis->tinggi_badan }}" maxlength="3" placeholder="TINGGI BADAN"
+                                            required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                     CM
@@ -555,6 +624,7 @@
                                     <div class="col-6 pb-2 pt-2">
                                         <input type="text" id="berat_badan" name="berat_badan" class="form-control"
                                             value="{{ $casis->berat_badan }}" maxlength="3" placeholder="BERAT BADAN"
+                                            required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                     KG
@@ -565,7 +635,8 @@
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <select id="id_jarak" name="id_jarak" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH JARAK TEMPAT TINGGAL KE SEKOLAH">
+                                            style="width: 100%" data-parsley-errors-container="#jarak-parsley-error"
+                                            data-placeholder="PILIH JARAK TEMPAT TINGGAL KE SEKOLAH" required>
                                             <option></option>
                                             @foreach ($jarak as $item)
                                             <option value="{{ $item->id_jarak }}"
@@ -574,6 +645,7 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        <span id="jarak-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -583,7 +655,8 @@
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <select id="id_waktutmph" name="id_waktutmph"
                                             class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH WAKTU TEMPUH KE SEKOLAH">
+                                            data-placeholder="PILIH WAKTU TEMPUH KE SEKOLAH" required
+                                            data-parsley-errors-container="#waktutmph-parsley-error">
                                             <option></option>
                                             @foreach ($waktutmph as $item)
                                             <option value="{{ $item->id_waktutmph }}"
@@ -592,6 +665,7 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        <span id="waktutmph-parsley-error"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -599,9 +673,9 @@
                                         Jumlah Bersaudara
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="jumlah_saudara" name="jumlah_saudara" class="form-control"
-                                            value="{{ $casis->jumlah_saudara }}" maxlength="3"
-                                            placeholder="JUMLAH BERSAUDARA"
+                                        <input type="text" id="jumlah_saudara" name="jumlah_saudara"
+                                            class="form-control" value="{{ $casis->jumlah_saudara }}" maxlength="3"
+                                            placeholder="JUMLAH BERSAUDARA" required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                 </div>
@@ -611,7 +685,7 @@
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
                                         <input type="text" id="anak_ke" name="anak_ke" class="form-control"
-                                            value="{{ $casis->anak_ke }}" maxlength="3" placeholder="ANAK KE"
+                                            value="{{ $casis->anak_ke }}" maxlength="3" placeholder="ANAK KE" required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                 </div>
@@ -620,14 +694,14 @@
                                         Dari Berapa Bersaudara
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="dari_bersaudara" name="dari_bersaudara" class="form-control"
-                                            value="{{ $casis->dari_bersaudara }}" maxlength="3"
-                                            placeholder="DARI BERAPA BERSAUDARA"
+                                        <input type="text" id="dari_bersaudara" name="dari_bersaudara"
+                                            class="form-control" value="{{ $casis->dari_bersaudara }}" maxlength="3"
+                                            placeholder="DARI BERAPA BERSAUDARA" required
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </section>
                     <h3>DATA ORANG TUA</h3>
                     <section class="bg-light">
@@ -957,43 +1031,6 @@
                                 <p>Silakan unggah kelengkapan dokumen yang diperlukan</p>
                             </label>
                         </div>
-                        {{-- <div class="repeater">
-                            <div data-repeater-list="dokumen-group">
-                                <div data-repeater-item>
-                                    <input type="hidden" name="id_dokumen" id="id_dokumen" />
-                                    <div class="form-group row align-items-center mb-0">
-                                        <div class="col-md-8">
-                                            <select name="id_jenisdokumen"
-                                                class="form-control select2-show-search dokumen" style="width: 100%"
-                                                data-placeholder="PILIH JENIS DOKUMEN">
-                                                <option></option>
-                                                @foreach ($jenisdokumen as $item)
-                                                <option value="{{ $item->id_jenisdokumen }}">
-                                                    {{ strtoupper($item->jenisdokumen) }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3 mg-t-8">
-                                            <label class="custom-file col-12">
-                                                <input type="file" id="dokumen" class="custom-file-input">
-                                                <span class="custom-file-control custom-file-control-primary"></span>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-1 mg-t-1">
-                                            <button type="button" data-repeater-delete
-                                                class="btn btn-danger btn-icon delete">
-                                                <div><i class="fa fa-trash"></i></div>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-                            <button type="button" data-repeater-create class="btn btn-success">
-                                TAMBAH
-                            </button>
-                        </div> --}}
                         <div>
                             <h4 class="card-title">Foto <span class="text-danger">*</span></h4>
                             <h6 class="card-subtitle text-dark mb-2">Scan Foto 4x6</h6>
@@ -1006,8 +1043,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    <input type="file" id="foto" name="foto"
-                                        accept="image/jpeg, image/png">
+                                    <input type="file" id="foto" name="foto" accept="image/jpeg, image/png">
                                 </div>
                             </div>
                         </div>
@@ -1017,15 +1053,15 @@
                                 Paspor ayah calon siswa</h6>
                             <div class="input-group">
                                 <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : '' }}" id="link_ktp_ayah"
+                                    <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : '' }}"
+                                        id="link_ktp_ayah"
                                         class="btn btn-primary @if(empty($casis->ktp_ayah)) disabled @endif"
                                         target="_blank">
                                         LIHAT
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    <input type="file" id="ktp_ayah" name="ktp_ayah"
-                                        accept="image/jpeg, image/png">
+                                    <input type="file" id="ktp_ayah" name="ktp_ayah" accept="image/jpeg, image/png">
                                 </div>
                             </div>
                         </div>
@@ -1042,8 +1078,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    <input type="file" id="ktp_ibu" name="ktp_ibu"
-                                        accept="image/jpeg, image/png">
+                                    <input type="file" id="ktp_ibu" name="ktp_ibu" accept="image/jpeg, image/png">
                                 </div>
                             </div>
                         </div>
@@ -1060,8 +1095,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    <input type="file" id="kk" name="kk"
-                                        accept="image/jpeg, image/png">
+                                    <input type="file" id="kk" name="kk" accept="image/jpeg, image/png">
                                 </div>
                             </div>
                         </div>
@@ -1079,8 +1113,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    <input type="file" id="akte" name="akte"
-                                        accept="image/jpeg, image/png">
+                                    <input type="file" id="akte" name="akte" accept="image/jpeg, image/png">
                                 </div>
                             </div>
                         </div>
@@ -1096,8 +1129,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-2">
-                                    <input type="file" id="skd" name="skd"
-                                        accept="image/jpeg, image/png">
+                                    <input type="file" id="skd" name="skd" accept="image/jpeg, image/png">
                                 </div>
                             </div>
                         </div>
@@ -1107,7 +1139,8 @@
                             <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 5 semester 1</h6>
                             <div class="input-group">
                                 <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas5semester1 ? url('/' . $casis->kelas5semester1) : '' }}" id="link_kelas5semester1"
+                                    <a href="{{ $casis->kelas5semester1 ? url('/' . $casis->kelas5semester1) : '' }}"
+                                        id="link_kelas5semester1"
                                         class="btn btn-primary @if(empty($casis->kelas5semester1)) disabled @endif"
                                         target="_blank">
                                         LIHAT
@@ -1125,7 +1158,8 @@
                                 dokter calon siswa</h6>
                             <div class="input-group">
                                 <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas5semester2 ? url('/' . $casis->kelas5semester2) : '' }}" id="link_kelas5semester2"
+                                    <a href="{{ $casis->kelas5semester2 ? url('/' . $casis->kelas5semester2) : '' }}"
+                                        id="link_kelas5semester2"
                                         class="btn btn-primary @if(empty($casis->kelas5semester2)) disabled @endif"
                                         target="_blank">
                                         LIHAT
@@ -1142,7 +1176,8 @@
                             <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 6 semester 1</h6>
                             <div class="input-group">
                                 <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas6semester1 ? url('/' . $casis->kelas6semester1) : '' }}" id="link_kelas6semester1"
+                                    <a href="{{ $casis->kelas6semester1 ? url('/' . $casis->kelas6semester1) : '' }}"
+                                        id="link_kelas6semester1"
                                         class="btn btn-primary @if(empty($casis->kelas6semester1)) disabled @endif"
                                         target="_blank">
                                         LIHAT
@@ -1161,7 +1196,8 @@
                             <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 8 semester 1</h6>
                             <div class="input-group">
                                 <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas8semester1 ? url('/' . $casis->kelas8semester1) : '' }}" id="link_kelas8semester1"
+                                    <a href="{{ $casis->kelas8semester1 ? url('/' . $casis->kelas8semester1) : '' }}"
+                                        id="link_kelas8semester1"
                                         class="btn btn-primary @if(empty($casis->kelas8semester1)) disabled @endif"
                                         target="_blank">
                                         LIHAT
@@ -1178,7 +1214,8 @@
                             <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 8 semester 2</h6>
                             <div class="input-group">
                                 <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas8semester2 ? url('/' . $casis->kelas8semester2) : '' }}" id="link_kelas8semester2"
+                                    <a href="{{ $casis->kelas8semester2 ? url('/' . $casis->kelas8semester2) : '' }}"
+                                        id="link_kelas8semester2"
                                         class="btn btn-primary @if(empty($casis->kelas8semester2)) disabled @endif"
                                         target="_blank">
                                         LIHAT
@@ -1195,7 +1232,8 @@
                             <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 9 semester 1</h6>
                             <div class="input-group">
                                 <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas9semester1 ? url('/' . $casis->kelas9semester1) : '' }}" id="link_kelas9semester1"
+                                    <a href="{{ $casis->kelas9semester1 ? url('/' . $casis->kelas9semester1) : '' }}"
+                                        id="link_kelas9semester1"
                                         class="btn btn-primary @if(empty($casis->kelas9semester1)) disabled @endif"
                                         target="_blank">
                                         LIHAT
@@ -1220,14 +1258,22 @@
 @push('styles')
 <link href="{{ asset('assets/dashboard/lib/select2/css/select2.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/dashboard/lib/jquery.steps/jquery.steps.css') }}" rel="stylesheet">
+<style>
+    .parsley-required {
+        list-style-type: none !important;
+    }
+
+    .input-validation-error~.select2 .select2-selection {
+        border: 1px solid red;
+    }
+</style>
 @endpush
 
 @push('scripts')
 <script src="{{ asset('assets/dashboard/lib/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/dashboard/lib/jquery.steps/jquery.steps.js') }}"></script>
 <script src="{{ asset('assets/dashboard/lib/jquery.maskedinput/jquery.maskedinput.js') }}"></script>
-<script src="{{ asset('assets/dashboard/lib/jquery.repeater/jquery.repeater.js') }}"></script>\
-<script src="{{ asset('assets/dashboard/lib/bootstrap-validator/dist/validator.min.js') }}"></script>\
+<script src="{{ asset('assets/dashboard/lib/parsleyjs/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
         'use strict';
@@ -1249,14 +1295,28 @@
             onStepChanging: function(e, currentIndex, newIndex){
                 // Simpan data halaman pertama
                 if (currentIndex == 0) {
-                    var elmForm = $('#form-biodata').validator('validate');
-                    console.log(elmForm);
-                    return false;
-                    // updateBiodata();
+                    // validasi form biodata
+                    var formBiodata = $('#form-biodata').parsley();
+                    formBiodata.options.requiredMessage = "Wajib diisi!";
+                    if (formBiodata.isValid()) {
+                        console.log('valid');
+                        // updateBiodata();
+                    } else {
+                        formBiodata.validate();
+                        return false;
+                    }
                 } else 
                 // Simpan data halaman kedua
                 if (currentIndex == 1) {
-                    updateDataOrtu();
+                    // var asd = $('.required').parsley();
+                    // if (asd.isValid()) {
+                    //     console.log('valid');
+                    //     // updateBiodata();
+                    // } else {
+                    //     asd.validate();
+                    //     return false;
+                    // }
+                    // updateDataOrtu();
                 }
                 return true;
             },
@@ -1265,6 +1325,96 @@
             }
         });
 
+        // validasi pada select2
+        $('#jk').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#id_agama').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#kebutuhan_khusus_siswa').change(function () {
+            $(this).parsley().validate();
+            var kebutuhan_khusus_siswa = $(this).val();
+            if (kebutuhan_khusus_siswa == 'YA') {
+                $('#kebutuhan_khusus_siswa_ket').prop('disabled', false);
+                $('#kebutuhan_khusus_siswa_ket').attr('required', true);
+            } else {
+                $('#kebutuhan_khusus_siswa_ket').val('');
+                $('#kebutuhan_khusus_siswa_ket').prop('disabled', true);
+                $('#kebutuhan_khusus_siswa_ket').attr('required', false);
+            }
+        });
+
+        $('#no_kks').change(function () {
+            $(this).parsley().validate();
+            var noKKS = $(this).val();
+            if (noKKS == 'ADA') {
+                $('#no_kks_ket').prop('disabled', false);
+                $('#no_kks_ket').attr('required', true);
+            } else {
+                $('#no_kks_ket').val('');
+                $('#no_kks_ket').prop('disabled', true);
+                $('#no_kks_ket').attr('required', false);
+            }
+        });
+
+        $('#no_kps').change(function () {
+            $(this).parsley().validate();
+            var noKPS = $(this).val();
+            if (noKPS == 'YA') {
+                $('#no_kps_ket').prop('disabled', false);
+                $('#no_kps_ket').attr('required', true);
+            } else {
+                $('#no_kps_ket').val('');
+                $('#no_kps_ket').prop('disabled', true);
+                $('#no_kps_ket').attr('required', false);
+            }
+        });
+
+        $('#no_kip').change(function () {
+            $(this).parsley().validate();
+            var noKIP = $(this).val();
+            if (noKIP == 'YA') {
+                $('#no_kip_ket').prop('disabled', false);
+                $('#no_kip_ket').attr('required', true);
+            } else {
+                $('#no_kip_ket').val('');
+                $('#no_kip_ket').prop('disabled', true);
+                $('#no_kip_ket').attr('required', false);
+            }
+        });
+
+        $('#suket_miskin').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#yatim_piatu').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#id_kondisibelajar').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#id_bcquran').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#id_tempattinggal').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#id_jarak').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#id_waktutmph').change(function() {
+            $(this).parsley().validate();
+        });
+
+        // ketika klik selesai
         $('#lengkapi-data-btn').click(function() {
             updateLengkapiData();
         });
@@ -1283,43 +1433,6 @@
         $('#telepon_rumah').mask('(9999) 99999999');
 
         $('.select2').select2();
-
-        $('#kebutuhan_khusus_siswa').change(function () {
-            var kebutuhan_khusus_siswa = $(this).val();
-            if (kebutuhan_khusus_siswa == 'YA') {
-                $('#kebutuhan_khusus_siswa_ket').prop('disabled', false);
-            } else {
-                $('#kebutuhan_khusus_siswa_ket').val('');
-                $('#kebutuhan_khusus_siswa_ket').prop('disabled', true);
-            }
-        });
-        $('#no_kks').change(function () {
-            var noKKS = $(this).val();
-            if (noKKS == 'ADA') {
-                $('#no_kks_ket').prop('disabled', false);
-            } else {
-                $('#no_kks_ket').val('');
-                $('#no_kks_ket').prop('disabled', true);
-            }
-        });
-        $('#no_kps').change(function () {
-            var noKPS = $(this).val();
-            if (noKPS == 'YA') {
-                $('#no_kps_ket').prop('disabled', false);
-            } else {
-                $('#no_kps_ket').val('');
-                $('#no_kps_ket').prop('disabled', true);
-            }
-        });
-        $('#no_kip').change(function () {
-            var noKIP = $(this).val();
-            if (noKIP == 'YA') {
-                $('#no_kip_ket').prop('disabled', false);
-            } else {
-                $('#no_kip_ket').val('');
-                $('#no_kip_ket').prop('disabled', true);
-            }
-        });
 
         $('#foto').change(function () {
             var file_data = $(this)[0].files[0];
