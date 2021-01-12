@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\CasisSma;
+use App\Models\Dokumensma;
 use App\Models\StatusCasis;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -125,7 +126,23 @@ class CasisSmaController extends Controller
      */
     public function show($id)
     {
-        //
+
+
+        $casis = CasisSma::where('id_casis_sma', $id)
+            ->leftJoin('tbl_data_ortu', 'tbl_casis_sma.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
+            ->first();
+
+        // Dokumen Siswa
+        $casis->ktp_ayah = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', '7dfc0b93-dfba-4988-a9c8-b4039210c045')->first()->dokumen ?? '';
+        $casis->ktp_ibu  = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5')->first()->dokumen ?? '';
+        $casis->kk       = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', '0ca3c7f4-5262-40c1-b2b5-4a375553daa0')->first()->dokumen ?? '';
+        $casis->akte     = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd')->first()->dokumen ?? '';
+        $casis->skd      = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3')->first()->dokumen ?? '';
+        $casis->kelas8semester1 = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', 'e939bcab-5053-4c0f-b5ce-9e22e19eeaac')->first()->dokumen ?? '';
+        $casis->kelas8semester2 = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', 'ff3b5ecc-c823-46df-9621-770134fd4e71')->first()->dokumen ?? '';
+        $casis->kelas9semester1 = Dokumensma::where('id_casis_sma', $id)->where('id_jenisdokumen_sma', 'bb6bab39-cfed-4016-98ab-f69b59a500f9')->first()->dokumen ?? '';
+
+        return view('dashboard.casis.sma.show', compact('casis'));
     }
 
     /**

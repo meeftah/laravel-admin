@@ -30,4 +30,10 @@ class VaSmp extends Model
         'status'
     ];
 
+    // Mendapatkan data va berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = VaSmp::where('id_va_smp', $id)->first();
+        return $result;
+    }
 }

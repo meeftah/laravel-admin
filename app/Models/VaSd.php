@@ -30,4 +30,10 @@ class VaSd extends Model
         'status'
     ];
 
+    // Mendapatkan data va berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = VaSd::where('id_va_sd', $id)->first();
+        return $result;
+    }
 }
