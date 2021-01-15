@@ -18,7 +18,7 @@ class CasisSmpController extends Controller
     public function datatableCasissmpAPI()
     {
         // ambil semua data
-        $casissmp = CasisSmp::select('tbl_casis_smp.*', 'tbl_va_smp.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
+        $casissmp = CasisSmp::select('tbl_casis_smp.*', 'tbl_va_smp.va', 'tbl_status_casis.status AS statuscasis', 'users.username', 'users.email')
             ->leftJoin('tbl_va_smp', 'tbl_va_smp.id_va_smp', '=', 'tbl_casis_smp.id_va_smp')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_smp.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_smp.id_user')
@@ -36,7 +36,7 @@ class CasisSmpController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y, H:i');
+                    return $row['created_at']->isoFormat('DD MMM YYYY, HH:mm');
                 }
             )
             ->editColumn(

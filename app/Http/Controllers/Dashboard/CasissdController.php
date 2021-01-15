@@ -18,7 +18,7 @@ class CasisSdController extends Controller
     public function datatableCasissdAPI()
     {
         // ambil semua data
-        $casissd = CasisSd::select('tbl_casis_sd.*', 'tbl_va_sd.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
+        $casissd = CasisSd::select('tbl_casis_sd.*', 'tbl_va_sd.va', 'tbl_status_casis.status AS statuscasis', 'users.username', 'users.email')
             ->leftJoin('tbl_va_sd', 'tbl_va_sd.id_va_sd', '=', 'tbl_casis_sd.id_va_sd')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_sd.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_sd.id_user')
@@ -36,7 +36,7 @@ class CasisSdController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y, H:i');
+                    return $row['created_at']->isoFormat('DD MMM YYYY, HH:mm');
                 }
             )
             ->editColumn(

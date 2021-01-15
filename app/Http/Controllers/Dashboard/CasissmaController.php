@@ -17,7 +17,7 @@ class CasisSmaController extends Controller
     public function datatableCasissmaAPI()
     {
         // ambil semua data
-        $casissma = CasisSma::select('tbl_casis_sma.*', 'tbl_va_sma.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
+        $casissma = CasisSma::select('tbl_casis_sma.*', 'tbl_va_sma.va', 'tbl_status_casis.status AS statuscasis', 'users.username', 'users.email')
             ->leftJoin('tbl_va_sma', 'tbl_va_sma.id_va_sma', '=', 'tbl_casis_sma.id_va_sma')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_sma.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_sma.id_user')
@@ -35,7 +35,7 @@ class CasisSmaController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y, H:i');
+                    return $row['created_at']->isoFormat('DD MMM YYYY, HH:mm');
                 }
             )
             ->editColumn(

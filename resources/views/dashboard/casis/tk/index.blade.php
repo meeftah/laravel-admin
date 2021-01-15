@@ -42,6 +42,7 @@
                                 <th></th>
                                 <th>No</th>
                                 <th>NAMA</th>
+                                <th>EMAIL</th>
                                 <th>VIRTUAL ACCOUNT</th>
                                 <th>TGL DAFTAR</th>
                                 <th>STATUS</th>
@@ -92,6 +93,7 @@
                 { data: 'id_casis_tk', name: 'id_casis_tk', visible: false },
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'nm_siswa', name: 'nm_siswa' },
+                { data: 'email', name: 'email' },
                 { data: 'va', name: 'va' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'statuscasis', name: 'statuscasis' },
@@ -101,11 +103,11 @@
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
-                { className: 'text-center', width: 180, targets: [3] },
-                { className: 'text-center', width: 200, targets: [4] },
-                { className: 'text-center', width: 100, targets: [5] },
+                { className: 'text-center', width: 180, targets: [4] },
+                { className: 'text-center', width: 200, targets: [5] },
+                { className: 'text-center', width: 100, targets: [6] },
                 @if(auth()->user()->can('casistk_detail') || auth()->user()->can('casistk_ubah') || auth()->user()->can('casistk_hapus') || auth()->user()->can('casistk_verifikasi'))
-                { className: 'text-center', targets: [6] },
+                { className: 'text-center', targets: [7] },
                 @endif
             ],
             order: [],

@@ -18,7 +18,7 @@ class CasisTkController extends Controller
     public function datatableCasistkAPI()
     {
         // ambil semua data
-        $casistk = CasisTk::select('tbl_casis_tk.*', 'tbl_va_tk.va', 'tbl_status_casis.status AS statuscasis', 'users.username')
+        $casistk = CasisTk::select('tbl_casis_tk.*', 'tbl_va_tk.va', 'tbl_status_casis.status AS statuscasis', 'users.username', 'users.email')
             ->leftJoin('tbl_va_tk', 'tbl_va_tk.id_va_tk', '=', 'tbl_casis_tk.id_va_tk')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_tk.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_tk.id_user')
@@ -36,7 +36,7 @@ class CasisTkController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y, H:i');
+                    return $row['created_at']->isoFormat('DD MMM YYYY, HH:mm');
                 }
             )
             ->editColumn(
