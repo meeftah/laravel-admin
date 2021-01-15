@@ -218,8 +218,8 @@
                                         <div id="akte-slWrapper" class="parsley-style-1">
                                             <input id="no_akte_lahir" name="no_akte_lahir" type="text"
                                                 class="form-control" value="{{ $casis->no_akte_lahir }}"
-                                                data-parsley-class-handler="#akte-slWrapper"
-                                                placeholder="NO AKTA LAHIR" required>
+                                                data-parsley-class-handler="#akte-slWrapper" placeholder="NO AKTA LAHIR"
+                                                required>
                                         </div>
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@
                                         Agama
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <div id="agama-slWrapper" class="parsley-select full-width">
+                                        <div id="agama-slWrapper" class="parsley-style-1">
                                             <select id="id_agama" name="id_agama"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH AGAMA"
@@ -251,28 +251,34 @@
                                         Berkebutuhan Khusus
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
-                                        <select id="kebutuhan_khusus_siswa" name="kebutuhan_khusus_siswa"
-                                            class="form-control select2-show-search" style="width: 100%" required
-                                            data-placeholder="PILIH"
-                                            data-parsley-errors-container="#kebutuhankhusus-parsley-error">
-                                            <option selected></option>
-                                            <option value="YA"
-                                                {{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? 'selected' : '' }}>
-                                                YA
-                                            </option>
-                                            <option value="TIDAK"
-                                                {{ $casis->kebutuhan_khusus == 'TIDAK' ? 'selected' : '' }}>TIDAK
-                                            </option>
-                                        </select>
-                                        <span id="kebutuhankhusus-parsley-error"></span>
+                                        <div id="kebutuhankhusus-slWrapper" class="parsley-style-1">
+                                            <select id="kebutuhan_khusus_siswa" name="kebutuhan_khusus_siswa"
+                                                class="form-control select2-show-search" style="width: 100%" required
+                                                data-placeholder="PILIH"
+                                                data-parsley-class-handler="#kebutuhankhusus-slWrapper"
+                                                data-parsley-errors-container="#kebutuhankhusus-parsley-error">
+                                                <option selected></option>
+                                                <option value="YA"
+                                                    {{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? 'selected' : '' }}>
+                                                    YA
+                                                </option>
+                                                <option value="TIDAK"
+                                                    {{ $casis->kebutuhan_khusus == 'TIDAK' ? 'selected' : '' }}>TIDAK
+                                                </option>
+                                            </select>
+                                            <span id="kebutuhankhusus-parsley-error"></span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
-                                        <input id="kebutuhan_khusus_siswa_ket" name="kebutuhan_khusus_siswa_ket"
-                                            type="text" class="form-control"
-                                            value="{{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? $casis->kebutuhan_khusus : '' }}"
-                                            style="text-transform:uppercase"
-                                            {{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? '' : 'disabled' }}
-                                            placeholder="TUNA NETRA / RUNGU / INDIGO / NARKOBA / AUTIS / LAINNYA (SEBUTKAN...)">
+                                        <div id="kebutuhankhususket-slWrapper" class="parsley-style-1">
+                                            <input id="kebutuhan_khusus_siswa_ket" name="kebutuhan_khusus_siswa_ket"
+                                                type="text" class="form-control"
+                                                data-parsley-class-handler="#kebutuhankhususket-slWrapper"
+                                                value="{{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? $casis->kebutuhan_khusus : '' }}"
+                                                style="text-transform:uppercase"
+                                                {{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? '' : 'disabled' }}
+                                                placeholder="TUNA NETRA / RUNGU / INDIGO / NARKOBA / AUTIS / LAINNYA (SEBUTKAN...)">
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
@@ -289,9 +295,12 @@
                                         Jalan
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input id="jalan" name="jalan" type="text" class="form-control"
-                                            value="{{ $casis->jalan }}" placeholder="ALAMAT LENGKAP"
-                                            style="text-transform:uppercase" required>
+                                        <div id="jalan-slWrapper" class="parsley-style-1">
+                                            <input id="jalan" name="jalan" type="text" class="form-control"
+                                                value="{{ $casis->jalan }}" placeholder="ALAMAT LENGKAP"
+                                                data-parsley-class-handler="#jalan-slWrapper"
+                                                style="text-transform:uppercase" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -299,14 +308,20 @@
                                         RT / RW
                                     </label>
                                     <div class="col-md-4 pb-2 pt-2">
-                                        <input type="text" id="rt" name="rt" class="form-control"
-                                            value="{{ $casis->rt }}" placeholder="RT 3 DIGIT, CONTOH: 003" required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="rt-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="rt" name="rt" class="form-control"
+                                                value="{{ $casis->rt }}" placeholder="RT 3 DIGIT, CONTOH: 003" required
+                                                data-parsley-class-handler="#rt-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                     <div class="col-md-5 pb-2 pt-2">
-                                        <input type="text" id="rw" name="rw" class="form-control"
-                                            value="{{ $casis->rw }}" placeholder="RW 3 DIGIT, CONTOH: 016" required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="rw-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="rw" name="rw" class="form-control"
+                                                value="{{ $casis->rw }}" placeholder="RW 3 DIGIT, CONTOH: 016" required
+                                                data-parsley-class-handler="#rw-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -314,9 +329,12 @@
                                         Desa / Kelurahan
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="desalurah" name="desalurah" class="form-control"
-                                            value="{{ $casis->desalurah }}" placeholder="DESA" required
-                                            style="text-transform:uppercase">
+                                        <div id="desalurah-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="desalurah" name="desalurah" class="form-control"
+                                                value="{{ $casis->desalurah }}" placeholder="DESA" required
+                                                data-parsley-class-handler="#desalurah-slWrapper"
+                                                style="text-transform:uppercase">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -324,9 +342,12 @@
                                         Kecamatan
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="kecamatan" name="kecamatan" class="form-control"
-                                            value="{{ $casis->kecamatan }}" placeholder="KECAMATAN" required
-                                            style="text-transform:uppercase">
+                                        <div id="kecamatan-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="kecamatan" name="kecamatan" class="form-control"
+                                                value="{{ $casis->kecamatan }}" placeholder="KECAMATAN" required
+                                                data-parsley-class-handler="#kecamatan-slWrapper"
+                                                style="text-transform:uppercase">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -334,9 +355,12 @@
                                         Kabupaten / Kota
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="kabkota" name="kabkota" class="form-control"
-                                            value="{{ $casis->kabkota }}" placeholder="KABUPATEN / KOTA"
-                                            style="text-transform:uppercase" required>
+                                        <div id="kabkota-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="kabkota" name="kabkota" class="form-control"
+                                                value="{{ $casis->kabkota }}" placeholder="KABUPATEN / KOTA"
+                                                data-parsley-class-handler="#kabkota-slWrapper"
+                                                style="text-transform:uppercase" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -344,9 +368,12 @@
                                         Kode Pos
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="kodepos" name="kodepos" class="form-control"
-                                            value="{{ $casis->kodepos }}" maxlength="5" placeholder="KODE POS" required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="kodepos-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="kodepos" name="kodepos" class="form-control"
+                                                value="{{ $casis->kodepos }}" maxlength="5" placeholder="KODE POS"
+                                                data-parsley-class-handler="#kodepos-slWrapper" required
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
@@ -360,19 +387,22 @@
                                         Tempat Tinggal
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_tempattinggal" name="id_tempattinggal"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH STATUS TEMPAT TINGGAL" required
-                                            data-parsley-errors-container="#tempattinggal-parsley-error">
-                                            <option></option>
-                                            @foreach ($tempattinggal as $item)
-                                            <option value="{{ $item->id_tempattinggal }}"
-                                                {{ $casis->id_tempattinggal == $item->id_tempattinggal ? 'selected' : '' }}>
-                                                {{ strtoupper($item->tempattinggal) }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <span id="tempattinggal-parsley-error"></span>
+                                        <div id="tempattinggal-slWrapper" class="parsley-style-1">
+                                            <select id="id_tempattinggal" name="id_tempattinggal"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH STATUS TEMPAT TINGGAL" required
+                                                data-parsley-class-handler="#tempattinggal-slWrapper"
+                                                data-parsley-errors-container="#tempattinggal-parsley-error">
+                                                <option></option>
+                                                @foreach ($tempattinggal as $item)
+                                                <option value="{{ $item->id_tempattinggal }}"
+                                                    {{ $casis->id_tempattinggal == $item->id_tempattinggal ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->tempattinggal) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="tempattinggal-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -380,19 +410,22 @@
                                         Jenis Transportasi ke Sekolah
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_transportasi" name="id_transportasi"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH JENIS TRANSPORTASI" required
-                                            data-parsley-errors-container="#transportasi-parsley-error">
-                                            <option></option>
-                                            @foreach ($transportasi as $item)
-                                            <option value="{{ $item->id_transportasi }}"
-                                                {{ $casis->id_transportasi == $item->id_transportasi ? 'selected' : '' }}>
-                                                {{ strtoupper($item->transportasi) }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <span id="transportasi-parsley-error"></span>
+                                        <div id="transportasi-slWrapper" class="parsley-style-1">
+                                            <select id="id_transportasi" name="id_transportasi"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH JENIS TRANSPORTASI" required
+                                                data-parsley-class-handler="#transportasi-slWrapper"
+                                                data-parsley-errors-container="#transportasi-parsley-error">
+                                                <option></option>
+                                                @foreach ($transportasi as $item)
+                                                <option value="{{ $item->id_transportasi }}"
+                                                    {{ $casis->id_transportasi == $item->id_transportasi ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->transportasi) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="transportasi-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -401,26 +434,32 @@
                                         <small>(Kartu Keluarga Sejahtera)</small>
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
-                                        <select id="no_kks" name="no_kks" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH" required
-                                            data-parsley-errors-container="#kks-parsley-error">
-                                            <option></option>
-                                            <option value="ADA"
-                                                {{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? 'selected' : '' }}>
-                                                ADA</option>
-                                            <option value="TIDAK ADA"
-                                                {{ $casis->no_kks == 'TIDAK ADA' ? 'selected' : '' }}>
-                                                TIDAK ADA
-                                            </option>
-                                        </select>
-                                        <span id="kks-parsley-error"></span>
+                                        <div id="kks-slWrapper" class="parsley-style-1">
+                                            <select id="no_kks" name="no_kks" class="form-control select2-show-search"
+                                                style="width: 100%" data-placeholder="PILIH" required
+                                                data-parsley-class-handler="#kks-slWrapper"
+                                                data-parsley-errors-container="#kks-parsley-error">
+                                                <option></option>
+                                                <option value="ADA"
+                                                    {{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? 'selected' : '' }}>
+                                                    ADA</option>
+                                                <option value="TIDAK ADA"
+                                                    {{ $casis->no_kks == 'TIDAK ADA' ? 'selected' : '' }}>
+                                                    TIDAK ADA
+                                                </option>
+                                            </select>
+                                            <span id="kks-parsley-error"></span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
-                                        <input id="no_kks_ket" name="no_kks_ket" type="text" class="form-control"
-                                            value="{{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? $casis->no_kks : '' }}"
-                                            placeholder="BIASANYA MENYATU DENGAN KIP (KARTU INDONESIA PINTAR)"
-                                            style="text-transform:uppercase"
-                                            {{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? '' : 'disabled' }}>
+                                        <div id="kksket-slWrapper" class="parsley-style-1">
+                                            <input id="no_kks_ket" name="no_kks_ket" type="text" class="form-control"
+                                                value="{{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? $casis->no_kks : '' }}"
+                                                placeholder="BIASANYA MENYATU DENGAN KIP (KARTU INDONESIA PINTAR)"
+                                                style="text-transform:uppercase"
+                                                data-parsley-class-handler="#kksket-slWrapper"
+                                                {{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? '' : 'disabled' }}>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -429,25 +468,31 @@
                                         <small>(Kartu Perlin. Sosial)</small>
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
-                                        <select id="no_kps" name="no_kps" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH" required
-                                            data-parsley-errors-container="#kps-parsley-error">
-                                            <option></option>
-                                            <option value="YA"
-                                                {{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? 'selected' : '' }}>
-                                                YA</option>
-                                            <option value="TIDAK" {{ $casis->no_kps == 'TIDAK' ? 'selected' : '' }}>
-                                                TIDAK
-                                            </option>
-                                        </select>
-                                        <span id="kps-parsley-error"></span>
+                                        <div id="kps-slWrapper" class="parsley-style-1">
+                                            <select id="no_kps" name="no_kps" class="form-control select2-show-search"
+                                                style="width: 100%" data-placeholder="PILIH" required
+                                                data-parsley-class-handler="#kps-slWrapper"
+                                                data-parsley-errors-container="#kps-parsley-error">
+                                                <option></option>
+                                                <option value="YA"
+                                                    {{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? 'selected' : '' }}>
+                                                    YA</option>
+                                                <option value="TIDAK" {{ $casis->no_kps == 'TIDAK' ? 'selected' : '' }}>
+                                                    TIDAK
+                                                </option>
+                                            </select>
+                                            <span id="kps-parsley-error"></span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
-                                        <input id="no_kps_ket" name="no_kps_ket" type="text" class="form-control"
-                                            value="{{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? $casis->no_kps : '' }}"
-                                            placeholder="ISI NO KPS JIKA SEBAGAI PENERIMA KPS"
-                                            style="text-transform:uppercase"
-                                            {{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? '' : 'disabled' }}>
+                                        <div id="kpsket-slWrapper" class="parsley-style-1">
+                                            <input id="no_kps_ket" name="no_kps_ket" type="text" class="form-control"
+                                                value="{{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? $casis->no_kps : '' }}"
+                                                placeholder="ISI NO KPS JIKA SEBAGAI PENERIMA KPS"
+                                                style="text-transform:uppercase"
+                                                data-parsley-class-handler="#kpsket-slWrapper"
+                                                {{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? '' : 'disabled' }}>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -456,25 +501,31 @@
                                         <small>(Kartu Indonesia Pintar)</small>
                                     </label>
                                     <div class="col-sm-12 col-md-2 pb-2 pt-2">
-                                        <select id="no_kip" name="no_kip" class="form-control select2-show-search"
-                                            style="width: 100%" data-placeholder="PILIH" required
-                                            data-parsley-errors-container="#kip-parsley-error">
-                                            <option></option>
-                                            <option value="YA"
-                                                {{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? 'selected' : '' }}>
-                                                YA</option>
-                                            <option value="TIDAK" {{ $casis->no_kip == 'TIDAK' ? 'selected' : '' }}>
-                                                TIDAK
-                                            </option>
-                                        </select>
-                                        <span id="kip-parsley-error"></span>
+                                        <div id="kip-slWrapper" class="parsley-style-1">
+                                            <select id="no_kip" name="no_kip" class="form-control select2-show-search"
+                                                style="width: 100%" data-placeholder="PILIH" required
+                                                data-parsley-class-handler="#kip-slWrapper"
+                                                data-parsley-errors-container="#kip-parsley-error">
+                                                <option></option>
+                                                <option value="YA"
+                                                    {{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? 'selected' : '' }}>
+                                                    YA</option>
+                                                <option value="TIDAK" {{ $casis->no_kip == 'TIDAK' ? 'selected' : '' }}>
+                                                    TIDAK
+                                                </option>
+                                            </select>
+                                            <span id="kip-parsley-error"></span>
+                                        </div>
                                     </div>
                                     <div class="col-sm-12 col-md-7 pb-2 pt-2">
-                                        <input id="no_kip_ket" name="no_kip_ket" type="text" class="form-control"
-                                            value="{{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? $casis->no_kip : '' }}"
-                                            placeholder="ISI NO KIP JIKA SEBAGAI PENERIMA KIP"
-                                            style="text-transform:uppercase"
-                                            {{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? '' : 'disabled' }}>
+                                        <div id="kipket-slWrapper" class="parsley-style-1">
+                                            <input id="no_kip_ket" name="no_kip_ket" type="text" class="form-control"
+                                                value="{{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? $casis->no_kip : '' }}"
+                                                placeholder="ISI NO KIP JIKA SEBAGAI PENERIMA KIP"
+                                                style="text-transform:uppercase"
+                                                data-parsley-class-handler="#kipket-slWrapper"
+                                                {{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? '' : 'disabled' }}>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -482,28 +533,37 @@
                                         Nama Tertera di KIP
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input id="nm_kip" name="nm_kip" type="text" class="form-control"
-                                            value="{{ $casis->nm_kip }}" placeholder="NAMA YANG TERTERA DI KIP"
-                                            style="text-transform:uppercase" required>
+                                        <div id="nmkip-slWrapper" class="parsley-style-1">
+                                            <input id="nm_kip" name="nm_kip" type="text" class="form-control"
+                                                value="{{ $casis->nm_kip }}" placeholder="NAMA YANG TERTERA DI KIP"
+                                                data-parsley-class-handler="#nmkip-slWrapper"
+                                                style="text-transform:uppercase" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
-                                        Memiliki Surat Keterangan Miskin
+                                        Memiliki Surat Keterangan Miskin {{ $casis->suket_miskin }}
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="suket_miskin" name="suket_miskin"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH" required
-                                            data-parsley-errors-container="#suketmiskin-parsley-error">
-                                            <option></option>
-                                            <option value="YA" {{ $casis->suket_miskin == 1 ? 'selected' : '' }}>YA
-                                            </option>
-                                            <option value="TIDAK" {{ $casis->suket_miskin == 0 ? 'selected' : '' }}>
-                                                TIDAK
-                                            </option>
-                                        </select>
-                                        <span id="suketmiskin-parsley-error"></span>
+                                        <div id="suketmiskin-slWrapper" class="parsley-style-1">
+                                            <select id="suket_miskin" name="suket_miskin"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH" required
+                                                data-parsley-class-handler="#suketmiskin-slWrapper"
+                                                data-parsley-errors-container="#suketmiskin-parsley-error">
+                                                <option></option>
+                                                <option value="YA"
+                                                    {{ isset($casis->suket_miskin) && $casis->suket_miskin == 1 ? 'selected' : '' }}>
+                                                    YA
+                                                </option>
+                                                <option value="TIDAK"
+                                                    {{ isset($casis->suket_miskin) && $casis->suket_miskin == 0 ? 'selected' : '' }}>
+                                                    TIDAK
+                                                </option>
+                                            </select>
+                                            <span id="suketmiskin-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -511,18 +571,24 @@
                                         Yatim / Yatim Piatu
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="yatim_piatu" name="yatim_piatu"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH" required
-                                            data-parsley-errors-container="#yatimpiatu-parsley-error">
-                                            <option></option>
-                                            <option value="YA" {{ $casis->yatim_piatu == 1 ? 'selected' : '' }}>YA
-                                            </option>
-                                            <option value="TIDAK" {{ $casis->yatim_piatu == 0 ? 'selected' : '' }}>
-                                                TIDAK
-                                            </option>
-                                        </select>
-                                        <span id="yatimpiatu-parsley-error"></span>
+                                        <div id="yatimpiatu-slWrapper" class="parsley-style-1">
+                                            <select id="yatim_piatu" name="yatim_piatu"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH" required
+                                                data-parsley-class-handler="#yatimpiatu-slWrapper"
+                                                data-parsley-errors-container="#yatimpiatu-parsley-error">
+                                                <option></option>
+                                                <option value="YA"
+                                                    {{ isset($casis->yatim_piatu) && $casis->yatim_piatu == 1 ? 'selected' : '' }}>
+                                                    YA
+                                                </option>
+                                                <option value="TIDAK"
+                                                    {{ isset($casis->yatim_piatu) && $casis->yatim_piatu == 0 ? 'selected' : '' }}>
+                                                    TIDAK
+                                                </option>
+                                            </select>
+                                            <span id="yatimpiatu-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -530,19 +596,22 @@
                                         Kondisi Belajar di Rumah
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_kondisibelajar" name="id_kondisibelajar"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH KONDISI BELAJAR" required
-                                            data-parsley-errors-container="#kondisibelajar-parsley-error">
-                                            <option></option>
-                                            @foreach ($kondisibelajar as $item)
-                                            <option value="{{ $item->id_kondisibelajar }}"
-                                                {{ $casis->id_kondisibelajar == $item->id_kondisibelajar ? 'selected' : '' }}>
-                                                {{ strtoupper($item->kondisibelajar) }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <span id="kondisibelajar-parsley-error"></span>
+                                        <div id="kondisibelajar-slWrapper" class="parsley-style-1">
+                                            <select id="id_kondisibelajar" name="id_kondisibelajar"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH KONDISI BELAJAR" required
+                                                data-parsley-class-handler="#kondisibelajar-slWrapper"
+                                                data-parsley-errors-container="#kondisibelajar-parsley-error">
+                                                <option></option>
+                                                @foreach ($kondisibelajar as $item)
+                                                <option value="{{ $item->id_kondisibelajar }}"
+                                                    {{ $casis->id_kondisibelajar == $item->id_kondisibelajar ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->kondisibelajar) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="kondisibelajar-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -550,19 +619,22 @@
                                         Kemampuan Baca Al-Qur'an
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_bcquran" name="id_bcquran"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH KEMAMPUAN MEMBACA QURAN" required
-                                            data-parsley-errors-container="#bcquran-parsley-error">
-                                            <option></option>
-                                            @foreach ($bcquran as $item)
-                                            <option value="{{ $item->id_bcquran }}"
-                                                {{ $casis->id_bcquran == $item->id_bcquran ? 'selected' : '' }}>
-                                                {{ strtoupper($item->bcquran) }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <span id="bcquran-parsley-error"></span>
+                                        <div id="bcquran-slWrapper" class="parsley-style-1">
+                                            <select id="id_bcquran" name="id_bcquran"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH KEMAMPUAN MEMBACA QURAN" required
+                                                data-parsley-class-handler="#bcquran-slWrapper"
+                                                data-parsley-errors-container="#bcquran-parsley-error">
+                                                <option></option>
+                                                @foreach ($bcquran as $item)
+                                                <option value="{{ $item->id_bcquran }}"
+                                                    {{ $casis->id_bcquran == $item->id_bcquran ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->bcquran) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="bcquran-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -570,9 +642,12 @@
                                         Olahraga (Minat / Bakat)
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="olahraga" name="olahraga" class="form-control"
-                                            style="text-transform:uppercase" value="{{ $casis->olahraga }}"
-                                            placeholder="MINAT / BAKAT DI BIDANG OLAHRAGA" required>
+                                        <div id="olahraga-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="olahraga" name="olahraga" class="form-control"
+                                                style="text-transform:uppercase" value="{{ $casis->olahraga }}"
+                                                data-parsley-class-handler="#olahraga-slWrapper"
+                                                placeholder="MINAT / BAKAT DI BIDANG OLAHRAGA" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -580,9 +655,12 @@
                                         Kesenian (Minat / Bakat)
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="kesenian" name="kesenian" class="form-control"
-                                            style="text-transform:uppercase" value="{{ $casis->kesenian }}"
-                                            placeholder="MINAT / BAKAT DI BIDANG KESENIAN" required>
+                                        <div id="kesenian-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="kesenian" name="kesenian" class="form-control"
+                                                style="text-transform:uppercase" value="{{ $casis->kesenian }}"
+                                                data-parsley-class-handler="#kesenian-slWrapper"
+                                                placeholder="MINAT / BAKAT DI BIDANG KESENIAN" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -590,9 +668,12 @@
                                         Hobby
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="hobby" name="hobby" class="form-control"
-                                            value="{{ $casis->hobby }}" style="text-transform:uppercase"
-                                            placeholder="SEBUTKAN HOBBY DIPISAH DENGAN TANDA KOMA" required>
+                                        <div id="hobby-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="hobby" name="hobby" class="form-control"
+                                                value="{{ $casis->hobby }}" style="text-transform:uppercase"
+                                                data-parsley-class-handler="#hobby-slWrapper"
+                                                placeholder="SEBUTKAN HOBBY DIPISAH DENGAN TANDA KOMA" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -600,9 +681,12 @@
                                         Penyakit Yang Pernah Diderita
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <input type="text" id="penyakit" name="penyakit" class="form-control"
-                                            style="text-transform:uppercase" value="{{ $casis->penyakit }}"
-                                            placeholder="PENYAKIT YANG PERNAH DIDERITA" required>
+                                        <div id="penyakit-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="penyakit" name="penyakit" class="form-control"
+                                                style="text-transform:uppercase" value="{{ $casis->penyakit }}"
+                                                data-parsley-class-handler="#penyakit-slWrapper"
+                                                placeholder="PENYAKIT YANG PERNAH DIDERITA" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -610,10 +694,13 @@
                                         Tinggi Badan
                                     </label>
                                     <div class="col-6 pb-2 pt-2">
-                                        <input type="text" id="tinggi_badan" name="tinggi_badan" class="form-control"
-                                            value="{{ $casis->tinggi_badan }}" maxlength="3" placeholder="TINGGI BADAN"
-                                            required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="tinggibadan-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="tinggi_badan" name="tinggi_badan"
+                                                class="form-control" value="{{ $casis->tinggi_badan }}" maxlength="3"
+                                                placeholder="TINGGI BADAN" required
+                                                data-parsley-class-handler="#tinggibadan-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                     CM
                                 </div>
@@ -622,10 +709,13 @@
                                         Berat Badan
                                     </label>
                                     <div class="col-6 pb-2 pt-2">
-                                        <input type="text" id="berat_badan" name="berat_badan" class="form-control"
-                                            value="{{ $casis->berat_badan }}" maxlength="3" placeholder="BERAT BADAN"
-                                            required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="beratbadan-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="berat_badan" name="berat_badan" class="form-control"
+                                                value="{{ $casis->berat_badan }}" maxlength="3"
+                                                placeholder="BERAT BADAN" required
+                                                data-parsley-class-handler="#beratbadan-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                     KG
                                 </div>
@@ -634,18 +724,22 @@
                                         Jarak Tempat Tinggal ke Sekolah
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_jarak" name="id_jarak" class="form-control select2-show-search"
-                                            style="width: 100%" data-parsley-errors-container="#jarak-parsley-error"
-                                            data-placeholder="PILIH JARAK TEMPAT TINGGAL KE SEKOLAH" required>
-                                            <option></option>
-                                            @foreach ($jarak as $item)
-                                            <option value="{{ $item->id_jarak }}"
-                                                {{ $casis->id_jarak == $item->id_jarak ? 'selected' : '' }}>
-                                                {{ strtoupper($item->jarak) }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <span id="jarak-parsley-error"></span>
+                                        <div id="jarak-slWrapper" class="parsley-style-1">
+                                            <select id="id_jarak" name="id_jarak"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#jarak-parsley-error"
+                                                data-parsley-class-handler="#jarak-slWrapper"
+                                                data-placeholder="PILIH JARAK TEMPAT TINGGAL KE SEKOLAH" required>
+                                                <option></option>
+                                                @foreach ($jarak as $item)
+                                                <option value="{{ $item->id_jarak }}"
+                                                    {{ $casis->id_jarak == $item->id_jarak ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->jarak) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="jarak-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -653,19 +747,22 @@
                                         Waktu Tempuh ke Sekolah
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
-                                        <select id="id_waktutmph" name="id_waktutmph"
-                                            class="form-control select2-show-search" style="width: 100%"
-                                            data-placeholder="PILIH WAKTU TEMPUH KE SEKOLAH" required
-                                            data-parsley-errors-container="#waktutmph-parsley-error">
-                                            <option></option>
-                                            @foreach ($waktutmph as $item)
-                                            <option value="{{ $item->id_waktutmph }}"
-                                                {{ $casis->id_waktutmph == $item->id_waktutmph ? 'selected' : '' }}>
-                                                {{ strtoupper($item->waktutmph) }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <span id="waktutmph-parsley-error"></span>
+                                        <div id="waktutmph-slWrapper" class="parsley-style-1">
+                                            <select id="id_waktutmph" name="id_waktutmph"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-placeholder="PILIH WAKTU TEMPUH KE SEKOLAH" required
+                                                data-parsley-class-handler="#waktutmph-slWrapper"
+                                                data-parsley-errors-container="#waktutmph-parsley-error">
+                                                <option></option>
+                                                @foreach ($waktutmph as $item)
+                                                <option value="{{ $item->id_waktutmph }}"
+                                                    {{ $casis->id_waktutmph == $item->id_waktutmph ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->waktutmph) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="waktutmph-parsley-error"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -673,10 +770,13 @@
                                         Jumlah Bersaudara
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="jumlah_saudara" name="jumlah_saudara"
-                                            class="form-control" value="{{ $casis->jumlah_saudara }}" maxlength="3"
-                                            placeholder="JUMLAH BERSAUDARA" required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="jumlahsaudara-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="jumlah_saudara" name="jumlah_saudara"
+                                                class="form-control" value="{{ $casis->jumlah_saudara }}" maxlength="3"
+                                                placeholder="JUMLAH BERSAUDARA" required
+                                                data-parsley-class-handler="#jumlahsaudara-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -684,9 +784,12 @@
                                         Anak Ke
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="anak_ke" name="anak_ke" class="form-control"
-                                            value="{{ $casis->anak_ke }}" maxlength="3" placeholder="ANAK KE" required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="anakke-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="anak_ke" name="anak_ke" class="form-control"
+                                                value="{{ $casis->anak_ke }}" maxlength="3" placeholder="ANAK KE"
+                                                required data-parsley-class-handler="#anakke-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
@@ -694,10 +797,13 @@
                                         Dari Berapa Bersaudara
                                     </label>
                                     <div class="col-md-9 pb-2 pt-2">
-                                        <input type="text" id="dari_bersaudara" name="dari_bersaudara"
-                                            class="form-control" value="{{ $casis->dari_bersaudara }}" maxlength="3"
-                                            placeholder="DARI BERAPA BERSAUDARA" required
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        <div id="daribersaudara-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="dari_bersaudara" name="dari_bersaudara"
+                                                class="form-control" value="{{ $casis->dari_bersaudara }}" maxlength="3"
+                                                placeholder="DARI BERAPA BERSAUDARA" required required
+                                                data-parsley-class-handler="#daribersaudara-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -705,321 +811,382 @@
                     </section>
                     <h3>DATA ORANG TUA</h3>
                     <section class="bg-light">
-                        <div class="card-body">
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-12 control-label col-form-label">
-                                    <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
-                                        DATA AYAH KANDUNG
-                                        <small>(BUKAN AYAH TIRI)</small>
-                                    </h6>
-                                </label>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Nama Ayah
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nm_ayah" name="nm_ayah" class="form-control"
-                                        placeholder="NAMA LENGKAP AYAH" value="{{ $casis->nm_ayah }}"
-                                        style="text-transform:uppercase">
+                        <form id="form-dataortu">
+                            <div class="card-body">
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-12 control-label col-form-label">
+                                        <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
+                                            DATA AYAH KANDUNG
+                                            <small>(BUKAN AYAH TIRI)</small>
+                                        </h6>
+                                    </label>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Nama Ayah
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="nmayah-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nm_ayah" name="nm_ayah" class="form-control"
+                                                placeholder="NAMA LENGKAP AYAH" value="{{ $casis->nm_ayah }}"
+                                                data-parsley-class-handler="#nmayah-slWrapper"
+                                                style="text-transform:uppercase" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        NIK Ayah
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="nikayah-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nik_ayah" name="nik_ayah" class="form-control"
+                                                maxlength="16" value="{{ $casis->nik_ayah }}"
+                                                placeholder="BERUPA ANGKA 16 DIGIT"
+                                                data-parsley-class-handler="#nikayah-slWrapper" required
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Tahun Lahir Ayah
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="thlahir-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="tahun_lahir_ayah" name="tahun_lahir_ayah"
+                                                class="form-control" maxlength="4"
+                                                value="{{ $casis->tahun_lahir_ayah }}" placeholder="TAHUN"
+                                                data-parsley-class-handler="#thlahir-slWrapper" required
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Pendidikan Terakhir
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="pendidikanayah-slWrapper" class="parsley-style-1">
+                                            <select id="pendidikan_ayah" name="pendidikan_ayah"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-class-handler="#pendidikanayah-slWrapper"
+                                                data-parsley-errors-container="#pendidikanayah-parsley-error"
+                                                data-placeholder="PILIH PENDIDIKAN" required>
+                                                <option></option>
+                                                @foreach ($pendidikan as $item)
+                                                <option value="{{ $item->id_pendidikan }}"
+                                                    {{ $casis->pendidikan_ayah == $item->id_pendidikan ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->pendidikan) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="pendidikanayah-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Pekerjaan Terakhir
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="pekerjaanayah-slWrapper" class="parsley-style-1">
+                                            <select id="pekerjaan_ayah" name="pekerjaan_ayah"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-class-handler="#pekerjaanayah-slWrapper"
+                                                data-parsley-errors-container="#pekerjaanayah-parsley-error"
+                                                data-placeholder="PILIH PEKERJAAN" required>
+                                                <option></option>
+                                                @foreach ($pekerjaan as $item)
+                                                <option value="{{ $item->id_pekerjaan }}"
+                                                    {{ $casis->pekerjaan_ayah == $item->id_pekerjaan ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->pekerjaan) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="pekerjaanayah-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Penghasilan
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="penghasilanayah-slWrapper" class="parsley-style-1">
+                                            <select id="penghasilan_ayah" name="penghasilan_ayah"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-class-handler="#penghasilanayah-slWrapper"
+                                                data-parsley-errors-container="#penghasilanayah-parsley-error"
+                                                data-placeholder="PILIH PENGHASILAN" required>
+                                                <option></option>
+                                                @foreach ($penghasilan as $item)
+                                                <option value="{{ $item->id_penghasilan }}"
+                                                    {{ $casis->penghasilan_ayah == $item->id_penghasilan ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->penghasilan) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="penghasilanayah-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        No. HP/Whatsapp
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="nohpayah-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nohp_ayah" name="nohp_ayah" class="form-control"
+                                                value="{{ $casis->nohp_ayah }}" required
+                                                data-parsley-class-handler="#nohpayah-slWrapper"
+                                                placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-12 control-label col-form-label">
+                                        <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
+                                            DATA IBU KANDUNG
+                                            <small>(BUKAN IBU TIRI)</small>
+                                        </h6>
+                                    </label>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Nama Ibu
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="nmibu-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nm_ibu" name="nm_ibu" class="form-control"
+                                                placeholder="NAMA LENGKAP IBU" value="{{ $casis->nm_ibu }}"
+                                                data-parsley-class-handler="#nmibu-slWrapper"
+                                                style="text-transform:uppercase" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        NIK Ibu
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="nikibu-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nik_ibu" name="nik_ibu" class="form-control"
+                                                maxlength="16" value="{{ $casis->nik_ibu }}"
+                                                placeholder="BERUPA ANGKA 16 DIGIT" required
+                                                data-parsley-class-handler="#nikibu-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Tahun Lahir Ibu
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="thnlahiribu-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="tahun_lahir_ibu" name="tahun_lahir_ibu"
+                                                class="form-control" maxlength="4" value="{{ $casis->tahun_lahir_ibu }}"
+                                                placeholder="TAHUN" required
+                                                data-parsley-class-handler="#thnlahiribu-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Pendidikan Terakhir
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="pendidikanibu-slWrapper" class="parsley-style-1">
+                                            <select id="pendidikan_ibu" name="pendidikan_ibu"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-class-handler="#pendidikanibu-slWrapper"
+                                                data-parsley-errors-container="#pendidikanibu-parsley-error"
+                                                data-placeholder="PILIH PENDIDIKAN" required>
+                                                <option></option>
+                                                @foreach ($pendidikan as $item)
+                                                <option value="{{ $item->id_pendidikan }}"
+                                                    {{ $casis->pendidikan_ibu == $item->id_pendidikan ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->pendidikan) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="pendidikanibu-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Pekerjaan Terakhir
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="pekerjaanibu-slWrapper" class="parsley-style-1">
+                                            <select id="pekerjaan_ibu" name="pekerjaan_ibu"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-class-handler="#pekerjaanibu-slWrapper"
+                                                data-parsley-errors-container="#pekerjaanibu-parsley-error"
+                                                data-placeholder="PILIH PEKERJAAN" required>
+                                                <option></option>
+                                                @foreach ($pekerjaan as $item)
+                                                <option value="{{ $item->id_pekerjaan }}"
+                                                    {{ $casis->pekerjaan_ibu == $item->id_pekerjaan ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->pekerjaan) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="pekerjaanibu-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Penghasilan
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="penghasilanibu-slWrapper" class="parsley-style-1">
+                                            <select id="penghasilan_ibu" name="penghasilan_ibu"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-class-handler="#penghasilanibu-slWrapper"
+                                                data-parsley-errors-container="#penghasilanibu-parsley-error"
+                                                data-placeholder="PILIH PENGHASILAN" required>
+                                                <option></option>
+                                                @foreach ($penghasilan as $item)
+                                                <option value="{{ $item->id_penghasilan }}"
+                                                    {{ $casis->penghasilan_ibu == $item->id_penghasilan ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->penghasilan) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="penghasilanibu-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        No. HP/Whatsapp
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <div id="nohpibu-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="nohp_ibu" name="nohp_ibu" class="form-control"
+                                                value="{{ $casis->nohp_ibu }}"
+                                                data-parsley-class-handler="#nohpibu-slWrapper"
+                                                placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
+                                                required
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-12 control-label col-form-label">
+                                        <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
+                                            DATA WALI
+                                            <small>(TERMASUK AYAH/IBU TIRI)</small>
+                                        </h6>
+                                    </label>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Nama Wali
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <input type="text" id="nm_wali" name="nm_wali" class="form-control"
+                                            placeholder="NAMA LENGKAP WALI" value="{{ $casis->nm_wali }}"
+                                            style="text-transform:uppercase">
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        NIK Wali
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <input type="text" id="nik_wali" name="nik_wali" class="form-control"
+                                            maxlength="16" value="{{ $casis->nik_wali }}"
+                                            placeholder="BERUPA ANGKA 16 DIGIT"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Tahun Lahir Wali
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <input type="text" id="tahun_lahir_wali" name="tahun_lahir_wali"
+                                            class="form-control" maxlength="4" value="{{ $casis->tahun_lahir_wali }}"
+                                            placeholder="TAHUN"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Pendidikan Terakhir
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <select id="pendidikan_wali" name="pendidikan_wali"
+                                            class="form-control select2-show-search" style="width: 100%"
+                                            data-placeholder="PILIH PENDIDIKAN">
+                                            <option></option>
+                                            @foreach ($pendidikan as $item)
+                                            <option value="{{ $item->id_pendidikan }}"
+                                                {{ $casis->pendidikan_wali == $item->id_pendidikan ? 'selected' : '' }}>
+                                                {{ strtoupper($item->pendidikan) }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Pekerjaan Terakhir
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <select id="pekerjaan_wali" name="pekerjaan_wali"
+                                            class="form-control select2-show-search" style="width: 100%"
+                                            data-placeholder="PILIH PEKERJAAN">
+                                            <option></option>
+                                            @foreach ($pekerjaan as $item)
+                                            <option value="{{ $item->id_pekerjaan }}"
+                                                {{ $casis->pekerjaan_wali == $item->id_pekerjaan ? 'selected' : '' }}>
+                                                {{ strtoupper($item->pekerjaan) }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        Penghasilan
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <select id="penghasilan_wali" name="penghasilan_wali"
+                                            class="form-control select2-show-search" style="width: 100%"
+                                            data-placeholder="PILIH PENGHASILAN">
+                                            <option></option>
+                                            @foreach ($penghasilan as $item)
+                                            <option value="{{ $item->id_penghasilan }}"
+                                                {{ $casis->penghasilan_wali == $item->id_penghasilan ? 'selected' : '' }}>
+                                                {{ strtoupper($item->penghasilan) }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-md-3 control-label col-form-label">
+                                        No. HP/Whatsapp
+                                    </label>
+                                    <div class="col-md-9 pb-2 pt-2">
+                                        <input type="text" id="nohp_wali" name="nohp_wali" class="form-control"
+                                            value="{{ $casis->nohp_wali }}"
+                                            placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    NIK Ayah
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nik_ayah" name="nik_ayah" class="form-control" maxlength="16"
-                                        value="{{ $casis->nik_ayah }}" placeholder="BERUPA ANGKA 16 DIGIT"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Tahun Lahir Ayah
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="tahun_lahir_ayah" name="tahun_lahir_ayah"
-                                        class="form-control" maxlength="4" value="{{ $casis->tahun_lahir_ayah }}"
-                                        placeholder="TAHUN"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Pendidikan Terakhir
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="pendidikan_ayah" name="pendidikan_ayah"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PENDIDIKAN">
-                                        <option></option>
-                                        @foreach ($pendidikan as $item)
-                                        <option value="{{ $item->id_pendidikan }}"
-                                            {{ $casis->pendidikan_ayah == $item->id_pendidikan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->pendidikan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Pekerjaan Terakhir
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="pekerjaan_ayah" name="pekerjaan_ayah"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PEKERJAAN">
-                                        <option></option>
-                                        @foreach ($pekerjaan as $item)
-                                        <option value="{{ $item->id_pekerjaan }}"
-                                            {{ $casis->pekerjaan_ayah == $item->id_pekerjaan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->pekerjaan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Penghasilan
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="penghasilan_ayah" name="penghasilan_ayah"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PENGHASILAN">
-                                        <option></option>
-                                        @foreach ($penghasilan as $item)
-                                        <option value="{{ $item->id_penghasilan }}"
-                                            {{ $casis->penghasilan_ayah == $item->id_penghasilan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->penghasilan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    No. HP/Whatsapp
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nohp_ayah" name="nohp_ayah" class="form-control"
-                                        value="{{ $casis->nohp_ayah }}"
-                                        placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-12 control-label col-form-label">
-                                    <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
-                                        DATA IBU KANDUNG
-                                        <small>(BUKAN IBU TIRI)</small>
-                                    </h6>
-                                </label>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Nama Ibu
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nm_ibu" name="nm_ibu" class="form-control"
-                                        placeholder="NAMA LENGKAP IBU" value="{{ $casis->nm_ibu }}"
-                                        style="text-transform:uppercase">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    NIK Ibu
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nik_ibu" name="nik_ibu" class="form-control" maxlength="16"
-                                        value="{{ $casis->nik_ibu }}" placeholder="BERUPA ANGKA 16 DIGIT"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Tahun Lahir Ibu
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="tahun_lahir_ibu" name="tahun_lahir_ibu" class="form-control"
-                                        maxlength="4" value="{{ $casis->tahun_lahir_ibu }}" placeholder="TAHUN"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Pendidikan Terakhir
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="pendidikan_ibu" name="pendidikan_ibu"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PENDIDIKAN">
-                                        <option></option>
-                                        @foreach ($pendidikan as $item)
-                                        <option value="{{ $item->id_pendidikan }}"
-                                            {{ $casis->pendidikan_ibu == $item->id_pendidikan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->pendidikan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Pekerjaan Terakhir
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="pekerjaan_ibu" name="pekerjaan_ibu"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PEKERJAAN">
-                                        <option></option>
-                                        @foreach ($pekerjaan as $item)
-                                        <option value="{{ $item->id_pekerjaan }}"
-                                            {{ $casis->pekerjaan_ibu == $item->id_pekerjaan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->pekerjaan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Penghasilan
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="penghasilan_ibu" name="penghasilan_ibu"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PENGHASILAN">
-                                        <option></option>
-                                        @foreach ($penghasilan as $item)
-                                        <option value="{{ $item->id_penghasilan }}"
-                                            {{ $casis->penghasilan_ibu == $item->id_penghasilan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->penghasilan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    No. HP/Whatsapp
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nohp_ibu" name="nohp_ibu" class="form-control"
-                                        value="{{ $casis->nohp_ibu }}"
-                                        placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-12 control-label col-form-label">
-                                    <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
-                                        DATA WALI
-                                        <small>(TERMASUK AYAH/IBU TIRI)</small>
-                                    </h6>
-                                </label>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Nama Wali
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nm_wali" name="nm_wali" class="form-control"
-                                        placeholder="NAMA LENGKAP WALI" value="{{ $casis->nm_wali }}"
-                                        style="text-transform:uppercase">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    NIK Wali
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nik_wali" name="nik_wali" class="form-control" maxlength="16"
-                                        value="{{ $casis->nik_wali }}" placeholder="BERUPA ANGKA 16 DIGIT"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Tahun Lahir Wali
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="tahun_lahir_wali" name="tahun_lahir_wali"
-                                        class="form-control" maxlength="4" value="{{ $casis->tahun_lahir_wali }}"
-                                        placeholder="TAHUN"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Pendidikan Terakhir
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="pendidikan_wali" name="pendidikan_wali"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PENDIDIKAN">
-                                        <option></option>
-                                        @foreach ($pendidikan as $item)
-                                        <option value="{{ $item->id_pendidikan }}"
-                                            {{ $casis->pendidikan_wali == $item->id_pendidikan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->pendidikan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Pekerjaan Terakhir
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="pekerjaan_wali" name="pekerjaan_wali"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PEKERJAAN">
-                                        <option></option>
-                                        @foreach ($pekerjaan as $item)
-                                        <option value="{{ $item->id_pekerjaan }}"
-                                            {{ $casis->pekerjaan_wali == $item->id_pekerjaan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->pekerjaan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    Penghasilan
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <select id="penghasilan_wali" name="penghasilan_wali"
-                                        class="form-control select2-show-search" style="width: 100%"
-                                        data-placeholder="PILIH PENGHASILAN">
-                                        <option></option>
-                                        @foreach ($penghasilan as $item)
-                                        <option value="{{ $item->id_penghasilan }}"
-                                            {{ $casis->penghasilan_wali == $item->id_penghasilan ? 'selected' : '' }}>
-                                            {{ strtoupper($item->penghasilan) }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row align-items-center mb-0">
-                                <label class="col-md-3 control-label col-form-label">
-                                    No. HP/Whatsapp
-                                </label>
-                                <div class="col-md-9 pb-2 pt-2">
-                                    <input type="text" id="nohp_wali" name="nohp_wali" class="form-control"
-                                        value="{{ $casis->nohp_wali }}"
-                                        placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </section>
                     <h3>DOKUMEN</h3>
                     <section class="bg-light">
@@ -1031,221 +1198,315 @@
                                 <p>Silakan unggah kelengkapan dokumen yang diperlukan</p>
                             </label>
                         </div>
-                        <div>
-                            <h4 class="card-title">Foto <span class="text-danger">*</span></h4>
-                            <h6 class="card-subtitle text-dark mb-2">Scan Foto 4x6</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->foto ? url('/' . $casis->foto) : '' }}" id="link_foto"
-                                        class="btn btn-primary @if(empty($casis->foto)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="foto" name="foto" accept="image/jpeg, image/png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">KTP Ayah <span class="text-danger">*</span></h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan KTP / SIM /
-                                Paspor ayah calon siswa</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : '' }}"
-                                        id="link_ktp_ayah"
-                                        class="btn btn-primary @if(empty($casis->ktp_ayah)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="ktp_ayah" name="ktp_ayah" accept="image/jpeg, image/png">
+                        <form id="form-dokumen">
+                            <div>
+                                <h4 class="card-title">Foto</h4>
+                                <h6 class="card-subtitle text-dark mb-2">Scan Foto 4x6</h6>
+                                <p>Maksimal ukuran 200 Kb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->foto ? url('/' . $casis->foto) : '' }}" id="link_foto"
+                                            class="btn btn-primary btn-sm @if(empty($casis->foto)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filefoto-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="foto" name="foto" accept="image/jpeg, image/png"
+                                                data-parsley-class-handler="#filefoto-slWrapper"
+                                                data-parsley-max-file-size="200" @if(empty($casis->foto)) required
+                                            @endif>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">KTP Ibu <span class="text-danger">*</span></h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan KTP / SIM /
-                                Paspor ibu calon siswa</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->ktp_ibu ? url('/' . $casis->ktp_ibu) : '' }}" id="link_ktp_ibu"
-                                        class="btn btn-primary @if(empty($casis->ktp_ibu)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="ktp_ibu" name="ktp_ibu" accept="image/jpeg, image/png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">Kartu Keluarga <span class="text-danger">*</span>
-                            </h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan Kartu Keluarga
-                                calon siswa</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kk ? url('/' . $casis->kk) : '' }}" id="link_kk"
-                                        class="btn btn-primary @if(empty($casis->kk)) disabled @endif" target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="kk" name="kk" accept="image/jpeg, image/png">
+                            <div class="mt-5">
+                                <h4 class="card-title">KTP Ayah <span class="text-danger">*</span></h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan KTP / SIM / Paspor ayah calon siswa
+                                </h6>
+                                <p>Maksimal ukuran 200 Kb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : '' }}"
+                                            id="link_ktp_ayah"
+                                            class="btn btn-primary btn-sm @if(empty($casis->ktp_ayah)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filektpayah-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="ktp_ayah" name="ktp_ayah"
+                                                accept="image/jpeg, image/png"
+                                                data-parsley-class-handler="#filektpayah-slWrapper"
+                                                data-parsley-max-file-size="200" @if(empty($casis->ktp_ayah)) required
+                                            @endif>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">Akte Lahir <span class="text-danger">*</span>
-                            </h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan akte lahir calon
-                                siswa</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->akte ? url('/' . $casis->akte) : '' }}" id="link_akte"
-                                        class="btn btn-primary @if(empty($casis->akte)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="akte" name="akte" accept="image/jpeg, image/png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">Surat Keterangan Dokter</h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan surat keterangan
-                                dokter calon siswa</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->skd ? url('/' . $casis->skd) : '' }}" id="link_skd"
-                                        class="btn btn-primary @if(empty($casis->skd)) disabled @endif" target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="skd" name="skd" accept="image/jpeg, image/png">
+                            <div class="mt-5">
+                                <h4 class="card-title">KTP Ibu <span class="text-danger">*</span></h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan KTP / SIM / Paspor ibu calon siswa
+                                </h6>
+                                <p>Maksimal ukuran 200 Kb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->ktp_ibu ? url('/' . $casis->ktp_ibu) : '' }}"
+                                            id="link_ktp_ibu"
+                                            class="btn btn-primary btn-sm @if(empty($casis->ktp_ibu)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filektpibu-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="ktp_ibu" name="ktp_ibu"
+                                                accept="image/jpeg, image/png"
+                                                data-parsley-class-handler="#filektpibu-slWrapper"
+                                                data-parsley-max-file-size="200" @if(empty($casis->ktp_ibu)) required
+                                            @endif>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        @role('Calon Siswa SMP')
-                        <div class="mt-5">
-                            <h4 class="card-title">Raport Kelas 5 Semester 1</h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 5 semester 1</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas5semester1 ? url('/' . $casis->kelas5semester1) : '' }}"
-                                        id="link_kelas5semester1"
-                                        class="btn btn-primary @if(empty($casis->kelas5semester1)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="kelas5semester1" name="kelas5semester1"
-                                        accept="image/jpeg, image/png, application/pdf">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">Raport Kelas 5 Semester 2</h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 5 semester 2
-                                dokter calon siswa</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas5semester2 ? url('/' . $casis->kelas5semester2) : '' }}"
-                                        id="link_kelas5semester2"
-                                        class="btn btn-primary @if(empty($casis->kelas5semester2)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="kelas5semester2" name="kelas5semester2"
-                                        accept="image/jpeg, image/png, application/pdf">
+                            <div class="mt-5">
+                                <h4 class="card-title">Kartu Keluarga <span class="text-danger">*</span>
+                                </h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan Kartu Keluarga calon siswa
+                                </h6>
+                                <p>Maksimal ukuran 300 Kb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->kk ? url('/' . $casis->kk) : '' }}" id="link_kk"
+                                            class="btn btn-primary btn-sm @if(empty($casis->kk)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filekk-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="kk" name="kk" accept="image/jpeg, image/png"
+                                                data-parsley-class-handler="#filekk-slWrapper"
+                                                data-parsley-max-file-size="300" @if(empty($casis->kk)) required @endif>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">Raport Kelas 6 Semester 1</h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 6 semester 1</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas6semester1 ? url('/' . $casis->kelas6semester1) : '' }}"
-                                        id="link_kelas6semester1"
-                                        class="btn btn-primary @if(empty($casis->kelas6semester1)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="kelas6semester1" name="kelas6semester1"
-                                        accept="image/jpeg, image/png, application/pdf">
-                                </div>
-                            </div>
-                        </div>
-                        @endrole
-                        @role('Calon Siswa SMA')
-                        <div class="mt-5">
-                            <h4 class="card-title">Raport Kelas 8 Semester 1</h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 8 semester 1</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas8semester1 ? url('/' . $casis->kelas8semester1) : '' }}"
-                                        id="link_kelas8semester1"
-                                        class="btn btn-primary @if(empty($casis->kelas8semester1)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="kelas8semester1" name="kelas8semester1"
-                                        accept="image/jpeg, image/png, application/pdf">
+                            <div class="mt-5">
+                                <h4 class="card-title">Akte Lahir <span class="text-danger">*</span>
+                                </h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan akte lahir calon siswa
+                                </h6>
+                                <p>Maksimal ukuran 300 Kb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->akte ? url('/' . $casis->akte) : '' }}" id="link_akte"
+                                            class="btn btn-primary btn-sm @if(empty($casis->akte)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="fileakte-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="akte" name="akte" accept="image/jpeg, image/png"
+                                                data-parsley-class-handler="#fileakte-slWrapper"
+                                                data-parsley-max-file-size="300" @if(empty($casis->akte)) required
+                                            @endif>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">Raport Kelas 8 Semester 2</h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 8 semester 2</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas8semester2 ? url('/' . $casis->kelas8semester2) : '' }}"
-                                        id="link_kelas8semester2"
-                                        class="btn btn-primary @if(empty($casis->kelas8semester2)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="kelas8semester2" name="kelas8semester2"
-                                        accept="image/jpeg, image/png, application/pdf">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <h4 class="card-title">Raport Kelas 9 Semester 1</h4>
-                            <h6 class="card-subtitle text-dark mb-2">Fotokopi atau scan raport kelas 9 semester 1</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend mr-2">
-                                    <a href="{{ $casis->kelas9semester1 ? url('/' . $casis->kelas9semester1) : '' }}"
-                                        id="link_kelas9semester1"
-                                        class="btn btn-primary @if(empty($casis->kelas9semester1)) disabled @endif"
-                                        target="_blank">
-                                        LIHAT
-                                    </a>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="file" id="kelas9semester1" name="kelas9semester1"
-                                        accept="image/jpeg, image/png, application/pdf">
+                            <div class="mt-5">
+                                <h4 class="card-title">Surat Keterangan Dokter</h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan surat keterangan dokter calon siswa</h6>
+                                <p>Maksimal ukuran 200 Kb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->skd ? url('/' . $casis->skd) : '' }}" id="link_skd"
+                                            class="btn btn-primary btn-sm @if(empty($casis->skd)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="fileskd-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="skd" name="skd"
+                                                accept="image/jpeg, image/png, application/pdf"
+                                                data-parsley-class-handler="#fileskd-slWrapper"
+                                                data-parsley-max-file-size="200" @if(empty($casis->skd)) required
+                                            @endif>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        @endrole
+                            @role('Calon Siswa SMP')
+                            <div class="mt-5">
+                                <h4 class="card-title">Raport Kelas 5 Semester 1</h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan raport kelas 5 semester 1
+                                </h6>
+                                <p>Maksimal ukuran 1.5 Mb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->kelas5semester1 ? url('/' . $casis->kelas5semester1) : '' }}"
+                                            id="link_kelas5semester1"
+                                            class="btn btn-primary btn-sm @if(empty($casis->kelas5semester1)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filekelas5semester1-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="kelas5semester1" name="kelas5semester1"
+                                                accept="image/jpeg, image/png, application/pdf"
+                                                data-parsley-class-handler="#filekelas5semester1-slWrapper"
+                                                data-parsley-max-file-size="1500" @if(empty($casis->kelas5semester1))
+                                            required @endif>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <h4 class="card-title">Raport Kelas 5 Semester 2</h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan raport kelas 5 semester 2 dokter calon siswa
+                                </h6>
+                                <p>Maksimal ukuran 1.5 Mb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->kelas5semester2 ? url('/' . $casis->kelas5semester2) : '' }}"
+                                            id="link_kelas5semester2"
+                                            class="btn btn-primary btn-sm @if(empty($casis->kelas5semester2)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filekelas5semester2-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="kelas5semester2" name="kelas5semester2"
+                                                accept="image/jpeg, image/png, application/pdf"
+                                                data-parsley-class-handler="#filekelas5semester2-slWrapper"
+                                                data-parsley-max-file-size="1500" @if(empty($casis->kelas5semester2))
+                                            required @endif>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <h4 class="card-title">Raport Kelas 6 Semester 1</h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan raport kelas 6 semester 1
+                                </h6>
+                                <p>Maksimal ukuran 1.5 Mb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->kelas6semester1 ? url('/' . $casis->kelas6semester1) : '' }}"
+                                            id="link_kelas6semester1"
+                                            class="btn btn-primary btn-sm @if(empty($casis->kelas6semester1)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filekelas6semester1-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="kelas6semester1" name="kelas6semester1"
+                                                accept="image/jpeg, image/png, application/pdf"
+                                                data-parsley-class-handler="#filekelas6semester1-slWrapper"
+                                                data-parsley-max-file-size="1500" @if(empty($casis->kelas6semester1))
+                                            required @endif>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endrole
+                            @role('Calon Siswa SMA')
+                            <div class="mt-5">
+                                <h4 class="card-title">Raport Kelas 8 Semester 1</h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan raport kelas 8 semester 1
+                                </h6>
+                                <p>Maksimal ukuran 1.5 Mb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->kelas8semester1 ? url('/' . $casis->kelas8semester1) : '' }}"
+                                            id="link_kelas8semester1"
+                                            class="btn btn-primary btn-sm @if(empty($casis->kelas8semester1)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filekelas8semester1-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="kelas8semester1" name="kelas8semester1"
+                                                accept="image/jpeg, image/png, application/pdf"
+                                                data-parsley-class-handler="#filekelas8semester1-slWrapper"
+                                                data-parsley-max-file-size="1500" @if(empty($casis->kelas8semester1))
+                                            required @endif>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <h4 class="card-title">Raport Kelas 8 Semester 2</h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan raport kelas 8 semester 2
+                                </h6>
+                                <p>Maksimal ukuran 1.5 Mb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->kelas8semester2 ? url('/' . $casis->kelas8semester2) : '' }}"
+                                            id="link_kelas8semester2"
+                                            class="btn btn-primary btn-sm @if(empty($casis->kelas8semester2)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filekelas8semester2-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="kelas8semester2" name="kelas8semester2"
+                                                accept="image/jpeg, image/png, application/pdf"
+                                                data-parsley-class-handler="#filekelas8semester2-slWrapper"
+                                                data-parsley-max-file-size="1500" @if(empty($casis->kelas8semester2))
+                                            required @endif>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <h4 class="card-title">Raport Kelas 9 Semester 1</h4>
+                                <h6 class="card-subtitle text-dark mb-2">
+                                    Fotokopi atau scan raport kelas 9 semester 1
+                                </h6>
+                                <p>Maksimal ukuran 1.5 Mb</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend mr-2 mg-t-7">
+                                        <a href="{{ $casis->kelas9semester1 ? url('/' . $casis->kelas9semester1) : '' }}"
+                                            id="link_kelas9semester1"
+                                            class="btn btn-primary btn-sm @if(empty($casis->kelas9semester1)) disabled @endif"
+                                            target="_blank">
+                                            LIHAT
+                                        </a>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="filekelas9semester1-slWrapper" class="parsley-style-1">
+                                            <input type="file" id="kelas9semester1" name="kelas9semester1"
+                                                accept="image/jpeg, image/png, application/pdf"
+                                                data-parsley-class-handler="#filekelas9semester1-slWrapper"
+                                                data-parsley-max-file-size="1500" @if(empty($casis->kelas9semester1))
+                                            required @endif>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endrole
+                        </form>
                     </section>
                 </div>
             </div>
@@ -1299,8 +1560,7 @@
                     var formBiodata = $('#form-biodata').parsley();
                     formBiodata.options.requiredMessage = "Wajib diisi!";
                     if (formBiodata.isValid()) {
-                        console.log('valid');
-                        // updateBiodata();
+                        updateBiodata();
                     } else {
                         formBiodata.validate();
                         return false;
@@ -1308,20 +1568,28 @@
                 } else 
                 // Simpan data halaman kedua
                 if (currentIndex == 1) {
-                    // var asd = $('.required').parsley();
-                    // if (asd.isValid()) {
-                    //     console.log('valid');
-                    //     // updateBiodata();
-                    // } else {
-                    //     asd.validate();
-                    //     return false;
-                    // }
-                    // updateDataOrtu();
+                    // validasi form data ortu
+                    var formBiodata = $('#form-dataortu').parsley();
+                    formBiodata.options.requiredMessage = "Wajib diisi!";
+                    if (formBiodata.isValid()) {
+                        updateDataOrtu();
+                    } else {
+                        formBiodata.validate();
+                        return false;
+                    }
                 }
                 return true;
             },
             onFinished: function (event, currentIndex) {
-                $('#lengkapi-data').modal('show');
+                // validasi form data ortu
+                var formBiodata = $('#form-dokumen').parsley();
+                formBiodata.options.requiredMessage = "Wajib diisi!";
+                if (formBiodata.isValid()) {
+                    $('#lengkapi-data').modal('show');
+                } else {
+                    formBiodata.validate();
+                    return false;
+                }
             }
         });
 
@@ -1339,11 +1607,11 @@
             var kebutuhan_khusus_siswa = $(this).val();
             if (kebutuhan_khusus_siswa == 'YA') {
                 $('#kebutuhan_khusus_siswa_ket').prop('disabled', false);
-                $('#kebutuhan_khusus_siswa_ket').attr('required', true);
+                $('#kebutuhan_khusus_siswa_ket').prop('required', true);
             } else {
                 $('#kebutuhan_khusus_siswa_ket').val('');
                 $('#kebutuhan_khusus_siswa_ket').prop('disabled', true);
-                $('#kebutuhan_khusus_siswa_ket').attr('required', false);
+                $('#kebutuhan_khusus_siswa_ket').prop('required', false);
             }
         });
 
@@ -1352,11 +1620,11 @@
             var noKKS = $(this).val();
             if (noKKS == 'ADA') {
                 $('#no_kks_ket').prop('disabled', false);
-                $('#no_kks_ket').attr('required', true);
+                $('#no_kks_ket').prop('required', true);
             } else {
                 $('#no_kks_ket').val('');
                 $('#no_kks_ket').prop('disabled', true);
-                $('#no_kks_ket').attr('required', false);
+                $('#no_kks_ket').prop('required', false);
             }
         });
 
@@ -1365,11 +1633,11 @@
             var noKPS = $(this).val();
             if (noKPS == 'YA') {
                 $('#no_kps_ket').prop('disabled', false);
-                $('#no_kps_ket').attr('required', true);
+                $('#no_kps_ket').prop('required', true);
             } else {
                 $('#no_kps_ket').val('');
                 $('#no_kps_ket').prop('disabled', true);
-                $('#no_kps_ket').attr('required', false);
+                $('#no_kps_ket').prop('required', false);
             }
         });
 
@@ -1378,11 +1646,11 @@
             var noKIP = $(this).val();
             if (noKIP == 'YA') {
                 $('#no_kip_ket').prop('disabled', false);
-                $('#no_kip_ket').attr('required', true);
+                $('#no_kip_ket').prop('required', true);
             } else {
                 $('#no_kip_ket').val('');
                 $('#no_kip_ket').prop('disabled', true);
-                $('#no_kip_ket').attr('required', false);
+                $('#no_kip_ket').prop('required', false);
             }
         });
 
@@ -1414,6 +1682,30 @@
             $(this).parsley().validate();
         });
 
+        $('#pendidikan_ayah').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#pekerjaan_ayah').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#penghasilan_ayah').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#pendidikan_ibu').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#pekerjaan_ibu').change(function() {
+            $(this).parsley().validate();
+        });
+
+        $('#penghasilan_ibu').change(function() {
+            $(this).parsley().validate();
+        });
+
         // ketika klik selesai
         $('#lengkapi-data-btn').click(function() {
             updateLengkapiData();
@@ -1434,58 +1726,134 @@
 
         $('.select2').select2();
 
+        window.Parsley.addValidator('maxFileSize', {
+            validateString: function(_value, maxSize, parsleyInstance) {
+                if (!window.FormData) {
+                    alert('Segera update browser Anda!');
+                    return true;
+                }
+                var files = parsleyInstance.$element[0].files;
+                return files.length != 1  || files[0].size <= maxSize * 1024;
+            },
+            requirementType: 'integer',
+            messages: {
+                en: 'File ini tidak boleh melebihi %s Kb',
+            }
+        });
+
         $('#foto').change(function () {
             var file_data = $(this)[0].files[0];
             uploadFile('foto', file_data, 'Foto');
         });
+
         $('#ktp_ayah').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('ktp_ayah', file_data, 'KTP Ayah');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('ktp_ayah', file_data, 'KTP Ayah');
+            } else {
+                $(this).parsley().validate();
+            }
         });
+
         $('#ktp_ibu').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('ktp_ibu', file_data, 'KTP Ibu');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('ktp_ibu', file_data, 'KTP Ibu');
+            } else {
+                $(this).parsley().validate();
+            }
         });
+
         $('#kk').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('kk', file_data, 'Kartu Keluarga');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('kk', file_data, 'Kartu Keluarga');
+            } else {
+                $(this).parsley().validate();
+            }
         });
+
         $('#akte').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('akte', file_data, 'Akte Lahir');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('akte', file_data, 'Akte Lahir');
+            } else {
+                $(this).parsley().validate();
+            }
         });
         $('#skd').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('skd', file_data, 'SKD');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('skd', file_data, 'SKD');
+            } else {
+                $(this).parsley().validate();
+            }
         });
 
         @role('Calon Siswa SMP')
         $('#kelas5semester1').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('kelas5semester1', file_data, 'Raport Kelas 5 Semester 1');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('kelas5semester1', file_data, 'Raport Kelas 5 Semester 1');
+            } else {
+                $(this).parsley().validate();
+            }
         });
+
         $('#kelas5semester2').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('kelas5semester2', file_data, 'Raport Kelas 5 Semester 2');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('kelas5semester2', file_data, 'Raport Kelas 5 Semester 2');
+            } else {
+                $(this).parsley().validate();
+            }
         });
+
         $('#kelas6semester1').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('kelas6semester1', file_data, 'Raport Kelas 6 Semester 1');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('kelas6semester1', file_data, 'Raport Kelas 6 Semester 1');
+            } else {
+                $(this).parsley().validate();
+            }
         });
         @endrole
 
         @role('Calon Siswa SMA')
         $('#kelas8semester1').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('kelas8semester1', file_data, 'Raport Kelas 8 Semester 1');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('kelas8semester1', file_data, 'Raport Kelas 8 Semester 1');
+            } else {
+                $(this).parsley().validate();
+            }
         });
         $('#kelas8semester2').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('kelas8semester2', file_data, 'Raport Kelas 8 Semester 2');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('kelas8semester2', file_data, 'Raport Kelas 8 Semester 2');
+            } else {
+                $(this).parsley().validate();
+            }
         });
         $('#kelas9semester1').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('kelas9semester1', file_data, 'Raport Kelas 9 Semester 1');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('kelas9semester1', file_data, 'Raport Kelas 9 Semester 1');
+            } else {
+                $(this).parsley().validate();
+            }
         });
         @endrole
 
@@ -1642,47 +2010,56 @@
                         $('#link_foto')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#foto').prop('required', false);
                     }
                     if (file_name === 'ktp_ayah') {
                         $('#link_ktp_ayah')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#ktp_ayah').prop('required', false);
                     }
                     if (file_name === 'ktp_ibu') {
                         $('#link_ktp_ibu')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#ktp_ibu').prop('required', false);
                     }
                     if (file_name === 'kk') {
                         $('#link_kk')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#kk').prop('required', false);
                     }
                     if (file_name === 'akte') {
                         $('#link_akte')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#akte').prop('required', false);
                     }
                     if (file_name === 'skd') {
                         $('#link_skd')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#skd').prop('required', false);
                     }
                     @role('Calon Siswa SMP')
                     if (file_name === 'kelas5semester1') {
                         $('#link_kelas5semester1')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#kelas5semester1').prop('required', false);
                     }
                     if (file_name === 'kelas5semester2') {
                         $('#link_kelas5semester2')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#kelas5semester2').prop('required', false);
                     }
                     if (file_name === 'kelas6semester1') {
                         $('#link_kelas6semester1')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#kelas6semester1').prop('required', false);
                     }
                     @endrole
                     @role('Calon Siswa SMA')
@@ -1690,16 +2067,19 @@
                         $('#link_kelas8semester1')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#kelas8semester1').prop('required', false);
                     }
                     if (file_name === 'kelas8semester2') {
                         $('#link_kelas8semester2')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#kelas8semester2').prop('required', false);
                     }
                     if (file_name === 'kelas9semester1') {
                         $('#link_kelas9semester1')
                             .attr('href', "{{ url('/') . '/' }}" + result.file)
                             .removeClass('disabled');
+                        $('#kelas9semester1').prop('required', false);
                     }
                     @endrole
                     toastr.success('Berhasil upload ' + message);
