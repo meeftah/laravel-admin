@@ -192,12 +192,12 @@
                     Tempat Tinggal</a>
             </li>
             @endcan
-            @can('slidefrontend_lihat')
+            {{-- @can('slidefrontend_lihat')
             <li class="nav-item"><a href="{{ route('dashboard.slidefrontend.index') }}"
                     class="nav-link {{ set_active(Request::is('dashboard/slidefrontend*')) }}">Data
                     Gambar Slide</a>
             </li>
-            @endcan
+            @endcan --}}
         </ul>
         @endif
 

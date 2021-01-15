@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\CasisSd;
+use App\Models\VaSd;
+use App\Models\Dokumensd;
 use App\Models\StatusCasis;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +22,7 @@ class CasisSdController extends Controller
             ->leftJoin('tbl_va_sd', 'tbl_va_sd.id_va_sd', '=', 'tbl_casis_sd.id_va_sd')
             ->leftJoin('tbl_status_casis', 'tbl_status_casis.id_status_casis', '=', 'tbl_casis_sd.id_status_casis')
             ->leftJoin('users', 'users.id', '=', 'tbl_casis_sd.id_user')
-            ->orderBy('tbl_casis_sd.created_at', 'ASC')
+            ->orderBy('tbl_casis_sd.created_at', 'DESC')
             ->get();
 
         return datatables()->of($casissd)
@@ -34,7 +36,7 @@ class CasisSdController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y');
+                    return $row['created_at']->format('d/m/Y, H:i');
                 }
             )
             ->editColumn(
@@ -125,7 +127,19 @@ class CasisSdController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $casis = CasisSd::where('id_casis_sd', $id)
+            ->leftJoin('tbl_data_ortu', 'tbl_casis_sd.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
+            ->first();
+
+        // Dokumen Siswa
+        $casis->ktp_ayah = Dokumensd::where('id_casis_sd', $id)->where('id_jenisdokumen_sd', '7dfc0b93-dfba-4988-a9c8-b4039210c045')->first()->dokumen ?? '';
+        $casis->ktp_ibu = Dokumensd::where('id_casis_sd', $id)->where('id_jenisdokumen_sd', '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5')->first()->dokumen ?? '';
+        $casis->kk = Dokumensd::where('id_casis_sd', $id)->where('id_jenisdokumen_sd', '0ca3c7f4-5262-40c1-b2b5-4a375553daa0')->first()->dokumen ?? '';
+        $casis->akte = Dokumensd::where('id_casis_sd', $id)->where('id_jenisdokumen_sd', 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd')->first()->dokumen ?? '';
+        $casis->skd = Dokumensd::where('id_casis_sd', $id)->where('id_jenisdokumen_sd', '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3')->first()->dokumen ?? '';
+
+        return view('dashboard.casis.sd.show', compact('casis'));
     }
 
     /**

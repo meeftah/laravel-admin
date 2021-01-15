@@ -79,7 +79,7 @@ class DashboardController extends Controller
                 }
 
                 return view('dashboard.beranda.index', compact('casis'));
-            } else if ($statusSiswa == config('ppdb.status.calon_siswa.terdaftar'))  {
+            } else if ($statusSiswa == config('ppdb.status.calon_siswa.terdaftar')) {
                 // biaya formulir
                 $biayaFormulir = Auth::user()->getDataUnitKu()->biaya_formulir;
 

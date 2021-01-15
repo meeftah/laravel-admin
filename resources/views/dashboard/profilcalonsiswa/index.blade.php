@@ -1538,7 +1538,7 @@
 <script>
     $(document).ready(function () {
         'use strict';
-        
+
         $('#wizard4').steps({
             headerTag: 'h3',
             bodyTag: 'section',

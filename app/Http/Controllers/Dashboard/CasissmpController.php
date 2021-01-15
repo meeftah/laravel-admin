@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class CasisSmpController extends Controller
@@ -35,7 +36,7 @@ class CasisSmpController extends Controller
             ->editColumn(
                 'created_at',
                 function ($row) {
-                    return $row['created_at']->format('d/m/Y H:i');
+                    return $row['created_at']->format('d/m/Y, H:i');
                 }
             )
             ->editColumn(
@@ -126,7 +127,22 @@ class CasisSmpController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $casis = CasisSmp::where('id_casis_smp', $id)
+            ->leftJoin('tbl_data_ortu', 'tbl_casis_smp.id_data_ortu', '=', 'tbl_data_ortu.id_data_ortu')
+            ->first();
+
+        // Dokumen Siswa
+        $casis->ktp_ayah = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', '7dfc0b93-dfba-4988-a9c8-b4039210c045')->first()->dokumen ?? '';
+        $casis->ktp_ibu  = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', '43fcd618-6f4b-46b5-bdbd-0f88bb49dad5')->first()->dokumen ?? '';
+        $casis->kk       = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', '0ca3c7f4-5262-40c1-b2b5-4a375553daa0')->first()->dokumen ?? '';
+        $casis->akte     = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', 'c58283e1-7254-4372-a27e-bc1d2fcfe4cd')->first()->dokumen ?? '';
+        $casis->skd      = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', '79c9fb49-7fc9-497e-9802-b6e7de9d5cc3')->first()->dokumen ?? '';
+        $casis->kelas5semester1 = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', '7274cd7c-a6df-4bbd-82b3-ea4784a4318f')->first()->dokumen ?? '';
+        $casis->kelas5semester2 = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', '90b72f46-27cf-4ebc-9ce8-df93816f10f7')->first()->dokumen ?? '';
+        $casis->kelas6semester1 = Dokumensmp::where('id_casis_smp', $id)->where('id_jenisdokumen_smp', '8d8a2ab1-eba0-4607-b021-3afd9453f536')->first()->dokumen ?? '';
+
+        return view('dashboard.casis.smp.show', compact('casis'));
     }
 
     /**
@@ -175,16 +191,17 @@ class CasisSmpController extends Controller
                 $data       = array(
                     'username' => User::getDataById($casissmp->id_user)->username,
                 );
-                
+
                 Mail::send('dashboard.mail.verifikasi-va', $data, function ($message) use ($kepada, $keEmail) {
                     $message->to(
-                        $keEmail, 
+                        $keEmail,
                         $kepada
                     )->subject('Verifikasi Akun Calon Siswa SMP ' . config('app.name'));
 
                     $message->from(
-                        config('mail.from.address'), 
-                        config('app.name'));
+                        config('mail.from.address'),
+                        config('app.name')
+                    );
                 });
 
                 // jika gagal kirim email

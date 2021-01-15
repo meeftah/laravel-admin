@@ -42,7 +42,7 @@
                                 <th></th>
                                 <th>No</th>
                                 <th>NAMA</th>
-                                <th>KODE VIRTUAL ACCOUNT</th>
+                                <th>VIRTUAL ACCOUNT</th>
                                 <th>TGL DAFTAR</th>
                                 <th>STATUS</th>
                                 @if(auth()->user()->can('casissma_detail') ||
@@ -102,8 +102,8 @@
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [1] },
                 { className: 'text-center', width: 180, targets: [3] },
-                { className: 'text-center', width: 100, targets: [4] },
-                { className: 'text-center', width: 200, targets: [5] },
+                { className: 'text-center', width: 200, targets: [4] },
+                { className: 'text-center', width: 100, targets: [5] },
                 @if(auth()->user()->can('casissma_detail') || auth()->user()->can('casissma_ubah') || auth()->user()->can('casissma_hapus') || auth()->user()->can('casissma_verifikasi'))
                 { className: 'text-center', targets: [6] },
                 @endif

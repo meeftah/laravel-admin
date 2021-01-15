@@ -29,4 +29,11 @@ class VaSma extends Model
         'tanggal_berakhir',
         'status'
     ];
+
+    // Mendapatkan data va berdasarkan id
+    public static function getDataById($id)
+    {
+        $result = VaSma::where('id_va_sma', $id)->first();
+        return $result;
+    }
 }
