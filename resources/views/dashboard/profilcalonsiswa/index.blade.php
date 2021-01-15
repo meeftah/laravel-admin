@@ -1376,7 +1376,7 @@
                             <div class="mt-5">
                                 <h4 class="card-title">Raport Kelas 5 Semester 2</h4>
                                 <h6 class="card-subtitle text-dark mb-2">
-                                    Fotokopi atau scan raport kelas 5 semester 2 dokter calon siswa
+                                    Fotokopi atau scan raport kelas 5 semester 2
                                 </h6>
                                 <p>Maksimal ukuran 1.5 Mb</p>
                                 <div class="input-group">

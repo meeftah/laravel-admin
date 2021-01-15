@@ -614,8 +614,9 @@
                     <div class="tab-pane fade" id="dokumen">
                         <div>
                             <h4 class="card-title">KTP Ayah</h4>
-                            <h6 class="card-subtitle text-dark">Scan atau scan KTP / SIM /
-                                Paspor ayah calon siswa</h6>
+                            <h6 class="card-subtitle text-dark">
+                                Scan atau scan KTP / SIM / Paspor ayah calon siswa
+                            </h6>
                             <div style="margin-top: 10px">
                                 <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : 'javascript: void(0);' }}"
                                     class="btn btn-primary col-md-3 @if(empty($casis->ktp_ayah)) disabled @endif }}"
@@ -628,8 +629,9 @@
                         <hr>
                         <div class="mt-4">
                             <h4 class="card-title">KTP Ibu</h4>
-                            <h6 class="card-subtitle text-dark">Scan atau scan KTP / SIM /
-                                Paspor Ibu calon siswa</h6>
+                            <h6 class="card-subtitle text-dark">
+                                Scan atau scan KTP / SIM / Paspor Ibu calon siswa
+                            </h6>
                             <div style="margin-top: 10px">
                                 <a href="{{ $casis->ktp_ibu ? url('/' . $casis->ktp_ibu) : 'javascript: void(0);' }}"
                                     class="btn btn-primary col-md-3 @if(empty($casis->ktp_ayah)) disabled @endif }}"
@@ -642,7 +644,9 @@
                         <hr>
                         <div class="mt-4">
                             <h4 class="card-title">Kartu Keluarga</h4>
-                            <h6 class="card-subtitle text-dark">Scan Kartu Keluarga Siswa</h6>
+                            <h6 class="card-subtitle text-dark">
+                                Scan Kartu Keluarga calon siswa
+                            </h6>
                             <div style="margin-top: 10px">
                                 <a href="{{ $casis->kk ? url('/' . $casis->kk) : 'javascript: void(0);' }}"
                                     class="btn btn-primary col-md-3 @if(empty($casis->ktp_ibu)) disabled @endif }}"
@@ -655,7 +659,9 @@
                         <hr>
                         <div class="mt-4">
                             <h4 class="card-title">Akte Lahir</h4>
-                            <h6 class="card-subtitle text-dark">Scan Akte Kelahiran</h6>
+                            <h6 class="card-subtitle text-dark">
+                                Scan Akte Kelahiran calon siswa
+                            </h6>
                             <div style="margin-top: 10px">
                                 <a href="{{ $casis->akte ? url('/' . $casis->akte) : 'javascript: void(0);' }}"
                                     class="btn btn-primary col-md-3 @if(empty($casis->akte)) disabled @endif }}" target="_blank">
@@ -667,8 +673,9 @@
                         <hr>
                         <div class="mt-4">
                             <h4 class="card-title">Surat Keterangan Dokter</h4>
-                            <h6 class="card-subtitle text-dark">Scan Surat Keterangan
-                                dokter calon siswa</h6>
+                            <h6 class="card-subtitle text-dark">
+                                Scan Surat Keterangan Dokter calon siswa
+                            </h6>
                             <div style="margin-top: 10px">
                                 <a href="{{ $casis->skd ? url('/' . $casis->skd) : 'javascript: void(0);' }}"
                                     class="btn btn-primary col-md-3 @if(empty($casis->skd)) disabled @endif }}" target="_blank">
