@@ -17,7 +17,9 @@
         <div class="section-title-2 mb-75">
             <h2>Informasi <span>Penting !!!</span></h2>
             <p>Pastikan nomor handphone dan email yang diinput merupakan nomor whatsApp dan email yang aktif,<br> untuk
-                mendapatkan notifikasi pemberitahuan bahwa akun anda benar sudah terdaftar di sistem kami ^-^</p>
+                mendapatkan notifikasi pemberitahuan berhasil registrasi lewat email yang Ayah / Bunda daftarkan pada saat registrasi.<br>
+                Apabila terdapat kekurangan atau kesalahan dalam pengisian form biodata Ananda panitia akan menghubungi Ayah / BUnda <br>
+                lewat no whatsApp untuk memperbaiki datanya.</p>
         </div>
         <div class="register-wrap">
             <div id="register-3" class="mouse-bg d-none d-md-block">

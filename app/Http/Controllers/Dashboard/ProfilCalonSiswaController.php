@@ -362,10 +362,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ayah');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ayah');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPAyah->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -400,10 +401,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ibu');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ibu');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPIbu->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -438,10 +440,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kk');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kk');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKK->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -476,10 +479,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('akte');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('akte');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateAkte->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -514,10 +518,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('skd');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_skd' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('skd');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_skd' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateSkd->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/tk/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -583,10 +588,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ayah');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ayah');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPAyah->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -621,10 +627,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ibu');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ibu');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPIbu->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -659,10 +666,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kk');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kk');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKK->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -697,10 +705,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('akte');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('akte');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateAkte->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -735,10 +744,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('skd');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_skd' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('skd');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_skd' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateSkd->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sd/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -804,10 +814,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ayah');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ayah');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPAyah->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -842,10 +853,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ibu');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ibu');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPIbu->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -880,10 +892,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kk');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kk');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKK->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -918,10 +931,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('akte');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('akte');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateAkte->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/smp/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1143,10 +1157,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ayah');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ayah');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ayah' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPAyah->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1181,10 +1196,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('ktp_ibu');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('ktp_ibu');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_ktp_ibu' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKTPIbu->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1219,10 +1235,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('kk');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('kk');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_kk' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateKK->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1257,10 +1274,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('akte');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('akte');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_akte' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateAkte->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
@@ -1295,10 +1313,11 @@ class ProfilCalonSiswaController extends Controller
                 }
 
                 // upload file
-                $img = $request->file('skd');
-                $image = Image::make($img->getRealPath());
-                $fileName = Auth::user()->getDataVaKu()->va . '_skd' . '.' . $img->getClientOriginalExtension();
-                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $image->encode());
+                $imgOrPdf = $request->file('skd');
+                $fileExtension = $imgOrPdf->getClientOriginalExtension();
+                $imagePdf = $fileExtension == 'pdf' ? File::get($imgOrPdf) : Image::make($imgOrPdf->getRealPath())->encode();
+                $fileName = Auth::user()->getDataVaKu()->va . '_skd' . '.' . $fileExtension;
+                $upload = Storage::disk('casis')->put('dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/' . $fileName, $imagePdf);
                 if ($upload) {
                     $updateSkd->dokumen = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
                     $file = 'storage/casis/dokumen/' . Carbon::now()->year . '/calonsiswa/sma/' . Auth::user()->getDataVaKu()->va . '/'  . $fileName;
