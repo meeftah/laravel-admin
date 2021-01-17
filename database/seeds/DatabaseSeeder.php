@@ -30,5 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusCasisTableSeed::class);
         $this->call(StatusPendaftaranTableSeed::class);
         $this->call(JenisDokumenSeed::class);
+        // $this->call(NegaraTableSeed::class);
+        // $this->call(WilayahTableSeed::class);
     }
 }

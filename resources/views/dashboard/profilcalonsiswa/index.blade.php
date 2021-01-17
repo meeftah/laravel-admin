@@ -285,6 +285,157 @@
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-12 control-label col-form-label">
                                         <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
+                                            DATA ALAMAT
+                                        </h6>
+                                    </label>
+                                </div>
+                                <div class="form-group row align-items-center mb-0">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Negara
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="negara-slWrapper" class="parsley-style-1">
+                                            <select id="kode_negara" name="kode_negara"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#negara-parsley-error"
+                                                data-parsley-class-handler="#negara-slWrapper"
+                                                data-placeholder="PILIH NEGARA" required>
+                                                <option></option>
+                                                @foreach ($negara as $item)
+                                                <option value="{{ $item->kode }}"
+                                                    {{ $casis->kode_negara == $item->kode ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->kode) }} - {{ strtoupper($item->negara) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="negara-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-provinsi-asal" class="form-group row align-items-center mb-0 d-none">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Provinsi
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="provinsiasal-slWrapper" class="parsley-style-1">
+                                            <select id="kode_provinsi_asal" name="kode_provinsi_asal"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#provinsiasal-parsley-error"
+                                                data-parsley-class-handler="#provinsiasal-slWrapper"
+                                                data-placeholder="PILIH PROVINSI" required>
+                                                <option></option>
+                                                @foreach ($provinsi as $item)
+                                                <option value="{{ $item->kode }}"
+                                                    {{ $casis->kode_provinsi_asal == $item->kode ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->wilayah) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="provinsiasal-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-kabkota-asal" class="form-group row align-items-center mb-0 d-none">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Kabupaten / Kota
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="kabkotaasal-slWrapper" class="parsley-style-1">
+                                            <select id="kode_kabkota_asal" name="kode_kabkota_asal"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#kabkotaasal-parsley-error"
+                                                data-parsley-class-handler="#kabkotaasal-slWrapper"
+                                                data-placeholder="PILIH KABUPATEN/KOTA" required>
+                                                <option></option>
+                                            </select>
+                                            <span id="kabkotaasal-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-kecamatan-asal" class="form-group row align-items-center mb-0 d-none">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Kecamatan
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="kecamatanasal-slWrapper" class="parsley-style-1">
+                                            <select id="kode_kecamatan_asal" name="kode_kecamatan_asal"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#kecamatanasal-parsley-error"
+                                                data-parsley-class-handler="#kecamatanasal-slWrapper"
+                                                data-placeholder="PILIH KECAMATAN" required>
+                                                <option></option>
+                                            </select>
+                                            <span id="kecamatanasal-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-desalurah-asal" class="form-group row align-items-center mb-0 d-none">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Desa / Kelurahan
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="desalurahasal-slWrapper" class="parsley-style-1">
+                                            <select id="kode_desalurah_asal" name="kode_desalurah_asal"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#desalurahasal-parsley-error"
+                                                data-parsley-class-handler="#desalurahasal-slWrapper"
+                                                data-placeholder="PILIH DESA/LURAH" required>
+                                                <option></option>
+                                            </select>
+                                            <span id="desalurahasal-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-alamat-asal" class="form-group row align-items-center mb-0 d-none">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Alamat
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="alamatasal-slWrapper" class="parsley-style-1">
+                                            <input id="alamat_asal" name="alamat_asal" type="text" class="form-control"
+                                                value="{{ $casis->alamat_asal }}" placeholder="ALAMAT LENGKAP"
+                                                data-parsley-class-handler="#alamatasal-slWrapper"
+                                                style="text-transform:uppercase" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-rtrw-asal" class="form-group row align-items-center mb-0 d-none">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        RT / RW
+                                    </label>
+                                    <div class="col-md-4 pb-2 pt-2">
+                                        <div id="rtasal-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="rt_asal" name="rt_asal" class="form-control"
+                                                value="{{ $casis->rt }}" placeholder="RT 3 DIGIT, CONTOH: 003" required
+                                                data-parsley-class-handler="#rtasal-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 pb-2 pt-2">
+                                        <div id="rwasal-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="rw_asal" name="rw_asal" class="form-control"
+                                                value="{{ $casis->rw }}" placeholder="RW 3 DIGIT, CONTOH: 016" required
+                                                data-parsley-class-handler="#rwasal-slWrapper"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-kodepos-asal" class="form-group row align-items-center mb-0 d-none">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Kode Pos
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="kodeposasal-slWrapper" class="parsley-style-1">
+                                            <input type="text" id="kodepos_asal" name="kodepos_asal" class="form-control"
+                                                value="{{ $casis->kodepos }}" maxlength="5" placeholder="KODE POS"
+                                                data-parsley-class-handler="#kodeposasal-slWrapper" required
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="form-group row align-items-center mb-0">
+                                    <label class="col-12 control-label col-form-label">
+                                        <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
                                             DATA ALAMAT SEKARANG
                                             <small>(Saat Sekolah)</small>
                                         </h6>
@@ -292,7 +443,53 @@
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
-                                        Jalan
+                                        Negara
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="negara-slWrapper" class="parsley-style-1">
+                                            <select id="kode_negara" name="kode_negara"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#negara-parsley-error"
+                                                data-parsley-class-handler="#negara-slWrapper"
+                                                data-placeholder="PILIH NEGARA" required>
+                                                <option></option>
+                                                @foreach ($negara as $item)
+                                                <option value="{{ $item->kode }}"
+                                                    {{ $casis->kode_negara == $item->kode ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->kode) }} - {{ strtoupper($item->negara) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="negara-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-provinsi" class="form-group row align-items-center mb-0 hidden">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Provinsi
+                                    </label>
+                                    <div class="col-sm-12 col-md-9 pb-2 pt-2">
+                                        <div id="provinsi-slWrapper" class="parsley-style-1">
+                                            <select id="kode_provinsi" name="kode_provinsi"
+                                                class="form-control select2-show-search" style="width: 100%"
+                                                data-parsley-errors-container="#provinsi-parsley-error"
+                                                data-parsley-class-handler="#provinsi-slWrapper"
+                                                data-placeholder="PILIH PROVINSI" required>
+                                                <option></option>
+                                                @foreach ($provinsi as $item)
+                                                <option value="{{ $item->kode }}"
+                                                    {{ $casis->kode_provinsi == $item->kode ? 'selected' : '' }}>
+                                                    {{ strtoupper($item->wilayah) }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <span id="provinsi-parsley-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="kolom-alamat" class="form-group row align-items-center mb-0 hidden">
+                                    <label class="col-sm-12 col-md-3 control-label col-form-label">
+                                        Alamat
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <div id="jalan-slWrapper" class="parsley-style-1">
@@ -303,7 +500,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row align-items-center mb-0">
+                                <div id="kolom-rtrw" class="form-group row align-items-center mb-0 hidden">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
                                         RT / RW
                                     </label>
@@ -324,7 +521,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row align-items-center mb-0">
+                                <div id="kolom-desalurah" class="form-group row align-items-center mb-0 hidden">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
                                         Desa / Kelurahan
                                     </label>
@@ -337,7 +534,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row align-items-center mb-0">
+                                <div id="kolom-kecamatan" class="form-group row align-items-center mb-0 hidden">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
                                         Kecamatan
                                     </label>
@@ -350,7 +547,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row align-items-center mb-0">
+                                <div id="kolom-kabkota" class="form-group row align-items-center mb-0 hidden">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
                                         Kabupaten / Kota
                                     </label>
@@ -363,7 +560,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row align-items-center mb-0">
+                                <div id="kolom-kodepos" class="form-group row align-items-center mb-0 hidden">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
                                         Kode Pos
                                     </label>
@@ -375,7 +572,7 @@
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <hr>
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-12 control-label col-form-label">
@@ -1726,6 +1923,86 @@
 
         $('.select2').select2();
 
+        $('#kode_negara').on("change", function(e) { 
+            $('#kode_provinsi_asal').val('').trigger('change');
+            $('#kode_kabkota_asal').empty();
+            $('#kode_kecamatan_asal').empty();
+            $('#kode_desalurah_asal').empty();
+            $('#alamat_asal').val('');
+            $('#rt_asal').val('');
+            $('#rw_asal').val('');
+            $('#kodepos_asal').val('');
+            if ($(this).val() == 'ID') {
+                $('#kolom-provinsi-asal').removeClass('d-none');
+                $('#kolom-kabkota-asal').removeClass('d-none');
+                $('#kolom-kecamatan-asal').removeClass('d-none');
+                $('#kolom-desalurah-asal').removeClass('d-none');
+                $('#kolom-alamat-asal').removeClass('d-none');
+                $('#kolom-rtrw-asal').removeClass('d-none');
+                $('#kolom-kodepos-asal').removeClass('d-none');
+            } else {
+                $('#kolom-alamat-asal').removeClass('d-none');
+                
+                $('#kolom-provinsi-asal').addClass('d-none');
+                $('#kolom-kabkota-asal').addClass('d-none');
+                $('#kolom-kecamatan-asal').addClass('d-none');
+                $('#kolom-desalurah-asal').addClass('d-none');
+                $('#kolom-rtrw-asal').addClass('d-none');
+                $('#kolom-kodepos-asal').addClass('d-none');
+            }
+        });
+
+        $('#kode_provinsi_asal').on("change", function(e) { 
+            if ($(this).val() != '') {
+                $.ajax({
+                    url: "{{ url('/dashboard/wilayah/kabkota') }}/" + $(this).val(),
+                    type:'GET',
+                    success:function(data) {
+                        $('#kode_kabkota_asal').empty();
+                        $('#kode_kecamatan_asal').empty();
+                        $('#kode_desalurah_asal').empty();
+                        $('#kode_kabkota_asal').append($("<option></option>"));
+                        $.each(data, function(value, key) {
+                            $('#kode_kabkota_asal').append($("<option></option>").attr("value", value).text(key)); 
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#kode_kabkota_asal').on("change", function(e) { 
+            if ($(this).val() != '') {
+                $.ajax({
+                    url: "{{ url('/dashboard/wilayah/kecamatan') }}/" + $(this).val(),
+                    type:'GET',
+                    success:function(data) {
+                        $('#kode_kecamatan_asal').empty();
+                        $('#kode_desalurah_asal').empty();
+                        $('#kode_kecamatan_asal').append($("<option></option>"));
+                        $.each(data, function(value, key) {
+                            $('#kode_kecamatan_asal').append($("<option></option>").attr("value", value).text(key)); 
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#kode_kecamatan_asal').on("change", function(e) { 
+            if ($(this).val() != '') {
+                $.ajax({
+                    url: "{{ url('/dashboard/wilayah/desalurah') }}/" + $(this).val(),
+                    type:'GET',
+                    success:function(data) {
+                        $('#kode_desalurah_asal').empty();
+                        $('#kode_desalurah_asal').append($("<option></option>"));
+                        $.each(data, function(value, key) {
+                            $('#kode_desalurah_asal').append($("<option></option>").attr("value", value).text(key)); 
+                        });
+                    }
+                });
+            }
+        });
+
         window.Parsley.addValidator('maxFileSize', {
             validateString: function(_value, maxSize, parsleyInstance) {
                 if (!window.FormData) {
@@ -1742,8 +2019,13 @@
         });
 
         $('#foto').change(function () {
-            var file_data = $(this)[0].files[0];
-            uploadFile('foto', file_data, 'Foto');
+            $(this).parsley().validate();
+            if ($(this).parsley().isValid()) {
+                var file_data = $(this)[0].files[0];
+                uploadFile('foto', file_data, 'Foto');
+            } else {
+                $(this).parsley().validate();
+            }
         });
 
         $('#ktp_ayah').change(function () {
@@ -1893,13 +2175,15 @@
                 no_akte_lahir: $('#no_akte_lahir').val(),
                 id_agama: $('#id_agama').val(),
                 kebutuhan_khusus_siswa: kebutuhan_khusus_siswa,
-                jalan: $('#jalan').val(),
-                rt: $('#rt').val(),
-                rw: $('#rw').val(),
-                desalurah: $('#desalurah').val(),
-                kecamatan: $('#kecamatan').val(),
-                kabkota: $('#kabkota').val(),
-                kodepos: $('#kodepos').val(),
+                kode_negara: $('#kode_negara').val(),
+                kode_provinsi_asal: $('#kode_provinsi_asal').val(),
+                kode_kabkota_asal: $('#kode_kabkota_asal').val(),
+                kode_kecamatan_asal: $('#kode_kecamatan_asal').val(),
+                kode_desalurah_asal: $('#kode_desalurah_asal').val(),
+                alamat_asal: $('#alamat_asal').val(),
+                rt_asal: $('#rt_asal').val(),
+                rw_asal: $('#rw_asal').val(),
+                kodepos_asal: $('#kodepos_asal').val(),
                 id_tempattinggal: $('#id_tempattinggal').val(),
                 id_transportasi: $('#id_transportasi').val(),
                 no_kks: no_kks,

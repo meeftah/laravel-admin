@@ -4,14 +4,21 @@ namespace App\Models;
 
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
-class Wilayah extends Model
+class Negara extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tbl_wilayah';
+    protected $table = 'tbl_negara';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id_negara';
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +27,6 @@ class Wilayah extends Model
      */
     protected $fillable = [
         'kode',
-        'wilayah'
+        'negara'
     ];
 }

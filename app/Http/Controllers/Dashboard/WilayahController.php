@@ -108,4 +108,43 @@ class WilayahController extends Controller
     {
         //
     }
+
+    public function getKabKotaAPI($id)
+    {
+        $kodeP = strlen($id);
+        
+        $kabkota = Wilayah::whereRaw('LEFT(kode,' . $kodeP . ')="' . $id . '"')
+            ->whereRaw('CHAR_LENGTH(kode) = 5')
+            ->orderBy('wilayah')
+            ->get()
+            ->pluck('wilayah', 'kode');
+
+        return $kabkota;
+    }
+
+    public function getKecamatanAPI($id)
+    {
+        $kodeP = strlen($id);
+        
+        $kecamatan = Wilayah::whereRaw('LEFT(kode,' . $kodeP . ')="' . $id . '"')
+            ->whereRaw('CHAR_LENGTH(kode) = 8')
+            ->orderBy('wilayah')
+            ->get()
+            ->pluck('wilayah', 'kode');
+
+        return $kecamatan;
+    }
+
+    public function getDesaLurahAPI($id)
+    {
+        $kodeP = strlen($id);
+        
+        $desalurah = Wilayah::whereRaw('LEFT(kode,' . $kodeP . ')="' . $id . '"')
+            ->whereRaw('CHAR_LENGTH(kode) = 13')
+            ->orderBy('wilayah')
+            ->get()
+            ->pluck('wilayah', 'kode');
+
+        return $desalurah;
+    }
 }

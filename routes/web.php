@@ -115,6 +115,12 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::post('calon-siswa/profil/update/data-orang-tua', 'ProfilCalonSiswaController@updateDataOrtu')->name('calonsiswa.profil.update.dataortu');
     Route::post('calon-siswa/profil/update/dokumen', 'ProfilCalonSiswaController@updateDokumen')->name('calonsiswa.profil.update.dokumen');
     Route::get('calon-siswa/profil/update/lengkapi-data', 'ProfilCalonSiswaController@lengkapiDataCasis')->name('calonsiswa.profil.update.lengkapidata');
+
+    // wilayah
+    Route::get('wilayah/kabkota/{id}', 'WilayahController@getKabKotaAPI')->name('wilayah.kabkota');
+    Route::get('wilayah/kecamatan/{id}', 'WilayahController@getKecamatanAPI')->name('wilayah.kecamatan');
+    Route::get('wilayah/desalurah/{id}', 'WilayahController@getDesaLurahAPI')->name('wilayah.desalurah');
+
 });
 
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblWilayahTable extends Migration
+class CreateTblNegaraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTblWilayahTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_wilayah', function (Blueprint $table) {
-            $table->string('kode', 13);
-            $table->string('wilayah')->nullable();
+        Schema::create('tbl_negara', function (Blueprint $table) {
+            $table->uuid('id_negara')->primary();
+            $table->string('kode', 2);
+            $table->string('negara');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTblWilayahTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_wilayah');
+        Schema::dropIfExists('tbl_negara');
     }
 }
