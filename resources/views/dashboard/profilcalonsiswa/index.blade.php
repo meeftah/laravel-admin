@@ -68,7 +68,7 @@
                                 @endrole
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-md-3 control-label col-form-label">
-                                        Nama Peserta Didik
+                                        Nama Peserta Didik <span class="text-danger">*</span>
                                         <small>(Sesuai Akta Lahir)</small>
                                         <span class="text-danger">*</span>
                                     </label>
@@ -105,7 +105,7 @@
                                 @hasanyrole('Calon Siswa SMP|Calon Siswa SMA')
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-md-3 control-label col-form-label">
-                                        NISN
+                                        NISN <span class="text-danger">*</span>
                                         <small>(Nomor Induk Siswa Nasional)</small>
                                         <span class="text-danger">*</span>
                                     </label>
@@ -121,7 +121,7 @@
                                 @endhasanyrole
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-md-3 control-label col-form-label">
-                                        NIK
+                                        NIK <span class="text-danger">*</span>
                                         <small>(Nomor Induk Kependudukan)</small>
                                         <span class="text-danger">*</span>
                                     </label>
@@ -413,7 +413,7 @@
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
-                                        RT / RW
+                                        RT / RW <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-md-4 pb-2 pt-2">
                                         <div id="rtasal-slWrapper" class="parsley-style-1">
@@ -654,7 +654,7 @@
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
-                                        Nomor KKS
+                                        Nomor KKS <span class="text-danger">*</span>
                                         <small>(Kartu Keluarga Sejahtera)</small>
                                         <span class="text-danger">*</span>
                                     </label>
@@ -689,7 +689,7 @@
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
-                                        Penerima KPS
+                                        Penerima KPS <span class="text-danger">*</span>
                                         <small>(Kartu Perlin. Sosial)</small>
                                         <span class="text-danger">*</span>
                                     </label>
@@ -723,7 +723,7 @@
                                 </div>
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
-                                        Penerima KIP
+                                        Penerima KIP <span class="text-danger">*</span>
                                         <small>(Kartu Indonesia Pintar)</small>
                                         <span class="text-danger">*</span>
                                     </label>
@@ -1199,7 +1199,7 @@
                                 <div class="form-group row align-items-center mb-0">
                                     <label class="col-12 control-label col-form-label">
                                         <h6 class="tx-uppercase tx-bold tx-black mg-b-10">
-                                            DATA IBU KANDUNG
+                                            DATA IBU KANDUNG <span class="text-danger">*</span>
                                             <small>(BUKAN IBU TIRI)</small>
                                         </h6>
                                     </label>
@@ -1470,7 +1470,8 @@
                                     </div>
                                     <div class="mt-2">
                                         <div id="filefoto-slWrapper" class="parsley-style-1">
-                                            <input type="file" id="foto" name="foto" accept="image/jpeg, image/png"
+                                            <input type="file" id="foto" name="foto"
+                                                accept="image/jpeg, image/png"
                                                 data-parsley-class-handler="#filefoto-slWrapper"
                                                 data-parsley-max-file-size="1024" @if(empty($casis->foto)) required
                                             @endif>
@@ -1486,8 +1487,7 @@
                                 <p>File JPG / JPEG / PNG / PDF, Maksimal ukuran 1mb</p>
                                 <div class="input-group">
                                     <div class="input-group-prepend mr-2 mg-t-7">
-                                        <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : '' }}"
-                                            id="link_ktp_ayah"
+                                        <a href="{{ $casis->ktp_ayah ? url('/' . $casis->ktp_ayah) : '' }}" id="link_ktp_ayah"
                                             class="btn btn-primary btn-sm @if(empty($casis->ktp_ayah)) disabled @endif"
                                             target="_blank">
                                             LIHAT
@@ -1550,8 +1550,7 @@
                                             <input type="file" id="kk" name="kk"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekk-slWrapper"
-                                                data-parsley-max-file-size="1024" @if(empty($casis->kk)) required
-                                            @endif>
+                                                data-parsley-max-file-size="1024" @if(empty($casis->kk)) required @endif>
                                         </div>
                                     </div>
                                 </div>
@@ -1831,7 +1830,7 @@
                         formBiodata.validate();
                         return false;
                     }
-                } else 
+                } else
                 // Simpan data halaman kedua
                 if (currentIndex == 1) {
                     // validasi form data ortu
