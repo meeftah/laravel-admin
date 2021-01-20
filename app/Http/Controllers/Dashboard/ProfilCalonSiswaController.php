@@ -233,6 +233,14 @@ class ProfilCalonSiswaController extends Controller
         $updateBiodata->rt_asal = $request->rt_asal ?? null;
         $updateBiodata->rw_asal = $request->rw_asal ?? null;
         $updateBiodata->kodepos_asal = $request->kodepos_asal ?? null;
+        $updateBiodata->kode_provinsi_sekarang = $request->kode_provinsi_sekarang ?? null;
+        $updateBiodata->kode_kabkota_sekarang = $request->kode_kabkota_sekarang ?? null;
+        $updateBiodata->kode_kecamatan_sekarang = $request->kode_kecamatan_sekarang ?? null;
+        $updateBiodata->kode_desalurah_sekarang = $request->kode_desalurah_sekarang ?? null;
+        $updateBiodata->alamat_sekarang = $request->alamat_sekarang ? strtoupper($request->alamat_sekarang) : null;
+        $updateBiodata->rt_sekarang = $request->rt_sekarang ?? null;
+        $updateBiodata->rw_sekarang = $request->rw_sekarang ?? null;
+        $updateBiodata->kodepos_sekarang = $request->kodepos_sekarang ?? null;
         $updateBiodata->id_tempattinggal = $request->id_tempattinggal ?? null;
         $updateBiodata->id_transportasi = $request->id_transportasi ?? null;
         $updateBiodata->no_kks = $request->no_kks ?? null;

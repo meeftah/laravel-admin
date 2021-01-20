@@ -1,4 +1,4 @@
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('11', 'ACEH', NULL, NULL),
 ('11.01', 'KAB. ACEH SELATAN', NULL, NULL),
 ('11.01.01', 'Bakongan', NULL, NULL),
@@ -1115,7 +1115,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('11.03.17.2002', 'Kruet Lintang', NULL, NULL),
 ('11.03.17.2003', 'Jengki', NULL, NULL),
 ('11.03.17.2004', 'Buket Meriam', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('11.03.17.2005', 'Alue Gureb', NULL, NULL),
 ('11.03.17.2006', 'Seuneubok  Teupin', NULL, NULL),
 ('11.03.17.2007', 'Seuneubok  Teungoh', NULL, NULL),
@@ -2261,7 +2261,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('11.06.11.2039', 'Lambro Bileu', NULL, NULL),
 ('11.06.11.2040', 'Cot Peutano', NULL, NULL),
 ('11.06.11.2041', 'Cot Cut', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('11.06.11.2042', 'Meunasah  Baktrieng', NULL, NULL),
 ('11.06.11.2043', 'Babah Jurong', NULL, NULL),
 ('11.06.11.2044', 'Lam Glumpang', NULL, NULL),
@@ -3408,7 +3408,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('11.08.04.2042', 'Meunasah Geumata', NULL, NULL),
 ('11.08.04.2043', 'Meunasah Meureubo', NULL, NULL),
 ('11.08.04.2044', 'Meunasah Dayah LT', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('11.08.04.2045', 'Arongan LT', NULL, NULL),
 ('11.08.04.2046', 'Meunasah  Tuha', NULL, NULL),
 ('11.08.04.2047', 'Meunasah  Krueng LT', NULL, NULL),
@@ -4548,7 +4548,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('11.11.03.2047', 'Paya Timu', NULL, NULL),
 ('11.11.03.2048', 'Gampong Mulia', NULL, NULL),
 ('11.11.03.2049', 'Pinto Rimba', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('11.11.03.2050', 'Alue Keutapang', NULL, NULL),
 ('11.11.03.2051', 'Tgk. Dibathon', NULL, NULL),
 ('11.11.03.2052', 'Paya Barat', NULL, NULL),
@@ -5690,7 +5690,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('11.15.06.2005', 'Macah', NULL, NULL),
 ('11.15.06.2006', 'Seumambek', NULL, NULL),
 ('11.15.06.2007', 'Cot Kuta', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('11.15.06.2008', 'Kabu Blang Sapek', NULL, NULL),
 ('11.15.06.2009', 'Cot Peuradi', NULL, NULL),
 ('11.15.06.2010', 'Blang Sapek', NULL, NULL),
@@ -6827,7 +6827,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('12.01.01.2008', 'Kampung Mudik', NULL, NULL),
 ('12.01.01.2009', 'Aek Dakka', NULL, NULL),
 ('12.01.01.2010', 'Patupangan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('12.01.01.2011', 'Gabungan Hasang', NULL, NULL),
 ('12.01.01.2017', 'Bungo Tanjung', NULL, NULL),
 ('12.01.01.2018', 'Kedai Gedang', NULL, NULL),
@@ -7952,7 +7952,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('12.05.12.2008', 'Tanjung Putus', NULL, NULL),
 ('12.05.12.2009', 'Suka Ramai', NULL, NULL),
 ('12.05.12.2010', 'Jati Sari', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('12.05.12.2011', 'Banjar Jaya', NULL, NULL),
 ('12.05.12.2012', 'Bukit Sari', NULL, NULL),
 ('12.05.13', 'Gebang', NULL, NULL),
@@ -9092,7 +9092,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('12.08.23.2011', 'Timbaan', NULL, NULL),
 ('12.08.23.2012', 'Bandar Jawa', NULL, NULL),
 ('12.08.23.2013', 'Sidotani', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('12.08.23.2016', 'Landbouw', NULL, NULL),
 ('12.08.24', 'Bandar Masilam', NULL, NULL),
 ('12.08.24.2001', 'Bandar Masilam', NULL, NULL),
@@ -10214,7 +10214,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('12.13.11.2004', 'Huta Padang UP', NULL, NULL),
 ('12.13.11.2005', 'Hutaimbaru UP', NULL, NULL),
 ('12.13.11.2007', 'Patahajang', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('12.13.11.2008', 'Simpang Banyak Jae', NULL, NULL),
 ('12.13.11.2009', 'Simpang Banyak Julu', NULL, NULL),
 ('12.13.11.2010', 'Simpang Duhu Dolok', NULL, NULL),
@@ -11348,7 +11348,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('12.18.03.2004', 'Pematang Setrak', NULL, NULL),
 ('12.18.03.2005', 'Makmur', NULL, NULL),
 ('12.18.03.2006', 'Pasar Baru', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('12.18.03.2007', 'Pekan Sialang Buah', NULL, NULL),
 ('12.18.03.2008', 'Pematang Guntung', NULL, NULL),
 ('12.18.03.2009', 'Sialang Buah', NULL, NULL),
@@ -12473,7 +12473,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('12.22.03', 'Torgamba', NULL, NULL),
 ('12.22.03.2001', 'Bangai', NULL, NULL),
 ('12.22.03.2002', 'Rasau', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('12.22.03.2003', 'Teluk Rampah', NULL, NULL),
 ('12.22.03.2004', 'Pangarungan', NULL, NULL),
 ('12.22.03.2005', 'Bunut', NULL, NULL),
@@ -13594,7 +13594,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('13.01.14', 'Ranah Ampek Hulu Tapan', NULL, NULL),
 ('13.01.14.2001', 'Sungai Gambir Sako Tapan', NULL, NULL),
 ('13.01.14.2002', 'Limau Purut Tapan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('13.01.14.2003', 'Talang Balarik Tapan', NULL, NULL),
 ('13.01.14.2004', 'Tebing Tinggi Tapan', NULL, NULL),
 ('13.01.14.2005', 'Binjai Tapan', NULL, NULL),
@@ -14719,7 +14719,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('13.77.01.2019', 'Rawang', NULL, NULL),
 ('13.77.01.2020', 'Kampung Baru', NULL, NULL),
 ('13.77.01.2021', 'Cimparuh', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('13.77.01.2025', 'Jati Mudik', NULL, NULL),
 ('13.77.02', 'Pariaman Utara', NULL, NULL),
 ('13.77.02.2005', 'Ampalu', NULL, NULL),
@@ -15855,7 +15855,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('14.06.04.2005', 'Talikumain', NULL, NULL),
 ('14.06.04.2006', 'Rantau Panjang', NULL, NULL),
 ('14.06.04.2007', 'Sungai Komango', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('14.06.04.2008', 'Batang Kumu', NULL, NULL),
 ('14.06.04.2009', 'Sialang Rindang', NULL, NULL),
 ('14.06.04.2010', 'Suka Maju', NULL, NULL),
@@ -16980,7 +16980,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('15.01.11.2007', 'Sungaimedang', NULL, NULL),
 ('15.01.11.2008', 'Air Hangat', NULL, NULL),
 ('15.01.11.2009', 'Baru Sungai Tutung', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('15.01.11.2010', 'Pungut Tengah', NULL, NULL),
 ('15.01.11.2011', 'Pungut Hilir', NULL, NULL),
 ('15.01.11.2012', 'Pungut Mudik', NULL, NULL),
@@ -18118,7 +18118,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('15.08.04.2007', 'Jumbak', NULL, NULL),
 ('15.08.04.2009', 'Rantau Panjang', NULL, NULL),
 ('15.08.04.2013', 'Talang Pamesun', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('15.08.04.2014', 'Baru Balai Panjang', NULL, NULL),
 ('15.08.04.2015', 'Sirih Sekapur Perkembangan', NULL, NULL),
 ('15.08.05', 'Tanah Sepenggal', NULL, NULL),
@@ -19258,7 +19258,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('16.03.21.2002', 'Menanti', NULL, NULL),
 ('16.03.21.2003', 'Menanti Selatan', NULL, NULL),
 ('16.03.21.2004', 'Suban Baru', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('16.03.21.2005', 'Pelempang', NULL, NULL),
 ('16.03.21.2006', 'Teluk Jaya', NULL, NULL),
 ('16.03.21.2007', 'Tanjung Medang', NULL, NULL),
@@ -20404,7 +20404,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('16.07.12.2014', 'Manggar Raya', NULL, NULL),
 ('16.07.12.2015', 'Bunga Karang', NULL, NULL),
 ('16.07.13', 'Muara Sugihan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('16.07.13.2001', 'Margo Mulyo 16', NULL, NULL),
 ('16.07.13.2002', 'Rejo Sari', NULL, NULL),
 ('16.07.13.2003', 'Daya Murni', NULL, NULL),
@@ -21536,7 +21536,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('16.11.08', 'Sikap Dalam', NULL, NULL),
 ('16.11.08.2001', 'Puntang', NULL, NULL),
 ('16.11.08.2002', 'Bandaraji', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('16.11.08.2003', 'Paduraksa', NULL, NULL),
 ('16.11.08.2004', 'Karang Gede', NULL, NULL),
 ('16.11.08.2005', 'Karang Dapo Baru', NULL, NULL),
@@ -22683,7 +22683,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('17.04.05.2011', 'Air Dingin', NULL, NULL),
 ('17.04.05.2012', 'Pasar Baru', NULL, NULL),
 ('17.04.05.2014', 'Pasar Lama', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('17.04.05.2015', 'Gedung Sako', NULL, NULL),
 ('17.04.05.2016', 'Jembatan Dua', NULL, NULL),
 ('17.04.05.2017', 'Tanjung Besar', NULL, NULL),
@@ -23828,7 +23828,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('18.01.10.2008', 'Palas Pasemah', NULL, NULL),
 ('18.01.10.2009', 'Palas Jaya', NULL, NULL),
 ('18.01.10.2010', 'Bandan Hurip', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('18.01.10.2011', 'Pulau Tengah', NULL, NULL),
 ('18.01.10.2012', 'Bali Agung', NULL, NULL),
 ('18.01.10.2013', 'Bumi Daya', NULL, NULL),
@@ -24962,7 +24962,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('18.06.03.2022', 'Banjar Sari', NULL, NULL),
 ('18.06.03.2023', 'Negeri Ngarip', NULL, NULL),
 ('18.06.03.2034', 'Dadimulyo', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('18.06.03.2035', 'Sampang Turus', NULL, NULL),
 ('18.06.03.2036', 'Sri Melati', NULL, NULL),
 ('18.06.03.2037', 'Way Liwok', NULL, NULL),
@@ -26109,7 +26109,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('18.11.04.2008', 'Rejo Mulyo', NULL, NULL),
 ('18.11.04.2009', 'Hadi Mulyo', NULL, NULL),
 ('18.11.04.2010', 'Labuhan Batin', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('18.11.04.2011', 'Labuhan Baru', NULL, NULL),
 ('18.11.04.2012', 'Labuhan Makmur', NULL, NULL),
 ('18.11.04.2013', 'Sri Gedung Mulya', NULL, NULL),
@@ -27281,7 +27281,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('21.04.02.2011', 'Panggak Laut', NULL, NULL),
 ('21.04.02.2012', 'Musai', NULL, NULL),
 ('21.04.02.2019', 'Nerekeh', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('21.04.03', 'Senayang', NULL, NULL),
 ('21.04.03.1001', 'Senayang', NULL, NULL),
 ('21.04.03.2002', 'Mamut', NULL, NULL),
@@ -28464,7 +28464,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('32.02.15', 'Parakansalak', NULL, NULL),
 ('32.02.15.2001', 'Parakan Salak', NULL, NULL),
 ('32.02.15.2002', 'Bojong Longok', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('32.02.15.2003', 'Sukakersa', NULL, NULL),
 ('32.02.15.2004', 'Sukatani', NULL, NULL),
 ('32.02.15.2005', 'Bojongasih', NULL, NULL),
@@ -29661,7 +29661,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('32.05.15.2006', 'Sukasono', NULL, NULL),
 ('32.05.15.2007', 'Sukahaji', NULL, NULL),
 ('32.05.15.2008', 'Pasanggrahan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('32.05.15.2009', 'Maripari', NULL, NULL),
 ('32.05.15.2010', 'Mekarwangi', NULL, NULL),
 ('32.05.15.2011', 'Mekar Hurip', NULL, NULL),
@@ -30857,7 +30857,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('32.08.17.2001', 'Cimenga', NULL, NULL),
 ('32.08.17.2002', 'Cageur', NULL, NULL),
 ('32.08.17.2003', 'Sakerta Barat', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('32.08.17.2004', 'Sukarasa', NULL, NULL),
 ('32.08.17.2005', 'Paninggaran', NULL, NULL),
 ('32.08.17.2006', 'Cipasung', NULL, NULL),
@@ -32049,7 +32049,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('32.11.15.2010', 'Jatiroke', NULL, NULL),
 ('32.11.15.2011', 'Cileles', NULL, NULL),
 ('32.11.15.2012', 'Cilayung', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('32.11.16', 'Rancakalong', NULL, NULL),
 ('32.11.16.2001', 'Nagarawangi', NULL, NULL),
 ('32.11.16.2002', 'Cibunar', NULL, NULL),
@@ -33243,7 +33243,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('32.15.19.2010', 'Pulokalapa', NULL, NULL),
 ('32.15.19.2011', 'Pulomulya', NULL, NULL),
 ('32.15.20', 'Tempuran', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('32.15.20.2001', 'Pancakarya', NULL, NULL),
 ('32.15.20.2002', 'Dayeuhluhur', NULL, NULL),
 ('32.15.20.2003', 'Lemahduhur', NULL, NULL),
@@ -34430,7 +34430,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('32.79', 'KOTA BANJAR', NULL, NULL),
 ('32.79.01', 'Banjar', NULL, NULL),
 ('32.79.01.1001', 'Banjar', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('32.79.01.1002', 'Mekarsari', NULL, NULL),
 ('32.79.01.1006', 'Situbatu', NULL, NULL),
 ('32.79.01.2003', 'Balokang', NULL, NULL),
@@ -35626,7 +35626,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('33.04.16.2002', 'Sumberejo', NULL, NULL),
 ('33.04.16.2003', 'Pasurenan', NULL, NULL),
 ('33.04.16.2004', 'Pekasiran', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('33.04.16.2005', 'Kepakisan', NULL, NULL),
 ('33.04.16.2006', 'Bakal', NULL, NULL),
 ('33.04.16.2007', 'Karangtengah', NULL, NULL),
@@ -36826,7 +36826,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('33.07.07.2019', 'Butuh Kidul', NULL, NULL),
 ('33.07.08', 'Kertek', NULL, NULL),
 ('33.07.08.1001', 'Wringinanom', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('33.07.08.1008', 'Kertek', NULL, NULL),
 ('33.07.08.2002', 'Sudungdewo', NULL, NULL),
 ('33.07.08.2003', 'Bejiarum', NULL, NULL),
@@ -38056,7 +38056,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('33.10.24.2008', 'Jebugan', NULL, NULL),
 ('33.10.25', 'Klaten Tengah', NULL, NULL),
 ('33.10.25.1001', 'Bareng', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('33.10.25.1002', 'Kabupaten', NULL, NULL),
 ('33.10.25.1003', 'Klaten', NULL, NULL),
 ('33.10.25.1004', 'Tonggalan', NULL, NULL),
@@ -39287,7 +39287,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('33.15.18.2011', 'Tajemsari', NULL, NULL),
 ('33.15.18.2012', 'Karangpasar', NULL, NULL),
 ('33.15.18.2013', 'Kedungwungu', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('33.15.18.2014', 'Pepe', NULL, NULL),
 ('33.15.18.2015', 'Curug', NULL, NULL),
 ('33.15.18.2016', 'Cangkring', NULL, NULL),
@@ -40503,7 +40503,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('33.20.01.2005', 'Sowan Lor', NULL, NULL),
 ('33.20.01.2006', 'Sowan Kidul', NULL, NULL),
 ('33.20.01.2007', 'Wanusobo', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('33.20.01.2008', 'Surodadi', NULL, NULL),
 ('33.20.01.2009', 'Panggung', NULL, NULL),
 ('33.20.01.2010', 'Bulak Baru', NULL, NULL),
@@ -41726,7 +41726,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('33.24.13.2004', 'Cepiring', NULL, NULL),
 ('33.24.13.2005', 'Damarsari', NULL, NULL),
 ('33.24.13.2006', 'Karangayu', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('33.24.13.2007', 'Karangsuno', NULL, NULL),
 ('33.24.13.2008', 'Gondang', NULL, NULL),
 ('33.24.13.2009', 'Sidomulyo', NULL, NULL),
@@ -42930,7 +42930,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('33.28.16.2007', 'Jatibogor', NULL, NULL),
 ('33.28.16.2008', 'Sidaharja', NULL, NULL),
 ('33.28.16.2009', 'Purwahamba', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('33.28.16.2010', 'Suradadi', NULL, NULL),
 ('33.28.16.2011', 'Bojongsana', NULL, NULL),
 ('33.28.17', 'Warureja', NULL, NULL),
@@ -44133,7 +44133,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('34.71.07.1003', 'Patangpuluhan', NULL, NULL),
 ('34.71.08', 'Mantrijeron', NULL, NULL),
 ('34.71.08.1001', 'Gedongkiwo', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('34.71.08.1002', 'Suryodiningratan', NULL, NULL),
 ('34.71.08.1003', 'Mantrijeron', NULL, NULL),
 ('34.71.09', 'Kraton', NULL, NULL),
@@ -45365,7 +45365,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('35.05.18.2003', 'Plumbangan', NULL, NULL),
 ('35.05.18.2004', 'Sumberurip', NULL, NULL),
 ('35.05.18.2005', 'Genengan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('35.05.18.2006', 'Doko', NULL, NULL),
 ('35.05.18.2007', 'Jambepawon', NULL, NULL),
 ('35.05.18.2008', 'Sidorejo', NULL, NULL),
@@ -46584,7 +46584,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('35.09.17.2005', 'Klompangan', NULL, NULL),
 ('35.09.17.2006', 'Wirowongso', NULL, NULL),
 ('35.09.17.2007', 'Rowoindah', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('35.09.18', 'Tempurejo', NULL, NULL),
 ('35.09.18.2001', 'Sidodadi', NULL, NULL),
 ('35.09.18.2002', 'Tempurejo', NULL, NULL),
@@ -47790,7 +47790,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('35.14.06.2010', 'Kedemungan', NULL, NULL),
 ('35.14.06.2011', 'Wrati', NULL, NULL),
 ('35.14.06.2012', 'Pacar Keling', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('35.14.06.2013', 'Luwuk', NULL, NULL),
 ('35.14.06.2014', 'Sumber Suko', NULL, NULL),
 ('35.14.06.2015', 'Sumber Banteng', NULL, NULL),
@@ -48994,7 +48994,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('35.17.12.2006', 'Blimbing', NULL, NULL),
 ('35.17.12.2007', 'Wuluh', NULL, NULL),
 ('35.17.12.2008', 'Pojokrejo', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('35.17.12.2009', 'Kesamben', NULL, NULL),
 ('35.17.12.2010', 'Podoroto', NULL, NULL),
 ('35.17.12.2011', 'Jombatan', NULL, NULL),
@@ -50222,7 +50222,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('35.22.06.2010', 'Karangsono', NULL, NULL),
 ('35.22.06.2011', 'Sumberagung', NULL, NULL),
 ('35.22.06.2012', 'Somodikaran', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('35.22.06.2013', 'Ngumpakdalem', NULL, NULL),
 ('35.22.06.2014', 'Sumbertlaseh', NULL, NULL),
 ('35.22.06.2015', 'Ngulanan', NULL, NULL),
@@ -51439,7 +51439,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('35.24.26.2023', 'Konang', NULL, NULL),
 ('35.24.26.2024', 'Dukuhtunggal', NULL, NULL),
 ('35.24.26.2025', 'Panggang', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('35.24.26.2026', 'Wonorejo', NULL, NULL),
 ('35.24.26.2027', 'Wedoro', NULL, NULL),
 ('35.24.26.2028', 'Karangturi', NULL, NULL),
@@ -52640,7 +52640,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('35.29.08', 'Giliginting', NULL, NULL),
 ('35.29.08.2001', 'Galis', NULL, NULL),
 ('35.29.08.2002', 'Gedugan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('35.29.08.2003', 'Bringsang', NULL, NULL),
 ('35.29.08.2004', 'Aenganyar', NULL, NULL),
 ('35.29.08.2005', 'Lombang', NULL, NULL),
@@ -53837,7 +53837,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('36.02.07.2007', 'Harjawana', NULL, NULL),
 ('36.02.07.2008', 'Kadurahayu', NULL, NULL),
 ('36.02.07.2009', 'Cimayang', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('36.02.07.2010', 'Parakanbeusi', NULL, NULL),
 ('36.02.07.2012', 'Keboncau', NULL, NULL),
 ('36.02.07.2014', 'Mekarmanik', NULL, NULL),
@@ -55036,7 +55036,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('36.74.01.1003', 'Rawa Mekarjaya', NULL, NULL),
 ('36.74.01.1004', 'Lengkong Gudang', NULL, NULL),
 ('36.74.01.1005', 'Lengkong Wetan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('36.74.01.1006', 'Buaran', NULL, NULL),
 ('36.74.01.1007', 'Lengkong Gudang Timur', NULL, NULL),
 ('36.74.01.1008', 'Cilenggang', NULL, NULL),
@@ -56243,7 +56243,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('52.03.06.2006', 'Paok Pampang', NULL, NULL),
 ('52.03.06.2007', 'Sukamulia Timur', NULL, NULL),
 ('52.03.06.2008', 'Nyiur Tebel', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('52.03.06.2009', 'Setanggor Selatan', NULL, NULL),
 ('52.03.07', 'Selong', NULL, NULL),
 ('52.03.07.1001', 'Pancor', NULL, NULL),
@@ -57476,7 +57476,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('53.02.11.2003', 'Kakan', NULL, NULL),
 ('53.02.11.2005', 'Basmuti', NULL, NULL),
 ('53.02.11.2006', 'Kusi', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('53.02.11.2007', 'Kuanfatu', NULL, NULL),
 ('53.02.11.2008', 'Kelle', NULL, NULL),
 ('53.02.11.2009', 'Taupi', NULL, NULL),
@@ -58705,7 +58705,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('53.08.05.2007', 'Ngalupolo', NULL, NULL),
 ('53.08.05.2012', 'Ngaluroga', NULL, NULL),
 ('53.08.05.2013', 'Nila', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('53.08.05.2014', 'Kekasewa', NULL, NULL),
 ('53.08.05.2015', 'Manulando', NULL, NULL),
 ('53.08.05.2016', 'Nanganesa', NULL, NULL),
@@ -59922,7 +59922,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('53.15.07.2011', 'Lale', NULL, NULL),
 ('53.15.07.2015', 'Racang Welak', NULL, NULL),
 ('53.15.07.2016', 'Sewar', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('53.15.07.2017', 'Robo', NULL, NULL),
 ('53.15.07.2018', 'Wewa', NULL, NULL),
 ('53.15.07.2019', 'Golo Ndari', NULL, NULL),
@@ -61115,7 +61115,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('61.02.17.2005', 'Ansiap', NULL, NULL),
 ('61.02.17.2006', 'Suak Barangan', NULL, NULL),
 ('61.02.18', 'Mempawah Timur', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('61.02.18.1001', 'Pulau Pedalaman', NULL, NULL),
 ('61.02.18.1002', 'Pasir Wan Salim', NULL, NULL),
 ('61.02.18.2003', 'Antibar', NULL, NULL),
@@ -62269,7 +62269,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('61.06.19.2004', 'Nanga Sangan', NULL, NULL),
 ('61.06.19.2005', 'Sri Wangi', NULL, NULL),
 ('61.06.19.2006', 'Nanga Boyan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('61.06.19.2007', 'Nanga Betung', NULL, NULL),
 ('61.06.19.2008', 'Mujan', NULL, NULL),
 ('61.06.19.2009', 'Nanga Jemah', NULL, NULL),
@@ -63433,7 +63433,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('62.02.16.2003', 'Merah', NULL, NULL),
 ('62.02.16.2004', 'Tanjung Jorong', NULL, NULL),
 ('62.02.16.2005', 'Sebungsu', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('62.02.16.2006', 'Bukit Makmur', NULL, NULL),
 ('62.02.16.2007', 'Wonosari', NULL, NULL),
 ('62.02.16.2008', 'Mekar Sari', NULL, NULL),
@@ -64581,7 +64581,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('62.11.07.2006', 'Pilang', NULL, NULL),
 ('62.11.07.2007', 'Tumbang Nusa', NULL, NULL),
 ('62.11.07.2008', 'Tanjung Taruna', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('62.11.08', 'Sebangau Kuala', NULL, NULL),
 ('62.11.08.2001', 'Paduran Sebangau', NULL, NULL),
 ('62.11.08.2002', 'Paduran Mulya', NULL, NULL),
@@ -65727,7 +65727,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('63.04.13', 'Mekarsari', NULL, NULL),
 ('63.04.13.2001', 'Mekarsari', NULL, NULL),
 ('63.04.13.2002', 'Tamban Raya', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('63.04.13.2003', 'Tinggiran Tengah', NULL, NULL),
 ('63.04.13.2004', 'Tinggiran Darat', NULL, NULL),
 ('63.04.13.2005', 'Jelapat II', NULL, NULL),
@@ -66888,7 +66888,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('63.11.04.2010', 'Teluk Mesjid', NULL, NULL),
 ('63.11.04.2011', 'Timbun Tulang', NULL, NULL),
 ('63.11.04.2012', 'Banua Hanyar', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('63.11.04.2013', 'Bakung', NULL, NULL),
 ('63.11.04.2014', 'Karuh', NULL, NULL),
 ('63.11.04.2015', 'Guha', NULL, NULL),
@@ -68048,7 +68048,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('64.11.03', 'Laham', NULL, NULL),
 ('64.11.03.2001', 'Laham', NULL, NULL),
 ('64.11.03.2002', 'Long Gelawang', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('64.11.03.2003', 'Muara Ratah', NULL, NULL),
 ('64.11.03.2004', 'Danum Paroy', NULL, NULL),
 ('64.11.03.2005', 'Nyaribungan', NULL, NULL),
@@ -69224,7 +69224,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('71.02.22.2004', 'Kanonang Dua', NULL, NULL),
 ('71.02.22.2005', 'Kanonang Empat', NULL, NULL),
 ('71.02.22.2006', 'Kanonang Lima', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('71.02.22.2007', 'Tombasian Atas', NULL, NULL),
 ('71.02.22.2008', 'Tombasian Atas Satu', NULL, NULL),
 ('71.02.22.2009', 'Tombasian Bawah', NULL, NULL),
@@ -70415,7 +70415,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('71.10.07.2002', 'Bongkudai Selatan', NULL, NULL),
 ('71.10.07.2003', 'Bongkudai Baru', NULL, NULL),
 ('71.10.07.2004', 'Bongkudai Utara', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('71.10.07.2005', 'Bongkudai Timur', NULL, NULL),
 ('71.10.07.2006', 'Guaan', NULL, NULL),
 ('71.10.07.2007', 'Mototompian', NULL, NULL),
@@ -71621,7 +71621,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('72.04.09.2006', 'Laulalang', NULL, NULL),
 ('72.04.09.2007', 'Salumpaga', NULL, NULL),
 ('72.04.09.2008', 'Diule', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('72.04.09.2009', 'Pinjan', NULL, NULL),
 ('72.04.09.2010', 'Binontoan', NULL, NULL),
 ('72.04.09.2011', 'Lakuan Tolitoli', NULL, NULL),
@@ -72842,7 +72842,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('72.12.04.2011', 'Lemboroma', NULL, NULL),
 ('72.12.04.2012', 'Korowou', NULL, NULL),
 ('72.12.04.2013', 'Lembobaru', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('72.12.04.2014', 'Korobonde', NULL, NULL),
 ('72.12.05', 'Mori Atas', NULL, NULL),
 ('72.12.05.2001', 'Tomata', NULL, NULL),
@@ -74035,7 +74035,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('73.08.14.2012', 'Galung', NULL, NULL),
 ('73.08.14.2013', 'Tadang Palie', NULL, NULL),
 ('73.08.14.2014', 'Timusu', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('73.08.14.2015', 'Manurunge', NULL, NULL),
 ('73.08.15', 'Palakka', NULL, NULL),
 ('73.08.15.2001', 'Cinnenung', NULL, NULL),
@@ -75250,7 +75250,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('73.17.05.2008', 'Balutan', NULL, NULL),
 ('73.17.05.2009', 'Padang Ma\'bud', NULL, NULL),
 ('73.17.05.2010', 'Saluinduk', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('73.17.06', 'Walenrang', NULL, NULL),
 ('73.17.06.1006', 'Bulo', NULL, NULL),
 ('73.17.06.2001', 'Tombang', NULL, NULL),
@@ -76447,7 +76447,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('74.01.12.2010', 'Ulu Baula', NULL, NULL),
 ('74.01.14', 'Latambaga', NULL, NULL),
 ('74.01.14.1001', 'Mangolo', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('74.01.14.1002', 'Kolakaasi', NULL, NULL),
 ('74.01.14.1003', 'Sea', NULL, NULL),
 ('74.01.14.1004', 'Latambaga', NULL, NULL),
@@ -77663,7 +77663,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('74.06.14.2003', 'Rahantari', NULL, NULL),
 ('74.06.14.2004', 'Baliara Kepulauan', NULL, NULL),
 ('74.06.14.2005', 'Baliara Selatan', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('74.06.15', 'Kabaena Utara', NULL, NULL),
 ('74.06.15.2001', 'Mapila', NULL, NULL),
 ('74.06.15.2002', 'Wumbulasa', NULL, NULL),
@@ -78881,7 +78881,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('74.72.06.1007', 'Wajo', NULL, NULL),
 ('74.72.06.1008', 'Lamangga', NULL, NULL),
 ('74.72.06.1009', 'Melai', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('74.72.06.1010', 'Baadia', NULL, NULL),
 ('74.72.06.1011', 'Tanganapada', NULL, NULL),
 ('74.72.07', 'Lea-Lea', NULL, NULL),
@@ -80096,7 +80096,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('76.03.17.2006', 'Saluahok', NULL, NULL),
 ('76.03.17.2007', 'Salubalo', NULL, NULL),
 ('76.03.17.2008', 'Passembuk', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('76.03.17.2009', 'Kondo', NULL, NULL),
 ('76.03.17.2010', 'Leko Sukamaju', NULL, NULL),
 ('76.03.17.2011', 'Ulumea', NULL, NULL),
@@ -81322,7 +81322,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('81.06.08.2003', 'Luhu', NULL, NULL),
 ('81.06.08.2004', 'Iha', NULL, NULL),
 ('81.06.08.2005', 'Kulur', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('81.06.09', 'Kepulauan Manipa', NULL, NULL),
 ('81.06.09.2001', 'Luhutuban', NULL, NULL),
 ('81.06.09.2002', 'Masawoy', NULL, NULL),
@@ -82557,7 +82557,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('82.05.02.2003', 'Waibau', NULL, NULL),
 ('82.05.02.2004', 'Falahu', NULL, NULL),
 ('82.05.02.2005', 'Fatcei', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('82.05.02.2006', 'Fogi', NULL, NULL),
 ('82.05.02.2007', 'Waihama', NULL, NULL),
 ('82.05.02.2008', 'Wai Ipa', NULL, NULL),
@@ -83801,7 +83801,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('91.03.11.2004', 'Yadauw', NULL, NULL),
 ('91.03.11.2006', 'Umbron', NULL, NULL),
 ('91.03.12', 'Ebungfao', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('91.03.12.2001', 'Ebungfa', NULL, NULL),
 ('91.03.12.2002', 'Atabar', NULL, NULL),
 ('91.03.12.2003', 'Bobrongko', NULL, NULL),
@@ -85051,7 +85051,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('91.09.05.2006', 'Wacakam', NULL, NULL),
 ('91.09.05.2007', 'Waituku', NULL, NULL),
 ('91.09.05.2008', 'Bulumen', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('91.09.05.2009', 'Kanmapiri', NULL, NULL),
 ('91.09.05.2010', 'Jaitak', NULL, NULL),
 ('91.09.06', 'Jila', NULL, NULL),
@@ -86319,7 +86319,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('91.14.04.2044', 'Tioga', NULL, NULL),
 ('91.14.05', 'Goyage', NULL, NULL),
 ('91.14.05.2001', 'Goyage', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('91.14.05.2003', 'Yemarima', NULL, NULL),
 ('91.14.05.2004', 'Tigikun', NULL, NULL),
 ('91.14.05.2007', 'Dugi', NULL, NULL),
@@ -87594,7 +87594,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('91.20.04.2002', 'Noyadi', NULL, NULL),
 ('91.20.04.2003', 'Obogai', NULL, NULL),
 ('91.20.04.2004', 'Biri', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('91.20.04.2005', 'Wakeyadi', NULL, NULL),
 ('91.20.04.2006', 'Eri', NULL, NULL),
 ('91.20.04.2007', 'Towae', NULL, NULL),
@@ -88859,7 +88859,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('91.25.20', 'Omukia', NULL, NULL),
 ('91.25.20.2001', 'Eromaga', NULL, NULL),
 ('91.25.20.2002', 'Pinggil/Eronggobak', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('91.25.20.2003', 'Gilini', NULL, NULL),
 ('91.25.20.2004', 'Pinapa', NULL, NULL),
 ('91.25.20.2005', 'Kunga', NULL, NULL),
@@ -90108,7 +90108,7 @@ INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
 ('92.05.19.2002', 'Kabilol', NULL, NULL),
 ('92.05.19.2003', 'Arway', NULL, NULL),
 ('92.05.19.2004', 'Beo', NULL, NULL);
-INSERT INTO `tbl_wilayah` (`kode`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tbl_wilayah` (`kode`, `wilayah`, `created_at`, `updated_at`) VALUES
 ('92.05.19.2005', 'Waifoi', NULL, NULL),
 ('92.05.19.2006', 'Warimak', NULL, NULL),
 ('92.05.20', 'Batanta Utara', NULL, NULL),
