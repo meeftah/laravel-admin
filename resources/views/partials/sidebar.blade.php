@@ -18,7 +18,7 @@
         </a>
 
         {{-- Profil Calon Siswa --}}
-        @hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
+        @hasanyrole('ƒprofil|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
         @if (auth()->user()->getStatusCasisKu() != config('ppdb.status.calon_siswa.terdaftar') &&
         auth()->user()->getStatusCasisKu() != config('ppdb.status.calon_siswa.nonaktif') &&
         auth()->user()->getStatusCasisKu() != config('ppdb.status.calon_siswa.datalengkap'))

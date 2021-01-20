@@ -128,8 +128,65 @@ class ProfilCalonSiswaController extends Controller
 
             // Provinsi di Indonesia
             $provinsi = Wilayah::whereRaw('CHAR_LENGTH(kode) = 2')->orderBy('wilayah')->get();
+            $kabkotaasal = $casis->kode_provinsi_asal ?
+                Wilayah::whereRaw('LEFT(kode,' . strlen($casis->kode_provinsi_asal) . ')="' . $casis->kode_provinsi_asal . '"')
+                ->whereRaw('CHAR_LENGTH(kode) = 5')
+                ->orderBy('wilayah')
+                ->get()
+                : null;
+            $kecamatanasal = $casis->kode_kabkota_asal ?
+                Wilayah::whereRaw('LEFT(kode,' . strlen($casis->kode_kabkota_asal) . ')="' . $casis->kode_kabkota_asal . '"')
+                ->whereRaw('CHAR_LENGTH(kode) = 8')
+                ->orderBy('wilayah')
+                ->get()
+                : null;
+            $desalurahasal = $casis->kode_kecamatan_asal ?
+                Wilayah::whereRaw('LEFT(kode,' . strlen($casis->kode_kecamatan_asal) . ')="' . $casis->kode_kecamatan_asal . '"')
+                ->whereRaw('CHAR_LENGTH(kode) = 13')
+                ->orderBy('wilayah')
+                ->get()
+                : null;
+            $kabkotasekarang = $casis->kode_provinsi_sekarang ?
+                Wilayah::whereRaw('LEFT(kode,' . strlen($casis->kode_provinsi_sekarang) . ')="' . $casis->kode_provinsi_sekarang . '"')
+                ->whereRaw('CHAR_LENGTH(kode) = 5')
+                ->orderBy('wilayah')
+                ->get()
+                : null;
+            $kecamatansekarang = $casis->kode_kabkota_sekarang ?
+                Wilayah::whereRaw('LEFT(kode,' . strlen($casis->kode_kabkota_sekarang) . ')="' . $casis->kode_kabkota_sekarang . '"')
+                ->whereRaw('CHAR_LENGTH(kode) = 8')
+                ->orderBy('wilayah')
+                ->get()
+                : null;
+            $desalurahsekarang = $casis->kode_kecamatan_sekarang ?
+                Wilayah::whereRaw('LEFT(kode,' . strlen($casis->kode_kecamatan_sekarang) . ')="' . $casis->kode_kecamatan_sekarang . '"')
+                ->whereRaw('CHAR_LENGTH(kode) = 13')
+                ->orderBy('wilayah')
+                ->get()
+                : null;
 
-            return view('dashboard.profilcalonsiswa.index', compact('casis', 'agama', 'jarak', 'tempattinggal', 'transportasi', 'waktutmph', 'bcquran', 'kondisibelajar', 'pendidikan', 'pekerjaan', 'penghasilan', 'jenisdokumen', 'negara', 'provinsi'));
+            return view('dashboard.profilcalonsiswa.index', compact(
+                'casis',
+                'agama',
+                'jarak',
+                'tempattinggal',
+                'transportasi',
+                'waktutmph',
+                'bcquran',
+                'kondisibelajar',
+                'pendidikan',
+                'pekerjaan',
+                'penghasilan',
+                'jenisdokumen',
+                'negara',
+                'provinsi',
+                'kabkotaasal',
+                'kecamatanasal',
+                'desalurahasal',
+                'kabkotasekarang',
+                'kecamatansekarang',
+                'desalurahsekarang'
+            ));
         } else {
             return redirect()->route('dashboard.home');
         }
