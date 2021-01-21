@@ -67,23 +67,22 @@ class CasisSmpController extends Controller
                 function ($row) {
                     $btn = '';
                     if (auth()->user()->can('casissmp_verifikasi')) {
-                        $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="btn-update-status btn btn-info btn-sm" title="UBAH STATUS"><i class="fa fa-check"></i></button> ';
+                        $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="btn-update-status btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH STATUS"><i class="fa fa-check"></i></button> ';
                     }
                     if (auth()->user()->can('casissmp_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.calon-siswa.smp.show', $row['id_casis_smp']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.smp.show', $row['id_casis_smp']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="DETAIL"><i class="fa fa-eye"></i></a> ';
                     }
                     if (auth()->user()->can('casissmp_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.calon-siswa.smp.edit', $row['id_casis_smp']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.smp.edit', $row['id_casis_smp']) . '" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
                     if (auth()->user()->can('casissmp_hapus')) {
-                        $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                        $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="delete btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="HAPUS"><i class="fa fa-trash"></i></button> ';
                     }
 
                     if (!empty($btn)) {
                         $divGroupPrefix = '<div class="btn-group" role="group" aria-label="Aksi Group Button">';
                         $divGroupSuffix = '</div';
                         $btn = $divGroupPrefix . $btn . $divGroupSuffix;
-
                     }
 
                     return $btn ?? '';

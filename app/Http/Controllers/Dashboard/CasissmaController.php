@@ -65,16 +65,16 @@ class CasisSmaController extends Controller
                 function ($row) {
                     $btn = '';
                     if (auth()->user()->can('casissma_verifikasi')) {
-                        $btn   .= '<button type="button" id="' . $row['id_casis_sma'] . '" class="btn-update-status btn btn-info btn-sm" title="UBAH STATUS"><i class="fa fa-check"></i></button> ';
+                        $btn   .= '<button type="button" id="' . $row['id_casis_sma'] . '" class="btn-update-status btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH STATUS"><i class="fa fa-check"></i></button> ';
                     }
                     if (auth()->user()->can('casissma_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.calon-siswa.sma.show', $row['id_casis_sma']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.sma.show', $row['id_casis_sma']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="DETAIL"><i class="fa fa-eye"></i></a> ';
                     }
                     if (auth()->user()->can('casissma_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.calon-siswa.sma.edit', $row['id_casis_sma']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.calon-siswa.sma.edit', $row['id_casis_sma']) . '" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
                     if (auth()->user()->can('casissma_hapus')) {
-                        $btn   .= '<button type="button" id="' . $row['id_casis_sma'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                        $btn   .= '<button type="button" id="' . $row['id_casis_sma'] . '" class="delete btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="HAPUS"><i class="fa fa-trash"></i></button> ';
                     }
 
                     if (!empty($btn)) {

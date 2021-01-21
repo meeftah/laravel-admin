@@ -110,6 +110,8 @@
             order: [],
         });
     });
+
+    $('body').tooltip({selector: '[data-toggle="tooltip"]'});
 </script>
 <script>
     var id_update;
