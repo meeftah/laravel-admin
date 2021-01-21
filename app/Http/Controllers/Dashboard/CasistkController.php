@@ -78,6 +78,13 @@ class CasisTkController extends Controller
                         $btn   .= '<button type="button" id="' . $row['id_casis_tk'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
                     }
 
+                    if (!empty($btn)) {
+                        $divGroupPrefix = '<div class="btn-group" role="group" aria-label="Aksi Group Button">';
+                        $divGroupSuffix = '</div';
+                        $btn = $divGroupPrefix . $btn . $divGroupSuffix;
+
+                    }
+
                     return $btn ?? '';
                 }
             )

@@ -52,6 +52,7 @@ class CasisSmpController extends Controller
                     if ($row['statuscasis'] == config('ppdb.status.calon_siswa.nonaktif')) {
                         $statusva = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['va']) . '</span>';
                     }
+                    
                     return $statusva;
                 }
             )
@@ -76,6 +77,13 @@ class CasisSmpController extends Controller
                     }
                     if (auth()->user()->can('casissmp_hapus')) {
                         $btn   .= '<button type="button" id="' . $row['id_casis_smp'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                    }
+
+                    if (!empty($btn)) {
+                        $divGroupPrefix = '<div class="btn-group" role="group" aria-label="Aksi Group Button">';
+                        $divGroupSuffix = '</div';
+                        $btn = $divGroupPrefix . $btn . $divGroupSuffix;
+
                     }
 
                     return $btn ?? '';
