@@ -8792,6 +8792,18 @@ a:active {
   height: 10px;
 }
 
+.square-15 {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+
+.square-20 {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
 .more {
   color: #fff;
   opacity: .2;

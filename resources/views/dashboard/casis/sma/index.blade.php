@@ -55,6 +55,16 @@
                         </thead>
                     </table>
                 </div>
+                <div>
+                    <p class="tx-15 tx-bold tx-black">Keterangan:</p>
+                    <ul>
+                        <li><span class="square-20 bg-{{ config('ppdb.status.calon_siswa.terdaftar_bct') }} mg-r-10"></span> Terdaftar</li>
+                        <li><span class="square-20 bg-{{ config('ppdb.status.calon_siswa.terverifikasi_bct') }} mg-r-10"></span> Terverifikasi</li>
+                        <li><span class="square-20 bg-{{ config('ppdb.status.calon_siswa.datalengkap_bct') }} mg-r-10"></span> Data Lengkap</li>
+                        <li><span class="square-20 bg-{{ config('ppdb.status.calon_siswa.siaptes_bct') }} mg-r-10"></span> Siap Tes</li>
+                        <li><span class="square-20 bg-{{ config('ppdb.status.calon_siswa.nonaktif_bct') }} mg-r-10"></span> Non Aktif</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
