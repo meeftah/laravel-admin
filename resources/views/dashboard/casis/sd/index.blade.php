@@ -45,7 +45,6 @@
                                 <th>EMAIL</th>
                                 <th>VIRTUAL ACCOUNT</th>
                                 <th>TGL DAFTAR</th>
-                                <th>STATUS</th>
                                 @if(auth()->user()->can('casissd_detail') ||
                                 auth()->user()->can('casissd_ubah') ||
                                 auth()->user()->can('casissd_hapus') ||
@@ -96,7 +95,6 @@
                 { data: 'email', name: 'email' },
                 { data: 'va', name: 'va' },
                 { data: 'created_at', name: 'created_at' },
-                { data: 'statuscasis', name: 'statuscasis' },
                 @if(auth()->user()->can('casissd_detail') || auth()->user()->can('casissd_ubah') || auth()->user()->can('casissd_hapus') || auth()->user()->can('casissd_verifikasi'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
@@ -105,9 +103,8 @@
                 { className: 'text-center', width: 30, targets: [1] },
                 { className: 'text-center', width: 180, targets: [4] },
                 { className: 'text-center', width: 200, targets: [5] },
-                { className: 'text-center', width: 100, targets: [6] },
                 @if(auth()->user()->can('casissd_detail') || auth()->user()->can('casissd_ubah') || auth()->user()->can('casissd_hapus') || auth()->user()->can('casissd_verifikasi'))
-                { className: 'text-center', targets: [7] },
+                { className: 'text-center', targets: [6] },
                 @endif
             ],
             order: [],

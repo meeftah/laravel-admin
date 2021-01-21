@@ -22,4 +22,11 @@ class Wilayah extends Model
         'kode',
         'wilayah'
     ];
+
+    // Mendapatkan data wilayah berdasarkan kode
+    public static function getDataByKode($kode)
+    {
+        $result = Wilayah::where('kode', $kode)->first();
+        return $result;
+    }
 }

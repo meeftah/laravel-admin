@@ -34,31 +34,31 @@ class CasisSdController extends Controller
                 }
             )
             ->editColumn(
-                'created_at',
+                'va',
                 function ($row) {
-                    return $row['created_at']->isoFormat('DD MMM YYYY, HH:mm');
+                    $statusva = '';
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.terdaftar')) {
+                        $statusva = '<span class="badge badge-secondary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['va']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.terverifikasi')) {
+                        $statusva = '<span class="badge badge-info p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['va']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.datalengkap')) {
+                        $statusva = '<span class="badge badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['va']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.lulus')) {
+                        $statusva = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['va']) . '</span>';
+                    }
+                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.nonaktif')) {
+                        $statusva = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['va']) . '</span>';
+                    }
+                    return $statusva;
                 }
             )
             ->editColumn(
-                'statuscasis',
+                'created_at',
                 function ($row) {
-                    $status = '';
-                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.terdaftar')) {
-                        $status = '<span class="badge badge-secondary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
-                    }
-                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.terverifikasi')) {
-                        $status = '<span class="badge badge-info p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
-                    }
-                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.datalengkap')) {
-                        $status = '<span class="badge badge-primary p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
-                    }
-                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.lulus')) {
-                        $status = '<span class="badge badge-success p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
-                    }
-                    if ($row['statuscasis'] == config('ppdb.status.calon_siswa.nonaktif')) {
-                        $status = '<span class="badge badge-danger p-2" style="font-size: 10pt; font-weight: 400">' . strtolower($row['statuscasis']) . '</span>';
-                    }
-                    return $status;
+                    return $row['created_at']->isoFormat('DD MMM YYYY, HH:mm');
                 }
             )
             ->addColumn(
@@ -81,7 +81,7 @@ class CasisSdController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['created_at', 'statuscasis', 'action'])
+            ->rawColumns(['created_at', 'va', 'action'])
             ->make(true);
     }
     /**
