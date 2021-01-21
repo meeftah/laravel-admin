@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="text-justify">
             Akun anda telah <strong class="text-success">Terverifikasi</strong>. Silakan klik menu 
-            <a href="{{ route('dashboard.calonsiswa.profil', auth()->user()->id) }}">Profil Calon Siswa</a> 
+            <a href="{{ route('dashboard.calonsiswa.profil') }}">Profil Calon Siswa</a> 
             melengkapi profil Anda agar dapat melanjutkan ke tahap berikutnya.
         </div>
     </div>

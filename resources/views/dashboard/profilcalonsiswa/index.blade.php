@@ -45,6 +45,7 @@
                                             <input type="text" id="asal_sekolah" name="asal_sekolah"
                                                 class="form-control" placeholder="ASAL SD/MI"
                                                 value="{{ $casis->asal_sekolah }}" style="text-transform:uppercase"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#asalsekolah-slWrapper" required>
                                         </div>
                                     </div>
@@ -61,6 +62,7 @@
                                             <input type="text" id="asal_sekolah" name="asal_sekolah"
                                                 class="form-control" placeholder="ASAL SMP/MTS"
                                                 value="{{ $casis->asal_sekolah }}" style="text-transform:uppercase"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#asalsekolah-slWrapper" required>
                                         </div>
                                     </div>
@@ -76,6 +78,7 @@
                                             <input type="text" id="nm_siswa" name="nm_siswa" class="form-control"
                                                 placeholder="NAMA LENGKAP" value="{{ $casis->nm_siswa }}" required
                                                 style="text-transform:uppercase"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#nmasiswa-slWrapper">
                                         </div>
                                     </div>
@@ -90,6 +93,7 @@
                                             <select id="jk" name="jk" class="form-control select2-show-search"
                                                 data-parsley-errors-container="#jk-parsley-error"
                                                 data-parsley-class-handler="#jk-slWrapper" style="width: 100%"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH JENIS KELAMIN" required>
                                                 <option></option>
                                                 <option value="L" {{ $casis->jk == 'L' ? 'selected' : '' }}>LAKI-LAKI
@@ -112,6 +116,7 @@
                                             <input type="text" id="nisn" name="nisn" class="form-control" maxlength="10"
                                                 value="{{ $casis->nisn }}" placeholder="NOMOR INDUK SISWA NASIONAL"
                                                 required data-parsley-class-handler="#nisn-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -127,7 +132,7 @@
                                             <input type="text" id="nik" name="nik" class="form-control" maxlength="16"
                                                 value="{{ $casis->nik }}" data-parsley-class-handler="#nik-slWrapper"
                                                 placeholder="BISA DILIHAT DI KARTU KELUARGA, BERUPA ANGKA 16 DIGIT"
-                                                required
+                                                required data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -202,6 +207,7 @@
                                             <input id="tempat_lahir" name="tempat_lahir" type="text"
                                                 class="form-control" value="{{ $casis->tempat_lahir }}"
                                                 data-parsley-class-handler="#tempatlahir-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 placeholder="TEMPAT LAHIR" style="text-transform:uppercase" required>
                                         </div>
                                     </div>
@@ -210,6 +216,7 @@
                                             <input id="tgl_lahir" name="tgl_lahir" type="text" autocomplete="off"
                                                 data-parsley-class-handler="#tgllahir-slWrapper" required
                                                 value="{{ $casis->tgl_lahir ? $casis->tgl_lahir->format('d/m/Y') : '' }}"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 class="form-control fc-datepicker" placeholder="TANGGAL/BULAN/TAHUN">
                                         </div>
                                     </div>
@@ -223,6 +230,7 @@
                                         <div id="akte-slWrapper" class="parsley-style-1">
                                             <input id="no_akte_lahir" name="no_akte_lahir" type="text"
                                                 class="form-control" value="{{ $casis->no_akte_lahir }}"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#akte-slWrapper" placeholder="NO AKTA LAHIR"
                                                 required>
                                         </div>
@@ -239,6 +247,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH AGAMA"
                                                 data-parsley-class-handler="#agama-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-errors-container="#agama-parsley-error" required>
                                                 <option selected></option>
                                                 @foreach ($agama as $item)
@@ -262,6 +271,7 @@
                                             <select id="kebutuhan_khusus_siswa" name="kebutuhan_khusus_siswa"
                                                 class="form-control select2-show-search" style="width: 100%" required
                                                 data-placeholder="PILIH"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kebutuhankhusus-slWrapper"
                                                 data-parsley-errors-container="#kebutuhankhusus-parsley-error">
                                                 <option selected></option>
@@ -282,7 +292,7 @@
                                                 type="text" class="form-control"
                                                 data-parsley-class-handler="#kebutuhankhususket-slWrapper"
                                                 value="{{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? $casis->kebutuhan_khusus : '' }}"
-                                                style="text-transform:uppercase"
+                                                style="text-transform:uppercase" data-parsley-required-message="Wajib Diisi!"
                                                 {{ $casis->kebutuhan_khusus != 'TIDAK' && $casis->kebutuhan_khusus != null ? '' : 'disabled' }}
                                                 placeholder="TUNA NETRA / RUNGU / INDIGO / NARKOBA / AUTIS / LAINNYA (SEBUTKAN...)">
                                         </div>
@@ -306,6 +316,7 @@
                                             <select id="kode_negara" name="kode_negara"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-errors-container="#negara-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#negara-slWrapper"
                                                 data-placeholder="PILIH NEGARA" required>
                                                 <option></option>
@@ -330,6 +341,7 @@
                                         <div id="provinsiasal-slWrapper" class="parsley-style-1">
                                             <select id="kode_provinsi_asal" name="kode_provinsi_asal"
                                                 class="form-control select2-show-search"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-errors-container="#provinsiasal-parsley-error"
                                                 data-parsley-class-handler="#provinsiasal-slWrapper"
                                                 data-placeholder="PILIH PROVINSI" style="width: 100%"
@@ -356,6 +368,7 @@
                                         <div id="kabkotaasal-slWrapper" class="parsley-style-1">
                                             <select id="kode_kabkota_asal" name="kode_kabkota_asal"
                                                 class="form-control select2-show-search"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-errors-container="#kabkotaasal-parsley-error"
                                                 data-parsley-class-handler="#kabkotaasal-slWrapper"
                                                 data-placeholder="PILIH KABUPATEN/KOTA" style="width: 100%"
@@ -374,7 +387,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="kolom_kode_kecamatan_asal" class="form-group row align-items-center mb-lg-0
+                                <div id="kolom_kode_kecamatan_asal" class="form-group row align-items-center mb-0
                                     @if(!$casis->kode_kecamatan_asal) d-none @endif">
                                     <label class="col-sm-12 col-md-3 control-label col-form-label">
                                         Kecamatan
@@ -384,6 +397,7 @@
                                         <div id="kecamatanasal-slWrapper" class="parsley-style-1">
                                             <select id="kode_kecamatan_asal" name="kode_kecamatan_asal"
                                                 class="form-control select2-show-search"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-errors-container="#kecamatanasal-parsley-error"
                                                 data-parsley-class-handler="#kecamatanasal-slWrapper"
                                                 data-placeholder="PILIH KECAMATAN" style="width: 100%"
@@ -412,6 +426,7 @@
                                         <div id="desalurahasal-slWrapper" class="parsley-style-1">
                                             <select id="kode_desalurah_asal" name="kode_desalurah_asal"
                                                 class="form-control select2-show-search"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-errors-container="#desalurahasal-parsley-error"
                                                 data-parsley-class-handler="#desalurahasal-slWrapper"
                                                 data-placeholder="PILIH DESA/LURAH" style="width: 100%"
@@ -441,6 +456,7 @@
                                             <input id="alamat_asal" name="alamat_asal" type="text" class="form-control"
                                                 value="{{ $casis->alamat_asal }}" placeholder="ALAMAT LENGKAP"
                                                 data-parsley-class-handler="#alamatasal-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 style="text-transform:uppercase" @if (!$casis->alamat_asal) disabled
                                             @else required @endif>
                                         </div>
@@ -458,6 +474,7 @@
                                                 value="{{ $casis->rt_asal }}" placeholder="RT 3 DIGIT, CONTOH: 003"
                                                 data-parsley-class-handler="#rtasal-slWrapper" maxlength="3"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 @if (!$casis->rt_asal) disabled @else required @endif>
                                         </div>
                                     </div>
@@ -467,6 +484,7 @@
                                                 value="{{ $casis->rw_asal }}" placeholder="RW 3 DIGIT, CONTOH: 016"
                                                 data-parsley-class-handler="#rwasal-slWrapper" maxlength="3"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 @if (!$casis->rw_asal) disabled @else required @endif>
                                         </div>
                                     </div>
@@ -481,7 +499,7 @@
                                         <div id="kodeposasal-slWrapper" class="parsley-style-1">
                                             <input type="text" id="kodepos_asal" name="kodepos_asal"
                                                 class="form-control" value="{{ $casis->kodepos_asal }}" maxlength="5"
-                                                placeholder="KODE POS"
+                                                placeholder="KODE POS" data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kodeposasal-slWrapper"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                                 @if (!$casis->kodepos_asal) disabled @else required @endif>
@@ -502,8 +520,8 @@
                                     </label>
                                     <div class="col-sm-12 col-md-9 pb-2 pt-2">
                                         <label class="ckbox">
-                                            <input type="checkbox" id="chkbx_sama_alamat_asal"
-                                                name="chkbx_sama_alamat_asal" disabled>
+                                            <input type="checkbox" id="chkbx_sama_alamat_asal" data-parsley-required-message="Wajib Diisi!"
+                                                name="chkbx_sama_alamat_asal" @if(!$casis->kode_negara == 'ID') disabled @endif>
                                             <span></span>
                                         </label>
                                     </div>
@@ -519,6 +537,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-errors-container="#provinsisekarang-parsley-error"
                                                 data-parsley-class-handler="#provinsisekarang-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH PROVINSI" required>
                                                 <option></option>
                                                 @foreach ($provinsi as $item)
@@ -543,6 +562,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-errors-container="#kabkotasekarang-parsley-error"
                                                 data-parsley-class-handler="#kabkotasekarang-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH KABUPATEN/KOTA" required>
                                                 <option></option>
                                                 @if ($kabkotasekarang)
@@ -569,6 +589,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-errors-container="#kecamatansekarang-parsley-error"
                                                 data-parsley-class-handler="#kecamatansekarang-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH KECAMATAN" required>
                                                 <option></option>
                                                 @if ($kecamatansekarang)
@@ -595,6 +616,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-errors-container="#desalurahsekarang-parsley-error"
                                                 data-parsley-class-handler="#desalurahsekarang-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH DESA/LURAH" required>
                                                 <option></option>
                                                 @if ($desalurahsekarang)
@@ -619,7 +641,7 @@
                                         <div id="alamatsekarang-slWrapper" class="parsley-style-1">
                                             <input id="alamat_sekarang" name="alamat_sekarang" type="text"
                                                 class="form-control" value="{{ $casis->alamat_sekarang }}"
-                                                placeholder="ALAMAT LENGKAP"
+                                                placeholder="ALAMAT LENGKAP" data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#alamatsekarang-slWrapper"
                                                 style="text-transform:uppercase" required>
                                         </div>
@@ -635,7 +657,7 @@
                                             <input type="text" id="rt_sekarang" name="rt_sekarang" class="form-control"
                                                 value="{{ $casis->rt_sekarang }}" placeholder="RT 3 DIGIT, CONTOH: 003"
                                                 data-parsley-class-handler="#rtsekarang-slWrapper" required
-                                                maxlength="3"
+                                                maxlength="3" data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -644,7 +666,7 @@
                                             <input type="text" id="rw_sekarang" name="rw_sekarang" class="form-control"
                                                 value="{{ $casis->rw_sekarang }}" placeholder="RW 3 DIGIT, CONTOH: 016"
                                                 data-parsley-class-handler="#rwsekarang-slWrapper" required
-                                                maxlength="3"
+                                                maxlength="3" data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -658,7 +680,7 @@
                                         <div id="kodepossekarang-slWrapper" class="parsley-style-1">
                                             <input type="text" id="kodepos_sekarang" name="kodepos_sekarang"
                                                 class="form-control" value="{{ $casis->kodepos_sekarang }}"
-                                                maxlength="5" placeholder="KODE POS"
+                                                maxlength="5" placeholder="KODE POS" data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kodepossekarang-slWrapper" required
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
@@ -680,6 +702,7 @@
                                             <select id="id_tempattinggal" name="id_tempattinggal"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH STATUS TEMPAT TINGGAL" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#tempattinggal-slWrapper"
                                                 data-parsley-errors-container="#tempattinggal-parsley-error">
                                                 <option></option>
@@ -704,6 +727,7 @@
                                             <select id="id_transportasi" name="id_transportasi"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH JENIS TRANSPORTASI" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#transportasi-slWrapper"
                                                 data-parsley-errors-container="#transportasi-parsley-error">
                                                 <option></option>
@@ -727,6 +751,7 @@
                                         <div id="kks-slWrapper" class="parsley-style-1">
                                             <select id="no_kks" name="no_kks" class="form-control select2-show-search"
                                                 style="width: 100%" data-placeholder="PILIH" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kks-slWrapper"
                                                 data-parsley-errors-container="#kks-parsley-error">
                                                 <option></option>
@@ -746,7 +771,7 @@
                                             <input id="no_kks_ket" name="no_kks_ket" type="text" class="form-control"
                                                 value="{{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? $casis->no_kks : '' }}"
                                                 placeholder="BIASANYA MENYATU DENGAN KIP (KARTU INDONESIA PINTAR)"
-                                                style="text-transform:uppercase"
+                                                style="text-transform:uppercase" data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kksket-slWrapper"
                                                 {{ $casis->no_kks != 'TIDAK ADA' && $casis->no_kks != null ? '' : 'disabled' }}>
                                         </div>
@@ -761,6 +786,7 @@
                                         <div id="kps-slWrapper" class="parsley-style-1">
                                             <select id="no_kps" name="no_kps" class="form-control select2-show-search"
                                                 style="width: 100%" data-placeholder="PILIH" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kps-slWrapper"
                                                 data-parsley-errors-container="#kps-parsley-error">
                                                 <option></option>
@@ -779,7 +805,7 @@
                                             <input id="no_kps_ket" name="no_kps_ket" type="text" class="form-control"
                                                 value="{{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? $casis->no_kps : '' }}"
                                                 placeholder="ISI NO KPS JIKA SEBAGAI PENERIMA KPS"
-                                                style="text-transform:uppercase"
+                                                style="text-transform:uppercase" data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kpsket-slWrapper"
                                                 {{ $casis->no_kps != 'TIDAK' && $casis->no_kps != null ? '' : 'disabled' }}>
                                         </div>
@@ -794,6 +820,7 @@
                                         <div id="kip-slWrapper" class="parsley-style-1">
                                             <select id="no_kip" name="no_kip" class="form-control select2-show-search"
                                                 style="width: 100%" data-placeholder="PILIH" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kip-slWrapper"
                                                 data-parsley-errors-container="#kip-parsley-error">
                                                 <option></option>
@@ -812,7 +839,7 @@
                                             <input id="no_kip_ket" name="no_kip_ket" type="text" class="form-control"
                                                 value="{{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? $casis->no_kip : '' }}"
                                                 placeholder="ISI NO KIP JIKA SEBAGAI PENERIMA KIP"
-                                                style="text-transform:uppercase"
+                                                style="text-transform:uppercase" data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kipket-slWrapper"
                                                 {{ $casis->no_kip != 'TIDAK' && $casis->no_kip != null ? '' : 'disabled' }}>
                                         </div>
@@ -828,6 +855,7 @@
                                             <input id="nm_kip" name="nm_kip" type="text" class="form-control"
                                                 value="{{ $casis->nm_kip }}" placeholder="NAMA YANG TERTERA DI KIP"
                                                 data-parsley-class-handler="#nmkip-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 style="text-transform:uppercase" required>
                                         </div>
                                     </div>
@@ -842,6 +870,7 @@
                                             <select id="suket_miskin" name="suket_miskin"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#suketmiskin-slWrapper"
                                                 data-parsley-errors-container="#suketmiskin-parsley-error">
                                                 <option></option>
@@ -868,6 +897,7 @@
                                             <select id="yatim_piatu" name="yatim_piatu"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#yatimpiatu-slWrapper"
                                                 data-parsley-errors-container="#yatimpiatu-parsley-error">
                                                 <option></option>
@@ -894,6 +924,7 @@
                                             <select id="id_kondisibelajar" name="id_kondisibelajar"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH KONDISI BELAJAR" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kondisibelajar-slWrapper"
                                                 data-parsley-errors-container="#kondisibelajar-parsley-error">
                                                 <option></option>
@@ -918,6 +949,7 @@
                                             <select id="id_bcquran" name="id_bcquran"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH KEMAMPUAN MEMBACA QURAN" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#bcquran-slWrapper"
                                                 data-parsley-errors-container="#bcquran-parsley-error">
                                                 <option></option>
@@ -941,6 +973,7 @@
                                         <div id="olahraga-slWrapper" class="parsley-style-1">
                                             <input type="text" id="olahraga" name="olahraga" class="form-control"
                                                 style="text-transform:uppercase" value="{{ $casis->olahraga }}"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#olahraga-slWrapper"
                                                 placeholder="MINAT / BAKAT DI BIDANG OLAHRAGA" required>
                                         </div>
@@ -955,6 +988,7 @@
                                         <div id="kesenian-slWrapper" class="parsley-style-1">
                                             <input type="text" id="kesenian" name="kesenian" class="form-control"
                                                 style="text-transform:uppercase" value="{{ $casis->kesenian }}"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#kesenian-slWrapper"
                                                 placeholder="MINAT / BAKAT DI BIDANG KESENIAN" required>
                                         </div>
@@ -969,6 +1003,7 @@
                                         <div id="hobby-slWrapper" class="parsley-style-1">
                                             <input type="text" id="hobby" name="hobby" class="form-control"
                                                 value="{{ $casis->hobby }}" style="text-transform:uppercase"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#hobby-slWrapper"
                                                 placeholder="SEBUTKAN HOBBY DIPISAH DENGAN TANDA KOMA" required>
                                         </div>
@@ -983,6 +1018,7 @@
                                         <div id="penyakit-slWrapper" class="parsley-style-1">
                                             <input type="text" id="penyakit" name="penyakit" class="form-control"
                                                 style="text-transform:uppercase" value="{{ $casis->penyakit }}"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#penyakit-slWrapper"
                                                 placeholder="PENYAKIT YANG PERNAH DIDERITA" required>
                                         </div>
@@ -998,6 +1034,7 @@
                                             <input type="text" id="tinggi_badan" name="tinggi_badan"
                                                 class="form-control" value="{{ $casis->tinggi_badan }}" maxlength="3"
                                                 placeholder="TINGGI BADAN" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#tinggibadan-slWrapper"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
@@ -1014,6 +1051,7 @@
                                             <input type="text" id="berat_badan" name="berat_badan" class="form-control"
                                                 value="{{ $casis->berat_badan }}" maxlength="3"
                                                 placeholder="BERAT BADAN" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#beratbadan-slWrapper"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
@@ -1030,6 +1068,7 @@
                                             <select id="id_jarak" name="id_jarak"
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-errors-container="#jarak-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#jarak-slWrapper"
                                                 data-placeholder="PILIH JARAK TEMPAT TINGGAL KE SEKOLAH" required>
                                                 <option></option>
@@ -1055,6 +1094,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-placeholder="PILIH WAKTU TEMPUH KE SEKOLAH" required
                                                 data-parsley-class-handler="#waktutmph-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-errors-container="#waktutmph-parsley-error">
                                                 <option></option>
                                                 @foreach ($waktutmph as $item)
@@ -1078,6 +1118,7 @@
                                             <input type="text" id="jumlah_saudara" name="jumlah_saudara"
                                                 class="form-control" value="{{ $casis->jumlah_saudara }}" maxlength="3"
                                                 placeholder="JUMLAH BERSAUDARA" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-class-handler="#jumlahsaudara-slWrapper"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
@@ -1093,6 +1134,7 @@
                                             <input type="text" id="anak_ke" name="anak_ke" class="form-control"
                                                 value="{{ $casis->anak_ke }}" maxlength="3" placeholder="ANAK KE"
                                                 required data-parsley-class-handler="#anakke-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1108,6 +1150,7 @@
                                                 class="form-control" value="{{ $casis->dari_bersaudara }}" maxlength="3"
                                                 placeholder="DARI BERAPA BERSAUDARA" required required
                                                 data-parsley-class-handler="#daribersaudara-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1137,7 +1180,8 @@
                                             <input type="text" id="nm_ayah" name="nm_ayah" class="form-control"
                                                 placeholder="NAMA LENGKAP AYAH" value="{{ $casis->nm_ayah }}"
                                                 data-parsley-class-handler="#nmayah-slWrapper"
-                                                style="text-transform:uppercase" required>
+                                                style="text-transform:uppercase" required
+                                                data-parsley-required-message="Wajib Diisi!">
                                         </div>
                                     </div>
                                 </div>
@@ -1152,6 +1196,7 @@
                                                 maxlength="16" value="{{ $casis->nik_ayah }}"
                                                 placeholder="BERUPA ANGKA 16 DIGIT"
                                                 data-parsley-class-handler="#nikayah-slWrapper" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1167,6 +1212,7 @@
                                                 class="form-control" maxlength="4"
                                                 value="{{ $casis->tahun_lahir_ayah }}" placeholder="TAHUN"
                                                 data-parsley-class-handler="#thlahir-slWrapper" required
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1182,6 +1228,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-class-handler="#pendidikanayah-slWrapper"
                                                 data-parsley-errors-container="#pendidikanayah-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH PENDIDIKAN" required>
                                                 <option></option>
                                                 @foreach ($pendidikan as $item)
@@ -1206,6 +1253,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-class-handler="#pekerjaanayah-slWrapper"
                                                 data-parsley-errors-container="#pekerjaanayah-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH PEKERJAAN" required>
                                                 <option></option>
                                                 @foreach ($pekerjaan as $item)
@@ -1230,6 +1278,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-class-handler="#penghasilanayah-slWrapper"
                                                 data-parsley-errors-container="#penghasilanayah-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH PENGHASILAN" required>
                                                 <option></option>
                                                 @foreach ($penghasilan as $item)
@@ -1254,6 +1303,7 @@
                                                 value="{{ $casis->nohp_ayah }}" required
                                                 data-parsley-class-handler="#nohpayah-slWrapper"
                                                 placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1277,6 +1327,7 @@
                                             <input type="text" id="nm_ibu" name="nm_ibu" class="form-control"
                                                 placeholder="NAMA LENGKAP IBU" value="{{ $casis->nm_ibu }}"
                                                 data-parsley-class-handler="#nmibu-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 style="text-transform:uppercase" required>
                                         </div>
                                     </div>
@@ -1292,6 +1343,7 @@
                                                 maxlength="16" value="{{ $casis->nik_ibu }}"
                                                 placeholder="BERUPA ANGKA 16 DIGIT" required
                                                 data-parsley-class-handler="#nikibu-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1307,6 +1359,7 @@
                                                 class="form-control" maxlength="4" value="{{ $casis->tahun_lahir_ibu }}"
                                                 placeholder="TAHUN" required
                                                 data-parsley-class-handler="#thnlahiribu-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1322,6 +1375,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-class-handler="#pendidikanibu-slWrapper"
                                                 data-parsley-errors-container="#pendidikanibu-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH PENDIDIKAN" required>
                                                 <option></option>
                                                 @foreach ($pendidikan as $item)
@@ -1346,6 +1400,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-class-handler="#pekerjaanibu-slWrapper"
                                                 data-parsley-errors-container="#pekerjaanibu-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH PEKERJAAN" required>
                                                 <option></option>
                                                 @foreach ($pekerjaan as $item)
@@ -1370,6 +1425,7 @@
                                                 class="form-control select2-show-search" style="width: 100%"
                                                 data-parsley-class-handler="#penghasilanibu-slWrapper"
                                                 data-parsley-errors-container="#penghasilanibu-parsley-error"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-placeholder="PILIH PENGHASILAN" required>
                                                 <option></option>
                                                 @foreach ($penghasilan as $item)
@@ -1394,7 +1450,7 @@
                                                 value="{{ $casis->nohp_ibu }}"
                                                 data-parsley-class-handler="#nohpibu-slWrapper"
                                                 placeholder="NOMOR HP/WHATSAPP, CONTOH: 0812345678910" maxlength="13"
-                                                required
+                                                required data-parsley-required-message="Wajib Diisi!"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                                         </div>
                                     </div>
@@ -1535,6 +1591,7 @@
                                         <div id="filefoto-slWrapper" class="parsley-style-1">
                                             <input type="file" id="foto" name="foto" accept="image/jpeg, image/png"
                                                 data-parsley-class-handler="#filefoto-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1024" @if(empty($casis->foto)) required
                                             @endif>
                                         </div>
@@ -1561,6 +1618,7 @@
                                             <input type="file" id="ktp_ayah" name="ktp_ayah"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filektpayah-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1024" @if(empty($casis->ktp_ayah)) required
                                             @endif>
                                         </div>
@@ -1587,6 +1645,7 @@
                                             <input type="file" id="ktp_ibu" name="ktp_ibu"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filektpibu-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1024" @if(empty($casis->ktp_ibu)) required
                                             @endif>
                                         </div>
@@ -1613,6 +1672,7 @@
                                             <input type="file" id="kk" name="kk"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekk-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1024" @if(empty($casis->kk)) required
                                             @endif>
                                         </div>
@@ -1639,6 +1699,7 @@
                                             <input type="file" id="akte" name="akte"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#fileakte-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1024" @if(empty($casis->akte)) required
                                             @endif>
                                         </div>
@@ -1664,6 +1725,7 @@
                                             <input type="file" id="skd" name="skd"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#fileskd-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1024" @if(empty($casis->skd)) required
                                             @endif>
                                         </div>
@@ -1692,6 +1754,7 @@
                                             <input type="file" id="kelas5semester1" name="kelas5semester1"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekelas5semester1-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1500" @if(empty($casis->kelas5semester1))
                                             required @endif>
                                         </div>
@@ -1719,6 +1782,7 @@
                                             <input type="file" id="kelas5semester2" name="kelas5semester2"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekelas5semester2-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1500" @if(empty($casis->kelas5semester2))
                                             required @endif>
                                         </div>
@@ -1746,6 +1810,7 @@
                                             <input type="file" id="kelas6semester1" name="kelas6semester1"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekelas6semester1-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1500" @if(empty($casis->kelas6semester1))
                                             required @endif>
                                         </div>
@@ -1775,6 +1840,7 @@
                                             <input type="file" id="kelas8semester1" name="kelas8semester1"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekelas8semester1-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1500" @if(empty($casis->kelas8semester1))
                                             required @endif>
                                         </div>
@@ -1802,6 +1868,7 @@
                                             <input type="file" id="kelas8semester2" name="kelas8semester2"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekelas8semester2-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1500" @if(empty($casis->kelas8semester2))
                                             required @endif>
                                         </div>
@@ -1829,6 +1896,7 @@
                                             <input type="file" id="kelas9semester1" name="kelas9semester1"
                                                 accept="image/jpeg, image/png, application/pdf"
                                                 data-parsley-class-handler="#filekelas9semester1-slWrapper"
+                                                data-parsley-required-message="Wajib Diisi!"
                                                 data-parsley-max-file-size="1500" @if(empty($casis->kelas9semester1))
                                             required @endif>
                                         </div>
@@ -1888,7 +1956,6 @@
                 if (currentIndex == 0) {
                     // validasi form biodata
                     var formBiodata = $('#form-biodata').parsley();
-                    formBiodata.options.requiredMessage = "Wajib diisi!";
                     if (formBiodata.isValid()) {
                         updateBiodata();
                     } else {
@@ -2236,23 +2303,17 @@
                         $('#kode_kabkota_sekarang').empty();
                         $('#kode_kecamatan_sekarang').empty();
                         $('#kode_desalurah_sekarang').empty();
-                        $('#alamat_sekarang').val('');
-                        $('#rt_sekarang').val('');
-                        $('#rw_sekarang').val('');
-                        $('#kodepos_sekarang').val('');
                         $('#kode_kabkota_sekarang').append($("<option></option>"));
                         $.each(data, function(value, key) {
                             $('#kode_kabkota_sekarang').append($("<option></option>").attr("value", value).text(key.toUpperCase())); 
                         });
+
+                        if ($('#chkbx_sama_alamat_asal').is(':checked')) {
+                            $('#kode_kabkota_sekarang').val($('#kode_kabkota_asal').val()).trigger('change');
+                            $('#kode_kabkota_sekarang').parsley().validate();
+                        }
                     }
                 });
-                if ($('#chkbx_sama_alamat_asal').is(':checked')) {
-                    $('#kode_kabkota_sekarang').val($('#kode_kabkota_asal').val()).trigger('change');
-                    $('#alamat_sekarang').val($('#alamat_asal').val());
-                    $('#rt_sekarang').val($('#rt_asal').val());
-                    $('#rw_sekarang').val($('#rw_asal').val());
-                    $('#kodepos_sekarang').val($('#kodepos_asal').val());
-                }
             }
         });
 
@@ -2264,23 +2325,16 @@
                     success:function(data) {
                         $('#kode_kecamatan_sekarang').empty();
                         $('#kode_desalurah_sekarang').empty();
-                        $('#alamat_sekarang').val('');
-                        $('#rt_sekarang').val('');
-                        $('#rw_sekarang').val('');
-                        $('#kodepos_sekarang').val('');
                         $('#kode_kecamatan_sekarang').append($("<option></option>"));
                         $.each(data, function(value, key) {
                             $('#kode_kecamatan_sekarang').append($("<option></option>").attr("value", value).text(key.toUpperCase())); 
                         });
+                        if ($('#chkbx_sama_alamat_asal').is(':checked')) {
+                            $('#kode_kecamatan_sekarang').val($('#kode_kecamatan_asal').val()).trigger('change');
+                            $('#kode_kecamatan_sekarang').parsley().validate();
+                        }
                     }
                 });
-                if ($('#chkbx_sama_alamat_asal').is(':checked')) {
-                    $('#kode_kecamatan_sekarang').val($('#kode_kecamatan_asal').val()).trigger('change');
-                    $('#alamat_sekarang').val($('#alamat_asal').val());
-                    $('#rt_sekarang').val($('#rt_asal').val());
-                    $('#rw_sekarang').val($('#rw_asal').val());
-                    $('#kodepos_sekarang').val($('#kodepos_asal').val());
-                }
             }
         });
 
@@ -2291,34 +2345,32 @@
                     type:'GET',
                     success:function(data) {
                         $('#kode_desalurah_sekarang').empty();
-                        $('#alamat_sekarang').val('');
-                        $('#rt_sekarang').val('');
-                        $('#rw_sekarang').val('');
-                        $('#kodepos_sekarang').val('');
                         $('#kode_desalurah_sekarang').append($("<option></option>"));
                         $.each(data, function(value, key) {
                             $('#kode_desalurah_sekarang').append($("<option></option>").attr("value", value).text(key.toUpperCase())); 
                         });
+                        if ($('#chkbx_sama_alamat_asal').is(':checked')) {
+                            $('#kode_desalurah_sekarang').val($('#kode_desalurah_asal').val()).trigger('change');
+                            $('#kode_desalurah_sekarang').parsley().validate();
+                        }
                     }
                 });
-                if ($('#chkbx_sama_alamat_asal').is(':checked')) {
-                    $('#kode_desalurah_sekarang').val($('#kode_desalurah_asal').val()).trigger('change');
-                    $('#alamat_sekarang').val($('#alamat_asal').val());
-                    $('#rt_sekarang').val($('#rt_asal').val());
-                    $('#rw_sekarang').val($('#rw_asal').val());
-                    $('#kodepos_sekarang').val($('#kodepos_asal').val());
-                }
             }
         });
 
         $('#chkbx_sama_alamat_asal').change(function() {
             if(this.checked) {
                 $('#kode_provinsi_sekarang').val($('#kode_provinsi_asal').val()).trigger('change');
-                $('#kode_kabkota_sekarang').trigger('change');
-                $('#kode_kecamatan_sekarang').trigger('change');
-                $('#kode_desalurah_sekarang').trigger('change');
+                $('#alamat_sekarang').val($('#alamat_asal').val());
+                $('#rt_sekarang').val($('#rt_asal').val());
+                $('#rw_sekarang').val($('#rw_asal').val());
+                $('#kodepos_sekarang').val($('#kodepos_asal').val());
             } else {
                 $('#kode_provinsi_sekarang').val('').trigger('change');
+                $('#kode_provinsi_sekarang').parsley().reset();
+                $('#kode_kabkota_sekarang').empty();
+                $('#kode_kecamatan_sekarang').empty();
+                $('#kode_desalurah_sekarang').empty();
                 $('#alamat_sekarang').val('');
                 $('#rt_sekarang').val('');
                 $('#rw_sekarang').val('');
