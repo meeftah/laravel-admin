@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('dashboard.layouts.admin')
 
 @section('title', 'Daftar Peran')
 
@@ -56,7 +56,7 @@
     </div>
     @endcan
 </div>
-@include('modals.delete')
+@include('dashboard.modals.delete')
 @endsection
 
 @push('styles')
@@ -98,6 +98,8 @@
             order: [],
         });
     });
+
+    $('body').tooltip({selector: '[data-toggle="tooltip"]'});
 </script>
 <script>
     var id_delete;

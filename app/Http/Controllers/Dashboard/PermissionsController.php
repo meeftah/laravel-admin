@@ -22,14 +22,18 @@ class PermissionsController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
-                    // if (auth()->user()->can('penghasilan_detail')) {
-                    //     $btn    .= '<a href="' . route('dashboard.manajemenuser.penghasilan.show', $row['id_penghasilan']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
-                    // }
                     if (auth()->user()->can('permissions_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.permissions.edit', $row['id']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.permissions.edit', $row['id']) . '" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
                     if (auth()->user()->can('permissions_hapus')) {
-                        $btn   .= '<button type="button" id="' . $row['id'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                        $btn   .= '<button type="button" id="' . $row['id'] . '" class="delete btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                    }
+
+                    if (!empty($btn)) {
+                        $divGroupPrefix = '<div class="btn-group" role="group" aria-label="Aksi Group Button">';
+                        $divGroupSuffix = '</div';
+                        $btn = $divGroupPrefix . $btn . $divGroupSuffix;
+
                     }
 
                     return $btn ?? '';

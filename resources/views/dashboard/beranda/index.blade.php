@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('dashboard.layouts.admin')
 
 @section('title', 'Beranda')
 
@@ -17,24 +17,6 @@
 </div>
 @endsection
 
-{{-- ##################### Tampilan untuk Calon Siswa TK, SD, SMP, SMA ##################### --}}
-@hasanyrole('Calon Siswa TK|Calon Siswa SD|Calon Siswa SMP|Calon Siswa SMA')
 @section('content')
-@if (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.terdaftar'))
-@include('dashboard.beranda.calonsiswa.status.terdaftar')
-@elseif (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.nonaktif'))
-@include('dashboard.beranda.calonsiswa.status.nonaktif')
-@elseif (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.terverifikasi'))
-@include('dashboard.beranda.calonsiswa.status.terverifikasi')
-@elseif (auth()->user()->getStatusCasisKu() == config('ppdb.status.calon_siswa.datalengkap'))
-@include('dashboard.beranda.calonsiswa.status.datalengkap')
-@endif
+Hailo admin
 @endsection
-@endhasanyrole
-
-{{-- ##################### Tampilan untuk Superadmin dan Admin Unit ##################### --}}
-@hasanyrole('superadmin')
-@section('content')
-@include('dashboard.beranda.admin.grafik')
-@endsection
-@endhasanyrole

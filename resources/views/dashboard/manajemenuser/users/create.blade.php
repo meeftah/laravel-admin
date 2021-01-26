@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('dashboard.layouts.admin')
 
 @section('title', 'Tambah Pengguna')
 
@@ -19,12 +19,22 @@
 @endsection
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-sm-12 col-md-6">
+<div class="row">
+    <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <form action="{{ route('dashboard.users.store') }}" method="POST">
                     @csrf
+                    <div class="form-group">
+                        <label class="form-control-label">Nama: <span class="tx-danger">*</span></label>
+                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"
+                            name="name" placeholder="Masukkan nama pegguna" value="{{ old('name', null) }}">
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                     <div class="form-group">
                         <label class="form-control-label">Username: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text"
@@ -41,18 +51,6 @@
                             name="email" placeholder="Masukkan email dengan format yang benar"
                             value="{{ old('email', null) }}">
                         @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label">No HP/Whatsapp: <span class="tx-danger">*</span></label>
-                        <input class="form-control {{ $errors->has('nohp') ? 'is-invalid' : '' }}" type="text"
-                            name="nohp" placeholder="Masukkan Nomor HP/Whatsapp dengan benar"
-                            value="{{ old('nohp', null) }}" minlength="11" maxlength="13"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                        @error('nohp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -82,10 +80,10 @@
                     <div class="form-group">
                         <label class="form-control-label">Peran: <span class="tx-danger">*</span></label>
                         <select class="form-control select2-show-search {{ $errors->has('role') ? 'is-invalid' : '' }}"
-                            id="role" name="role" data-placeholder="Pilih Peran">
+                            id="role" name="role" data-placeholder="Pilih Peran" style="width: 100%">
                             <option></option>
                             @foreach ($roles as $role)
-                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                            <option value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : ''  }}>{{ $role->name }}</option>
                             @endforeach
                         </select>
                         @error('role')
@@ -94,8 +92,8 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="form-layout-footer text-center mt-4">
-                        <button class="btn btn-success">Tambah</button>
+                    <div class="form-layout-footer mt-4">
+                        <button class="btn btn-success col-md-3">Tambah</button>
                     </div>
                 </form>
             </div>

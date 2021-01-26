@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('dashboard.layouts.admin')
 
 @section('title', 'Daftar Pengguna')
 
@@ -21,14 +21,12 @@
 <div class="row">
     @can('users_tambah')
     <div class="col-12 mb-3">
-        <div class="pull-right">
-            <a href="{{ route('dashboard.users.create') }}" class="btn btn-success btn-with-icon">
-                <div class="ht-40">
-                    <span class="icon wd-40"><i class="fa fa-plus"></i></span>
-                    <span class="pd-x-15">Tambah Pengguna</span>
-                </div>
-            </a>
-        </div>
+        <a href="{{ route('dashboard.users.create') }}" class="btn btn-success btn-with-icon">
+            <div class="ht-40">
+                <span class="icon wd-40"><i class="fa fa-plus"></i></span>
+                <span class="pd-x-15">Tambah Pengguna</span>
+            </div>
+        </a>
     </div>
     @endcan
     <div class="col-12">
@@ -57,7 +55,7 @@
         </div>
     </div>
 </div>
-@include('modals.delete')
+@include('dashboard.modals.delete')
 @endsection
 
 @push('styles')
@@ -100,6 +98,8 @@
             order: [],
         });
     });
+
+    $('body').tooltip({selector: '[data-toggle="tooltip"]'});
 </script>
 <script>
     var id_delete;

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('title', 'Login')
 
@@ -9,7 +9,9 @@
         <div class="signin-logo tx-center tx-28 tx-bold tx-inverse">
             <img src="{{ asset('assets/common/logo.png') }}" height="120px">
         </div>
-        <div class="tx-center mg-b-40">Silakan masuk menggunakan email dan password Anda</div>
+        <div class="tx-center mg-b-20">
+            Silakan masuk menggunakan<br>email/username dan password Anda
+        </div>
 
         <form action="{{ route('login') }}" method="post">
             @csrf

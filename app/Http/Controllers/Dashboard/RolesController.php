@@ -33,14 +33,21 @@ class RolesController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
-                    if (auth()->user()->can('roles_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.roles.show', $row['id']) . '" class="btn btn-primary btn-sm" title="DETAIL"><i class="fa fa-eye"></i></a> ';
-                    }
+                    // if (auth()->user()->can('roles_detail')) {
+                    //     $btn   .= '<a href="' . route('dashboard.roles.show', $row['id']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                    // }
                     if (auth()->user()->can('roles_ubah')) {
-                        $btn   .= '<a href="' . route('dashboard.roles.edit', $row['id']) . '" class="btn btn-warning btn-sm" title="UBAH"><i class="fa fa-pencil"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.roles.edit', $row['id']) . '" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
                     if (auth()->user()->can('roles_hapus')) {
-                        $btn   .= '<button type="button" id="' . $row['id'] . '" class="delete btn btn-danger btn-sm" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                        $btn   .= '<button type="button" id="' . $row['id'] . '" class="delete btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                    }
+
+                    if (!empty($btn)) {
+                        $divGroupPrefix = '<div class="btn-group" role="group" aria-label="Aksi Group Button">';
+                        $divGroupSuffix = '</div';
+                        $btn = $divGroupPrefix . $btn . $divGroupSuffix;
+
                     }
 
                     return $btn ?? '';
@@ -134,8 +141,10 @@ class RolesController extends Controller
     {
         abort_if(Gate::denies('roles_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $role->delete();
-
-        return redirect()->route('dashboard.roles.index')->with(['error' => 'Peran berhasil dihapus']);
+        if ($role->delete()) {
+            return response()->json(['status' => 'success', 'message' => 'Peran berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Peran gagal dihapus']);
+        }
     }
 }

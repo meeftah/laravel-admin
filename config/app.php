@@ -12,17 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'PPDB Online'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Nama Sekolah
-    |--------------------------------------------------------------------------
-    |
-    | Nama sekolah di aplikasi PPDB Online ini
-    */
-
-    'nama_sekolah' => env('APP_SCHOOL_NAME', 'Sekolah'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
