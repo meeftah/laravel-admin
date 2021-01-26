@@ -32,9 +32,9 @@ class UsersController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
-                    if (auth()->user()->can('users_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.users.show', $row['id']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="DETAIL"><i class="fa fa-eye"></i></a> ';
-                    }
+                    // if (auth()->user()->can('users_detail')) {
+                    //     $btn   .= '<a href="' . route('dashboard.users.show', $row['id']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                    // }
                     if (auth()->user()->can('users_ubah')) {
                         $btn   .= '<a href="' . route('dashboard.users.edit', $row['id']) . '" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
@@ -98,10 +98,6 @@ class UsersController extends Controller
             'email.required'            => 'Kolom Email wajib diisi!',
             'email.email'               => 'Format Email tidak sesuai!',
             'email.unique'              => 'Email sudah terdaftar, silakan pilih email yang lain!',
-            'nohp.required'             => 'No Whatsapp wajib diisi!',
-            'nohp.min'                  => 'No Whatsapp minimal 11 digit!',
-            'nohp.max'                  => 'No Whatsapp maksimal 13 digit!',
-            'nohp.unique'               => 'No Whatsapp sudah terdaftar, silakan pilih nomor yang lain!',
             'password.required'         => 'Kolom Password wajib diisi!',
             'password.confirmed'        => 'Kolom Password tidak sama dengan Konfirmasi Password!',
             'password.min'              => 'Kolom Password minimal 6 karakter!',
@@ -124,7 +120,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('users_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::get()->pluck('name', 'name');
+        $roles = Role::get();
 
         return view('dashboard.manajemenuser.users.edit', compact('user', 'roles'));
     }
@@ -137,9 +133,8 @@ class UsersController extends Controller
         $rules = [
             'name'      => 'required',
             'username'  => ['required', 'min:3', 'unique:users,username', new WithoutSpaces('Kolom Username tidak boleh ada spasi!'), new NoDash('Kolom Username tidak boleh menggunakan tanda pisah (-)!'), new MustLowercase('Kolom Username harus menggunakan huruf kecil!')],
-            'email'     => 'required|email|unique:users,email',
-            'password'  => 'required|confirmed|min:6',
-            'role'      => 'required',
+            'email'     => 'required|email|unique:users,email,' .$user->id,
+            'role'      => 'sometimes|required',
         ];
 
         $messages = [
@@ -150,13 +145,6 @@ class UsersController extends Controller
             'email.required'            => 'Kolom Email wajib diisi!',
             'email.email'               => 'Format Email tidak sesuai!',
             'email.unique'              => 'Email sudah terdaftar, silakan pilih email yang lain!',
-            'nohp.required'             => 'No Whatsapp wajib diisi!',
-            'nohp.min'                  => 'No Whatsapp minimal 11 digit!',
-            'nohp.max'                  => 'No Whatsapp maksimal 13 digit!',
-            'nohp.unique'               => 'No Whatsapp sudah terdaftar, silakan pilih nomor yang lain!',
-            'password.required'         => 'Kolom Password wajib diisi!',
-            'password.confirmed'        => 'Kolom Password tidak sama dengan Konfirmasi Password!',
-            'password.min'              => 'Kolom Password minimal 6 karakter!',
             'role.required'             => 'Wajib pilih peran!',
         ];
 

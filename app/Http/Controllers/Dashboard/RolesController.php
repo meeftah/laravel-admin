@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class RolesController extends Controller
@@ -39,15 +40,17 @@ class RolesController extends Controller
                     if (auth()->user()->can('roles_ubah')) {
                         $btn   .= '<a href="' . route('dashboard.roles.edit', $row['id']) . '" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH"><i class="fa fa-pencil"></i></a> ';
                     }
-                    if (auth()->user()->can('roles_hapus')) {
-                        $btn   .= '<button type="button" id="' . $row['id'] . '" class="delete btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                    // user tidak dapat menghapus perannya sendiri
+                    if ($row['name'] != Auth::user()->getRoleNames()->implode('')) {
+                        if (auth()->user()->can('roles_hapus')) {
+                            $btn   .= '<button type="button" id="' . $row['id'] . '" class="delete btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="HAPUS"><i class="fa fa-trash"></i></button> ';
+                        }
                     }
 
                     if (!empty($btn)) {
                         $divGroupPrefix = '<div class="btn-group" role="group" aria-label="Aksi Group Button">';
                         $divGroupSuffix = '</div';
                         $btn = $divGroupPrefix . $btn . $divGroupSuffix;
-
                     }
 
                     return $btn ?? '';

@@ -21,14 +21,12 @@
 <div class="row">
     @can('roles_tambah')
     <div class="col-12 mb-3">
-        <div class="pull-right">
-            <a href="{{ route('dashboard.roles.create') }}" class="btn btn-success btn-with-icon">
-                <div class="ht-40">
-                    <span class="icon wd-40"><i class="fa fa-plus"></i></span>
-                    <span class="pd-x-15">Tambah Peran</span>
-                </div>
-            </a>
-        </div>
+        <a href="{{ route('dashboard.roles.create') }}" class="btn btn-success btn-with-icon">
+            <div class="ht-40">
+                <span class="icon wd-40"><i class="fa fa-plus"></i></span>
+                <span class="pd-x-15">Tambah Peran</span>
+            </div>
+        </a>
     </div>
     <div class="col-12">
         <div class="card">

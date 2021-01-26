@@ -13,7 +13,7 @@
 
 @section('content-header')
 <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-    <h4 class="tx-gray-800 mg-b-5">UBah Pengguna</h4>
+    <h4 class="tx-gray-800 mg-b-5">Ubah Pengguna</h4>
     <p class="mg-b-0">UBah pengguna baru</p>
 </div>
 @endsection
@@ -23,12 +23,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('dashboard.users.store') }}" method="POST">
+                <form action="{{ route('dashboard.users.update', $user->id) }}" method="POST">
+                    @method('PUT')
                     @csrf
                     <div class="form-group">
                         <label class="form-control-label">Nama: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"
-                            name="name" placeholder="Masukkan nama pegguna" value="{{ old('name', null) }}">
+                            name="name" placeholder="Masukkan nama pegguna" value="{{ old('name', $user->name) }}">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -38,7 +39,7 @@
                     <div class="form-group">
                         <label class="form-control-label">Username: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text"
-                            name="username" placeholder="Masukkan usernama pegguna" value="{{ old('username', null) }}">
+                            name="username" placeholder="Masukkan usernama pegguna" value="{{ old('username', $user->username) }}">
                         @error('username')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -49,7 +50,7 @@
                         <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"
                             name="email" placeholder="Masukkan email dengan format yang benar"
-                            value="{{ old('email', null) }}">
+                            value="{{ old('email', $user->email) }}">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -60,6 +61,9 @@
                         <label class="form-control-label">Password: <span class="tx-danger">*</span></label>
                         <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
                             name="password" placeholder="Masukkan password minimal 6 karakter">
+                            <span class="tx-danger" role="alert">
+                                <strong>Isi hanya jika Anda ingin mengubah password</strong>
+                            </span>
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -83,7 +87,7 @@
                             id="role" name="role" data-placeholder="Pilih Peran" style="width: 100%">
                             <option></option>
                             @foreach ($roles as $role)
-                            <option value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : ''  }}>
+                            <option value="{{ $role->name }}" {{ $user->roles->pluck('name')->implode('') == $role->name ? 'selected' : ''  }}>
                                 {{ $role->name }}</option>
                             @endforeach
                         </select>
@@ -94,7 +98,7 @@
                         @enderror
                     </div>
                     <div class="form-layout-footer mt-4">
-                        <button class="btn btn-success col-md-3">Tambah</button>
+                        <button class="btn btn-warning col-md-3">Ubah</button>
                     </div>
                 </form>
             </div>
