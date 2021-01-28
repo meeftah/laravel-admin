@@ -18,6 +18,35 @@
         </a>
 
         {{-- Manajement User --}}
+        @if(auth()->user()->can('info-tambahan_lihat'))
+        <a href="javascript: void(0);"
+            class="br-menu-link {{ set_active([Request::is('dashboard/info-tambahan*')], 'active show-sub') }}">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-ios-filing tx-24"></i>
+                <span class="menu-item-label">Info Tambahan</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div>
+        </a>
+        <ul class="br-menu-sub nav flex-column">
+            @can('info-tambahan_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.info-tambahan.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/users*')) }}">Pengguna</a>
+            </li>
+            @endcan
+            @can('roles_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.roles.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/roles*')) }}">Peran</a>
+            </li>
+            @endcan
+            @can('permissions_lihat')
+            <li class="nav-item"><a href="{{ route('dashboard.permissions.index') }}"
+                    class="nav-link {{ set_active(Request::is('dashboard/permissions*')) }}">Hak
+                    Akses</a></li>
+            @endcan
+        </ul>
+        @endif
+
+        {{-- Manajement User --}}
         @if(auth()->user()->can('users_lihat') ||
         auth()->user()->can('roles_lihat') ||
         auth()->user()->can('permissions_lihat'))
