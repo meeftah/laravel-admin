@@ -18,5 +18,5 @@
 @endsection
 
 @section('content')
-Hailo admin
+
 @endsection
