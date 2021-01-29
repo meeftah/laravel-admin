@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RolesController extends Controller
 {
-    public function datatableRolesAPI()
+    public function datatableAPI()
     {
         // ambil semua data
         $roles = Role::orderBy('name', 'ASC')->get();

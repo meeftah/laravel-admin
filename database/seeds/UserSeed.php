@@ -21,6 +21,5 @@ class UserSeed extends Seeder
         ]);
 
         $user->assignRole('superadmin');
-
     }
 }

@@ -19,6 +19,8 @@ class InfoTambahan extends Model
      * @var array
      */
     protected $fillable = [
-        'judul'
+        'judul',
+        'deskripsi',
+        'gambar'
     ];
 }

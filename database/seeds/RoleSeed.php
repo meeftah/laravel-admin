@@ -34,6 +34,14 @@ class RoleSeed extends Seeder
             'permissions_ubah',
             'permissions_tambah',
             'permissions_hapus',
+
+            // ------------ Info Tambahan
+            'info-tambahan_lihat',
+            'info-tambahan_detail',
+            'info-tambahan_ubah',
+            'info-tambahan_tambah',
+            'info-tambahan_hapus',
+            'info-tambahan-sub_tambah',
         ]);
     }
 }

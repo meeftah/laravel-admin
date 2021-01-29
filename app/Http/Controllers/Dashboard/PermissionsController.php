@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PermissionsController extends Controller
 {
-    public function datatablePermissionsAPI()
+    public function datatableAPI()
     {
         // ambil semua data
         $permissions = Permission::orderBy('name', 'ASC')->get();

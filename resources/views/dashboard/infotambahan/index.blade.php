@@ -14,8 +14,8 @@
 
 @section('content-header')
 <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-    <h4 class="tx-gray-800 mg-b-5">Pengguna</h4>
-    <p class="mg-b-0">Daftar pengguna</p>
+    <h4 class="tx-gray-800 mg-b-5">Info Tambahan</h4>
+    <p class="mg-b-0">Daftar info tambahan</p>
 </div>
 @endsection
 
@@ -86,7 +86,6 @@
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [0] },
-                { className: 'text-center', targets: [1] },
                 @if(auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
                 { className: 'text-center', targets: [2] },
                 @endif
@@ -106,7 +105,7 @@
 
     $('#delete-btn').click(function(){
         $.ajax({
-            url: 'users/' + id_delete,
+            url: "{{ url('dashboard/info-tambahan') }}" + '/' + id_delete,
             type: 'POST',
             data: {
                 _method:'DELETE'

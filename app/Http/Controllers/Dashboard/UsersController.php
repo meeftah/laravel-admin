@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
 {
-    public function datatableUsersAPI()
+    public function datatableAPI()
     {
         // ambil semua data
         $users = User::orderBy('created_at', 'ASC')->get();
