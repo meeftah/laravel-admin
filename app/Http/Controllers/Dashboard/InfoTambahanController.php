@@ -28,7 +28,7 @@ class InfoTambahanController extends Controller
                         $btn   .= '<a href="' . route('dashboard.info-tambahan.create-sub', $row['id']) . '" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="TAMBAH DETAIL"><i class="fa fa-plus-circle"></i></a> ';
                     }
                     if (auth()->user()->can('info-tambahan_detail')) {
-                        $btn   .= '<a href="' . route('dashboard.info-tambahan.show', $row['id']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="DETAIL"><i class="fa fa-eye"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.info-tambahan.show', $row['id']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="LIHAT DETAIL"><i class="fa fa-eye"></i></a> ';
                     }
                     if (auth()->user()->can('info-tambahan_ubah')) {
                         $btn   .= '<a href="' . route('dashboard.info-tambahan.edit', $row['id']) . '" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="UBAH"><i class="fa fa-pencil"></i></a> ';
@@ -97,7 +97,7 @@ class InfoTambahanController extends Controller
 
         $rules = [
             'judul' => 'required',
-            'gambar'    => 'sometimes|image|mimes:jpeg,png,jpg|max:2048'
+            'gambar'    => 'sometimes|image|mimes:jpeg,png,jpg|max:2000'
         ];
 
         $messages = [
@@ -117,9 +117,9 @@ class InfoTambahanController extends Controller
             $img = $request->file('gambar');
             $image = Image::make($img->getRealPath());
             $fileName = time() . '.' . $img->getClientOriginalExtension();
-            $upload = Storage::disk('uploads')->put('modul2/' . $fileName, $image->encode());
+            $upload = Storage::disk('uploads_modul2')->put($fileName, $image->encode());
             if ($upload) {
-                $infoTambahan->gambar = 'storage/uploads/modul2/' . $fileName;
+                $infoTambahan->gambar = $fileName;
             }
         }
 
@@ -141,6 +141,8 @@ class InfoTambahanController extends Controller
         abort_if(Gate::denies('info-tambahan_detail'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $infoTambahan = InfoTambahan::where('id', $id)->first();
+        // lokasi gambar = storage -> uploads -> modul2
+        $infoTambahan->gambar = $infoTambahan->gambar ? 'storage/uploads/modul2/' . $infoTambahan->gambar : null;
 
         return view('dashboard.infotambahan.show', compact('infoTambahan'));
     }
@@ -156,6 +158,8 @@ class InfoTambahanController extends Controller
         abort_if(Gate::denies('info-tambahan_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $infoTambahan = InfoTambahan::where('id', $id)->first();
+        // lokasi gambar = storage -> uploads -> modul2
+        $infoTambahan->gambar = $infoTambahan->gambar ? 'storage/uploads/modul2/' . $infoTambahan->gambar : null;
 
         return view('dashboard.infotambahan.edit', compact('infoTambahan'));
     }
@@ -173,7 +177,7 @@ class InfoTambahanController extends Controller
 
         $rules = [
             'judul'     => 'required',
-            'gambar'    => 'sometimes|image|mimes:jpeg,png,jpg|max:2048'
+            'gambar'    => 'sometimes|image|mimes:jpeg,png,jpg|max:2000'
         ];
 
         $messages = [
@@ -191,16 +195,16 @@ class InfoTambahanController extends Controller
         if ($request->hasFile('gambar')) {
             // upload gambar
             // cek apakah ada upload gambar sebelumnya?
-            if (Storage::disk('uploads')->exists($infoTambahan->gambar)) {
-                Storage::disk('uploads')->delete($infoTambahan->gambar);
+            if (Storage::disk('uploads_modul2')->exists($infoTambahan->gambar)) {
+                Storage::disk('uploads_modul2')->delete($infoTambahan->gambar);
             }
 
             $img = $request->file('gambar');
             $image = Image::make($img->getRealPath());
             $fileName = time() . '.' . $img->getClientOriginalExtension();
-            $upload = Storage::disk('uploads')->put('modul2/' . $fileName, $image->encode());
+            $upload = Storage::disk('uploads_modul2')->put($fileName, $image->encode());
             if ($upload) {
-                $infoTambahan->gambar = 'storage/uploads/modul2/' . $fileName;
+                $infoTambahan->gambar = $fileName;
             }
         }
 
@@ -222,6 +226,25 @@ class InfoTambahanController extends Controller
         abort_if(Gate::denies('info-tambahan_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($infoTambahan->delete()) {
+            return response()->json(['status' => 'success', 'message' => 'Info tambahan berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Info tambahan gagal dihapus']);
+        }
+    }
+
+    public function deleteGambar($id)
+    {
+        abort_if(Gate::denies('info-tambahan_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $infoTambahan = InfoTambahan::where('id', $id)->first();
+
+        // jika ada file yang lama maka hapus
+        if (Storage::disk('uploads_modul2')->exists($infoTambahan->gambar)) {
+            Storage::disk('uploads_modul2')->delete($infoTambahan->gambar);
+            $infoTambahan->gambar = null;
+        }
+
+        if ($infoTambahan->save()) {
             return response()->json(['status' => 'success', 'message' => 'Info tambahan berhasil dihapus']);
         } else {
             return response()->json(['status' => 'error', 'message' => 'Info tambahan gagal dihapus']);

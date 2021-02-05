@@ -25,43 +25,9 @@
             <div class="card-body">
                 <form action="{{ route('dashboard.info-tambahan.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label class="form-control-label">Judul: <span class="tx-danger">*</span></label>
-                        <input class="form-control {{ $errors->has('judul') ? 'is-invalid' : '' }}" type="text"
-                            name="judul" placeholder="Masukkan judul" value="{{ old('judul', null) }}">
-                        @error('judul')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label">Deskripsi:</label>
-                        <input class="form-control {{ $errors->has('deskripsi') ? 'is-invalid' : '' }}" type="text"
-                            name="deskripsi" placeholder="Masukkan deskripsi" value="{{ old('deskripsi', null) }}">
-                        @error('deskripsi')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label">Gambar:</label>
-                        <input class="form-control {{ $errors->has('gambar') ? 'is-invalid' : '' }}" type="file"
-                            name="gambar" onchange="loadPreview(this);">
-                        @error('gambar')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img id="preview_img" width="100%" />
-                        </div>
-                    </div>
+                    @include('dashboard.infotambahan.form', ['edit' => false])
                     <div class="form-layout-footer mt-4">
-                        <button class="btn btn-success col-md-3">Tambah</button>
+                        <button type="submit" class="btn btn-success col-md-3">Tambah</button>
                     </div>
                 </form>
             </div>
@@ -72,14 +38,26 @@
 
 @push('scripts')
 <script>
+    $(document).ready( function () {
+        $('#kolom-gambar').hide();
+
+        $('#hapus-gambar').click(function(){
+            $('#gambar').val('');
+            $('#kolom-gambar').hide();
+        });
+    });
+
     function loadPreview(input, id) {
       id = id || '#preview_img';
       if (input.files && input.files[0]) {
+        $('#kolom-gambar').show();
           var reader = new FileReader();
           reader.onload = function (e) {
               $(id).attr('src', e.target.result)
           };
           reader.readAsDataURL(input.files[0]);
+      } else {
+          $('#kolom-gambar').hide();
       }
    }
 </script>

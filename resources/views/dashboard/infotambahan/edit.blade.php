@@ -27,42 +27,7 @@
                     enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-                    <div class="form-group">
-                        <label class="form-control-label">Judul: <span class="tx-danger">*</span></label>
-                        <input class="form-control {{ $errors->has('judul') ? 'is-invalid' : '' }}" type="text"
-                            name="judul" placeholder="Masukkan judul" value="{{ old('judul', $infoTambahan->judul) }}">
-                        @error('judul')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label">Deskripsi:</label>
-                        <input class="form-control {{ $errors->has('deskripsi') ? 'is-invalid' : '' }}" type="text"
-                            name="deskripsi" placeholder="Masukkan deskripsi"
-                            value="{{ old('deskripsi', $infoTambahan->deskripsi) }}">
-                        @error('deskripsi')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label class="form-control-label">Gambar:</label>
-                        <input class="form-control {{ $errors->has('gambar') ? 'is-invalid' : '' }}" type="file"
-                            name="gambar" onchange="loadPreview(this);">
-                        @error('gambar')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img id="preview_img" src="{{ url($infoTambahan->gambar) }}" width="100%" />
-                        </div>
-                    </div>
+                    @include('dashboard.infotambahan.form', ['edit' => true, 'data' => $infoTambahan])
                     <div class="form-layout-footer mt-4">
                         <button class="btn btn-warning col-md-3">Ubah</button>
                     </div>
@@ -75,14 +40,58 @@
 
 @push('scripts')
 <script>
+    $(document).ready( function () {
+        var dataGambar = {{ $infoTambahan->gambar ? 1 : 0 }};
+        if (!dataGambar) {
+            $('#kolom-gambar').hide();
+        }
+
+        $('#hapus-gambar').click(function(){
+            if (!dataGambar) {
+                $('#gambar').val('');
+                $('#kolom-gambar').hide();
+            } else {
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ url('dashboard/info-tambahan/delete/gambar') . '/' }}" + '{{ $infoTambahan->id }}',
+                    headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    dataType: 'json',
+                    beforeSend: function(){
+                        $("#overlay").fadeIn(300);
+                    },
+                    complete: function(){
+                        $("#overlay").fadeOut(300);
+                    },
+                    success: function (result) {
+                        if (result.status) {
+                            $('#kolom-gambar').hide();
+                        } else {
+                            toastr.error('Gagal menghapus gambar');
+                        }
+                    },
+                    error: function (result) {
+                        console.log('An error occurred.');
+                        console.log(result);
+                    }
+                });
+            }
+        });
+    });
+
     function loadPreview(input, id) {
       id = id || '#preview_img';
       if (input.files && input.files[0]) {
+        $('#kolom-gambar').show();
           var reader = new FileReader();
           reader.onload = function (e) {
-              $(id).attr('src', e.target.result)   
+              $(id).attr('src', e.target.result)
           };
           reader.readAsDataURL(input.files[0]);
+      } else {
+          $('#kolom-gambar').hide();
       }
    }
 </script>
