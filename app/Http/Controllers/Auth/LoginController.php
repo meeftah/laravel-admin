@@ -62,7 +62,12 @@ class LoginController extends Controller
             ];
     
             if (auth()->attempt($login, false)) { 
-                return redirect()->intended($this->redirectPath());
+                if (auth()->user()->hasRole('superadmin')){
+                    return redirect()->intended($this->redirectPath());
+                } else {
+                    auth()->logout();
+                    return redirect()->route('login')->with(['warning' => 'Anda tidak mempunyai akses untuk login pada web ini']);
+                }
             }
 
             return redirect()->route('login')->with(['warning' => 'Username/Email atau Password Anda salah']);
