@@ -23,8 +23,8 @@ class InfoTambahanController extends Controller
                 'action',
                 function ($row) {
                     $btn = '';
-                    if (auth()->user()->can('info-tambahan-sub_tambah')) {
-                        $btn   .= '<a href="' . route('dashboard.info-tambahan.create-sub', $row['id']) . '" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="TAMBAH DETAIL"><i class="fa fa-plus-circle"></i></a> ';
+                    if (auth()->user()->can('info-tambahan-daftar_tambah')) {
+                        $btn   .= '<a href="' . route('dashboard.info-tambahan-daftar.create', $row['id']) . '" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="TAMBAH DETAIL"><i class="fa fa-plus-circle"></i></a> ';
                     }
                     if (auth()->user()->can('info-tambahan_detail')) {
                         $btn   .= '<a href="' . route('dashboard.info-tambahan.show', $row['id']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="LIHAT DETAIL"><i class="fa fa-eye"></i></a> ';
@@ -231,11 +231,11 @@ class InfoTambahanController extends Controller
         }
     }
 
-    public function deleteGambar($id)
+    public function deleteGambar(Request $request)
     {
         abort_if(Gate::denies('info-tambahan_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $infoTambahan = InfoTambahan::where('id', $id)->first();
+        $infoTambahan = InfoTambahan::where('id', $request->id)->first();
 
         // jika ada file yang lama maka hapus
         if (Storage::disk('uploads_modul2')->exists($infoTambahan->gambar)) {

@@ -51,13 +51,17 @@
                 $('#gambar').val('');
                 $('#kolom-gambar').hide();
             } else {
+                var form_data = new FormData();
+                form_data.append('id', {{ $infoTambahan->id }});
+
                 $.ajax({
-                    type: 'GET',
-                    url: "{{ url('dashboard/info-tambahan/delete/gambar') . '/' }}" + '{{ $infoTambahan->id }}',
+                    type: 'POST',
+                    url: "{{ url('dashboard/info-tambahan/delete/gambar') }}" +,
                     headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
                     processData: false,
                     contentType: false,
                     cache: false,
+                    data: form_data,
                     dataType: 'json',
                     beforeSend: function(){
                         $("#overlay").fadeIn(300);

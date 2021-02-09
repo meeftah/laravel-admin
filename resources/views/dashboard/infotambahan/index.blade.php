@@ -41,7 +41,8 @@
                             <tr class="text-uppercase">
                                 <th>No</th>
                                 <th>JUDUL INFO TAMBAHAN</th>
-                                @if(auth()->user()->can('info-tambahan_detail') ||
+                                @if(auth()->user()->can('info-tambahan-daftar_tambah') ||
+                                auth()->user()->can('info-tambahan_detail') ||
                                 auth()->user()->can('info-tambahan_ubah') ||
                                 auth()->user()->can('info-tambahan_hapus'))
                                 <th width="150">AKSI</th>
@@ -80,13 +81,13 @@
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'judul', name: 'judul' },
-                @if(auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
+                @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [0] },
-                @if(auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
+                @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
                 { className: 'text-center', targets: [2] },
                 @endif
             ],

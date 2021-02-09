@@ -21,8 +21,7 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
 
     // Route Info Tambahan
     Route::get('info-tambahan/api', 'InfoTambahanController@datatableAPI')->name('info-tambahan.api');
-    Route::get('info-tambahan/create/sub', 'InfoTambahanController@createSub')->name('info-tambahan.create-sub');
     Route::resource('info-tambahan', 'InfoTambahanController');
-    Route::get('info-tambahan/delete/gambar/{id}', 'InfoTambahanController@deleteGambar')->name('info-tambahan.delete.gambar');
+    Route::post('info-tambahan/delete/gambar/', 'InfoTambahanController@deleteGambar')->name('info-tambahan.delete.gambar');
 
 });

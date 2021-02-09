@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblInfoTambahanSubDetailTable extends Migration
+class CreateTblInfoTambahanDaftarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateTblInfoTambahanSubDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_info_tambahan_sub_detail', function (Blueprint $table) {
+        Schema::create('tbl_info_tambahan_daftar', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id_info_tambahan_sub');
-            $table->string('detail');
-            $table->string('gambar')->nullable();
+            $table->uuid('id_info_tambahan');
+            $table->string('judul');
             $table->timestamps();
 
-            $table->foreign('id_info_tambahan_sub')
+            $table->foreign('id_info_tambahan')
                 ->references('id')
-                ->on('tbl_info_tambahan_sub')
+                ->on('tbl_info_tambahan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -35,6 +34,6 @@ class CreateTblInfoTambahanSubDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_info_tambahan_sub_detail');
+        Schema::dropIfExists('tbl_info_tambahan_daftar');
     }
 }
