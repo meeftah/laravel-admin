@@ -48,6 +48,7 @@ class InfoTambahanController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
+    
     /**
      * Display a listing of the resource.
      *

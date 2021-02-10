@@ -5,27 +5,27 @@
 @section('breadcrumb')
 <div class="br-pageheader pd-y-15 pd-l-20">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-        <a class="breadcrumb-item" href="{{ route('dashboard.users.index') }}">Info Tambahan</a>
-        <a class="breadcrumb-item" href="javascript: void(0);">Daftar</a>
+        <a class="breadcrumb-item" href="{{ route('dashboard.info-tambahan.index') }}">Info Tambahan</a>
+        <a class="breadcrumb-item" href="javascript: void(0);">Daftar {{ $infoTambahan->judul }}</a>
     </nav>
 </div>
 @endsection
 
 @section('content-header')
 <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-    <h4 class="tx-gray-800 mg-b-5">Daftar Info Tambahan</h4>
-    <p class="mg-b-0">Daftar info tambahan {{ $data->judul }}</p>
+    <h4 class="tx-gray-800 mg-b-5">Daftar {{ $infoTambahan->judul }}</h4>
+    <p class="mg-b-0">Daftar info tambahan <b>{{ $infoTambahan->judul }}</b></p>
 </div>
 @endsection
 
 @section('content')
 <div class="row">
-    @can('info-tambahan_tambah')
+    @can('info-tambahan-daftar_tambah')
     <div class="col-12 mb-3">
-        <a href="{{ route('dashboard.info-tambahan.create') }}" class="btn btn-success btn-with-icon">
+        <a href="{{ route('dashboard.info-tambahan-daftar.create', $id) }}" class="btn btn-success btn-with-icon">
             <div class="ht-40">
                 <span class="icon wd-40"><i class="fa fa-plus"></i></span>
-                <span class="pd-x-15">Tambah Info Tambahan</span>
+                <span class="pd-x-15">Tambah Daftar</span>
             </div>
         </a>
     </div>
@@ -39,11 +39,11 @@
                         <thead>
                             <tr class="text-uppercase">
                                 <th>No</th>
-                                <th>JUDUL INFO TAMBAHAN</th>
+                                <th>JUDUL</th>
                                 @if(auth()->user()->can('info-tambahan-daftar_tambah') ||
-                                auth()->user()->can('info-tambahan_detail') ||
-                                auth()->user()->can('info-tambahan_ubah') ||
-                                auth()->user()->can('info-tambahan_hapus'))
+                                auth()->user()->can('info-tambahan-daftar_detail') ||
+                                auth()->user()->can('info-tambahan-daftar_ubah') ||
+                                auth()->user()->can('info-tambahan-daftar_hapus'))
                                 <th width="150">AKSI</th>
                                 @endif
                             </tr>
@@ -76,17 +76,17 @@
             language: {
                 url: 'http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Indonesian.json',
             },
-            ajax: "{{ route('dashboard.info-tambahan.api') }}",
+            ajax: "{{ route('dashboard.info-tambahan-daftar.api') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'judul', name: 'judul' },
-                @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
+                @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan-daftar_detail') || auth()->user()->can('info-tambahan-daftar_ubah') || auth()->user()->can('info-tambahan-daftar_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
                 { className: 'text-center', width: 30, targets: [0] },
-                @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
+                @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan-daftar_detail') || auth()->user()->can('info-tambahan-daftar_ubah') || auth()->user()->can('info-tambahan-daftar_hapus'))
                 { className: 'text-center', targets: [2] },
                 @endif
             ],
