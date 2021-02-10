@@ -1,21 +1,20 @@
 @extends('dashboard.layouts.admin')
 
-@section('title', 'Info Tambahan')
+@section('title', 'Daftar Info Tambahan')
 
 @section('breadcrumb')
 <div class="br-pageheader pd-y-15 pd-l-20">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
-        <a class="breadcrumb-item" href="{{ route('dashboard.info-tambahan.index') }}">
-            Info Tambahan
-        </a>
+        <a class="breadcrumb-item" href="{{ route('dashboard.users.index') }}">Info Tambahan</a>
+        <a class="breadcrumb-item" href="javascript: void(0);">Daftar</a>
     </nav>
 </div>
 @endsection
 
 @section('content-header')
 <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-    <h4 class="tx-gray-800 mg-b-5">Info Tambahan</h4>
-    <p class="mg-b-0">Daftar info tambahan</p>
+    <h4 class="tx-gray-800 mg-b-5">Daftar Info Tambahan</h4>
+    <p class="mg-b-0">Daftar info tambahan {{ $data->judul }}</p>
 </div>
 @endsection
 

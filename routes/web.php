@@ -24,4 +24,5 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::resource('info-tambahan', 'InfoTambahanController');
     Route::post('info-tambahan/delete/gambar/', 'InfoTambahanController@deleteGambar')->name('info-tambahan.delete.gambar');
 
+    Route::get('info-tambahan-daftar/{id}', 'InfoTambahanDaftarController@index')->name('info-tambahan-daftar.index');
 });

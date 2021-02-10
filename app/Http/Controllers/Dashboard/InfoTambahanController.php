@@ -24,7 +24,7 @@ class InfoTambahanController extends Controller
                 function ($row) {
                     $btn = '';
                     if (auth()->user()->can('info-tambahan-daftar_tambah')) {
-                        $btn   .= '<a href="' . route('dashboard.info-tambahan-daftar.create', $row['id']) . '" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="TAMBAH DETAIL"><i class="fa fa-plus-circle"></i></a> ';
+                        $btn   .= '<a href="' . route('dashboard.info-tambahan-daftar.index', $row['id']) . '" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="TAMBAH DAFTAR"><i class="fa fa-plus-circle"></i></a> ';
                     }
                     if (auth()->user()->can('info-tambahan_detail')) {
                         $btn   .= '<a href="' . route('dashboard.info-tambahan.show', $row['id']) . '" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="LIHAT DETAIL"><i class="fa fa-eye"></i></a> ';
@@ -68,18 +68,6 @@ class InfoTambahanController extends Controller
     public function create()
     {
         abort_if(Gate::denies('info-tambahan_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('dashboard.infotambahan.create');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createSub()
-    {
-        abort_if(Gate::denies('info-tambahan-sub_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('dashboard.infotambahan.create');
     }
