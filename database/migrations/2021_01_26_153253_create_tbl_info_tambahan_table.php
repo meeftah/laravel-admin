@@ -16,8 +16,8 @@ class CreateTblInfoTambahanTable extends Migration
         Schema::create('tbl_info_tambahan', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('judul');
-            $table->string('deskripsi')->nullable();
-            $table->string('gambar')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->string('ikon');
             $table->timestamps();
         });
     }

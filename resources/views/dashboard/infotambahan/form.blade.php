@@ -10,8 +10,9 @@
 </div>
 <div class="form-group">
     <label class="form-control-label">Deskripsi:</label>
-    <input class="form-control {{ $errors->has('deskripsi') ? 'is-invalid' : '' }}" type="text"
-        name="deskripsi" placeholder="Masukkan deskripsi" value="{{ old('deskripsi', $edit ? $data->deskripsi : null) }}">
+    <textarea class="form-control {{ $errors->has('deskripsi') ? 'is-invalid' : '' }}" id="deskripsi" name="deskripsi">
+        {{ old('deskripsi', $edit ? $data->deskripsi : null) }}
+    </textarea>
     @error('deskripsi')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
@@ -19,18 +20,18 @@
     @enderror
 </div>
 <div class="form-group">
-    <label class="form-control-label">Gambar:</label>
-    <input class="form-control {{ $errors->has('gambar') ? 'is-invalid' : '' }}" type="file"
-        name="gambar" id="gambar" accept="image/jpeg, image/png" onchange="loadPreview(this);">
-    @error('gambar')
+    <label class="form-control-label">Ikon:</label>
+    <input class="form-control {{ $errors->has('ikon') ? 'is-invalid' : '' }}" type="file"
+        name="ikon" id="ikon" accept="image/jpeg, image/png" onchange="loadIkonPreview(this);">
+    @error('ikon')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
     </span>
     @enderror
 </div>
-<div id="kolom-gambar" class="row">
+<div id="kolom-ikon" class="row">
     <div class="col-md-5">
-        <img id="preview_img" width="100%" src="{{ !$edit ? '' : ($data->gambar ? url($data->gambar) : '') }}" />
-        <button type="button" id="hapus-gambar" class="btn btn-danger col-12">Hapus Gambar</button>
+        <img id="preview_ikon" width="100%" src="{{ !$edit ? '' : ($data->ikon ? url($data->ikon) : '') }}" />
+        <button type="button" id="hapus-ikon" class="btn btn-danger col-12">Hapus Ikon</button>
     </div>
 </div>

@@ -26,7 +26,7 @@
         <a href="{{ route('dashboard.info-tambahan.create') }}" class="btn btn-success btn-with-icon">
             <div class="ht-40">
                 <span class="icon wd-40"><i class="fa fa-plus"></i></span>
-                <span class="pd-x-15">Tambah Info Tambahan</span>
+                <span class="pd-x-15">Tambah</span>
             </div>
         </a>
     </div>
@@ -36,11 +36,12 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered dt-responsive" data-form="deleteForm"
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-users">
+                        style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="datatable-info-tambahan">
                         <thead>
                             <tr class="text-uppercase">
-                                <th>No</th>
-                                <th>JUDUL INFO TAMBAHAN</th>
+                                <th width="30">No</th>
+                                <th>JUDUL</th>
+                                <th width="200">IKON</th>
                                 @if(auth()->user()->can('info-tambahan-daftar_tambah') ||
                                 auth()->user()->can('info-tambahan_detail') ||
                                 auth()->user()->can('info-tambahan_ubah') ||
@@ -70,7 +71,7 @@
 <script src="{{ asset('assets/dashboard/lib/select2/js/select2.min.js') }}"></script>
 <script>
     $(document).ready( function () {
-        $('#datatable-users').DataTable({
+        $('#datatable-info-tambahan').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -81,14 +82,17 @@
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'judul', name: 'judul' },
+                { data: 'ikon', name: 'ikon' },
                 @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
-                { className: 'text-center', width: 30, targets: [0] },
+                { className: 'text-center valign-middle', targets: [0] },
+                { className: 'valign-middle', targets: [1] },
+                { className: 'text-center valign-middle', targets: [2] },
                 @if(auth()->user()->can('info-tambahan-daftar_tambah') || auth()->user()->can('info-tambahan_detail') || auth()->user()->can('info-tambahan_ubah') || auth()->user()->can('info-tambahan_hapus'))
-                { className: 'text-center', targets: [2] },
+                { className: 'text-center valign-middle', targets: [3] },
                 @endif
             ],
             order: [],
@@ -116,7 +120,7 @@
             },
             success:function(data){
                 $('#confirm-delete').modal('hide');
-                $('#datatable-users').DataTable().ajax.reload();
+                $('#datatable-info-tambahan').DataTable().ajax.reload();
                 if (data.status == 'success') {
                     toastr.success(data.message);
                 } else {

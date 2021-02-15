@@ -21,6 +21,17 @@ class InfoTambahan extends Model
     protected $fillable = [
         'judul',
         'deskripsi',
-        'gambar'
+        'ikon'
     ];
+
+    public static function getDataById($id)
+    {
+        $result = InfoTambahan::where('id', $id)->first();
+        return $result;
+    }
+
+    public function infoTambahanDaftar()
+    {
+        return $this->hasMany(InfoTambahanDetail::class, 'id_info_tambahan');
+    }
 }

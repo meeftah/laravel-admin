@@ -22,12 +22,15 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     // Route Info Tambahan
     Route::get('info-tambahan/api', 'InfoTambahanController@datatableAPI')->name('info-tambahan.api');
     Route::resource('info-tambahan', 'InfoTambahanController');
-    Route::post('info-tambahan/delete/gambar/', 'InfoTambahanController@deleteGambar')->name('info-tambahan.delete.gambar');
+    Route::post('info-tambahan/delete/ikon/', 'InfoTambahanController@deleteIkon')->name('info-tambahan.delete.ikon');
     
     // Route Daftar Info Tambahan
-    Route::get('info-tambahan/daftar/api', 'InfoTambahanDaftarController@datatableAPI')->name('info-tambahan-daftar.api');
-    Route::get('info-tambahan/daftar/{id}', 'InfoTambahanDaftarController@index')->name('info-tambahan-daftar.index');
-    Route::get('info-tambahan/daftar/create/{id}', 'InfoTambahanDaftarController@create')->name('info-tambahan-daftar.create');
-    Route::post('info-tambahan/daftar/create/{id}', 'InfoTambahanDaftarController@store')->name('info-tambahan-daftar.store');
-    Route::delete('info-tambahan/daftar/{id}', 'InfoTambahanDaftarController@destroy')->name('info-tambahan-daftar.destroy');
+    Route::get('info-tambahan/detail/api/{id}', 'InfoTambahanDetailController@datatableAPI')->name('info-tambahan-detail.api');
+    Route::get('info-tambahan/detail/{id}', 'InfoTambahanDetailController@index')->name('info-tambahan-detail.index');
+    Route::get('info-tambahan/detail/{id}/detail', 'InfoTambahanDetailController@show')->name('info-tambahan-detail.show');
+    Route::get('info-tambahan/detail/create/{id}', 'InfoTambahanDetailController@create')->name('info-tambahan-detail.create');
+    Route::post('info-tambahan/detail', 'InfoTambahanDetailController@store')->name('info-tambahan-detail.store');
+    Route::get('info-tambahan/detail/{id}/edit', 'InfoTambahanDetailController@edit')->name('info-tambahan-detail.edit');
+    Route::put('info-tambahan/detail/{id}', 'InfoTambahanDetailController@update')->name('info-tambahan-detail.update');
+    Route::delete('info-tambahan/detail/{id}', 'InfoTambahanDetailController@destroy')->name('info-tambahan-detail.destroy');
 });

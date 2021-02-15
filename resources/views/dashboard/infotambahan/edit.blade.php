@@ -6,7 +6,7 @@
 <div class="br-pageheader pd-y-15 pd-l-20">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
         <a class="breadcrumb-item" href="{{ route('dashboard.info-tambahan.index') }}">Info Tambahan</a>
-        <a class="breadcrumb-item" href="javascript: void(0);">Ubah</a>
+        <a class="breadcrumb-item" href="javascript: void(0);">Ubah {{ $infoTambahan->judul }}</a>
     </nav>
 </div>
 @endsection
@@ -38,25 +38,35 @@
 </div>
 @endsection
 
+@push('styles')
+<link href="{{ asset('assets/dashboard/lib/summernote/summernote-bs4.min.css') }}" rel="stylesheet">
+@endpush
+
 @push('scripts')
+<script src="{{ asset('assets/dashboard/lib/summernote/summernote-bs4.min.js') }}"></script>
 <script>
     $(document).ready( function () {
-        var dataGambar = {{ $infoTambahan->gambar ? 1 : 0 }};
-        if (!dataGambar) {
-            $('#kolom-gambar').hide();
+        $('#deskripsi').summernote({
+            height: 250
+        });
+
+        var dataIkon = {{ $infoTambahan->ikon ? 1 : 0 }};
+        
+        if (!dataIkon) {
+            $('#kolom-ikon').hide();
         }
 
-        $('#hapus-gambar').click(function(){
-            if (!dataGambar) {
-                $('#gambar').val('');
-                $('#kolom-gambar').hide();
+        $('#hapus-ikon').click(function(){
+            if (!dataIkon) {
+                $('#ikon').val('');
+                $('#kolom-ikon').hide();
             } else {
                 var form_data = new FormData();
-                form_data.append('id', {{ $infoTambahan->id }});
+                form_data.append('id', '{{ $infoTambahan->id }}');
 
                 $.ajax({
                     type: 'POST',
-                    url: "{{ url('dashboard/info-tambahan/delete/gambar') }}" +,
+                    url: "{{ url('dashboard/info-tambahan/delete/ikon') }}",
                     headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
                     processData: false,
                     contentType: false,
@@ -71,9 +81,9 @@
                     },
                     success: function (result) {
                         if (result.status) {
-                            $('#kolom-gambar').hide();
+                            $('#kolom-ikon').hide();
                         } else {
-                            toastr.error('Gagal menghapus gambar');
+                            toastr.error('Gagal menghapus ikon');
                         }
                     },
                     error: function (result) {
@@ -85,17 +95,17 @@
         });
     });
 
-    function loadPreview(input, id) {
-      id = id || '#preview_img';
+   function loadIkonPreview(input, id) {
+      id = id || '#preview_ikon';
       if (input.files && input.files[0]) {
-        $('#kolom-gambar').show();
+        $('#kolom-ikon').show();
           var reader = new FileReader();
           reader.onload = function (e) {
               $(id).attr('src', e.target.result)
           };
           reader.readAsDataURL(input.files[0]);
       } else {
-          $('#kolom-gambar').hide();
+          $('#kolom-ikon').hide();
       }
    }
 </script>

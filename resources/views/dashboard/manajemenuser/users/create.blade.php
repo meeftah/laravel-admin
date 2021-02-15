@@ -35,7 +35,7 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="form-control-label">Username: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text"
                             name="username" placeholder="Masukkan usernama pegguna" value="{{ old('username', null) }}">
@@ -44,7 +44,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
                         <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"

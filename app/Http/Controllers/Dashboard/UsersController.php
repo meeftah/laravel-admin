@@ -84,7 +84,7 @@ class UsersController extends Controller
 
         $rules = [
             'name'      => 'required',
-            'username'  => ['required', 'min:3', 'unique:users,username', new WithoutSpaces('Kolom Username tidak boleh ada spasi!'), new NoDash('Kolom Username tidak boleh menggunakan tanda pisah (-)!'), new MustLowercase('Kolom Username harus menggunakan huruf kecil!')],
+            // 'username'  => ['required', 'min:3', 'unique:users,username', new WithoutSpaces('Kolom Username tidak boleh ada spasi!'), new NoDash('Kolom Username tidak boleh menggunakan tanda pisah (-)!'), new MustLowercase('Kolom Username harus menggunakan huruf kecil!')],
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required|confirmed|min:6',
             'role'      => 'required',
@@ -92,9 +92,9 @@ class UsersController extends Controller
 
         $messages = [
             'name.required'             => 'Kolom Nama wajib diisi!',
-            'username.required'         => 'Kolom Username wajib diisi!',
-            'username.min'              => 'Kolom Username minimal 3 karakter!',
-            'username.unique'           => 'Username sudah dipakai, silakan pilih username lain!',
+            // 'username.required'         => 'Kolom Username wajib diisi!',
+            // 'username.min'              => 'Kolom Username minimal 3 karakter!',
+            // 'username.unique'           => 'Username sudah dipakai, silakan pilih username lain!',
             'email.required'            => 'Kolom Email wajib diisi!',
             'email.email'               => 'Format Email tidak sesuai!',
             'email.unique'              => 'Email sudah terdaftar, silakan pilih email yang lain!',
@@ -105,6 +105,9 @@ class UsersController extends Controller
         ];
 
         $this->validate($request, $rules, $messages);
+
+        // generate api token untuk akses mobile
+        $request->merge(['api_token' => $this->generateApiToken(60)]);
 
         $user = User::create($request->all());
 
@@ -132,16 +135,16 @@ class UsersController extends Controller
 
         $rules = [
             'name'      => 'required',
-            'username'  => ['required', 'min:3', 'unique:users,username', new WithoutSpaces('Kolom Username tidak boleh ada spasi!'), new NoDash('Kolom Username tidak boleh menggunakan tanda pisah (-)!'), new MustLowercase('Kolom Username harus menggunakan huruf kecil!')],
+            // 'username'  => ['required', 'min:3', 'unique:users,username', new WithoutSpaces('Kolom Username tidak boleh ada spasi!'), new NoDash('Kolom Username tidak boleh menggunakan tanda pisah (-)!'), new MustLowercase('Kolom Username harus menggunakan huruf kecil!')],
             'email'     => 'required|email|unique:users,email,' .$user->id,
             'role'      => 'sometimes|required',
         ];
 
         $messages = [
             'name.required'             => 'Kolom Nama wajib diisi!',
-            'username.required'         => 'Kolom Username wajib diisi!',
-            'username.min'              => 'Kolom Username minimal 3 karakter!',
-            'username.unique'           => 'Username sudah dipakai, silakan pilih username lain!',
+            // 'username.required'         => 'Kolom Username wajib diisi!',
+            // 'username.min'              => 'Kolom Username minimal 3 karakter!',
+            // 'username.unique'           => 'Username sudah dipakai, silakan pilih username lain!',
             'email.required'            => 'Kolom Email wajib diisi!',
             'email.email'               => 'Format Email tidak sesuai!',
             'email.unique'              => 'Email sudah terdaftar, silakan pilih email yang lain!',
@@ -179,4 +182,15 @@ class UsersController extends Controller
             return response()->json(['status' => 'error', 'message' => 'Pengguna gagal dihapus']);
         }
     }
+
+    function generateApiToken($length)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 }

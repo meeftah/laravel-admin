@@ -54,7 +54,8 @@ class LoginController extends Controller
     
             $this->validate($request, $rules, $messages);
     
-            $loginType = filter_var($request->email_username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+            // $loginType = filter_var($request->email_username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+            $loginType = 'email';
     
             $login = [
                 $loginType => $request->email_username,

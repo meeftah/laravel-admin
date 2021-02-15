@@ -15,9 +15,9 @@ class UserSeed extends Seeder
         $user = User::create([
             'id'        => '80453642-017d-44ef-9eab-d6d1e7c203b2',
             'name'      => 'Superadmin',
-            'username'  => 'superadmin',
+            // 'username'  => 'superadmin',
             'email'     => 'superadmin@simantap.com',
-            'password'  => bcrypt('135246')
+            'password'  => bcrypt('123456')
         ]);
 
         $user->assignRole('superadmin');

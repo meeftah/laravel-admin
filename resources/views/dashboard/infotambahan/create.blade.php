@@ -36,28 +36,37 @@
 </div>
 @endsection
 
+@push('styles')
+<link href="{{ asset('assets/dashboard/lib/summernote/summernote-bs4.min.css') }}" rel="stylesheet">
+@endpush
+
 @push('scripts')
+<script src="{{ asset('assets/dashboard/lib/summernote/summernote-bs4.min.js') }}"></script>
 <script>
     $(document).ready( function () {
-        $('#kolom-gambar').hide();
+        $('#deskripsi').summernote({
+            height: 250
+        });
 
-        $('#hapus-gambar').click(function(){
-            $('#gambar').val('');
-            $('#kolom-gambar').hide();
+        $('#kolom-ikon').hide();
+
+        $('#hapus-ikon').click(function(){
+            $('#ikon').val('');
+            $('#kolom-ikon').hide();
         });
     });
 
-    function loadPreview(input, id) {
-      id = id || '#preview_img';
+   function loadIkonPreview(input, id) {
+      id = id || '#preview_ikon';
       if (input.files && input.files[0]) {
-        $('#kolom-gambar').show();
+        $('#kolom-ikon').show();
           var reader = new FileReader();
           reader.onload = function (e) {
               $(id).attr('src', e.target.result)
           };
           reader.readAsDataURL(input.files[0]);
       } else {
-          $('#kolom-gambar').hide();
+          $('#kolom-ikon').hide();
       }
    }
 </script>

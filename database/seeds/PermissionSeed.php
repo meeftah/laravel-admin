@@ -47,17 +47,11 @@ class PermissionSeed extends Seeder
             ['name' => 'info-tambahan_tambah'],
             ['name' => 'info-tambahan_hapus'],
 
-            ['name' => 'info-tambahan-daftar_lihat'],
-            ['name' => 'info-tambahan-daftar_detail'],
-            ['name' => 'info-tambahan-daftar_ubah'],
-            ['name' => 'info-tambahan-daftar_tambah'],
-            ['name' => 'info-tambahan-daftar_hapus'],
-
-            ['name' => 'info-tambahan-daftar-detail_lihat'],
-            ['name' => 'info-tambahan-daftar-detail_detail'],
-            ['name' => 'info-tambahan-daftar-detail_ubah'],
-            ['name' => 'info-tambahan-daftar-detail_tambah'],
-            ['name' => 'info-tambahan-daftar-detail_hapus'],
+            ['name' => 'info-tambahan-detail_lihat'],
+            ['name' => 'info-tambahan-detail_detail'],
+            ['name' => 'info-tambahan-detail_ubah'],
+            ['name' => 'info-tambahan-detail_tambah'],
+            ['name' => 'info-tambahan-detail_hapus'],
         ];
         foreach ($items as $item) {
             Permission::create(['name' => $item['name']]);

@@ -12,8 +12,8 @@ class RoleSeed extends Seeder
      */
     public function run()
     {
-        $role = Role::create(['name' => 'superadmin']);
-        $role->givePermissionTo([
+        $roleSuperadmin = Role::create(['name' => 'superadmin']);
+        $roleSuperadmin->givePermissionTo([
             // ------------ Users Permission
             'users_lihat',
             'users_detail',
@@ -42,19 +42,23 @@ class RoleSeed extends Seeder
             'info-tambahan_tambah',
             'info-tambahan_hapus',
 
-            // ------------ Info Tambahan daftar
-            'info-tambahan-daftar_lihat',
-            'info-tambahan-daftar_detail',
-            'info-tambahan-daftar_ubah',
-            'info-tambahan-daftar_tambah',
-            'info-tambahan-daftar_hapus',
+            // ------------ Info Tambahan detail
+            'info-tambahan-detail_lihat',
+            'info-tambahan-detail_detail',
+            'info-tambahan-detail_ubah',
+            'info-tambahan-detail_tambah',
+            'info-tambahan-detail_hapus',
+        ]);
 
-            // ------------ Info Tambahan daftar detail
-            'info-tambahan-daftar-detail_lihat',
-            'info-tambahan-daftar-detail_detail',
-            'info-tambahan-daftar-detail_ubah',
-            'info-tambahan-daftar-detail_tambah',
-            'info-tambahan-daftar-detail_hapus',
+        $roleUser = Role::create(['name' => 'user']);
+        $roleUser->givePermissionTo([
+            // ------------ Info Tambahan
+            'info-tambahan_lihat',
+            'info-tambahan_detail',
+
+            // ------------ Info Tambahan detail
+            'info-tambahan-detail_lihat',
+            'info-tambahan-detail_detail',
         ]);
     }
 }

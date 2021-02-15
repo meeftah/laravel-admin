@@ -6,15 +6,15 @@
 <div class="br-pageheader pd-y-15 pd-l-20">
   <nav class="breadcrumb pd-0 mg-0 tx-12">
     <a class="breadcrumb-item" href="{{ route('dashboard.info-tambahan.index') }}">Info Tambahan</a>
-    <a class="breadcrumb-item" href="javascript: void(0);">Detail</a>
+    <a class="breadcrumb-item" href="javascript: void(0);">Daftar Info {{ $infoTambahan->judul }}</a>
   </nav>
 </div>
 @endsection
 
 @section('content-header')
-<div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-  <h4 class="tx-gray-800 mg-b-5">Detail Info Tambahan</h4>
-  <p class="mg-b-0">Detail info tambahan {{ $infoTambahan->judul }}</p>
+<div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30 d-inline-flex align-items-center">
+  @if ($infoTambahan->ikon) <img src="{{ url($infoTambahan->ikon) }}" alt="ikon" width="100px"> @endif
+  <h4 class="tx-gray-800 mg-l-20">Daftar Info {{ $infoTambahan->judul }}</h4>
 </div>
 @endsection
 
@@ -23,48 +23,32 @@
   <div class="col-12">
     <div class="widget-2">
       <div class="card shadow-base overflow-hidden">
-        <div class="card-header p-3">
-          <h6 class="card-title tx-16-force" style="text-transform: none">
-            {{ $infoTambahan->judul }}
-          </h6>
-        </div>
         <div class="card-body">
           <div>
-            @if ($infoTambahan->deskripsi) <p>{{ $infoTambahan->deskripsi }}</p> @endif
-            @if ($infoTambahan->gambar) <img src="{{ url($infoTambahan->gambar) }}" alt="{{ $infoTambahan->judul }}" class="mg-b-20" width="100%"> @endif
+            @if ($infoTambahan->deskripsi) <p>{!! $infoTambahan->deskripsi !!}</p> @endif
           </div>
+          @if ($infoTambahan->infoTambahanDaftar)
           <div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
+            @foreach ($infoTambahan->infoTambahanDaftar as $item)
             <div class="card">
-              <div class="card-header" role="tab" id="headingOne">
+              <div class="card-header" role="tab" id="heading-{{ $item->id }}">
                 <h6 class="mg-b-0" style="width: 100%">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false"
-                    aria-controls="collapseOne" class="tx-gray-800 transition">
-                    Making a Beautiful CSS3 Button Set
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ $item->id }}"
+                    aria-expanded="false" aria-controls="collapse-{{ $item->id }}" class="tx-gray-800 transition">
+                    {{ $item->judul }}
                   </a>
                 </h6>
               </div>
-              <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div id="collapse-{{ $item->id }}" class="collapse" role="tabpanel"
+                aria-labelledby="heading-{{ $item->id }}">
                 <div class="card-block pd-20">
-                  1
+                  {{ $item->judul }}
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" role="tab" id="headingTwo">
-                <h6 class="mg-b-0" style="width: 100%">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                    aria-controls="collapseTwo" class="tx-gray-800 transition">
-                    Making a Beautiful CSS3 Button Set
-                  </a>
-                </h6>
-              </div>
-              <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="card-block pd-20">
-                  2
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
+          @endif
         </div>
       </div>
     </div>
