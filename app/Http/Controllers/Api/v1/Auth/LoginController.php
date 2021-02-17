@@ -21,6 +21,7 @@ class LoginController extends Controller
                 if (Hash::check($request->password, $user->password)) {
                     if ($user->hasRole('user')) {
                         $data = array(
+                            'name'      => $user->name,
                             'email'     => $user->email,
                             'api_token' => $user->api_token,
                         );
@@ -41,7 +42,7 @@ class LoginController extends Controller
             }
         } else {
             $status = false;
-            $message = 'Maaf, kolom USERNAME dan PASSWORD tidak boleh kosong';
+            $message = 'Maaf, kolom EMAIL dan PASSWORD tidak boleh kosong';
         }
 
         return json_encode(array(

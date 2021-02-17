@@ -55,6 +55,7 @@ class RegisterController extends Controller
                 $user->assignRole('user');
 
                 $data = array(
+                    'name'      => $user->name,
                     'email'     => $user->email,
                     'api_token' => $user->api_token,
                 );
