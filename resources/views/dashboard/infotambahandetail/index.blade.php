@@ -6,26 +6,26 @@
 <div class="br-pageheader pd-y-15 pd-l-20">
     <nav class="breadcrumb pd-0 mg-0 tx-12">
         <a class="breadcrumb-item" href="{{ route('dashboard.info-tambahan.index') }}">Info Tambahan</a>
-        <a class="breadcrumb-item" href="javascript: void(0);">Daftar {{ App\Models\InfoTambahan::getDataById($id) ? App\Models\InfoTambahan::getDataById($id)->judul : '' }}</a>
+        <a class="breadcrumb-item" href="javascript: void(0);">Daftar {{ $infoTambahan->judul }}</a>
     </nav>
 </div>
 @endsection
 
 @section('content-header')
 <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-    <h4 class="tx-gray-800 mg-b-5">Daftar {{ App\Models\InfoTambahan::getDataById($id) ? App\Models\InfoTambahan::getDataById($id)->judul : '' }}</h4>
-    <p class="mg-b-0">Daftar info tambahan <b>{{ App\Models\InfoTambahan::getDataById($id) ? App\Models\InfoTambahan::getDataById($id)->judul : '' }}</b></p>
+    <h4 class="tx-gray-800 mg-b-5">Daftar {{ $infoTambahan->judul }}</h4>
+    <p class="mg-b-0">Daftar info tambahan <b>{{ $infoTambahan->judul }}</b></p>
 </div>
 @endsection
 
 @section('content')
 <div class="row">
-    @can('info-tambahan-daftar_tambah')
+    @can('info-tambahan-detail_tambah')
     <div class="col-12 mb-3">
-        <a href="{{ route('dashboard.info-tambahan-daftar.create', $id) }}" class="btn btn-success btn-with-icon">
+        <a href="{{ route('dashboard.info-tambahan-detail.create', $infoTambahan->id) }}" class="btn btn-success btn-with-icon">
             <div class="ht-40">
                 <span class="icon wd-40"><i class="fa fa-plus"></i></span>
-                <span class="pd-x-15">Tambah Daftar</span>
+                <span class="pd-x-15">Tambah Detail</span>
             </div>
         </a>
     </div>
@@ -40,10 +40,10 @@
                             <tr class="text-uppercase">
                                 <th>No</th>
                                 <th>JUDUL</th>
-                                @if(auth()->user()->can('info-tambahan-daftar-detail_tambah') ||
-                                auth()->user()->can('info-tambahan-daftar_detail') ||
-                                auth()->user()->can('info-tambahan-daftar_ubah') ||
-                                auth()->user()->can('info-tambahan-daftar_hapus'))
+                                <th width="200">IKON</th>
+                                @if(auth()->user()->can('info-tambahan-detail_detail') ||
+                                auth()->user()->can('info-tambahan-detail_ubah') ||
+                                auth()->user()->can('info-tambahan-detail_hapus'))
                                 <th width="150">AKSI</th>
                                 @endif
                             </tr>
@@ -76,18 +76,21 @@
             language: {
                 url: 'http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Indonesian.json',
             },
-            ajax: "{{ url('dashboard/info-tambahan/daftar/api') }}" + '/' + '{{ $id }}',
+            ajax: "{{ url('dashboard/info-tambahan/detail/api') }}" + '/' + '{{ $infoTambahan->id }}',
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable:false, serachable:false },
                 { data: 'judul', name: 'judul' },
-                @if(auth()->user()->can('info-tambahan-daftar-detail_tambah') || auth()->user()->can('info-tambahan-daftar_detail') || auth()->user()->can('info-tambahan-daftar_ubah') || auth()->user()->can('info-tambahan-daftar_hapus'))
+                { data: 'ikon', name: 'ikon' },
+                @if(auth()->user()->can('info-tambahan-detail_detail') || auth()->user()->can('info-tambahan-detail_ubah') || auth()->user()->can('info-tambahan-detail_hapus'))
                 { data: 'action', name: 'action', orderable:false, serachable:false }
                 @endif
             ],
             columnDefs: [
-                { className: 'text-center', width: 30, targets: [0] },
-                @if(auth()->user()->can('info-tambahan-daftar-detail_tambah') || auth()->user()->can('info-tambahan-daftar_detail') || auth()->user()->can('info-tambahan-daftar_ubah') || auth()->user()->can('info-tambahan-daftar_hapus'))
-                { className: 'text-center', targets: [2] },
+                { className: 'text-center valign-middle', width: 30, targets: [0] },
+                { className: 'valign-middle', targets: [1] },
+                { className: 'text-center valign-middle', targets: [2] },
+                @if(auth()->user()->can('info-tambahan-detail_detail') || auth()->user()->can('info-tambahan-detail_ubah') || auth()->user()->can('info-tambahan-detail_hapus'))
+                { className: 'text-center valign-middle', targets: [3] },
                 @endif
             ],
             order: [],
@@ -105,7 +108,7 @@
 
     $('#delete-btn').click(function(){
         $.ajax({
-            url: "{{ url('dashboard/info-tambahan/daftar') }}" + '/' + id_delete,
+            url: "{{ url('dashboard/info-tambahan/detail') }}" + '/' + id_delete,
             type: 'POST',
             data: {
                 _method:'DELETE'

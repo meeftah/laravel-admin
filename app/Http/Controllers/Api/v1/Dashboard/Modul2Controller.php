@@ -15,10 +15,22 @@ class Modul2Controller extends Controller
         $data       = null;
 
         if (checkUserToken($request->bearerToken(), $request->header('email'))) {
-            $infoTambahan = InfoTambahan::select('id', 'judul', 'deskripsi')
+            $infoTambahan = InfoTambahan::select('id', 'judul', 'deskripsi', 'ikon')
                 ->with(['infoTambahanDaftar' => function ($query) {
-                    $query->select(['id', 'id_info_tambahan', 'judul', 'deskripsi']);
-                }])->get();
+                    $query->select([
+                        'id',
+                        'id_info_tambahan',
+                        'judul',
+                        'deskripsi',
+                        'ikon'
+                    ]);
+                }])
+                ->orderBy('created_at', 'ASC')
+                ->get();
+
+            foreach ($infoTambahan as $item) {
+                $item->ikon = $item->ikon ? url('storage/uploads/modul2/' . $item->ikon) : null;
+            }
 
             $data = $infoTambahan;
             $status     = true;

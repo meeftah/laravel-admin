@@ -98,13 +98,12 @@ class InfoTambahanController extends Controller
 
         $rules = [
             'judul' => 'required',
-            'ikon'    => 'required|image|mimes:jpeg,png,jpg|max:2000'
+            'ikon'    => 'required|mimes:jpeg,png,jpg|max:2000'
         ];
 
         $messages = [
             'judul.required' => 'Kolom judul wajib diisi!',
             'ikon.required' => 'Kolom ikon wajib diisi!',
-            'ikon.image'    => 'File harus berupa gambar',
             'ikon.mimes'    => 'Kolom gambar harus berformat jpg/png',
             'ikon.max'      => 'Kolom gambar maksimal 2MB',
         ];
@@ -190,8 +189,6 @@ class InfoTambahanController extends Controller
         abort_if(Gate::denies('info-tambahan_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $infoTambahan = InfoTambahan::where('id', $id)->first();
-        // lokasi gambar = storage -> uploads -> modul2
-        $infoTambahan->gambar = $infoTambahan->gambar ? 'storage/uploads/modul2/' . $infoTambahan->gambar : null;
         // lokasi ikon = storage -> uploads -> modul2
         $infoTambahan->ikon = $infoTambahan->ikon ? 'storage/uploads/modul2/' . $infoTambahan->ikon : null;
 
@@ -296,11 +293,6 @@ class InfoTambahanController extends Controller
 
         $hapusInfoTambahan = InfoTambahan::where('id', $infoTambahan->id)->first();
 
-        // jika ada file yang lama maka hapus
-        if (Storage::disk('uploads_modul2')->exists($hapusInfoTambahan->gambar)) {
-            Storage::disk('uploads_modul2')->delete($hapusInfoTambahan->gambar);
-            $hapusInfoTambahan->gambar = null;
-        }
         // jika ada file yang lama maka hapus
         if (Storage::disk('uploads_modul2')->exists($hapusInfoTambahan->ikon)) {
             Storage::disk('uploads_modul2')->delete($hapusInfoTambahan->ikon);
