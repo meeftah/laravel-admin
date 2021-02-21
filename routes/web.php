@@ -33,4 +33,5 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => ['auth'], 'prefix' => 
     Route::get('info-tambahan/detail/{id}/edit', 'InfoTambahanDetailController@edit')->name('info-tambahan-detail.edit');
     Route::put('info-tambahan/detail/{id}', 'InfoTambahanDetailController@update')->name('info-tambahan-detail.update');
     Route::delete('info-tambahan/detail/{id}', 'InfoTambahanDetailController@destroy')->name('info-tambahan-detail.destroy');
+    Route::post('info-tambahan/detail/delete/ikon/', 'InfoTambahanDetailController@deleteIkon')->name('info-tambahan-detail.delete.ikon');
 });

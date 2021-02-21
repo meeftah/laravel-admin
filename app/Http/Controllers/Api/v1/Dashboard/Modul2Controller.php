@@ -16,7 +16,7 @@ class Modul2Controller extends Controller
 
         if (checkUserToken($request->bearerToken(), $request->header('email'))) {
             $infoTambahan = InfoTambahan::select('id', 'judul', 'deskripsi', 'ikon')
-                ->with(['infoTambahanDaftar' => function ($query) {
+                ->with(['infoTambahanDetail' => function ($query) {
                     $query->select([
                         'id',
                         'id_info_tambahan',
@@ -28,8 +28,13 @@ class Modul2Controller extends Controller
                 ->orderBy('created_at', 'ASC')
                 ->get();
 
-            foreach ($infoTambahan as $item) {
-                $item->ikon = $item->ikon ? url('storage/uploads/modul2/' . $item->ikon) : null;
+            foreach ($infoTambahan as $item1) {
+                $item1->ikon = $item1->ikon ? url('storage/uploads/modul2/' . $item1->ikon) : null;   
+                if ($item1->infoTambahanDetail) {
+                    foreach ($item1->infoTambahanDetail as $item2) {
+                        $item2->ikon = $item2->ikon ? url('storage/uploads/modul2/' . $item2->ikon) : null;
+                    }
+                }
             }
 
             $data = $infoTambahan;

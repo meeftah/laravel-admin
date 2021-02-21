@@ -300,4 +300,23 @@ class InfoTambahanDetailController extends Controller
             return response()->json(['status' => 'error', 'message' => 'Detail gagal dihapus']);
         }
     }
+
+    public function deleteIkon(Request $request)
+    {
+        abort_if(Gate::denies('info-tambahan-detail_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $infoTambahanDetail = InfoTambahanDetail::where('id', $request->id)->first();
+
+        // jika ada file yang lama maka hapus
+        if (Storage::disk('uploads_modul2')->exists($infoTambahanDetail->ikon)) {
+            Storage::disk('uploads_modul2')->delete($infoTambahanDetail->ikon);
+            $infoTambahanDetail->ikon = null;
+        }
+
+        if ($infoTambahanDetail->save()) {
+            return response()->json(['status' => 'success', 'message' => 'Ikon berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Ikon gagal dihapus']);
+        }
+    }
 }
