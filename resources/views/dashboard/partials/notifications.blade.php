@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function () {
-
         toastr.options = {
             timeOut: 3000
         };
@@ -23,6 +22,5 @@
         @if(Session::has('error'))
         toastr.error("{{ Session::get('error') }}");
         @endif
-
     });
 </script>
