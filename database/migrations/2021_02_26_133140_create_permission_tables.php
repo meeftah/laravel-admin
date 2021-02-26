@@ -23,6 +23,7 @@ class CreatePermissionTables extends Migration
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->string('group');
             $table->string('guard_name')->default(config('auth.defaults.guard'));
             $table->timestamps();
 
