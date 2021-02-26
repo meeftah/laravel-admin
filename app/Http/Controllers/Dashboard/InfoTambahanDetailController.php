@@ -8,6 +8,9 @@ use App\Models\InfoTambahanDetail;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class InfoTambahanDetailController extends Controller
 {
@@ -18,6 +21,18 @@ class InfoTambahanDetailController extends Controller
 
         return datatables()->of($data)
             ->addIndexColumn()
+            ->editColumn(
+                'ikon',
+                function ($row) {
+                    $ikon = '';
+                    if ($row['ikon']) {
+                        // lokasi ikon = storage -> uploads -> modul2
+                        $path = 'storage/uploads/modul2/';
+                        $ikon = '<img src="' . url($path . $row['ikon']) . '" width="200px">';
+                    }
+                    return $ikon;
+                }
+            )
             ->addColumn(
                 'action',
                 function ($row) {
@@ -41,7 +56,7 @@ class InfoTambahanDetailController extends Controller
                     return $btn ?? '';
                 }
             )
-            ->rawColumns(['action'])
+            ->rawColumns(['ikon', 'action'])
             ->make(true);
     }
 
@@ -54,7 +69,9 @@ class InfoTambahanDetailController extends Controller
     {
         abort_if(Gate::denies('info-tambahan-detail_lihat'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('dashboard.infotambahandetail.index', compact('id'));
+        $infoTambahan = InfoTambahan::where('id', $id)->first();
+
+        return view('dashboard.infotambahandetail.index', compact('infoTambahan'));
     }
 
     /**
@@ -81,11 +98,59 @@ class InfoTambahanDetailController extends Controller
     {
         abort_if(Gate::denies('info-tambahan-detail_tambah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $data = new InfoTambahanDaftar();
-        $data->id_info_tambahan = $request->id_info_tambahan;
-        $data->judul = $request->judul;
-        
-        if ($data->save()) {
+        $rules = [
+            'judul' => 'required',
+            'ikon'    => 'required|mimes:jpeg,png,jpg|max:2000'
+        ];
+
+        $messages = [
+            'judul.required' => 'Kolom judul wajib diisi!',
+            'ikon.required' => 'Kolom ikon wajib diisi!',
+            'ikon.mimes'    => 'Kolom gambar harus berformat jpg/png',
+            'ikon.max'      => 'Kolom gambar maksimal 2MB',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $infoTambahanDetail = new InfoTambahanDetail();
+        $infoTambahanDetail->id_info_tambahan = $request->id_info_tambahan;
+        $infoTambahanDetail->judul = $request->judul;
+
+        $deskripsi = $request->deskripsi;
+        if ($deskripsi) {
+            $dom = new \DomDocument();
+            $dom->loadHtml($deskripsi, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $semuaGambar = $dom->getElementsByTagName('img');
+
+            foreach ($semuaGambar as $k => $gambar) {
+                $data = $gambar->getAttribute('src');
+
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $data = base64_decode($data);
+
+                $fileName = time() . '_' . $k . '.png';
+                $upload = Storage::disk('uploads_modul2')->put($fileName, $data);
+
+                $gambar->removeAttribute('src');
+                $gambar->setAttribute('src', url('storage/uploads/modul2/' . $fileName));
+            }
+
+            $infoTambahanDetail->deskripsi = $dom->saveHTML();
+        }
+
+        if ($request->hasFile('ikon')) {
+            // upload ikon
+            $img = $request->file('ikon');
+            $image = Image::make($img->getRealPath());
+            $fileName = time() . '.' . $img->getClientOriginalExtension();
+            $upload = Storage::disk('uploads_modul2')->put($fileName, $image->encode());
+            if ($upload) {
+                $infoTambahanDetail->ikon = $fileName;
+            }
+        }
+
+        if ($infoTambahanDetail->save()) {
             return redirect()->route('dashboard.info-tambahan-detail.index', $request->id_info_tambahan)->with(['success' => 'Berhasil menyimpan data']);
         } else {
             return redirect()->route('dashboard.info-tambahan-detail.index', $request->id_info_tambahan)->with(['error' => 'Gagal menyimpan data, silakan coba kembali']);
@@ -117,9 +182,11 @@ class InfoTambahanDetailController extends Controller
     {
         abort_if(Gate::denies('info-tambahan-detail_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $infoTambahanDaftar = InfoTambahanDaftar::where('id', $id)->first();
+        $infoTambahanDetail = InfoTambahanDetail::where('id', $id)->first();
+        // lokasi ikon = storage -> uploads -> modul2
+        $infoTambahanDetail->ikon = $infoTambahanDetail->ikon ? 'storage/uploads/modul2/' . $infoTambahanDetail->ikon : null;
 
-        return view('dashboard.infotambahandetail.edit', compact('infoTambahanDaftar'));
+        return view('dashboard.infotambahandetail.edit', compact('infoTambahanDetail'));
     }
 
     /**
@@ -133,13 +200,76 @@ class InfoTambahanDetailController extends Controller
     {
         abort_if(Gate::denies('info-tambahan-detail_ubah'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        // dd($request->all());
+        $infoTambahanDetail = InfoTambahanDetail::where('id', $id)->first();
+        if ($infoTambahanDetail->ikon) {
+            $rules = [
+                'judul' => 'required',
+                'ikon'    => 'sometimes|image|mimes:jpeg,png,jpg|max:2000'
+            ];
 
-        $data = InfoTambahanDaftar::where('id', $id)->first();
-        $data->id_info_tambahan = $request->id_info_tambahan;
-        $data->judul = $request->judul;
-        
-        if ($data->save()) {
+            $messages = [
+                'judul.required' => 'Kolom judul wajib diisi!',
+                'ikon.image'    => 'File harus berupa gambar',
+                'ikon.mimes'    => 'Kolom gambar harus berformat jpg/png',
+                'ikon.max'      => 'Kolom gambar maksimal 2MB',
+            ];
+        } else {
+            $rules = [
+                'judul' => 'required',
+                'ikon'    => 'required|image|mimes:jpeg,png,jpg|max:2000'
+            ];
+
+            $messages = [
+                'judul.required' => 'Kolom judul wajib diisi!',
+                'ikon.required' => 'Kolom ikon wajib diisi!',
+                'ikon.image'    => 'File harus berupa gambar',
+                'ikon.mimes'    => 'Kolom gambar harus berformat jpg/png',
+                'ikon.max'      => 'Kolom gambar maksimal 2MB',
+            ];
+        }
+
+        $this->validate($request, $rules, $messages);
+
+        $infoTambahanDetail->id_info_tambahan = $request->id_info_tambahan;
+        $infoTambahanDetail->judul = $request->judul;
+
+        $deskripsi = $request->deskripsi;
+        if ($deskripsi) {
+            $dom = new \DomDocument();
+            $dom->loadHtml($deskripsi, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $semuaGambar = $dom->getElementsByTagName('img');
+
+            foreach ($semuaGambar as $k => $gambar) {
+                $data = $gambar->getAttribute('src');
+
+                if (!Str::contains($data, 'storage/uploads/modul2/')) {
+                    list($type, $data) = explode(';', $data);
+                    list(, $data)      = explode(',', $data);
+                    $data = base64_decode($data);
+
+                    $fileName = time() . '_' . $k . '.png';
+                    $upload = Storage::disk('uploads_modul2')->put($fileName, $data);
+
+                    $gambar->removeAttribute('src');
+                    $gambar->setAttribute('src', url('storage/uploads/modul2/' . $fileName));
+                }
+            }
+
+            $infoTambahanDetail->deskripsi = $dom->saveHTML();
+        }
+
+        if ($request->hasFile('ikon')) {
+            // upload ikon
+            $img = $request->file('ikon');
+            $image = Image::make($img->getRealPath());
+            $fileName = time() . '.' . $img->getClientOriginalExtension();
+            $upload = Storage::disk('uploads_modul2')->put($fileName, $image->encode());
+            if ($upload) {
+                $infoTambahanDetail->ikon = $fileName;
+            }
+        }
+
+        if ($infoTambahanDetail->save()) {
             return redirect()->route('dashboard.info-tambahan-detail.index', $request->id_info_tambahan)->with(['success' => 'Berhasil menyimpan data']);
         } else {
             return redirect()->route('dashboard.info-tambahan-detail.index', $request->id_info_tambahan)->with(['error' => 'Gagal menyimpan data, silakan coba kembali']);
@@ -156,12 +286,37 @@ class InfoTambahanDetailController extends Controller
     {
         abort_if(Gate::denies('info-tambahan-detail_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $infoTambahanDaftar = InfoTambahanDaftar::where('id', $id)->first();
+        $hapusInfoTambahanDetail = InfoTambahanDetail::where('id', $id)->first();
 
-        if ($infoTambahanDaftar->delete()) {
-            return response()->json(['status' => 'success', 'message' => 'Info tambahan berhasil dihapus']);
+        // jika ada file yang lama maka hapus
+        if (Storage::disk('uploads_modul2')->exists($hapusInfoTambahanDetail->ikon)) {
+            Storage::disk('uploads_modul2')->delete($hapusInfoTambahanDetail->ikon);
+            $hapusInfoTambahanDetail->ikon = null;
+        }
+
+        if ($hapusInfoTambahanDetail->delete()) {
+            return response()->json(['status' => 'success', 'message' => 'Detail berhasil dihapus']);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'Info tambahan gagal dihapus']);
+            return response()->json(['status' => 'error', 'message' => 'Detail gagal dihapus']);
+        }
+    }
+
+    public function deleteIkon(Request $request)
+    {
+        abort_if(Gate::denies('info-tambahan-detail_hapus'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $infoTambahanDetail = InfoTambahanDetail::where('id', $request->id)->first();
+
+        // jika ada file yang lama maka hapus
+        if (Storage::disk('uploads_modul2')->exists($infoTambahanDetail->ikon)) {
+            Storage::disk('uploads_modul2')->delete($infoTambahanDetail->ikon);
+            $infoTambahanDetail->ikon = null;
+        }
+
+        if ($infoTambahanDetail->save()) {
+            return response()->json(['status' => 'success', 'message' => 'Ikon berhasil dihapus']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Ikon gagal dihapus']);
         }
     }
 }

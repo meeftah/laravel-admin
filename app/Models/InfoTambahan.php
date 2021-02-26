@@ -30,7 +30,7 @@ class InfoTambahan extends Model
         return $result;
     }
 
-    public function infoTambahanDaftar()
+    public function infoTambahanDetail()
     {
         return $this->hasMany(InfoTambahanDetail::class, 'id_info_tambahan');
     }
