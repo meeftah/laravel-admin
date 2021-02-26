@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [HomeControllerr::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
 });
