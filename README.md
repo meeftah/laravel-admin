@@ -13,9 +13,11 @@ Clone the repo and follow below steps.
 1. Run composer install
 2. Copy .env.example to .env Example for unix users : cp .env.example .env
 3. Set valid database credentials of env variables 
-   - DB_DATABASE 
-   - DB_USERNAME
-   - DB_PASSWORD
+   ```
+   DB_DATABASE 
+   DB_USERNAME
+   DB_PASSWORD
+   ```
 4. Run php artisan key:generate to generate application key
 5. Run php artisan migrate
 6. Run php artisan passport:install
@@ -24,7 +26,7 @@ Clone the repo and follow below steps.
 
 That's it, Open http://localhost:8000/login and login
 ```
-email: admin@email.com
+email: superadmin@email.com
 pass: 123456
 ```
 
