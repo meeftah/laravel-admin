@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeControllerr::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
