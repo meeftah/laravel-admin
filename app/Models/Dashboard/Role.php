@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dashboard\Models;
+namespace App\Models\Dashboard;
 
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
