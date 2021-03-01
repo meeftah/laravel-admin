@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dashboard\Permission;
 use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
@@ -13,8 +14,8 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Artisan::call('cache:clear');
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        // Artisan::call('cache:clear');
+        // app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $permissions = [
             ['name' => 'permission-bread', 'group' => 'permission'],
