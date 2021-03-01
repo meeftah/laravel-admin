@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dashboard\Role;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
@@ -16,28 +17,28 @@ class RoleSeeder extends Seeder
         $role = Role::create(['name' => 'superadmin']);
         $role->givePermissionTo([
             'permission-bread',
-            'permission_read',
-            'permission_edit',
-            'permission_add',
-            'permission_delete',
+            'permission-read',
+            'permission-edit',
+            'permission-add',
+            'permission-delete',
 
             'role-bread',
-            'role_read',
-            'role_edit',
-            'role_add',
-            'role_delete',
+            'role-read',
+            'role-edit',
+            'role-add',
+            'role-delete',
 
             'user-bread',
-            'user_read',
-            'user_edit',
-            'user_add',
-            'user_delete',
+            'user-read',
+            'user-edit',
+            'user-add',
+            'user-delete',
 
             'product-bread',
-            'product_read',
-            'product_edit',
-            'product_add',
-            'product_delete',
+            'product-read',
+            'product-edit',
+            'product-add',
+            'product-delete',
         ]);
     }
 }
