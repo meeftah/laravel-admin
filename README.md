@@ -20,9 +20,8 @@ Clone the repo and follow below steps.
    ```
 4. Run php artisan key:generate to generate application key
 5. Run php artisan migrate
-6. Run php artisan passport:install
-7. Run php artisan db:seed to seed your database
-8. Run php artisan serve
+6. Run php artisan db:seed to seed your database
+7. Run php artisan serve
 
 That's it, Open http://localhost:8000/login and login
 ```
