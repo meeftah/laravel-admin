@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dashboard\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
