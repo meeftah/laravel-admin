@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Dashboard\Models;
 
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
