@@ -34,31 +34,6 @@ class RoleSeed extends Seeder
             'permissions_ubah',
             'permissions_tambah',
             'permissions_hapus',
-
-            // ------------ Info Tambahan
-            'info-tambahan_lihat',
-            'info-tambahan_detail',
-            'info-tambahan_ubah',
-            'info-tambahan_tambah',
-            'info-tambahan_hapus',
-
-            // ------------ Info Tambahan detail
-            'info-tambahan-detail_lihat',
-            'info-tambahan-detail_detail',
-            'info-tambahan-detail_ubah',
-            'info-tambahan-detail_tambah',
-            'info-tambahan-detail_hapus',
-        ]);
-
-        $roleUser = Role::create(['name' => 'user']);
-        $roleUser->givePermissionTo([
-            // ------------ Info Tambahan
-            'info-tambahan_lihat',
-            'info-tambahan_detail',
-
-            // ------------ Info Tambahan detail
-            'info-tambahan-detail_lihat',
-            'info-tambahan-detail_detail',
         ]);
     }
 }

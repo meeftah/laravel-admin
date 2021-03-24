@@ -1,13 +1,36 @@
-# PPDB Al-Fityan Kubu Raya
+# Laravel Admin
 
-# How to use
-- Klon Project.
-- Sesuai .env.example file to .env and edit database credentials there
-- Then run the command
-- ``` composer install . ```
-- Run ``` php artisan key:generate ``` 
-- Run ``` php artisan migrate --seed ``` 
-- Done! Login with ``` "admin@admin.com" ``` and ``` "password" ```
+Aplikasi Laravel admin
 
-# Licence
-The <a href="http://opensource.org/licenses/MIT">MIT license.</a>
+### Instalasi
+
+```sh
+$ git clone https://github.com/meeftah/laravel-admin.git
+$ cd laravel-admin
+$ composer update
+```
+
+Sesuaikan database di .env
+
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=hadir_core2
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+`migrate --seed` untuk membuat tabel dan data
+```sh
+$ php artisan migrate --seed
+```
+
+Dan jalankan menggunakan perintah
+
+`migrate --seed` untuk membuat tabel dan data
+```sh
+$ php artisan serve
+```
+
+Akses web aplikasi di http://localhost:8000 menggunakan email **superadmin@admin.com** dan password **123456**

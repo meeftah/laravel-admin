@@ -38,23 +38,5 @@ class PermissionSeed extends Seeder
             ['id' => '27b80a26-7696-48fe-93a3-1af8c3b48601', 'name' => 'permissions_hapus'],
         ];
         Permission::insert($manajemenUser);
-
-        $items = [
-            // ------------ Info Tambahan
-            ['name' => 'info-tambahan_lihat'],
-            ['name' => 'info-tambahan_detail'],
-            ['name' => 'info-tambahan_ubah'],
-            ['name' => 'info-tambahan_tambah'],
-            ['name' => 'info-tambahan_hapus'],
-
-            ['name' => 'info-tambahan-detail_lihat'],
-            ['name' => 'info-tambahan-detail_detail'],
-            ['name' => 'info-tambahan-detail_ubah'],
-            ['name' => 'info-tambahan-detail_tambah'],
-            ['name' => 'info-tambahan-detail_hapus'],
-        ];
-        foreach ($items as $item) {
-            Permission::create(['name' => $item['name']]);
-        }
     }
 }
